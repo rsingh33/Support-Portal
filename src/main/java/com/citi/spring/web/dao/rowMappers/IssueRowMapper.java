@@ -1,5 +1,6 @@
 package com.citi.spring.web.dao.rowMappers;
 
+
 import com.citi.spring.web.dao.entity.Issue;
 import org.springframework.jdbc.core.RowMapper;
 

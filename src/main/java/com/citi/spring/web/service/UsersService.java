@@ -1,8 +1,7 @@
 package com.citi.spring.web.service;
 
-
-import com.citi.spring.web.dao.entity.User;
 import com.citi.spring.web.dao.UsersDao;
+import com.citi.spring.web.dao.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;

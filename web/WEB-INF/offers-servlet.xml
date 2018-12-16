@@ -25,7 +25,11 @@
       </bean>-->
 
     <bean id="tilesViewresolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"></bean>
-
+    <bean class="org.springframework.web.servlet.view.XmlViewResolver">
+        <property name="location">
+            <value>/WEB-INF/excel-view.xml</value>
+        </property>
+    </bean>
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions" >
             <list>

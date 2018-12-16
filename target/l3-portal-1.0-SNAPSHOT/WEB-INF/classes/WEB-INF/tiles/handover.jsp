@@ -18,6 +18,15 @@
     $(document).ready(onReady);
 </script>
 
+<div>
+    <input type="button"  onclick="location.href='${pageContext.request.contextPath}/sendemail'" value="Send Email Handover" >
+</div>
+
+<div>
+    <input type="button"  onclick="location.href='${pageContext.request.contextPath}/downloadExcel'" value="Export" >
+
+</div>
+
 <h2>
     <a href="${pageContext.request.contextPath}/handoverform" style="alignment: right">Add New Issue</a>
 </h2>
@@ -32,6 +41,7 @@
             <th>Currently With</th>
             <th>Environment</th>
             <th>Comments</th>
+            <th>Last Modified</th>
             <th>Actions</th>
         </tr>
         <c:forEach var="handover" items="${handovers}">
@@ -44,6 +54,7 @@
                 <td><p><c:out value="${handover.currentlyWith}"></c:out></p></td>
                 <td><p><c:out value="${handover.environment}"></c:out></p></td>
                 <td><p><c:out value="${handover.comments}"></c:out></p></td>
+                <td><p><c:out value="${handover.lastMod}"></c:out></p></td>
                 <td>
                     <a href="${pageContext.request.contextPath}/handoverform/<c:out value='${handover.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;

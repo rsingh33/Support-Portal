@@ -2,9 +2,7 @@ package com.citi.spring.web.controllers;
 
 
 import com.citi.spring.web.dao.entity.Handover;
-import com.citi.spring.web.dao.entity.Offer;
 import com.citi.spring.web.service.HandoverService;
-import com.citi.spring.web.service.OffersService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

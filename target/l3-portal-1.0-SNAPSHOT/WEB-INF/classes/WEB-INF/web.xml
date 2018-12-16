@@ -12,6 +12,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
+
             /WEB-INF/offers-servlet.xml
             /WEB-INF/dao-context.xml
             /WEB-INF/service-context.xml

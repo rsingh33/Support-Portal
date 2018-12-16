@@ -1,8 +1,10 @@
 package com.citi.spring.web.dao.entity;
 
+
 import com.citi.spring.web.validations.FormValidationGroup;
 import com.citi.spring.web.validations.PersistenceValidationGroup;
 import com.citi.spring.web.validations.ValidEmail;
+
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Column;

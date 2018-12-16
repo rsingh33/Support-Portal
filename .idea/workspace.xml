@@ -6,7 +6,107 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c02a5e2-1e44-475c-98ea-9c1c3106b944" name="Default Changelist" comment="" />
+    <list default="true" id="3c02a5e2-1e44-475c-98ea-9c1c3106b944" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/spring_tutorial_web_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/spring_tutorial_web_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_8_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-tutorial-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-tutorial-web.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/ErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/ErrorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HandoverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HandoverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/IssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/IssueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/OffersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/OffersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/HandoverDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/HandoverDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/IssuesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/IssuesDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/OffersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/OffersDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/UsersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/UsersDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/Environment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Handover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Handover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Issue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Issue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Offer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/IssueRowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/IssueRowMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/OfferRowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/OfferRowMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/HandoverService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/HandoverService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/IssueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/IssueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/OffersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/OffersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/UsersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/FormValidationGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/FormValidationGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/PersistenceValidationGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/PersistenceValidationGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/ValidEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/ValidEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/ValidEmailImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WEB-INF/tiles/handover.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/tiles/handover.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/HandoverController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/HandoverController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/IssueController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/IssueController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/OffersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/OffersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/HandoverDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/HandoverDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/OffersDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/OffersDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/UsersDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/UsersDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/entity/Handover.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/entity/Handover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/entity/Offer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/entity/Offer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/rowMappers/IssueRowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/dao/rowMappers/IssueRowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/service/HandoverService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/service/HandoverService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/service/IssueService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/service/IssueService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/service/OffersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/service/OffersService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/citi/spring/web/service/UsersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/citi/spring/web/service/UsersService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/WEB-INF/tiles/handover.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/WEB-INF/tiles/handover.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/HandoverController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/HandoverController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/IssueController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/IssueController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/OffersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/OffersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/HandoverDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/HandoverDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/OffersDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/OffersDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/UsersDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/UsersDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/entity/Handover.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/entity/Handover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/entity/Offer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/entity/Offer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/rowMappers/IssueRowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/dao/rowMappers/IssueRowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/service/HandoverService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/service/HandoverService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/service/IssueService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/service/IssueService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/service/OffersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/service/OffersService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/service/UsersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/com/citi/spring/web/service/UsersService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/HandoverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/HandoverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/IssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/IssueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/OffersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/OffersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/HandoverDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/HandoverDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/OffersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/OffersDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/UsersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/UsersDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/entity/Handover.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/entity/Handover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/entity/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/entity/Offer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/rowMappers/IssueRowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/dao/rowMappers/IssueRowMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/service/HandoverService.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/service/HandoverService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/service/IssueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/service/IssueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/service/OffersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/service/OffersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/service/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/service/UsersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/validations/FormValidationGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/validations/FormValidationGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/validations/ValidEmailImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/main/java/com/citi/spring/web/validations/ValidEmailImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/resources/script/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/resources/script/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/script/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/classes/script/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-5.0.8.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/tiles/handover.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/tiles/handover.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/resources/script/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/l3-portal-1.0-SNAPSHOT/resources/script/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/offers-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/offers-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/tiles/handover.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/tiles/handover.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -112,134 +212,146 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="5" />
+          <entry key="class" value="6" />
           <entry key="css" value="1" />
-          <entry key="java" value="98" />
-          <entry key="jsp" value="73" />
-          <entry key="properties" value="5" />
+          <entry key="java" value="169" />
+          <entry key="jsp" value="74" />
+          <entry key="properties" value="7" />
           <entry key="tld" value="2" />
-          <entry key="xml" value="37" />
+          <entry key="xml" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="5" />
+          <entry key="CLASS" value="6" />
           <entry key="CSS" value="1" />
-          <entry key="JAVA" value="98" />
-          <entry key="JSP" value="73" />
-          <entry key="Properties" value="5" />
-          <entry key="XML" value="39" />
+          <entry key="JAVA" value="169" />
+          <entry key="JSP" value="74" />
+          <entry key="Properties" value="7" />
+          <entry key="XML" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="5" />
-          <entry key="java" value="4979" />
-          <entry key="jsp" value="3182" />
+          <entry key="java" value="5836" />
+          <entry key="jsp" value="3273" />
           <entry key="properties" value="60" />
-          <entry key="xml" value="364" />
+          <entry key="xml" value="455" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4979" />
-          <entry key="JSP" value="3182" />
+          <entry key="JAVA" value="5836" />
+          <entry key="JSP" value="3273" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="Properties" value="60" />
-          <entry key="XML" value="364" />
+          <entry key="XML" value="455" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/handover.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="45">
+              <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/SendEmail.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-204">
+              <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
               <folding>
-                <element signature="n#style#0;n#a#0;n#h2#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/handoverform.jsp">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/offers-servlet.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="18" lean-forward="true" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+            <state relative-caret-position="229">
+              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HomeController.java">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/security-context.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-23">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="-519" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/HandoverExcelView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="122">
+              <caret line="67" column="74" selection-start-line="67" selection-start-column="74" selection-end-line="67" selection-end-column="74" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1003#1033#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/issuesform.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HandoverController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
+            <state relative-caret-position="385">
+              <caret line="79" column="66" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/LoginController.java">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/service-context.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/issues.jsp">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="40" column="133" selection-start-line="40" selection-start-column="133" selection-end-line="40" selection-end-column="133" />
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/home.jsp">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/excel-view.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="102">
+              <caret line="6" column="31" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/header.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/ExcelExporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+            <state relative-caret-position="317">
+              <caret line="48" column="41" lean-forward="true" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/accountcreated.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/resources/css/main.css">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -249,10 +361,10 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="spring-beans.schema" />
         <option value="Interface" />
         <option value="Jsp File" />
         <option value="Class" />
+        <option value="spring-beans.schema" />
       </list>
     </option>
   </component>
@@ -289,57 +401,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/FormValidationGroup.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/Issue.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/Handover.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/offers-servlet.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/OffersService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/OfferRowMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/HandoverRowMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/IssueRowMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/IssueRowMapper.java" />
-        <option value="$PROJECT_DIR$/src/test/config/datasource.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Issue.java" />
-        <option value="$PROJECT_DIR$/src/test/config/jdbc.properties" />
-        <option value="$PROJECT_DIR$/src/test/tests/UserDaoTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/HandoverDao.java" />
-        <option value="$PROJECT_DIR$/src/test/tests/HandoverDaoTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/IssuesDao.java" />
-        <option value="$PROJECT_DIR$/src/test/tests/IssuesDaoTests.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/denied.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/offers.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/messages/messages.properties" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/newaccount.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/login.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/accountcreated.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HomeController.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/handoverForm.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/createoffer.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/handovereditor.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/OffersController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/HandoverService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Handover.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/issuesForm.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/IssueService.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/deleted.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/save.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/security-context.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/layouts/layout.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/ReleaseController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tiles/releasemanager.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HandoverController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/IssueController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tiles/footer.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/UserController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tiles/admin.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tiles/issuesform.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tiles/handoverform.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/handover.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tiles/issues.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tiles/home.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tiles/header.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/ErrorHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/Environment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Handover.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/FormValidationGroup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/PersistenceValidationGroup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/HandoverService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/HandoverDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Issue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/IssueController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/IssueService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/IssuesDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/IssueRowMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/OffersController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Offer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/OfferRowMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/OffersDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/UsersDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/OffersService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/UsersService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/ValidEmailImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/EmailScheduler.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/ExcelExporter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/ReadProperties.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/Constants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/ListToHtmlTransformer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/SendEmail.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/dao-context.xml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/service-context.xml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/excel-view.xml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/offers-servlet.xml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HandoverController.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/tiles/handover.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/HandoverExcelView.java" />
       </list>
     </option>
   </component>
@@ -379,10 +491,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="width" value="1278" />
-    <option name="height" value="756" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -428,6 +541,34 @@
             <path>
               <item name="support-portal" type="b2602c69:ProjectViewProjectNode" />
               <item name="support-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="support-portal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="support-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="support-portal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="support-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="emailHandler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="support-portal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="support-portal" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -460,9 +601,9 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544850148604" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544971577362" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -472,27 +613,31 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.citi.spring.web.validations" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.citi.spring.web" />
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\opt\projects\support-portal\src\main\resources" />
+      <recent name="C:\opt\projects\support-portal\src\main\java\com\citi\spring\web\emailHandler" />
+      <recent name="C:\opt\projects\support-portal\src\main\java\com\citi\spring\web\dao" />
+      <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\com.citi.spring.web.test\config" />
+      <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.citi.spring.web.emailHandler" />
+      <recent name="tests" />
+      <recent name="com.citi.spring.web.service" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\src" />
       <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\src\main" />
       <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\src\main\java" />
       <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\src\main\java\test\config" />
       <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\src\main\java\test" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.citi.spring.web" />
-      <recent name="" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="tests" />
-      <recent name="com.citi.spring.web.service" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\opt\projects\support-portal\src\main\java\com\citi\spring\web\dao" />
-      <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\com.citi.spring.web.test\config" />
-      <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\src\main\webapp\WEB-INF" />
-      <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\src\main\webapp\WEB-INF\jsps" />
-      <recent name="C:\Users\rs79538\Desktop\project\gs-spring-boot-master\spring-tutorial-web\src\main\java\com\citi\spring\web\dao" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -789,7 +934,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347675000" />
+    <option name="totallyTimeSpent" value="356564000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -801,10 +946,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1278" height="756" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6514658" visible="true" weight="0.2553366" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6514658" visible="true" weight="0.25161812" />
       <window_info id="Structure" order="1" sideWeight="0.3485342" side_tool="true" weight="0.14285715" />
       <window_info id="Palette&#9;" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -814,7 +959,7 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Java Enterprise" order="0" weight="0.32963374" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32852387" />
-      <window_info anchor="bottom" x="0" y="22" width="1920" height="1018" id="Run" order="2" sideWeight="0.69402987" visible="true" weight="0.32445922" />
+      <window_info anchor="bottom" x="0" y="22" width="1920" height="1018" id="Run" order="2" sideWeight="0.69402987" visible="true" weight="0.4554295" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.39955604" />
       <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Spring" order="5" weight="0.31520534" />
@@ -827,7 +972,7 @@
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
       <window_info anchor="bottom" id="Changes" order="14" />
-      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.48614073" weight="0.49386844" />
+      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.48614073" weight="0.14539401" />
       <window_info anchor="right" id="Bean Validation" order="0" weight="0.32995737" />
       <window_info anchor="right" id="Database" order="1" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -839,42 +984,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="8" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6514658" visible="true" weight="0.16577825" />
-      <window_info id="Structure" order="1" sideWeight="0.3485342" side_tool="true" weight="0.14285715" />
-      <window_info id="Palette&#9;" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Web" order="6" sideWeight="0.302589" side_tool="true" weight="0.20895523" />
-      <window_info id="Image Layers" order="7" />
-      <window_info anchor="bottom" id="Java Enterprise" order="0" weight="0.32963374" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32852387" />
-      <window_info active="true" anchor="bottom" x="0" y="22" width="1920" height="1018" id="Run" order="2" sideWeight="0.69402987" visible="true" weight="0.32852387" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.39955604" />
-      <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Spring" order="5" weight="0.31520534" />
-      <window_info anchor="bottom" id="Application Servers" order="6" weight="0.32887402" />
-      <window_info anchor="bottom" id="TODO" order="7" weight="0.32963374" />
-      <window_info anchor="bottom" id="Message" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.30597016" side_tool="true" weight="0.35405105" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32998884" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32963374" />
-      <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
-      <window_info anchor="bottom" id="Changes" order="14" />
-      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.48614073" weight="0.49386844" />
-      <window_info anchor="right" id="Bean Validation" order="0" weight="0.32995737" />
-      <window_info anchor="right" id="Database" order="1" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" weight="0.32995737" />
-      <window_info anchor="right" id="Designer" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="8" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -908,366 +1017,6 @@
     <option name="serverIp" value="localhost" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/tests/IssuesDaoTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="36" column="34" lean-forward="true" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/OffersService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="6" selection-start-line="10" selection-end-line="10" selection-end-column="25" />
-          <folding>
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.8.RELEASE/spring-webmvc-5.0.8.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerMapping.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="48" column="2" selection-start-line="48" selection-start-column="2" selection-end-line="48" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/offercreated.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/loggedout.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/content.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/denied.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="44" selection-start-column="44" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/error.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/messages/messages.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
-          <caret line="93" column="20" lean-forward="true" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/newaccount.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/newaccountscript.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="78" selection-start-line="36" selection-start-column="78" selection-end-line="36" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/dao-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-481">
-          <caret line="21" column="100" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/service-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="69" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="55" column="46" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/handovereditor.jsp" />
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/offers-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/CurrentlyWith.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Handover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="134" column="18" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3264#3265#0" expanded="true" />
-            <element signature="e#3299#3300#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
-            <element signature="e#3469#3470#0" expanded="true" />
-            <element signature="e#3744#3745#0" expanded="true" />
-            <element signature="e#3773#3774#0" expanded="true" />
-            <element signature="e#3913#3914#0" expanded="true" />
-            <element signature="e#3949#3950#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/default.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.8.RELEASE/spring-webmvc-5.0.8.RELEASE.jar!/META-INF/spring-form.tld">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="138" column="8" selection-start-line="138" selection-start-column="8" selection-end-line="138" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/HandoverDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="9" column="64" lean-forward="true" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/offers.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="45" lean-forward="true" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/OffersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="50" column="32" lean-forward="true" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/HandoverService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="47" column="19" selection-start-line="45" selection-start-column="2" selection-end-line="50" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/IssuesDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/IssueService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Issue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2716#2717#0" expanded="true" />
-            <element signature="e#2743#2744#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/layouts/layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="75" column="37" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/save.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/deleted.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="2" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/createoffer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="35" selection-start-line="4" selection-end-line="35" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/security-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="45" column="56" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/ReleaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#291#292#0" expanded="true" />
-            <element signature="e#315#316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/releasemanager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="60" selection-start-column="60" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/footer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="71" selection-start-column="71" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/IssueController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HandoverController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="23" column="42" lean-forward="true" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/admin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-23">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/issuesform.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/handoverform.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="18" lean-forward="true" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/issues.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="40" column="133" selection-start-line="40" selection-start-column="133" selection-end-line="40" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/accountcreated.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -1278,12 +1027,419 @@
     <entry file="file://$PROJECT_DIR$/web/resources/css/main.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/handover.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/ReleaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/CurrentlyWith.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/Environment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/Status.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Handover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/messages/messages.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/FormValidationGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/PersistenceValidationGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/ErrorHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/HandoverService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/HandoverRowMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/HandoverDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="18" lean-forward="true" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Issue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/IssueController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/IssueService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/IssuesDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/IssueRowMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/Offer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-787">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/rowMappers/OfferRowMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/OffersDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/UsersDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/OffersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/OffersService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/service/UsersService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/ValidEmailImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#401#402#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/validations/ValidEmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="55" column="54" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/EmailScheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/ScheduleEmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/ListToHtmlTransformer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/ReadProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/email.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.11.RELEASE/spring-webmvc-4.3.11.RELEASE.jar!/org/springframework/web/servlet/view/document/AbstractExcelView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/security-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-519" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/service-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/dao-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/offers-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/excel-view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/controllers/HandoverController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="79" column="66" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="66" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#h2#0;n#!!top" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/SendEmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tiles/handover.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/emailHandler/ExcelExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="48" column="41" lean-forward="true" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/citi/spring/web/dao/data/HandoverExcelView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="67" column="74" selection-start-line="67" selection-start-column="74" selection-end-line="67" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1003#1033#1" expanded="true" />
           </folding>
         </state>
       </provider>
