@@ -51,6 +51,32 @@ public class UsersDao {
     public List<User> getAllUsers() {
         return session().createQuery("from User").list();
     }
+
+    public User findUserByEmail(String userEmail) {
+        User user = null;
+        Criteria criteria = session().createCriteria(User.class);
+        criteria.add(Restrictions.eq("email", userEmail));
+        return user;
+    }
+
+    public User findUserByResetToken(String resetToken) {
+        User user = null;
+        Criteria criteria = session().createCriteria(User.class);
+        criteria.add(Restrictions.eq("resetToken", resetToken));
+        return user;
+    }
+
+    public void update(User user) {
+      session().saveOrUpdate(user);
+    }
+
+    public boolean existsToken(String token) {
+        Criteria criteria = session().createCriteria(User.class);
+        criteria.add(Restrictions.eq("resetToken",token));
+        User user = (User) criteria.uniqueResult();
+
+        return user != null;
+    }
 }
 
 

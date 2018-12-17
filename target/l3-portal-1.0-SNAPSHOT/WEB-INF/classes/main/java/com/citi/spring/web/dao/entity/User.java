@@ -37,6 +37,8 @@ public class User {
     private boolean enabled = false;
 
     private String authority;
+    @Column(name = "reset_token")
+    private String resetToken;
 
     @NotBlank(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     @Size(min = 3, max = 60, groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
@@ -136,4 +138,11 @@ public class User {
         this.authority = authority;
     }
 
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
 }

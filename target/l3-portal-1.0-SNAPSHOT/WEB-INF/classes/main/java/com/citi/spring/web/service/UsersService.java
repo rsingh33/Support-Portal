@@ -27,10 +27,25 @@ public class UsersService {
     public boolean exists(String username) {
         return usersDao.exists(username);
     }
+    public boolean existsToken(String token) {
+        return usersDao.existsToken(token);
+    }
+
 
     @Secured("ROLE_admin")
     public List<User> getAllUsers() {
 
         return usersDao.getAllUsers();
+    }
+
+    public User findUserByEmail(String userEmail) {
+        return usersDao.findUserByEmail(userEmail);
+    }
+    public User findUserByResetToken(String resetToken) {
+        return usersDao.findUserByResetToken(resetToken);
+    }
+
+    public void update(User user) {
+        usersDao.update(user);
     }
 }

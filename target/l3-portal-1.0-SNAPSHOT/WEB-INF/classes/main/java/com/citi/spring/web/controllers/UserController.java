@@ -23,8 +23,6 @@ public class UserController {
 
     @RequestMapping("/admin")
     public String showAdmin(Model model) {
-
-
         List<User> users = usersService.getAllUsers();
         model.addAttribute("users", users);
         return "admin";

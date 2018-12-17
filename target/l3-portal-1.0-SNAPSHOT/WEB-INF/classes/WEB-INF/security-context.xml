@@ -24,31 +24,23 @@
     <security:http use-expressions="true">
         <security:intercept-url pattern="/admin**" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/admin**" access="hasAnyRole('ROLE_admin')"></security:intercept-url>
-        <security:intercept-url pattern="/createoffer" access="isAuthenticated()"></security:intercept-url>
-        <security:intercept-url pattern="/doCreate" access="isAuthenticated()"></security:intercept-url>
-        <security:intercept-url pattern="/offercreated" access="isAuthenticated()"></security:intercept-url>
-        <security:intercept-url pattern="/offerdeleted" access="isAuthenticated()"></security:intercept-url>
-        <security:intercept-url pattern="/newaccount" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/createaccount" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/admin**" access="hasAnyRole('ROLE_admin')"></security:intercept-url>
+        <security:intercept-url pattern="/newaccount" access="!isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/denied" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/accountcreated" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/static/**" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/loggedout" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/login" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/offers" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/issues" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/handover" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/save" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/deleted" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/handoverform" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/issuesform" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/releasemanager" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/issues" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/handover" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/handoverform" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/issuesform" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/releasemanager" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/com/citi/spring/web/filters" access="denyAll()"></security:intercept-url>
         <security:form-login login-page="/login" authentication-failure-url="/login?error=true"></security:form-login>
         <security:logout logout-success-url="/loggedout" logout-url="/logout"></security:logout>
         <security:access-denied-handler error-page="/denied"></security:access-denied-handler>
-        <security:remember-me key="offersAppKey" user-service-ref="jdbcDataSource" ></security:remember-me>
+        <security:remember-me key="issuesAppKey" user-service-ref="jdbcDataSource" ></security:remember-me>
     </security:http>
 
     <seurity:global-method-security secured-annotations="enabled"></seurity:global-method-security>

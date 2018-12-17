@@ -73,7 +73,7 @@
         <tr>
             <th>Comments:</th>
             <td>
-                <input type="text" name="comments" size="70"
+                <input type="text" name="comments" size="100"
                        value="<c:out value='${handover.comments}' />"
                 />
             </td>
