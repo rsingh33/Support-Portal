@@ -18,7 +18,7 @@ public class EmailService {
 
     @Scheduled(cron = "0 0 5,12,17 ? * *")
     public void emailScheduler() {
-        System.out.println("Email sent!!!!!");
+
         List<Handover> handovers = handoverDAO.getHandover();
         String content = ListToHtmlTransformer.compose(handovers);
         try {
@@ -26,6 +26,7 @@ public class EmailService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("Email sent!!!!!");
     }
 
    }

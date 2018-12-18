@@ -27,6 +27,7 @@ public class UsersService {
     public boolean exists(String username) {
         return usersDao.exists(username);
     }
+
     public boolean existsToken(String token) {
         return usersDao.existsToken(token);
     }
@@ -41,11 +42,20 @@ public class UsersService {
     public User findUserByEmail(String userEmail) {
         return usersDao.findUserByEmail(userEmail);
     }
+
     public User findUserByResetToken(String resetToken) {
         return usersDao.findUserByResetToken(resetToken);
     }
 
     public void update(User user) {
         usersDao.update(user);
+    }
+
+    public void delete(String username) {
+        usersDao.delete(username);
+    }
+
+    public User getUser(String username) {
+       return usersDao.getUser(username);
     }
 }

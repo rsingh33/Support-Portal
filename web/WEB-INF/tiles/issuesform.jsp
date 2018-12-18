@@ -5,17 +5,11 @@
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
-
 <form:form method="post" action="${pageContext.request.contextPath}/saveIssue" modelAttribute="issue">
-
     <table border="1" cellpadding="5">
         <caption>
             <h2>
-                <caption>
-                    <h2>
-                        Please fill the form below.
-                    </h2>
-                </caption>
+                Please fill the form below.
             </h2>
         </caption>
         <c:if test="${issue != null}">
@@ -39,7 +33,7 @@
             </td>
         </tr>
         <tr>
-            <th>Jira:</th>
+            <th>Jira:(number only)</th>
             <td>
                 <input type="text" name="jira" size="100"
                        value="<c:out value='${issue.jira}' />"
@@ -77,8 +71,6 @@
                        onmouseout="this.style.background='#9dce2c'"
                        onclick="this.form.reset();"/></td>
 
-        </tr>>
-        </tr>
-    </table>
+           </table>
 </form:form>
 

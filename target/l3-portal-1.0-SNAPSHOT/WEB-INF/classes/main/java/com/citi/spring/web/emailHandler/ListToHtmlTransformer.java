@@ -50,7 +50,7 @@ public class ListToHtmlTransformer {
             email.append("</td>");
 
             email.append("<td>");
-            email.append(row.getTracking());
+            email.append("<a href= \"https://cedt-icg-jira.nam.nsroot.net/jira/browse/"+row.getTracking() + ">"+row.getTracking() + "</>");
             email.append("</td>");
 
             email.append("<td>");

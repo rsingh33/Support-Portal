@@ -10,7 +10,12 @@
     <a class="title" href="${pageContext.request.contextPath}/issues">Issues-Database</a>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a class="title" href="${pageContext.request.contextPath}/releasemanager">Release-Manager</a>
-
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="title" href="http://ddivmddsf4:8080/DevOps/index.html">DevOps-Dashboard</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+      <sec:authorize access="hasRole('ROLE_admin')">
+        <a class = "title" href="${pageContext.request.contextPath}/admin">Admin</a>
+    </sec:authorize>
     <c:url var="logoutUrl" value="/logout"/>
     <form class="logout" action="${logoutUrl}" method="post">
         <input type="submit" value="Logout"/>
@@ -18,3 +23,4 @@
     </form>
 
 </sec:authorize>
+

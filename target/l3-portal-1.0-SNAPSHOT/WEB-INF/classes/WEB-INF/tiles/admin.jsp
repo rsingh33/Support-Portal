@@ -37,11 +37,8 @@
             <td><c:out value="${user.authority}"></c:out></td>
             <td><c:out value="${user.enabled}"></c:out></td>
             <td>
-                <a href="${pageContext.request.contextPath}/userform/<c:out value='${user.username}' />">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-
                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
-                   href="${pageContext.request.contextPath}/delete/<c:out value='${user.username}' />">Delete</a>
+                   href="${pageContext.request.contextPath}/deleteUser/<c:out value='${user.username}' />">Delete</a>
             </td>
         </tr>
 

@@ -3,6 +3,7 @@ package com.citi.spring.web.dao;
 
 import com.citi.spring.web.dao.entity.User;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -41,7 +42,7 @@ public class UsersDao {
 
     public boolean exists(String username) {
         Criteria criteria = session().createCriteria(User.class);
-        criteria.add(Restrictions.idEq(username));
+        criteria.add(Restrictions.eq("username",username));
         User user = (User) criteria.uniqueResult();
 
         return user != null;
@@ -70,12 +71,26 @@ public class UsersDao {
       session().saveOrUpdate(user);
     }
 
+    public boolean delete(String username) {
+        Query query = session().createQuery("delete from User where username =:username");
+        query.setString("username", username);
+        return query.executeUpdate() == 1;
+    }
+
+
     public boolean existsToken(String token) {
         Criteria criteria = session().createCriteria(User.class);
         criteria.add(Restrictions.eq("resetToken",token));
         User user = (User) criteria.uniqueResult();
 
         return user != null;
+    }
+
+    public User getUser(String username) {
+        Query query = session().createQuery("from User where username =:username");
+        query.setString("username", username);
+
+        return (User) query.uniqueResult();
     }
 }
 

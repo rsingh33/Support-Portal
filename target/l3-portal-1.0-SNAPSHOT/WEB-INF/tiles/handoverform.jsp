@@ -36,7 +36,7 @@
         </tr>
 
         <tr>
-            <th>Jira:</th>
+            <th>Jira:(number only)</th>
             <td>
                 <input type="text" name="tracking" size="100"
                        value="<c:out value='${handover.tracking}' />"

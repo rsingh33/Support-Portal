@@ -37,6 +37,4 @@
 </sec:authorize>
 
 
-<sec:authorize access="hasRole('ROLE_admin')">
-    <p><a href="${pageContext.request.contextPath}/admin">Admin</a></p>
-</sec:authorize>
+

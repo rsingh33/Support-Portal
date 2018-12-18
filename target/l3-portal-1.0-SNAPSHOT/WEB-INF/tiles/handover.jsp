@@ -19,7 +19,7 @@
 </script>
 
 <div>
-    <input type="button"  onclick="location.href='${pageContext.request.contextPath}/sendemail'" value="Send Email Handover" >
+    <input type="button"  onclick="location.href='${pageContext.request.contextPath}/sendemail' " value="Send Email Handover" >
 </div>
 
 <div>

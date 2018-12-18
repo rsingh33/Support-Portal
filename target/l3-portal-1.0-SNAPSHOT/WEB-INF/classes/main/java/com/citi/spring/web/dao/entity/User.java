@@ -4,13 +4,9 @@ package com.citi.spring.web.dao.entity;
 import com.citi.spring.web.validations.FormValidationGroup;
 import com.citi.spring.web.validations.PersistenceValidationGroup;
 import com.citi.spring.web.validations.ValidEmail;
-
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Objects;
@@ -19,31 +15,27 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
 
-    @Id
-    @NotBlank(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
-    @Size(min = 6, max = 15, groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
-    @Pattern(regexp = "^\\w{6,}$", groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
-    @Column(name = "username")
-    private String username;
 
+    @NotBlank(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
+    @Size(min = 7, max = 7, groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
+    @Column(name = "username" ,unique = true)
+    private String username;
+    @Id
+    @GeneratedValue()
+    private int id;
     @NotBlank(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     @Pattern(regexp = "^\\S+$", groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     @Size(min = 8, max = 15, groups = {FormValidationGroup.class})
     private String password;
-
     @ValidEmail(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     private String email;
-
     private boolean enabled = false;
-
     private String authority;
     @Column(name = "reset_token")
     private String resetToken;
-
     @NotBlank(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     @Size(min = 3, max = 60, groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     private String name;
-
 
     public User(String username, String name, String password, String email, boolean enabled, String authority) {
         this.username = username;
@@ -57,9 +49,24 @@ public class User {
     public User(String username) {
         this.username = username;
     }
-
     public User() {
 
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
