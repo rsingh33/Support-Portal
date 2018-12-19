@@ -92,6 +92,20 @@ public class UsersDao {
 
         return (User) query.uniqueResult();
     }
+
+    public boolean existsByEmail(String email) {
+        Criteria criteria = session().createCriteria(User.class);
+        criteria.add(Restrictions.eq("email",email));
+        User user = (User) criteria.uniqueResult();
+        return user != null;
+    }
+
+    public User getUserEmail(String email) {
+        Query query = session().createQuery("from User where email =:email");
+        query.setString("email", email);
+
+        return (User) query.uniqueResult();
+    }
 }
 
 

@@ -31,20 +31,6 @@ public class UserController {
         return "admin";
     }
 
-/*
-    @RequestMapping(value = "/userform/{username}")
-    public String edit(@PathVariable String username, Model m) {
-        User user = usersService.getUser(username);
-        m.addAttribute("user", user);
-        return "userform";
-    }
-
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String saveOrUpdate(@ModelAttribute("user") User user) {
-        usersService.update(user);
-        return "redirect:/admin";
-    }*/
-
     @RequestMapping(value = "/deleteUser/{username}", method = RequestMethod.GET)
     public String deleteUser(@PathVariable String username) {
         usersService.delete(username);

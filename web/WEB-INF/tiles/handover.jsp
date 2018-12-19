@@ -1,29 +1,48 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
-    function onDeleteClick(event) {
 
 
-        var doDelete = confirm("Are you sure you want to delete");
+    $(document).ready(function () {
+        $("a.delete").click(function (e) {
+            if (!confirm('Are you sure you want to delete?')) {
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        });
+    });
 
-        if (doDelete == false) {
-            event.preventDefault();
+    function filter() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
         }
     }
-
-    function onReady() {
-        $("#delete").click(onDeleteClick);
-    }
-
-    $(document).ready(onReady);
 </script>
 
 <div>
-    <input type="button"  onclick="location.href='${pageContext.request.contextPath}/sendemail' " value="Send Email Handover" >
+    <input type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail' "
+           value="Send Email Handover">
 </div>
 
 <div>
-    <input type="button"  onclick="location.href='${pageContext.request.contextPath}/downloadExcel'" value="Export" >
+    <input type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'" value="Export">
 
 </div>
 
@@ -31,8 +50,9 @@
     <a href="${pageContext.request.contextPath}/handoverform" style="alignment: right">Add New Issue</a>
 </h2>
 
+<div><input type="text" id="myInput" onkeyup="filter()" placeholder="Filter by Reporter"></div>
 <div align="center">
-    <table border="1" cellpadding="5">
+    <table id="myTable" border="1" cellpadding="5">
         <tr>
             <th>Reporter</th>
             <th>Email Subject</th>
@@ -48,7 +68,8 @@
             <tr>
                 <td><p><c:out value="${handover.reportedBy}"></c:out></p></td>
                 <td><p><c:out value="${handover.emailSubject}"></c:out></p></td>
-                <td><p><a href= "https://cedt-icg-jira.nam.nsroot.net/jira/browse/<c:out value='${handover.tracking}'></c:out>">
+                <td><p><a
+                        href="https://cedt-icg-jira.nam.nsroot.net/jira/browse/<c:out value='${handover.tracking}'></c:out>">
                         ${handover.tracking}</a></p></td>
                 <td><p><c:out value="${handover.status}"></c:out></p></td>
                 <td><p><c:out value="${handover.currentlyWith}"></c:out></p></td>
@@ -56,11 +77,13 @@
                 <td><p><c:out value="${handover.comments}"></c:out></p></td>
                 <td><p><c:out value="${handover.lastMod}"></c:out></p></td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/handoverform/<c:out value='${handover.id}' />">Edit</a>
+                    <button><a href="${pageContext.request.contextPath}/handoverform/<c:out value='${handover.id}'/>">Edit</a>
+                    </button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button><a class="delete" id="delete" type="submit" value="delete" name="delete"
+                               href="${pageContext.request.contextPath}/delete/<c:out value='${handover.id}'/>">Delete</a>
+                    </button>
 
-                    <a class="delete" id="delete" type="submit" value="Delete" name="delete"
-                       href="${pageContext.request.contextPath}/delete/<c:out value='${handover.id}' />">Delete</a>
                 </td>
             </tr>
         </c:forEach>

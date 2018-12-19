@@ -27,7 +27,9 @@ public class UsersService {
     public boolean exists(String username) {
         return usersDao.exists(username);
     }
-
+    public boolean existsByEmail(String email) {
+        return usersDao.existsByEmail(email);
+    }
     public boolean existsToken(String token) {
         return usersDao.existsToken(token);
     }
@@ -57,5 +59,8 @@ public class UsersService {
 
     public User getUser(String username) {
        return usersDao.getUser(username);
+    }
+    public User getUserEmail(String email) {
+        return usersDao.getUserEmail(email);
     }
 }

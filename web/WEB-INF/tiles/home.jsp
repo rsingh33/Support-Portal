@@ -27,9 +27,11 @@
                 <td>Remember me:</td>
                 <td><input type='checkbox' name='remember-me'/></td>
             </tr>
+
             <tr>
-                <td colspan="2"><input name="submit" type="submit" value="Login"/></td>
-                           </tr>
+                <td><input name="submit" type="submit" value="Login"/></td>
+                <td><a href="${pageContext.request.contextPath}/forgot" methods="get">Forgot Password</a></td>
+            </tr>
             <input name="_csrf" type="hidden" value="${_csrf.token}"/>
         </table>
     </form>

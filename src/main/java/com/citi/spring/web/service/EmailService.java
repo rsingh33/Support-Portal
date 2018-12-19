@@ -28,5 +28,11 @@ public class EmailService {
         }
         System.out.println("Email sent!!!!!");
     }
-
+   public void emailSend(String content,  String to, String subject){
+       try {
+           SendEmail.emailSend(content,to,subject);
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+   }
    }

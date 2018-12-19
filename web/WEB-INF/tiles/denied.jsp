@@ -1,1 +1,1 @@
-<p>You ar enot authorised to view this page!!</p>
+<p>You are not authorised to view this page!!</p>

@@ -35,6 +35,8 @@
         <security:intercept-url pattern="/handover" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/handoverform" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/issuesform" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/forgotPassword" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/resetPassword" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/userform" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/releasemanager" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/com/citi/spring/web/filters" access="denyAll()"></security:intercept-url>
