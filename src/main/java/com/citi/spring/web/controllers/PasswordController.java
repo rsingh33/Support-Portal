@@ -4,6 +4,7 @@ package com.citi.spring.web.controllers;
 import com.citi.spring.web.dao.entity.User;
 import com.citi.spring.web.service.EmailService;
 import com.citi.spring.web.service.UsersService;
+import com.citi.spring.web.validations.ValidEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,7 @@ public class PasswordController {
 
     // Process form submission from forgotPassword page
     @RequestMapping(value = "/forgot", method = RequestMethod.POST)
-    public String processForgotPasswordForm(Model model, @RequestParam("email") String userEmail, HttpServletRequest request) {
+    public String processForgotPasswordForm(Model model, @ValidEmail @RequestParam("email") String userEmail, HttpServletRequest request) {
 
         // Lookup user in database by e-mail
 
@@ -62,7 +63,7 @@ public class PasswordController {
             // Email message
             String content = "To reset your password, click the link below:\n" + appUrl
                     + "/reset?token=" + user.getResetToken();
-
+            System.out.println(content);
             emailService.emailSend(content, user.getEmail(), "Password Reset Request");
 
             // Add success message to view

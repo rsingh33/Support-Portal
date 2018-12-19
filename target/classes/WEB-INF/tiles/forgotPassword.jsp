@@ -6,11 +6,24 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 
-
 <h2>Please enter your email to get a password reset link</h2>
 
-<form:form action="${pageContext.request.contextPath}/forgot" method="post">
-    <input type="text" name="email">
-    <button type="submit" >Send email</button>
+<form:form action="${pageContext.request.contextPath}/forgot" method="post" modelAttribute="message">
+    <table>
+        <tr>
+            <td>
+                <input type="text" name="email">
+            </td>
+            <td>
+                <button type="submit">Send email</button>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                  <p>${message}</p>
+            </td>
+        </tr>
+    </table>
 </form:form>
 
