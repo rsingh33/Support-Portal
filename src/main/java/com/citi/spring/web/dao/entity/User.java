@@ -18,7 +18,7 @@ public class User {
 
     @NotBlank(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     @Size(min = 7, max = 7, groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
-    @Column(name = "username" ,unique = true)
+    @Column(name = "username", unique = true)
     private String username;
     @Id
     @GeneratedValue()
@@ -37,6 +37,16 @@ public class User {
     @Size(min = 3, max = 60, groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     private String name;
 
+    public User(String username, String name, String password, String email, boolean enabled, String authority, String resetToken) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.enabled = enabled;
+        this.authority = authority;
+        this.resetToken = resetToken;
+    }
+
     public User(String username, String name, String password, String email, boolean enabled, String authority) {
         this.username = username;
         this.password = password;
@@ -44,11 +54,13 @@ public class User {
         this.email = email;
         this.enabled = enabled;
         this.authority = authority;
+
     }
 
     public User(String username) {
         this.username = username;
     }
+
     public User() {
 
     }

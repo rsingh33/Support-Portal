@@ -75,7 +75,7 @@ public class ListToHtmlTransformer {
             email.append("<td>");
             email.append(row.getCurrentlyWith());
             email.append("</td>");
-
+            email.append("</tr>");
         }
 
         email.append("</table></body></html>");

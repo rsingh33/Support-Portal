@@ -58,7 +58,8 @@ public class PasswordController {
             // Save token to database
             userService.update(user);
 
-            String appUrl = request.getScheme() + "://" + request.getServerName();
+            String appUrl = request.getScheme() + "://" + request.getServerName() + ":" +
+                    request.getServerPort() + request.getContextPath();
 
             // Email message
             String content = "To reset your password, click the link below:\n" + appUrl
@@ -75,18 +76,19 @@ public class PasswordController {
 
     }
 
-    // Display form to reset password
-    @RequestMapping(value = "/reset", method = RequestMethod.GET)
-    public String displayResetPasswordPage(Model model, @RequestParam("token") String token) {
+    @RequestMapping(value = "/reset", method = RequestMethod.GET, params = "token")
+    public String displayResetPasswordPage(Model model, @RequestParam(value = "token") String token) {
 
         User user = userService.findUserByResetToken(token);
 
         if (user != null) {
+            System.out.println("user is not null " +token);
             model.addAttribute("resetToken", token);
         } else {
-            model.addAttribute("errorMessage", "Oops!  This is an invalid password reset link.");
+            System.out.println("user is null " +token);
+            model.addAttribute("message", "Oops!  This is an invalid password reset link.");
         }
-
+        System.out.println(token);
         return "resetPassword";
     }
 
@@ -95,7 +97,7 @@ public class PasswordController {
     public String setNewPassword(String model, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
 
         // Find the user associated with the reset token
-
+        System.out.println("Resetting password........");
         User user = userService.findUserByResetToken(requestParams.get("token"));
 
 
