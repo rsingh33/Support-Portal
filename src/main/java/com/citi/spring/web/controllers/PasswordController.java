@@ -46,7 +46,7 @@ public class PasswordController {
 
         // Lookup user in database by e-mail
 
-        System.out.println(userEmail);
+
         if (!userService.existsByEmail(userEmail)) {
             model.addAttribute("message", "User not found with " + userEmail);
         } else {
@@ -64,7 +64,7 @@ public class PasswordController {
             // Email message
             String content = "To reset your password, click the link below:\n" + appUrl
                     + "/reset?token=" + user.getResetToken();
-            System.out.println(content);
+
             emailService.emailSend(content, user.getEmail(), "Password Reset Request");
 
             // Add success message to view
@@ -82,22 +82,26 @@ public class PasswordController {
         User user = userService.findUserByResetToken(token);
 
         if (user != null) {
-            System.out.println("user is not null " +token);
+
             model.addAttribute("resetToken", token);
         } else {
-            System.out.println("user is null " +token);
+
             model.addAttribute("message", "Oops!  This is an invalid password reset link.");
         }
-        System.out.println(token);
+
         return "resetPassword";
     }
 
     // Process reset password form
     @RequestMapping(value = "/reset", method = RequestMethod.POST)
-    public String setNewPassword(String model, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
+    public String setNewPassword(Model model, @RequestParam Map<String, String> requestParams) {
 
         // Find the user associated with the reset token
-        System.out.println("Resetting password........");
+        if (requestParams.get("token").length() < 1) {
+            model.addAttribute("message", "reset link expired please click" +
+                    " on forgot password on home screen to regenerate");
+        }
+
         User user = userService.findUserByResetToken(requestParams.get("token"));
 
 
@@ -112,7 +116,8 @@ public class PasswordController {
 
         // In order to set a model attribute on a redirect, we must use
         // RedirectAttributes
-        redir.addFlashAttribute("successMessage", "You have successfully reset your password.  You may now login.");
+        model.addAttribute("message", "You have successfully reset your password. " +
+                " You may now login.");
 
 
         return "resetPassword";
@@ -121,6 +126,7 @@ public class PasswordController {
     // Going to reset page without a token redirects to login page
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public String handleMissingParams(MissingServletRequestParameterException ex) {
+        System.out.println("Going to reset page without a token ...Exception occurred!!");
         return "redirect:/";
     }
 }

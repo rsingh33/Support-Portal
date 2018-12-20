@@ -19,11 +19,10 @@
             </td>
 
         </tr>
-        <tr>
-            <td>
-                  <p>${message}</p>
-            </td>
-        </tr>
+
     </table>
+
+    <div> <p>${message}</p></div>
 </form:form>
+
 

@@ -1,3 +1,4 @@
+/*
 
 .formtable {
 
@@ -50,7 +51,7 @@ table.offers {
 }
 
 td, th {
-    border: 1px solid transparent; /* No more visible border */
+    border: 1px solid transparent; !* No more visible border *!
     height: 30px;
 
 }
@@ -129,3 +130,4 @@ input {
     padding:2px;
     border:0;
 }
+*/
