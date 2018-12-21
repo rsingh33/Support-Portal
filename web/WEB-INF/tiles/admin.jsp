@@ -2,25 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<script type="text/javascript">
-    function onDeleteClick(event) {
-
-
-        var doDelete = confirm("Are you sure you want to delete");
-
-        if (doDelete == false) {
-            event.preventDefault();
-        }
-    }
-
-    function onReady() {
-        $("#delete").click(onDeleteClick);
-    }
-
-    $(document).ready(onReady);
-</script>
-
-<table class="formtable">
+<table class="sortable" id="myTable">
     <tr>
         <th>Username</th>
         <th>Email</th>

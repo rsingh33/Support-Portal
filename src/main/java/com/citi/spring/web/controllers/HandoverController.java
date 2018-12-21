@@ -6,7 +6,6 @@ import com.citi.spring.web.emailHandler.ListToHtmlTransformer;
 import com.citi.spring.web.emailHandler.SendEmail;
 import com.citi.spring.web.service.HandoverService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

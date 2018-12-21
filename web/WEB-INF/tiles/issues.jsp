@@ -1,49 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("a.delete").click(function (e) {
-            if (!confirm('Are you sure you want to delete?')) {
-                e.preventDefault();
-                return false;
-            }
-            return true;
-        });
-    });
-
-    function filter() {
-        // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-
-
-
-</script>
 <h2>
     <a href="${pageContext.request.contextPath}/issuesform">Add New Issue</a>
 </h2>
 <div><input type="text" id="myInput" onkeyup="filter()" placeholder="Filter by Issue Description"></div>
 <div align="center">
-    <table id="myTable" class="dataTable" border="1" cellpadding="5">
+    <table  class="sortable" id="myTable" class="dataTable" border="1" cellpadding="5">
         <tr>
             <th align="left">Issue Description</th>
             <th align="left">Workaround</th>

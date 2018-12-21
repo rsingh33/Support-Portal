@@ -8,7 +8,7 @@
 
 <h2>Please enter your email to get a password reset link</h2>
 
-<form:form action="${pageContext.request.contextPath}/forgot" method="post" modelAttribute="message">
+<form:form  action="${pageContext.request.contextPath}/forgot" method="post" modelAttribute="message">
     <table>
         <tr>
             <td>
@@ -22,7 +22,7 @@
 
     </table>
 
-    <div> <p>${message}</p></div>
+    <div><p>${message}</p></div>
 </form:form>
 
 
