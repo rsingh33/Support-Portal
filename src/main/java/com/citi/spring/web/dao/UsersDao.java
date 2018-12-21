@@ -54,17 +54,17 @@ public class UsersDao {
     }
 
     public User findUserByEmail(String userEmail) {
-        User user = null;
+
         Criteria criteria = session().createCriteria(User.class);
         criteria.add(Restrictions.eq("email", userEmail));
-        return user;
+        return (User) criteria.uniqueResult();
     }
 
     public User findUserByResetToken(String resetToken) {
-        User user = null;
+
         Criteria criteria = session().createCriteria(User.class);
         criteria.add(Restrictions.eq("resetToken", resetToken));
-        return user;
+        return (User) criteria.uniqueResult();
     }
 
     public void update(User user) {

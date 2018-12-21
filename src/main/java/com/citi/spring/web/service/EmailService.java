@@ -5,6 +5,8 @@ import com.citi.spring.web.dao.entity.Handover;
 import com.citi.spring.web.emailHandler.ListToHtmlTransformer;
 import com.citi.spring.web.emailHandler.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import java.util.List;
 @Service("emailService")
 public class EmailService {
 
+    @Qualifier("handoverDao")
     @Autowired
     private HandoverDao handoverDAO;
 
@@ -28,6 +31,7 @@ public class EmailService {
         }
         System.out.println("Email sent!!!!!");
     }
+    @Async
    public void emailSend(String content,  String to, String subject){
        try {
            SendEmail.emailSend(content,to,subject);

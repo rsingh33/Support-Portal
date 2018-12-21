@@ -74,6 +74,7 @@
     </definition>
 
     <definition name="resetPassword" extends="support-portal.base">
+        <put-attribute name="includes" value="/WEB-INF/tiles/newaccountscript.jsp"></put-attribute>
         <put-attribute name="title" value="Password Reset"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/resetPassword.jsp"></put-attribute>
     </definition>

@@ -46,7 +46,7 @@ public class PasswordController {
 
         // Lookup user in database by e-mail
 
-        System.out.println(userEmail);
+
         if (!userService.existsByEmail(userEmail)) {
             model.addAttribute("message", "User not found with " + userEmail);
         } else {
@@ -58,12 +58,13 @@ public class PasswordController {
             // Save token to database
             userService.update(user);
 
-            String appUrl = request.getScheme() + "://" + request.getServerName();
+            String appUrl = request.getScheme() + "://" + request.getServerName() + ":" +
+                    request.getServerPort() + request.getContextPath();
 
             // Email message
             String content = "To reset your password, click the link below:\n" + appUrl
                     + "/reset?token=" + user.getResetToken();
-            System.out.println(content);
+
             emailService.emailSend(content, user.getEmail(), "Password Reset Request");
 
             // Add success message to view
@@ -75,16 +76,17 @@ public class PasswordController {
 
     }
 
-    // Display form to reset password
-    @RequestMapping(value = "/reset", method = RequestMethod.GET)
-    public String displayResetPasswordPage(Model model, @RequestParam("token") String token) {
+    @RequestMapping(value = "/reset", method = RequestMethod.GET, params = "token")
+    public String displayResetPasswordPage(Model model, @RequestParam(value = "token") String token) {
 
         User user = userService.findUserByResetToken(token);
 
         if (user != null) {
+
             model.addAttribute("resetToken", token);
         } else {
-            model.addAttribute("errorMessage", "Oops!  This is an invalid password reset link.");
+
+            model.addAttribute("message", "Oops!  This is an invalid password reset link.");
         }
 
         return "resetPassword";
@@ -92,9 +94,13 @@ public class PasswordController {
 
     // Process reset password form
     @RequestMapping(value = "/reset", method = RequestMethod.POST)
-    public String setNewPassword(String model, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
+    public String setNewPassword(Model model, @RequestParam Map<String, String> requestParams) {
 
         // Find the user associated with the reset token
+        if (requestParams.get("token").length() < 1) {
+            model.addAttribute("message", "reset link expired please click" +
+                    " on forgot password on home screen to regenerate");
+        }
 
         User user = userService.findUserByResetToken(requestParams.get("token"));
 
@@ -110,7 +116,8 @@ public class PasswordController {
 
         // In order to set a model attribute on a redirect, we must use
         // RedirectAttributes
-        redir.addFlashAttribute("successMessage", "You have successfully reset your password.  You may now login.");
+        model.addAttribute("message", "You have successfully reset your password. " +
+                " You may now login.");
 
 
         return "resetPassword";
@@ -119,6 +126,7 @@ public class PasswordController {
     // Going to reset page without a token redirects to login page
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public String handleMissingParams(MissingServletRequestParameterException ex) {
+        System.out.println("Going to reset page without a token ...Exception occurred!!");
         return "redirect:/";
     }
 }
