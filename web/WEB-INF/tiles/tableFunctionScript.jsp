@@ -1,26 +1,4 @@
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#myTable').after('<div id="nav"></div>');
-        var rowsShown = 4;
-        var rowsTotal = $('#myTable tbody tr').length;
-        var numPages = rowsTotal / rowsShown;
-        for (i = 0; i < numPages; i++) {
-            var pageNum = i + 1;
-            $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
-        }
-        $('#myTable tbody tr').hide();
-        $('#myTable tbody tr').slice(0, rowsShown).show();
-        $('#nav a:first').addClass('active');
-        $('#nav a').bind('click', function () {
-
-            $('#nav a').removeClass('active');
-            $(this).addClass('active');
-            var currPage = $(this).attr('rel');
-            var startItem = currPage * rowsShown;
-            var endItem = startItem + rowsShown;
-            $('#myTable tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).css('display', 'table-row').animate({opacity: 1}, 300);
-        });
-    });
 
     $(document).ready(function () {
         $("a.delete").click(function (e) {
@@ -32,21 +10,6 @@
         });
     });
 
-    function onDeleteClick(event) {
-
-
-        var doDelete = confirm("Are you sure you want to delete");
-
-        if (doDelete == false) {
-            event.preventDefault();
-        }
-    }
-
-    function onDelete() {
-        $("#delete").click(onDeleteClick);
-    }
-
-    $(document).ready(onDelete);
 
     function filter() {
         // Declare variables
@@ -68,5 +31,79 @@
                 }
             }
         }
+
     }
+
+   // below is pagination code////////////////////
+    $(function () {
+        // Selectors for future use
+        var myTable = "#myTable";
+        var myTableBody = myTable + " tbody";
+        var myTableRows = myTableBody + " tr";
+        var myTableColumn = myTable + " th";
+
+        // Starting table state
+        function initTable() {
+            $(myTableBody).attr("data-pageSize", 5);
+            $(myTableBody).attr("data-firstRecord", 0);
+            $('#previous').hide();
+            $('#next').show();
+
+                     // Start the pagination
+            paginate(parseInt($(myTableBody).attr("data-firstRecord"), 10),
+                parseInt($(myTableBody).attr("data-pageSize"), 10));
+        }
+
+
+
+
+        // Heading click
+        $(myTableColumn).click(function () {
+
+            // Start the pagination
+            paginate(parseInt($(myTableBody).attr("data-firstRecord"), 10),
+                parseInt($(myTableBody).attr("data-pageSize"), 10));
+        });
+
+        // Pager click
+        $("a.paginate").click(function (e) {
+            e.preventDefault();
+            var tableRows = $(myTableRows);
+            var tmpRec = parseInt($(myTableBody).attr("data-firstRecord"), 10);
+            var pageSize = parseInt($(myTableBody).attr("data-pageSize"), 10);
+
+            // Define the new first record
+            if ($(this).attr("id") == "next") {
+                tmpRec += pageSize;
+            } else {
+                tmpRec -= pageSize;
+            }
+            // The first record is < of 0 or > of total rows
+            if (tmpRec < 0 || tmpRec > tableRows.length) return
+
+            $(myTableBody).attr("data-firstRecord", tmpRec);
+            paginate(tmpRec, pageSize);
+        });
+
+        // Paging function
+        var paginate = function (start, size) {
+            var tableRows = $(myTableRows);
+            var end = start + size;
+            // Hide all the rows
+            tableRows.hide();
+            // Show a reduced set of rows using a range of indices.
+            tableRows.slice(start, end).show();
+            // Show the pager
+            $(".paginate").show();
+            // If the first row is visible hide prev
+            if (tableRows.eq(0).is(":visible")) $('#previous').hide();
+            // If the last row is visible hide next
+            if (tableRows.eq(tableRows.length - 1).is(":visible")) $('#next').hide();
+        }
+
+        // Table starting state
+        initTable();
+
+
+    });
 </script>

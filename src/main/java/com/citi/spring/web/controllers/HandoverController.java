@@ -60,8 +60,7 @@ public class HandoverController {
 
     @RequestMapping(value = "/sendemail", method = RequestMethod.GET)
     public String sendEmail() {
-        System.out.println("Email sent!!!!!");
-        List<Handover> handovers = handoverService.getCurrentHandover();
+               List<Handover> handovers = handoverService.getCurrentHandover();
         String content = ListToHtmlTransformer.compose(handovers);
         try {
             SendEmail.emailSend(content);

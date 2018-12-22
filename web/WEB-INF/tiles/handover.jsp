@@ -19,17 +19,18 @@
 <div><input type="text" id="myInput" onkeyup="filter()" placeholder="Filter by Reporter"></div>
 <div align="center">
     <table class="sortable" id="myTable" border="1" cellpadding="5">
-        <tr>
-            <th>Reporter</th>
-            <th>Email Subject</th>
-            <th>Jira</th>
-            <th>Status</th>
-            <th>Currently With</th>
-            <th>Environment</th>
-            <th>Comments</th>
-            <th>Last Modified</th>
-            <th>Actions</th>
-        </tr>
+        <thead>
+        <th>Reporter</th>
+        <th>Email Subject</th>
+        <th>Jira</th>
+        <th>Status</th>
+        <th>Currently With</th>
+        <th>Environment</th>
+        <th>Comments</th>
+        <th>Last Modified</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
         <c:forEach var="handover" items="${handovers}">
             <tr>
                 <td><p><c:out value="${handover.reportedBy}"></c:out></p></td>
@@ -53,6 +54,10 @@
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
-    <select></select>
+</div>
+<div>
+    <a href="#" class="paginate" id="previous">Previous</a> |
+    <a href="#" class="paginate" id="next">Next</a>
 </div>

@@ -31,6 +31,7 @@
         <put-attribute name="content" value="/WEB-INF/tiles/accountcreated.jsp"></put-attribute>
     </definition>
     <definition name="admin" extends="support-portal.base">
+        <put-attribute name="includes" value="/WEB-INF/tiles/tableFunctionScript.jsp"></put-attribute>
         <put-attribute name="title" value="Portal-Admin"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/admin.jsp"></put-attribute>
     </definition>
@@ -45,11 +46,13 @@
     </definition>
 
     <definition name="handover" extends="support-portal.base">
+        <put-attribute name="includes" value="/WEB-INF/tiles/tableFunctionScript.jsp"></put-attribute>
         <put-attribute name="title" value="Handover"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/handover.jsp"></put-attribute>
     </definition>
 
     <definition name="issues" extends="support-portal.base">
+        <put-attribute name="includes" value="/WEB-INF/tiles/tableFunctionScript.jsp"></put-attribute>
         <put-attribute name="title" value="Issues"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/issues.jsp"></put-attribute>
     </definition>
@@ -74,6 +77,7 @@
     </definition>
 
     <definition name="resetPassword" extends="support-portal.base">
+        <put-attribute name="includes" value="/WEB-INF/tiles/newaccountscript.jsp"></put-attribute>
         <put-attribute name="title" value="Password Reset"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/resetPassword.jsp"></put-attribute>
     </definition>

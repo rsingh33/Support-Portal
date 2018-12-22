@@ -7,7 +7,7 @@
 <div><input type="text" id="myInput" onkeyup="filter()" placeholder="Filter by Issue Description"></div>
 <div align="center">
     <table  class="sortable" id="myTable" class="dataTable" border="1" cellpadding="5">
-        <tr>
+        <thead>
             <th align="left">Issue Description</th>
             <th align="left">Workaround</th>
             <th align="left">Solution</th>
@@ -15,7 +15,8 @@
             <th align="left">Source</th>
             <th align="left">Last Modified</th>
             <th align="left">Actions</th>
-        </tr>
+        </thead>
+        <tbody>
         <c:forEach var="issue" items="${issue}">
             <tr>
                 <td><p><c:out value="${issue.issueDescription}"></c:out></p></td>
@@ -34,8 +35,12 @@
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 
-
+<div>
+    <a href="#" class="paginate" id="previous">Previous</a> |
+    <a href="#" class="paginate" id="next">Next</a>
+</div>
 

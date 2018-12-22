@@ -71,6 +71,6 @@
                        onmouseout="this.style.background='#9dce2c'"
                        onclick="this.form.reset();"/></td>
 
-           </table>
+    </table>
 </form:form>
 
