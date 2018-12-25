@@ -6,71 +6,107 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 <form:form method="post" action="${pageContext.request.contextPath}/saveIssue" modelAttribute="issue">
-    <table border="1" cellpadding="5">
-        <caption>
-            <h2>
-                Please fill the form below.
-            </h2>
-        </caption>
-        <c:if test="${issue != null}">
-            <input type="hidden" name="id" value="<c:out value='${issue.id}' />"/>
-        </c:if>
-        <tr>
-            <th>Issue Description:</th>
-            <td>
-                <input type="text" name="issueDescription" size="100"
-                       value="<c:out value='${issue.issueDescription}' />"
-                />
-            </td>
-        </tr>
 
-        <tr>
-            <th>Workaround:</th>
-            <td>
-                <input type="text" name="workaround" size="100"
-                       value="<c:out value='${issue.workaround}' />"
-                />
-            </td>
-        </tr>
-        <tr>
-            <th>Jira:(number only)</th>
-            <td>
-                <input type="text" name="jira" size="100"
-                       value="<c:out value='${issue.jira}' />"
-                />
-            </td>
-        </tr>
-        <tr>
-            <th>Solution:</th>
-            <td>
-                <input type="text" name="solution" size="100"
-                       value="<c:out value='${issue.solution}' />"
-                />
-            </td>
-        </tr>
+    <c:if test="${issue != null}">
+        <input type="hidden" name="id" value="<c:out value='${issue.id}' />"/>
+    </c:if>
 
-        <tr>
-            <th>Source:</th>
-            <td><form:select path="sourceSystem" value="<c:out value='${issue.sourceSystem}' />">
-                <form:options items="${sourceSystem}"/>
-            </form:select>
-            </td>
+    <div class="container" id="Container3">
 
-        </tr>
+    <div id="issuePanel" class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Issue Form</h3>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-5 col-sm-5">
+                <p>* Please fill the form below</p>
 
 
-        <tr>
-            <td align="center">
-                <input type="submit" value="Save"/>
+                <!-- issueDescription -->
+                <div class="form-group">
+                    <label for="issueDescription" class="col-sm-4 control-label">Reported By</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="issueDescription" id="issueDescription" class="form-control"
+                               placeholder="Issue Description"
+                               value="<c:out value='${issue.issueDescription}' />">
+                    </div>
+                </div>
+                <!-- workaround -->
+                <div class="form-group">
+                    <label for="workaround" class="col-sm-4 control-label">Email Subject</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="workaround" placeholder="Workaround"
+                               name="workaround"
+                               value="<c:out value='${issue.workaround}' />"/>
+                    </div>
+                </div>
 
-            </td>
-            <td><input align="center"
-                       type="button"
-                       value="Reset"
-                       onmouseover="this.style.background='#3F5201'"
-                       onmouseout="this.style.background='#9dce2c'"
-                       onclick="this.form.reset();"/></td>
+                <!-- JIRA -->
+                <div class="form-group">
+                    <label for="jira" class="col-sm-4 control-label">JIRA</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="jira" placeholder="JIRA number"
+                               name="jira"
+                               value="<c:out value='${issue.jira}' />"/>
+                    </div>
+                </div>
 
-    </table>
+                <!-- solution -->
+                <div class="form-group">
+                    <label for="solution" class="col-sm-4 control-label">Comments</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="solution" placeholder="solution"
+                               name="solution"
+                               value="<c:out value='${issue.solution}' />"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="dropdownMenu1" class="col-sm-4 control-label">Environment</label>
+                    <div class="col-sm-8">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <form:select path="sourceSystem" value="<c:out value='${issue.sourceSystem}' />">
+                                    <form:options items="${sourceSystem}"/>
+                                </form:select>
+
+                                <span class="caret"></span>
+                            </button>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default" value="Save">Submit</button>
+                        <button align="center"
+                                class="btn btn-default"
+                                type="button"
+                                value="Reset"
+                                onmouseover="this.style.background='#3F5201'"
+                                onmouseout="this.style.background='#9dce2c'"
+                                onclick="this.form.reset();">Reset
+                        </button>
+                        <button  class="btn btn-default" href="${pageContext.request.contextPath}/issues" >Cancel</button>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </form:form>
+
+
+
+
+
 
