@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -24,23 +25,29 @@ public class HandoverController {
     }
 
     @RequestMapping("/handover")
-    public String showHandover(Model model) {
+    public String showHandover(Model model, Principal principal) {
 
         List<Handover> handover = handoverService.getCurrentHandover();
         model.addAttribute("handovers", handover);
+        if(principal != null)
+            model.addAttribute("name", principal.getName());
         return "handover";
 
     }
 
     @RequestMapping("/handoverform")
-    public String showform(Model m) {
+    public String showform(Model m, Principal principal) {
+        if(principal != null)
+            m.addAttribute("name", principal.getName());
         m.addAttribute("handover", new Handover());
         return "handoverform";
     }
 
 
     @RequestMapping(value = "/handoverform/{id}")
-    public String edit(@PathVariable int id, Model m) {
+    public String edit(@PathVariable int id, Model m,Principal principal) {
+        if(principal != null)
+            m.addAttribute("name", principal.getName());
         Handover handover = handoverService.getHandover(id);
         m.addAttribute("handover", handover);
         return "handoverform";

@@ -127,6 +127,6 @@ public class PasswordController {
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public String handleMissingParams(MissingServletRequestParameterException ex) {
         System.out.println("Going to reset page without a token ...Exception occurred!!");
-        return "redirect:/";
+        return "redirect:/login";
     }
 }

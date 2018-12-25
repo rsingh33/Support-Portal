@@ -5,7 +5,7 @@
     <definition name="support-portal.base" template="/WEB-INF/templates/default.jsp">
         <put-attribute name="includes" value=""></put-attribute>
         <put-attribute name="title" value="Support-Portal"></put-attribute>
-        <put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
+        <put-attribute name="header"  value="/WEB-INF/tiles/header.jsp"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/content.jsp"></put-attribute>
         <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
     </definition>

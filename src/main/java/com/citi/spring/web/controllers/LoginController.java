@@ -53,7 +53,7 @@ public class LoginController {
     @RequestMapping(value = "/loggedout")
     public String showLoggedOut() {
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 
 

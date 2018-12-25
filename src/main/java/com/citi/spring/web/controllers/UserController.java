@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -25,8 +26,10 @@ public class UserController {
 
 
     @RequestMapping("/admin")
-    public String showAdmin(Model model) {
+    public String showAdmin(Model model, Principal principal) {
         List<User> users = usersService.getAllUsers();
+        if (principal != null)
+            model.addAttribute("name", principal.getName());
         model.addAttribute("users", users);
         return "admin";
     }

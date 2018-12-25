@@ -21,15 +21,17 @@ public class HomeController {
     private HandoverService handoverService;
 
 
-
     @RequestMapping("/")
     public String showHome(Model model, Principal principal) {
         logger.info("Showing home page....");
-
+        if (principal != null)
+            model.addAttribute("name", principal.getName());
+        else
+            return "redirect:/login";
         List<Handover> handover = handoverService.getCurrentHandover();
         model.addAttribute("handover", handover);
 
-               return "home";
+        return "home";
 
     }
 
