@@ -82,4 +82,15 @@
         <put-attribute name="content" value="/WEB-INF/tiles/resetPassword.jsp"></put-attribute>
     </definition>
 
+    <definition name="upload" extends="support-portal.base">
+
+        <put-attribute name="title" value="File Upload"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/upload.jsp"></put-attribute>
+    </definition>
+
+    <definition name="uploadMultiple" extends="support-portal.base">
+
+        <put-attribute name="title" value="Multiple FileUpload"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/uploadMultiple.jsp"></put-attribute>
+    </definition>
 </tiles-definitions>

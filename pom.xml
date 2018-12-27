@@ -12,8 +12,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>LATEST</version>
-                <configuration>
+                               <configuration>
                     <source>7</source>
                     <target>7</target>
                 </configuration>
@@ -23,7 +22,11 @@
     <packaging>war</packaging>
 
     <dependencies>
-
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.1</version> <!-- makesure correct version here -->
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -196,11 +199,7 @@
             <artifactId>log4j</artifactId>
             <version>LATEST</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>4.3.11.RELEASE</version>
-        </dependency>
+
     </dependencies>
 
 

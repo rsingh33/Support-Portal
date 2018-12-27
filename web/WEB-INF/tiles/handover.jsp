@@ -36,7 +36,7 @@
                     <tr id="tableHead">
                         <th>Reporter</th>
                         <th>Email Subject</th>
-                        <th>Jira/Tracking</th>
+                        <th>Jira</th>
                         <th>Status</th>
                         <th>Currently With</th>
                         <th>Environment</th>

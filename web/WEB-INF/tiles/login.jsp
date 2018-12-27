@@ -12,8 +12,6 @@
 
 <script type="text/javascript">
 
-
-
     $document.ready(function () {
         document.f.username.focus();
     });
@@ -47,26 +45,26 @@
 
                 <div class="form-group text-center">
                     <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                    <label for="remember"> Remember Me</label>
+                    <label for="remember" > Remember Me</label>
                 </div>
 
 
 
-                <input class="login-form__loginsso--login" type="submit" value="LOG IN">
+                <input class="login-form__loginsso--login" type="submit" value="Login">
             </div>
 
             <input name="_csrf" type="hidden" value="${_csrf.token}"/>
         </form>
 
         <div class="pwd_controls">
-            <div class="pwd_controls__change">
+           <%-- <div class="pwd_controls__change">
                 <a href="#" id="passChangeLink" target="_blank">Change password</a>
-            </div>
+            </div>--%>
             <div class="pwd_controls__reset">
-                <a href="${pageContext.request.contextPath}/forgot" id="oneResetLink" target="_blank">Reset password</a>
+                <a href="${pageContext.request.contextPath}/forgot" id="oneResetLink" target="_blank">Forgot Password</a>
             </div>
             <div class="pwd_controls__newaccess">
-                <a href="${pageContext.request.contextPath}/newaccount" id="requestAccessLink" target="_blank">Request new access</a>
+                <a href="${pageContext.request.contextPath}/newaccount" id="requestAccessLink" target="_blank">Request New Access</a>
 
             </div>
 

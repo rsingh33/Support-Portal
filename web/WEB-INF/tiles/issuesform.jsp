@@ -20,13 +20,13 @@
 
     <div class="panel-body">
         <div class="row">
-            <div class="col-lg-5 col-sm-5">
+            <div class="col-lg-8 col-sm-7">
                 <p>* Please fill the form below</p>
 
 
                 <!-- issueDescription -->
                 <div class="form-group">
-                    <label for="issueDescription" class="col-sm-4 control-label">Reported By</label>
+                    <label for="issueDescription" class="col-sm-4 control-label">Description</label>
                     <div class="col-sm-8">
                         <input type="text" name="issueDescription" id="issueDescription" class="form-control"
                                placeholder="Issue Description"
@@ -35,7 +35,7 @@
                 </div>
                 <!-- workaround -->
                 <div class="form-group">
-                    <label for="workaround" class="col-sm-4 control-label">Email Subject</label>
+                    <label for="workaround" class="col-sm-4 control-label">Workaround</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="workaround" placeholder="Workaround"
                                name="workaround"
@@ -55,7 +55,7 @@
 
                 <!-- solution -->
                 <div class="form-group">
-                    <label for="solution" class="col-sm-4 control-label">Comments</label>
+                    <label for="solution" class="col-sm-4 control-label">Solution</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="solution" placeholder="solution"
                                name="solution"
@@ -65,11 +65,11 @@
 
 
                 <div class="form-group">
-                    <label for="dropdownMenu1" class="col-sm-4 control-label">Environment</label>
+                    <label for="dropdownMenu1" class="col-sm-4 control-label">Source</label>
                     <div class="col-sm-8">
                         <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
                                 <form:select path="sourceSystem" value="<c:out value='${issue.sourceSystem}' />">
                                     <form:options items="${sourceSystem}"/>
                                 </form:select>
@@ -83,13 +83,11 @@
 
 
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default" value="Save">Submit</button>
+                        <button type="submit" class="btn btn-default" value="Save">Save</button>
                         <button align="center"
                                 class="btn btn-default"
                                 type="button"
                                 value="Reset"
-                                onmouseover="this.style.background='#3F5201'"
-                                onmouseout="this.style.background='#9dce2c'"
                                 onclick="this.form.reset();">Reset
                         </button>
                         <button  class="btn btn-default" href="${pageContext.request.contextPath}/issues" >Cancel</button>

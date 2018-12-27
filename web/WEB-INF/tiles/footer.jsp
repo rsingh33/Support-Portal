@@ -1,1 +1,1 @@
-<p>Created by Rahul Singh <a href="mailto:rahul3.singh@citi.com" >email</a></p>
+<p>Designed & Developed by Rahul Singh <a href="mailto:rahul3.singh@citi.com" >Contact me</a></p>

@@ -52,10 +52,11 @@
 
                             </td>
                         </tr>
+                        <tr >  ${message} </tr>
                     </table>
                 </div>
                 <div id="divCheckPasswordMatch"></div>
-                <div> ${message} </div>
+
 
 
                 </sf:form>

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,13 +43,13 @@ public class PasswordController {
 
     // Process form submission from forgotPassword page
     @RequestMapping(value = "/forgot", method = RequestMethod.POST)
-    public String processForgotPasswordForm(Model model, @ValidEmail @RequestParam("email") String userEmail, HttpServletRequest request) {
+    public String processForgotPasswordForm(ModelMap model, @ValidEmail @RequestParam("email") String userEmail, HttpServletRequest request) {
 
         // Lookup user in database by e-mail
 
 
         if (!userService.existsByEmail(userEmail)) {
-            model.addAttribute("message", "User not found with " + userEmail);
+            model.addAttribute("message", "This is not a registered email " + userEmail);
         } else {
 
             // Generate random 36-character string token for reset password
@@ -86,7 +87,7 @@ public class PasswordController {
             model.addAttribute("resetToken", token);
         } else {
 
-            model.addAttribute("message", "Oops!  This is an invalid password reset link.");
+            model.addAttribute("message", "Oops!  Password Link expired. Please click the latest link or generate again using Forgot Password ");
         }
 
         return "resetPassword";

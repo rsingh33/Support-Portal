@@ -32,6 +32,8 @@
         <security:intercept-url pattern="/static/**" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/login" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/issues" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/upload" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/uploadMultpile" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/handover" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/handoverform" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/issuesform" access="isAuthenticated()"></security:intercept-url>

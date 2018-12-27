@@ -30,8 +30,16 @@
             <value>/WEB-INF/excel-view.xml</value>
         </property>
     </bean>
+
+    <!--    <bean id="multipartResolver"
+              class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+            &lt;!&ndash; setting maximum upload size &ndash;&gt;
+            <property name="maxUploadSize" value="100000"/>
+        </bean>-->
+
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-        <property name="definitions" >
+        <property name="definitions">
             <list>
                 <value>/WEB-INF/layouts/layout.xml</value>
 

@@ -15,4 +15,5 @@ public class ReleaseController {
             m.addAttribute("name", principal.getName());
         return "releasemanager";
     }
+
 }

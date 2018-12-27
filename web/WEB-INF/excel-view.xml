@@ -5,7 +5,7 @@
 
 
     <bean id="handoverExcelView"
-          class="com.citi.spring.web.dao.data.HandoverExcelView">
+          class="com.citi.spring.web.views.HandoverExcelView">
     </bean>
 
 </beans>

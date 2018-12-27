@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label for="emailSub" class="col-sm-4 control-label">Email Subject</label>
                     <div class="col-sm-8">
-                        <input type="text" name="emailSubject" class="form-control" id="emailSub" placeholder="Subject"
+                        <input type="text" name="emailSubject" class="form-control" id="emailSub" placeholder="Email Subject"
                                value="<c:out value='${handover.emailSubject}' />"/>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <label for="jira" class="col-sm-4 control-label">JIRA</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="tracking" id="jira" placeholder="Tracking"
+                        <input type="text" class="form-control" name="tracking" id="jira" placeholder="Jira number"
                                value="<c:out value='${handover.tracking}' />"/>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <label for="comment" class="col-sm-4 control-label">Comments</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="comments" id="comment" placeholder="Tracking"
+                        <input type="text" class="form-control" name="comments" id="comment" placeholder="Comments"
                                value="<c:out value='${handover.comments}' />"/>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                     <label for="dropdownMenu1" class="col-sm-4 control-label">Environment</label>
                     <div class="col-sm-8">
                         <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <form:select path="environment" value="<c:out value='${handover.environment}' />">
                                     <form:options items="${env}"/>
@@ -106,8 +106,10 @@
                         <label for="dropdownMenu1" class="col-sm-4 control-label">Currently With</label>
                         <div class="col-sm-8">
                             <div class="dropdown">
-
-                                <form:select path="currentlyWith" value="<c:out value='${handover.currentlyWith}' />">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <form:select
+                                        path="currentlyWith" value="<c:out value='${handover.currentlyWith}' />">
                                     <form:options items="${curr}"/>
                                 </form:select>
                                 <span class="caret"></span>
@@ -121,13 +123,11 @@
 
 
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default" value="Save">Submit</button>
+                        <button type="submit" class="btn btn-default" value="Save">Save</button>
                         <button align="center"
                                 class="btn btn-default"
                                 type="button"
                                 value="Reset"
-                                onmouseover="this.style.background='#3F5201'"
-                                onmouseout="this.style.background='#9dce2c'"
                                 onclick="this.form.reset();">Reset
                         </button>
 

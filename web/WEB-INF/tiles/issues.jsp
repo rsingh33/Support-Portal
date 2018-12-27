@@ -84,10 +84,7 @@
             <a class="btn btn-primary" href="${pageContext.request.contextPath}/issuesform" role="button">+ Add Issue</a>
 
 
-            <button type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail'" value="Send Email Handover" class="btn btn-primary">Send Email-Handover</button>
-
-
-            <button type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'" value="Export" class="btn btn-primary">Export</button>
+          <%--  <button type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'" value="Export" class="btn btn-primary">Export</button>--%>
             <%--<button type="button" class="btn btn-primary">Devops Dashboard</button>--%>
 
 

@@ -1,1 +1,2 @@
-<p> Release manager is under construction,Coming Soon ......</p>
+<a href="${pageContext.request.contextPath}/uploadFile">Upload File</a>
+<a href="${pageContext.request.contextPath}/uploadMultipleFile">Upload Multiple File</a>

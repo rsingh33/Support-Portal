@@ -6,23 +6,39 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 
-<h2>Please enter your email to get a password reset link</h2>
+<div class="container" id="Container3">
 
-<form:form  action="${pageContext.request.contextPath}/forgot" method="post" modelAttribute="message">
-    <table>
-        <tr>
-            <td>
-                <input type="text" name="email">
-            </td>
-            <td>
-                <button type="submit">Send email</button>
-            </td>
+    <div id="handoverPanel" class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Password Reset</h3>
+        </div>
 
-        </tr>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-7 col-sm-7">
+                    <p>* Please enter your registered email below</p>
 
-    </table>
+                    <sf:form id="details" method="post" action="${pageContext.request.contextPath}/forgot"
+                             modelAttribute="message">
 
-    <div><p>${message}</p></div>
-</form:form>
+                        <table class="formtable">
+                            <tr>
+                                <td> Email:</td>
+                                <td class="control"><input class="form-control" name="email" type="text"/>
+                                <td class="control"><input class="btn btn-primary" value="send" type="submit"/>
+                            </tr>
+                            <tr>${message}</tr>
+                        </table>
 
 
+                    </sf:form>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

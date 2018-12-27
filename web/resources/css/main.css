@@ -356,3 +356,7 @@ body {
 
     color: green;
 }
+
+th {
+    font-size: medium;
+}
