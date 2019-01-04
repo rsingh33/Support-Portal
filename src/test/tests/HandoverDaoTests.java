@@ -35,19 +35,19 @@ public class HandoverDaoTests {
     private DataSource dataSource;
     private Handover handover1 = new Handover(current, "Rahul", "Rahul email subject",
             "www.google.com", "Rahul in test comments",
-            Status.IN_PROGRESS, CurrentlyWith.AMC, Environment.PROD);
+            "", Status.IN_PROGRESS, CurrentlyWith.AMC, Environment.PROD);
 
     private Handover handover2 = new Handover(current, "Gaurav", "Gaurav email subject",
             "www.google.com", "Gaurav in test comments",
-            Status.PENDING, CurrentlyWith.KYC, Environment.UAT);
+            "", Status.PENDING, CurrentlyWith.KYC, Environment.UAT);
 
     private Handover handover3 = new Handover(current, "Mithun", "Mithun email subject",
             "www.google.com", "Mithun in test comments",
-            Status.NEW, CurrentlyWith.PS, Environment.SIT);
+            "", Status.NEW, CurrentlyWith.PS, Environment.SIT);
 
     private Handover handover4 = new Handover(current, "Abhi", "Abhi email subject",
             "www.google.com", "Abhi in test comments",
-            Status.COMPLETED, CurrentlyWith.DMC, Environment.PROD);
+            "", Status.COMPLETED, CurrentlyWith.DMC, Environment.PROD);
 
 
     @Before
