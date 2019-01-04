@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <%--<sf:form id="details" method="post" action="${pageContext.request.contextPath}/createaccount" modelAttribute="user">--%>
@@ -32,7 +33,7 @@
 <%--<label for="name" class="col-sm-4 control-label">Name</label>--%>
 <%--<div class="col-sm-8">--%>
 <%--<<sf:input path="name"  name="name" type="text"  class="form-control" id="name" placeholder="Fullname"--%>
-<%--value="<c:out value='${handover.emailSubject}' />"/>--%>
+<%--value="<c:out value='${handover.scriptLocation}' />"/>--%>
 <%--</div>--%>
 <%--</div>--%>
 
@@ -40,8 +41,8 @@
 <%--<div class="form-group">--%>
 <%--<label for="jira" class="col-sm-4 control-label">JIRA</label>--%>
 <%--<div class="col-sm-8">--%>
-<%--<input type="text" class="form-control" name="tracking" id="jira" placeholder="Tracking"--%>
-<%--value="<c:out value='${handover.tracking}' />"/>--%>
+<%--<input type="text" class="form-control" name="engineer" id="jira" placeholder="Tracking"--%>
+<%--value="<c:out value='${handover.engineer}' />"/>--%>
 <%--</div>--%>
 <%--</div>--%>
 
@@ -82,8 +83,6 @@
 <%----%>
 
 
-<h2>Create New Account</h2>
-
 <div class="container" id="Container3">
 
     <div id="handoverPanel" class="panel panel-primary">
@@ -92,7 +91,9 @@
         </div>
 
         <div class="panel-body">
+
             <div class="row">
+                <c:if test="${newAcc}">
                 <div class="col-lg-11 col-sm-11">
                     <p>* Please fill the form below</p>
 
@@ -141,7 +142,8 @@
 
                             <tr>
                                 <td></td>
-                                <td class="control"><input class="btn btn-primary" value="Create Account" type="submit"/>
+                                <td class="control"><input class="btn btn-primary" value="Create Account"
+                                                           type="submit"/>
                                 </td>
                             </tr>
 
@@ -154,9 +156,14 @@
 
                 </div>
 
-
+                </c:if>
+                <c:if test="${accCreated}">
+                    <p style="color: darkblue">Account Created Successfully</p>
+                    <p><a href="${pageContext.request.contextPath}/login">Click here to login!!</a></p>
+                </c:if>
             </div>
         </div>
+
 
     </div>
 </div>

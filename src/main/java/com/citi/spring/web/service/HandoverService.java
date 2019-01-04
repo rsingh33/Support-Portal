@@ -10,15 +10,15 @@ import java.util.List;
 
 @Service("handoverService")
 public class HandoverService {
-    private HandoverDao handoverDAO;
+    private HandoverDao handoverDao;
 
     @Autowired
-    public void setOffersDAO(HandoverDao handoverDAO) {
-        this.handoverDAO = handoverDAO;
+    public void setHandoverDao(HandoverDao handoverDao) {
+        this.handoverDao = handoverDao;
     }
 
     public List<Handover> getCurrentHandover() {
-        return handoverDAO.getHandover();
+        return handoverDao.getHandover();
     }
 
 
@@ -27,7 +27,7 @@ public class HandoverService {
         if (reportedBy == null) {
             return false;
         }
-        List<Handover> handovers = handoverDAO.getHandover(reportedBy);
+        List<Handover> handovers = handoverDao.getHandover(reportedBy);
 
         if (handovers.size() == 0) {
             return false;
@@ -37,7 +37,7 @@ public class HandoverService {
 
     public List<Handover> getHandover(String reportedBy) {
         if (reportedBy == null) return null;
-        List<Handover> handovers = handoverDAO.getHandover(reportedBy);
+        List<Handover> handovers = handoverDao.getHandover(reportedBy);
 
         if (handovers.size() == 0) return null;
 
@@ -46,19 +46,19 @@ public class HandoverService {
 
     public Handover getHandover(int id) {
         if (id == 0) return null;
-        Handover handover = handoverDAO.getHandover(id);
+        Handover handover = handoverDao.getHandover(id);
 
         return handover;
     }
 
     public void saveOrUpdate(Handover handover) {
 
-        handoverDAO.saveOrUpdateHandover(handover);
+        handoverDao.saveOrUpdateHandover(handover);
 
     }
 
     public void delete(int id) {
-        handoverDAO.deleteHandover(id);
+        handoverDao.deleteHandover(id);
     }
 
 

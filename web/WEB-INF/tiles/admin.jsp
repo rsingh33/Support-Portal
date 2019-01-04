@@ -12,7 +12,7 @@
         <div class="col-lg-12 col-sm-12">
 
             <div class="table-responsive">
-                <table id="myTable" class="table table-striped table-sortable">
+                <table id="myTable" class="table table-striped">
 
                     <thead>
                     <tr id="tableHead">
@@ -51,10 +51,7 @@
     </div>
 
 
-    <div>
-        <a href="#" class="paginate" id="previous">Previous</a> |
-        <a href="#" class="paginate" id="next">Next</a>
-    </div>
+
 </div>
 
 

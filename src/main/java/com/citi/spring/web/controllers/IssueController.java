@@ -1,8 +1,10 @@
 package com.citi.spring.web.controllers;
 
 
+import com.citi.spring.web.dao.UsersDao;
 import com.citi.spring.web.dao.entity.Issue;
 import com.citi.spring.web.service.IssueService;
+import com.citi.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +22,14 @@ public class IssueController {
 
     @Autowired
     private IssueService issueService;
+    @Autowired
+    private UsersService usersService;
 
 
     @RequestMapping("/issues")
     public String showHome(Model model, Principal principal) {
         if (principal != null)
-            model.addAttribute("name", principal.getName());
+            model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         List<Issue> issues = issueService.getCurrentIssues();
         model.addAttribute("issue", issues);
 
@@ -36,7 +40,7 @@ public class IssueController {
     @RequestMapping("/issuesform")
     public String showform(Model m, Principal principal) {
         if (principal != null)
-            m.addAttribute("name", principal.getName());
+            m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         m.addAttribute("issue", new Issue());
         return "issuesform";
     }
@@ -46,7 +50,7 @@ public class IssueController {
     public String edit(@PathVariable int id, Model m, Principal principal) {
 
         if (principal != null)
-            m.addAttribute("name", principal.getName());
+            m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         Issue issue = issueService.getIssue(id);
         m.addAttribute("issue", issue);
         return "issuesform";

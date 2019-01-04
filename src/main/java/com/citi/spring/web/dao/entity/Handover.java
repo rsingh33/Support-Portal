@@ -1,10 +1,8 @@
 package com.citi.spring.web.dao.entity;
 
 
-
 import com.citi.spring.web.dao.data.CurrentlyWith;
 import com.citi.spring.web.dao.data.Environment;
-
 import com.citi.spring.web.dao.data.Status;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -30,59 +28,70 @@ public class Handover {
     private String emailSubject;
     private String tracking;
     private String comments;
-    private Status status;
-    private CurrentlyWith currentlyWith;
-    private Environment environment;
-
-
-    public Handover() {
-    }
-
-    public Handover(Timestamp lastMod, String reportedBy, String emailSubject, String tracking, String comments, Status status, CurrentlyWith currentlyWith, Environment environment) {
-        this.lastMod = lastMod;
-        this.reportedBy = reportedBy;
-        this.emailSubject = emailSubject;
-        this.tracking = tracking;
-        this.comments = comments;
-        this.status = status;
-        this.currentlyWith = currentlyWith;
-        this.environment = environment;
-    }
-
 
     @Override
     public String toString() {
         return "Handover{" +
                 "id=" + id +
-                ", lastMod='" + lastMod + '\'' +
+                ", lastMod=" + lastMod +
                 ", reportedBy='" + reportedBy + '\'' +
                 ", emailSubject='" + emailSubject + '\'' +
                 ", tracking='" + tracking + '\'' +
                 ", comments='" + comments + '\'' +
+                ", username='" + username + '\'' +
                 ", status=" + status +
                 ", currentlyWith=" + currentlyWith +
                 ", environment=" + environment +
                 '}';
     }
 
+    private String username;
+    private Status status;
+    private CurrentlyWith currentlyWith;
+    private Environment environment;
+
+    public Handover() {
+    }
+    public Handover(Timestamp lastMod, String reportedBy, String emailSubject, String tracking, String comments, String username, Status status, CurrentlyWith currentlyWith, Environment environment) {
+        this.lastMod = lastMod;
+        this.reportedBy = reportedBy;
+        this.emailSubject = emailSubject;
+        this.tracking = tracking;
+        this.comments = comments;
+        this.username = username;
+        this.status = status;
+        this.currentlyWith = currentlyWith;
+        this.environment = environment;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Handover)) return false;
-        Handover that = (Handover) o;
-        return Objects.equals(getLastMod(), that.getLastMod()) &&
-                Objects.equals(getReportedBy(), that.getReportedBy()) &&
-                Objects.equals(getEmailSubject(), that.getEmailSubject()) &&
-                Objects.equals(getTracking(), that.getTracking()) &&
-                Objects.equals(getComments(), that.getComments()) &&
-                getStatus() == that.getStatus() &&
-                getCurrentlyWith() == that.getCurrentlyWith() &&
-                getEnvironment() == that.getEnvironment();
+        Handover handover = (Handover) o;
+        return getId() == handover.getId() &&
+                Objects.equals(getLastMod(), handover.getLastMod()) &&
+                Objects.equals(getReportedBy(), handover.getReportedBy()) &&
+                Objects.equals(getEmailSubject(), handover.getEmailSubject()) &&
+                Objects.equals(getTracking(), handover.getTracking()) &&
+                Objects.equals(getComments(), handover.getComments()) &&
+                Objects.equals(getUsername(), handover.getUsername()) &&
+                getStatus() == handover.getStatus() &&
+                getCurrentlyWith() == handover.getCurrentlyWith() &&
+                getEnvironment() == handover.getEnvironment();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getLastMod(), getReportedBy(), getEmailSubject(), getTracking(), getComments(), getStatus(), getCurrentlyWith(), getEnvironment());
+        return Objects.hash(getId(), getLastMod(), getReportedBy(), getEmailSubject(), getTracking(), getComments(), getUsername(), getStatus(), getCurrentlyWith(), getEnvironment());
     }
 
     public int getId() {
@@ -138,35 +147,35 @@ public class Handover {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = Status.valueOf(status);
-    }
-
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void setStatus(String status) {
+        this.status = Status.valueOf(status);
     }
 
     public CurrentlyWith getCurrentlyWith() {
         return currentlyWith;
     }
 
-    public void setCurrentlyWith(CurrentlyWith currentlyWith) {
-        this.currentlyWith = currentlyWith;
-    }
-
     public void setCurrentlyWith(String currentlyWith) {
         this.currentlyWith = CurrentlyWith.valueOf(currentlyWith);
+    }
+
+    public void setCurrentlyWith(CurrentlyWith currentlyWith) {
+        this.currentlyWith = currentlyWith;
     }
 
     public Environment getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(Environment environment) {
-        this.environment = environment;
-    }
-
     public void setEnvironment(String environment) {
         this.environment = Environment.valueOf(environment);
+    }
+
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
     }
 }

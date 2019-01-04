@@ -106,6 +106,12 @@ public class UsersDao {
 
         return (User) query.uniqueResult();
     }
+
+    public User findUserByUsername(String username) {
+        Criteria criteria = session().createCriteria(User.class);
+        criteria.add(Restrictions.eq("username", username));
+        return (User) criteria.uniqueResult();
+    }
 }
 
 

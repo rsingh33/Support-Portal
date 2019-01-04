@@ -15,6 +15,7 @@
 
         <div class="panel-body">
             <div class="row">
+                <c:if test="${forgotlink}">
                 <div class="col-lg-7 col-sm-7">
                     <p>* Please enter your registered email below</p>
 
@@ -24,19 +25,18 @@
                         <table class="formtable">
                             <tr>
                                 <td> Email:</td>
-                                <td class="control"><input class="form-control" name="email" type="text"/>
+                                <td class="control"><input class="form-control"  name="email" type="text"></td>
                                 <td class="control"><input class="btn btn-primary" value="send" type="submit"/>
                             </tr>
-                            <tr>${message}</tr>
-                        </table>
 
+                        </table>
 
                     </sf:form>
 
 
                 </div>
-
-
+                </c:if>
+               <p> ${message}</p>
             </div>
         </div>
 

@@ -29,7 +29,7 @@ public class UserController {
     public String showAdmin(Model model, Principal principal) {
         List<User> users = usersService.getAllUsers();
         if (principal != null)
-            model.addAttribute("name", principal.getName());
+            model.addAttribute("name",usersService.findUserByUsername(principal.getName()).getName());
         model.addAttribute("users", users);
         return "admin";
     }

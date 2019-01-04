@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -37,7 +36,8 @@ public class PasswordController {
 
     // Display forgotPassword page
     @RequestMapping(value = "/forgot", method = RequestMethod.GET)
-    public String displayForgotPasswordPage() {
+    public String displayForgotPasswordPage(Model model) {
+        model.addAttribute("forgotlink", true);
         return "forgotPassword";
     }
 
@@ -70,9 +70,10 @@ public class PasswordController {
 
             // Add success message to view
             model.addAttribute("message", "A password reset link has been sent to " + userEmail);
+
         }
 
-
+        model.addAttribute("forgotlink", false);
         return "forgotPassword";
 
     }
@@ -89,7 +90,8 @@ public class PasswordController {
 
             model.addAttribute("message", "Oops!  Password Link expired. Please click the latest link or generate again using Forgot Password ");
         }
-
+        model.addAttribute("isReset", true);
+        model.addAttribute("resets", false);
         return "resetPassword";
     }
 
@@ -118,9 +120,9 @@ public class PasswordController {
         // In order to set a model attribute on a redirect, we must use
         // RedirectAttributes
         model.addAttribute("message", "You have successfully reset your password. " +
-                " You may now login.");
-
-
+                " You may now ");
+        model.addAttribute("resets", true);
+        model.addAttribute("isReset", false);
         return "resetPassword";
     }
 

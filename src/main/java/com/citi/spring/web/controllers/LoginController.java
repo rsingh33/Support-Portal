@@ -60,6 +60,8 @@ public class LoginController {
     @RequestMapping(value = "/newaccount")
     public String showNewAccount(Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("newAcc", true);
+        model.addAttribute("accCreated", false);
         return "newaccount";
     }
 
@@ -85,7 +87,9 @@ public class LoginController {
 
 
         }
-        return "accountcreated";
+        model.addAttribute("accCreated", true);
+        model.addAttribute("newAcc", false);
+        return "newaccount";
 
 
     }

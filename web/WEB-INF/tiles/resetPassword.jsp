@@ -14,10 +14,10 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-11 col-sm-11">
+                    <c:if test="${isReset}">
                     <p>* Please fill the form below</p>
 
-                    <sf:form id="details" method="post" action="${pageContext.request.contextPath}/reset"
-                    >
+                    <sf:form id="details" method="post" action="${pageContext.request.contextPath}/reset">
 
                     <table class="formtable">
 
@@ -29,7 +29,7 @@
                         </tr>
 
                         <tr>
-                            <td > Password:</td>
+                            <td> Password:</td>
                             <td>
                                 <input type="password" id="password" required name="password" class="form-control"
                                        size="50"/>
@@ -38,7 +38,7 @@
                         </tr>
 
                         <tr>
-                            <td > Confirm Password:</td>
+                            <td> Confirm Password:</td>
                             <td>
                                 <input type="password" id="confirmpass" required name="confirmPassword"
                                        class="form-control" size="50"/>
@@ -52,18 +52,20 @@
 
                             </td>
                         </tr>
-                        <tr >  ${message} </tr>
+
+
                     </table>
                 </div>
                 <div id="divCheckPasswordMatch"></div>
-
-
-
                 </sf:form>
+                </c:if>
+                ${message}
+                <c:if test="${resets}">
+                    <a href="${pageContext.request.contextPath}/login">Login</a>
+                </c:if>
 
 
             </div>
-
 
         </div>
     </div>

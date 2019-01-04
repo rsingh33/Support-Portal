@@ -82,15 +82,15 @@
                     </div>
 
 
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default" value="Save">Save</button>
+                    <div class="col-sm-offset-4 col-sm-10">
+                        <button type="submit" class="btn btn-primary" value="Save">Save</button>
                         <button align="center"
-                                class="btn btn-default"
+                                class="btn btn-primary"
                                 type="button"
                                 value="Reset"
                                 onclick="this.form.reset();">Reset
                         </button>
-                        <button  class="btn btn-default" href="${pageContext.request.contextPath}/issues" >Cancel</button>
+
 
                     </div>
 

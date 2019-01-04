@@ -1,8 +1,10 @@
 package com.citi.spring.web.controllers;
 
 
+import com.citi.spring.web.dao.UsersDao;
 import com.citi.spring.web.dao.entity.Handover;
 import com.citi.spring.web.service.HandoverService;
+import com.citi.spring.web.service.UsersService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,17 +21,17 @@ public class HomeController {
 
     @Autowired
     private HandoverService handoverService;
+    @Autowired
+    private UsersService usersService;
 
 
     @RequestMapping("/")
     public String showHome(Model model, Principal principal) {
         logger.info("Showing home page....");
         if (principal != null)
-            model.addAttribute("name", principal.getName());
+            model.addAttribute("name",usersService.findUserByUsername(principal.getName()).getName());
         else
             return "redirect:/login";
-        List<Handover> handover = handoverService.getCurrentHandover();
-        model.addAttribute("handover", handover);
 
         return "home";
 
