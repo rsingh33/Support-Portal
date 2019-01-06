@@ -6,7 +6,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 
-<form:form method="post" action="${pageContext.request.contextPath}/saveBacklog" modelAttribute="backlog">
+<form:form method="post" action="${pageContext.request.contextPath}/saveBacklog" class="form-horizontal" modelAttribute="backlog">
 
     <c:if test="${backlog != null}">
         <input type="hidden" name="id" value="<c:out value='${backlog.id}' />"/>
@@ -14,7 +14,7 @@
 
     <div class="container" id="Container3">
 
-        <div id="handoverPanel" class="panel panel-primary">
+        <div id="backlogPanel" class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Backlog Form</h3>
             </div>
@@ -66,22 +66,17 @@
                         </div>
 
 
-                        <!-- JIRA -->
                         <div class="form-group">
                             <label for="dropdownMenu1" class="col-sm-4 control-label">Status</label>
                             <div class="col-sm-8">
                                 <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-                                            path="status"
-                                            value="<c:out value='${backlog.status}' />">
-                                        <form:select path="status" value="<c:out value='${backlog.status}' />">
-                                            <form:options items="${status}"/>
-                                        </form:select>
+
+                                    <form:select path="status"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="<c:out value='${backlog.status}' />">
+                                        <form:options items="${status}"/>
+                                    </form:select>
 
 
-                                        <span class="caret"></span>
-                                    </button>
 
 
                                 </div>
@@ -90,43 +85,39 @@
 
 
                         <div class="form-group">
-                            <label for="dropdownMenu1" class="col-sm-4 control-label">Environment</label>
+                            <label for="dropdownMenu2" class="col-sm-4 control-label">Environment</label>
                             <div class="col-sm-8">
                                 <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <form:select path="environment"
-                                                     value="<c:out value='${backlog.environment}' />">
-                                            <form:options items="${env}"/>
-                                        </form:select>
 
-                                        <span class="caret"></span>
-                                    </button>
+                                    <form:select path="environment"
+                                                 class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
+                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                                                 value="<c:out value='${backlog.environment}' />">
+                                        <form:options items="${env}"/>
+                                    </form:select>
+
 
 
                                 </div>
                             </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label for="dropdownMenu3" class="col-sm-4 control-label">Currently With</label>
+                            <div class="col-sm-8">
+                                <div class="dropdown">
 
-                            <div class="form-group">
-                                <label for="dropdownMenu1" class="col-sm-4 control-label">Currently With</label>
-                                <div class="col-sm-8">
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            <form:select
-                                                    path="currentlyWith"
-                                                    value="<c:out value='${backlog.currentlyWith}' />">
-                                                <form:options items="${curr}"/>
-                                            </form:select>
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <form:select
+                                            path="currentlyWith"
+                                            class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                                            value="<c:out value='${backlog.currentlyWith}' />">
+                                        <form:options items="${curr}"/>
+                                    </form:select>
 
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
 
 
                             <div class="col-sm-offset-2 col-sm-10">

@@ -404,14 +404,11 @@ td{
 
 }
 
-.panel-title{
 
-    font-family:"Roboto Medium", "Roboto Regular", Roboto;
-    text-align: center;
-}
 
 .title-hand{
     font-family:"Roboto Medium", "Roboto Regular", Roboto;
     /*text-align: center;*/
     color:grey;
 }
+

@@ -6,7 +6,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 
-<form:form method="post" action="${pageContext.request.contextPath}/save" modelAttribute="handover">
+<form:form method="post" action="${pageContext.request.contextPath}/save" modelAttribute="handover" class ="form-horizontal">
 
     <c:if test="${handover != null}">
         <input type="hidden" name="id" value="<c:out value='${handover.id}' />"/>
@@ -71,17 +71,13 @@
                             <label for="dropdownMenu1" class="col-sm-4 control-label">Status</label>
                             <div class="col-sm-8">
                                 <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-                                            path="status"
-                                            value="<c:out value='${handover.status}' />">
-                                        <form:select path="status" value="<c:out value='${handover.status}' />">
+
+                                        <form:select path="status"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="<c:out value='${handover.status}' />">
                                             <form:options items="${status}"/>
                                         </form:select>
 
 
-                                        <span class="caret"></span>
-                                    </button>
 
 
                                 </div>
@@ -90,46 +86,42 @@
 
 
                         <div class="form-group">
-                            <label for="dropdownMenu1" class="col-sm-4 control-label">Environment</label>
+                            <label for="dropdownMenu2" class="col-sm-4 control-label">Environment</label>
                             <div class="col-sm-8">
                                 <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
                                         <form:select path="environment"
+                                                     class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
+                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                                                      value="<c:out value='${handover.environment}' />">
                                             <form:options items="${env}"/>
                                         </form:select>
 
-                                        <span class="caret"></span>
-                                    </button>
 
 
                                 </div>
                             </div>
-
+                        </div>
 
                             <div class="form-group">
-                                <label for="dropdownMenu1" class="col-sm-4 control-label">Currently With</label>
+                                <label for="dropdownMenu3" class="col-sm-4 control-label">Currently With</label>
                                 <div class="col-sm-8">
                                     <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
                                             <form:select
                                                     path="currentlyWith"
+                                                    class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                                                     value="<c:out value='${handover.currentlyWith}' />">
                                                 <form:options items="${curr}"/>
                                             </form:select>
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <div class="col-sm-offset-2 col-sm-10">
+                            <div class="col-sm-offset-4 col-sm-10">
                                 <button type="submit" class="btn btn-primary" value="Save">Save</button>
                                 <button align="center"
                                         class="btn btn-primary"

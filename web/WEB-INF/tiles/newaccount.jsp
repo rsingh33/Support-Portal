@@ -97,7 +97,7 @@
                 <div class="col-lg-11 col-sm-11">
                     <p>* Please fill the form below</p>
 
-                    <sf:form id="details" method="post" action="${pageContext.request.contextPath}/createaccount"
+                    <sf:form id="details" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/createaccount"
                              modelAttribute="user">
 
                         <table class="formtable">
