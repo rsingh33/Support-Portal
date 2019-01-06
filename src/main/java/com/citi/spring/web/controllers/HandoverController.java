@@ -1,9 +1,11 @@
 package com.citi.spring.web.controllers;
 
 
+import com.citi.spring.web.dao.entity.Backlog;
 import com.citi.spring.web.dao.entity.Handover;
 import com.citi.spring.web.emailHandler.ListToHtmlTransformer;
 import com.citi.spring.web.emailHandler.SendEmail;
+import com.citi.spring.web.service.BacklogService;
 import com.citi.spring.web.service.HandoverService;
 import com.citi.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class HandoverController {
     @Autowired
     private UsersService usersService;
     private HandoverService handoverService;
+    @Autowired
+    private BacklogService backlogService;
 
     @Autowired
     public void setOffersService(HandoverService handoverService) {
@@ -90,6 +94,27 @@ public class HandoverController {
     public ModelAndView getExcel() {
         List<Handover> handoverList = handoverService.getCurrentHandover();
         return new ModelAndView("handoverExcelView", "handoverList", handoverList);
+    }
+
+    @RequestMapping(value = "/moveToBacklog/{id}", method = RequestMethod.GET)
+    public String moveToBacklog(@PathVariable int id, Principal principal) {
+        Handover handover = handoverService.getHandover(id);
+        Backlog backlog = handoverToBacklog(handover);
+        handoverService.delete(id);
+        backlogService.saveOrUpdate(backlog);
+        return "redirect:/backlog";
+    }
+
+    private Backlog handoverToBacklog(Handover handover) {
+        return new Backlog(handover.getLastMod(),
+                handover.getReportedBy(),
+                handover.getEmailSubject(),
+                handover.getTracking(),
+                handover.getComments(),
+                handover.getUsername(),
+                handover.getStatus(),
+                handover.getCurrentlyWith(),
+                handover.getEnvironment());
     }
 }
 

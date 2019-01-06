@@ -26,12 +26,11 @@
 
 
 <div id="container2" class="container-fluid">
-    <div class="row">
+     <div class="row">
         <div class="col-lg-12 col-sm-12">
 
             <div class="table-responsive">
                 <table id="myTable" class="table table-striped table-hover">
-
                     <thead>
                     <tr id="tableHead">
                         <th>Reporter</th>
@@ -73,6 +72,10 @@
                                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
                                    href="${pageContext.request.contextPath}/delete/<c:out value='${handover.id}' />"><span
                                         class="glyphicon glyphicon-trash"></span></a>
+
+                                <a class="move" id="move" type="submit" value="Move" name="move"
+                                   href="${pageContext.request.contextPath}/moveToBacklog/<c:out value='${handover.id}' />"><span
+                                        class="glyphicon glyphicon-move"></span></a>
                             </td>
                         </tr>
                     </c:forEach>

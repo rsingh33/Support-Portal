@@ -1,6 +1,12 @@
-target
-.idea
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
 *.iml
+.idea/
+
 # Compiled source #
 ###################
 *.com

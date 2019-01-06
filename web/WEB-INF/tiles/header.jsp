@@ -10,6 +10,7 @@
     $('#myTabs li:eq(3) a').tab('show'); // Select First tab (0-indexed)
     $('#myTabs li:eq(4) a').tab('show');// Select Second tab (0-indexed)
     $('#myTabs li:eq(5) a').tab('show');// Select Second tab (0-indexed)
+    $('#myTabs li:eq(6) a').tab('show');// Select Second tab (0-indexed)
 
 </script>
 
@@ -53,6 +54,8 @@
             <li role="presentation"><a class="title" href="${pageContext.request.contextPath}/">Home</a>
             </li>
             <li role="presentation"><a class="title" href="${pageContext.request.contextPath}/handover">Handover</a>
+            </li>
+            <li role="presentation"><a class="title" href="${pageContext.request.contextPath}/backlog">Backlog</a>
             </li>
             <li role="presentation"><a class="title"
                                        href="${pageContext.request.contextPath}/issues">Issues-Database</a></li>

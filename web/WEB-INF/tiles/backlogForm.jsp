@@ -6,17 +6,17 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 
-<form:form method="post" action="${pageContext.request.contextPath}/save" modelAttribute="handover">
+<form:form method="post" action="${pageContext.request.contextPath}/saveBacklog" modelAttribute="backlog">
 
-    <c:if test="${handover != null}">
-        <input type="hidden" name="id" value="<c:out value='${handover.id}' />"/>
+    <c:if test="${backlog != null}">
+        <input type="hidden" name="id" value="<c:out value='${backlog.id}' />"/>
     </c:if>
 
     <div class="container" id="Container3">
 
         <div id="handoverPanel" class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Handover Form</h3>
+                <h3 class="panel-title">Backlog Form</h3>
             </div>
 
             <div class="panel-body">
@@ -32,7 +32,7 @@
                                 <input type="text" name="reportedBy" class="form-control" id="reportedBy"
                                        placeholder="Reporter"
                                        size="100"
-                                       value="<c:out value='${handover.reportedBy}' />">
+                                       value="<c:out value='${backlog.reportedBy}' />">
                             </div>
                         </div>
                         <!-- Subject -->
@@ -41,7 +41,7 @@
                             <div class="col-sm-8">
                                 <input type="text" name="emailSubject" class="form-control" id="emailSub"
                                        placeholder="Email Subject"
-                                       value="<c:out value='${handover.emailSubject}' />"/>
+                                       value="<c:out value='${backlog.emailSubject}' />"/>
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="tracking" id="jira"
                                        placeholder="Jira number"
-                                       value="<c:out value='${handover.tracking}' />"/>
+                                       value="<c:out value='${backlog.tracking}' />"/>
                             </div>
                         </div>
 
@@ -61,7 +61,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="comments" id="comment"
                                        placeholder="Comments"
-                                       value="<c:out value='${handover.comments}' />"/>
+                                       value="<c:out value='${backlog.comments}' />"/>
                             </div>
                         </div>
 
@@ -74,8 +74,8 @@
                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                                             path="status"
-                                            value="<c:out value='${handover.status}' />">
-                                        <form:select path="status" value="<c:out value='${handover.status}' />">
+                                            value="<c:out value='${backlog.status}' />">
+                                        <form:select path="status" value="<c:out value='${backlog.status}' />">
                                             <form:options items="${status}"/>
                                         </form:select>
 
@@ -96,7 +96,7 @@
                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                         <form:select path="environment"
-                                                     value="<c:out value='${handover.environment}' />">
+                                                     value="<c:out value='${backlog.environment}' />">
                                             <form:options items="${env}"/>
                                         </form:select>
 
@@ -116,7 +116,7 @@
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                             <form:select
                                                     path="currentlyWith"
-                                                    value="<c:out value='${handover.currentlyWith}' />">
+                                                    value="<c:out value='${backlog.currentlyWith}' />">
                                                 <form:options items="${curr}"/>
                                             </form:select>
                                             <span class="caret"></span>

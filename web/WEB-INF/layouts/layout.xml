@@ -51,6 +51,13 @@
         <put-attribute name="content" value="/WEB-INF/tiles/handover.jsp"></put-attribute>
     </definition>
 
+
+    <definition name="backlog" extends="support-portal.base">
+        <put-attribute name="includes" value="/WEB-INF/tiles/tableFunctionScript.jsp"></put-attribute>
+        <put-attribute name="title" value="Backlog"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/backlog.jsp"></put-attribute>
+    </definition>
+
     <definition name="issues" extends="support-portal.base">
         <put-attribute name="includes" value="/WEB-INF/tiles/tableFunctionScript.jsp"></put-attribute>
         <put-attribute name="title" value="Issues"></put-attribute>
@@ -66,6 +73,11 @@
     <definition name="handoverform" extends="support-portal.base">
         <put-attribute name="title" value="Handover Editor"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/handoverform.jsp"></put-attribute>
+    </definition>
+
+    <definition name="backlogForm" extends="support-portal.base">
+        <put-attribute name="title" value="Backlog Editor"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/backlogForm.jsp"></put-attribute>
     </definition>
 
     <definition name="issuesform" extends="support-portal.base">
