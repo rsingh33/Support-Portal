@@ -25,6 +25,33 @@
 </div>
 --%>
 
+<div class="container">
+
+
+    <div class="col-lg-offset-11 col-lg-9 col-sm-8">
+
+
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/issuesform" role="button"><span class="glyphicon glyphicon-plus"></span>  Add
+            Issue</a>
+<%--
+
+        <button type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail'"
+                value="Send Email Handover" class="btn btn-primary">Send Email-Handover
+        </button>
+
+
+        <button type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'" value="Export"
+                class="btn btn-primary">Export
+        </button>
+        &lt;%&ndash;<button type="button" class="btn btn-primary">Devops Dashboard</button>&ndash;%&gt;
+--%>
+
+
+    </div>
+
+
+</div>
+
 
 <div id="container2" class="container-fluid">
     <div class="row">
@@ -59,10 +86,12 @@
                             <td><p><c:out value="${issue.sourceSystem}"></c:out></p></td>
                             <td><p><c:out value="${issue.lastMod}"></c:out></p></td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/issuesform/<c:out value='${issue.id}' />"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="${pageContext.request.contextPath}/issuesform/<c:out value='${issue.id}' />"><span
+                                        class="glyphicon glyphicon-pencil"></span></a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
-                                   href="${pageContext.request.contextPath}/deleteIssue/<c:out value='${issue.id}' />"><span class="glyphicon glyphicon-trash"></span></a>
+                                   href="${pageContext.request.contextPath}/deleteIssue/<c:out value='${issue.id}' />"><span
+                                        class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -73,30 +102,11 @@
 
             </div>
 
-            </div>
         </div>
-    </div>
-
-    <div  class="container">
-
-
-        <div class="col-lg-offset-11 col-lg-9 col-sm-8">
-
-
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/issuesform" role="button">+ Add Issue</a>
-
-
-            <button type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail'" value="Send Email Handover" class="btn btn-primary">Send Email-Handover</button>
-
-
-            <button type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'" value="Export" class="btn btn-primary">Export</button>
-            <%--<button type="button" class="btn btn-primary">Devops Dashboard</button>--%>
-
-
-        </div>
-
-
     </div>
 </div>
+
+
+
 
 

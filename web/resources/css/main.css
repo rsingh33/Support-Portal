@@ -353,9 +353,11 @@ body {
 th {
     font-size: medium;
 }
-
+table{
+    padding: 0%;
+}
 tr{
-    padding: 0px;
+    padding: 0%;
     width:1%;
     white-space:nowrap;
 }
@@ -412,3 +414,6 @@ td{
     color:grey;
 }
 
+.container{
+
+}

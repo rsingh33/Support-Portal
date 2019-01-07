@@ -12,9 +12,9 @@
         <input type="hidden" name="id" value="<c:out value='${handover.id}' />"/>
     </c:if>
 
-    <div class="container" id="Container3">
+    <div class="container " id="Container3">
 
-        <div id="handoverPanel" class="panel panel-primary">
+        <div id="handoverPanel" class="panel panel-primary ">
             <div class="panel-heading">
                 <h3 class="panel-title">Handover Form</h3>
             </div>
@@ -121,7 +121,7 @@
                             </div>
 
 
-                            <div class="col-sm-offset-4 col-sm-10">
+                            <div class="col-sm-offset-4 col-sm-8">
                                 <button type="submit" class="btn btn-primary" value="Save">Save</button>
                                 <button align="center"
                                         class="btn btn-primary"
