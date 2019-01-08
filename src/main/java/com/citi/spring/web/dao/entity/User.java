@@ -1,6 +1,7 @@
 package com.citi.spring.web.dao.entity;
 
 
+import com.citi.spring.web.dao.data.Roles;
 import com.citi.spring.web.validations.FormValidationGroup;
 import com.citi.spring.web.validations.PersistenceValidationGroup;
 import com.citi.spring.web.validations.ValidEmail;
@@ -14,6 +15,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "users")
 public class User {
+
 
 
     @NotBlank(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
@@ -57,6 +59,27 @@ public class User {
 
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return getId() == user.getId() &&
+                isEnabled() == user.isEnabled() &&
+                getUsername().equals(user.getUsername()) &&
+                getPassword().equals(user.getPassword()) &&
+                getEmail().equals(user.getEmail()) &&
+                authority == user.authority &&
+                getResetToken().equals(user.getResetToken()) &&
+                getName().equals(user.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUsername(), getId(), getPassword(), getEmail(), isEnabled(), authority, getResetToken(), getName());
+    }
+
     public User(String username) {
         this.username = username;
     }
@@ -81,22 +104,6 @@ public class User {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return isEnabled() == user.isEnabled() &&
-                Objects.equals(getusername(), user.getusername()) &&
-                Objects.equals(getEmail(), user.getEmail()) &&
-                Objects.equals(getAuthority(), user.getAuthority()) &&
-                Objects.equals(getName(), user.getName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getusername(), getEmail(), isEnabled(), getAuthority(), getName());
-    }
 
     public String getName() {
         return name;
@@ -106,16 +113,6 @@ public class User {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", enabled=" + enabled +
-                ", authority='" + authority + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 
     public String getEmail() {
         return email;
@@ -149,6 +146,7 @@ public class User {
         this.enabled = enabled;
     }
 
+
     public String getAuthority() {
         return authority;
     }
@@ -156,6 +154,7 @@ public class User {
     public void setAuthority(String authority) {
         this.authority = authority;
     }
+
 
     public String getResetToken() {
         return resetToken;

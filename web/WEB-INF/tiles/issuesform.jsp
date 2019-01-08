@@ -64,7 +64,7 @@
                         </div>
                     </div>
 
-
+                    <%--Source--%>
                     <div class="form-group">
                         <label for="dropdownMenu1" class="col-sm-4 control-label">Source</label>
                         <div class="col-sm-8">
@@ -75,6 +75,7 @@
                                              id="dropdownMenu1"
                                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                                              value="<c:out value='${issue.sourceSystem}' />">
+                                    <option disabled selected > -- select an option -- </option>
                                     <form:options items="${sourceSystem}"/>
                                 </form:select>
                                     <%--

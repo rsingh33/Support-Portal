@@ -30,6 +30,11 @@
                                 <td><c:out value="${user.authority}"></c:out></td>
                                 <td><c:out value="${user.enabled}"></c:out></td>
                                 <td>
+
+                                    <a href="${pageContext.request.contextPath}/userForm/<c:out value='${user.id}' />"><span
+                                            class="glyphicon glyphicon-pencil"></span></a>
+                                    &nbsp;&nbsp;
+
                                     <a class="delete" id="delete" type="submit" value="Delete" name="delete"
                                        href="${pageContext.request.contextPath}/deleteUser/<c:out value='${user.username}' />"><span
                                             class="glyphicon glyphicon-trash"></span></a>

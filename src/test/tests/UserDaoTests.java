@@ -1,5 +1,6 @@
 package tests;
 
+import com.citi.spring.web.dao.data.Roles;
 import com.citi.spring.web.dao.entity.User;
 import com.citi.spring.web.dao.UsersDao;
 import org.junit.Before;
@@ -29,10 +30,10 @@ public class UserDaoTests {
     @Autowired
     private DataSource dataSource;
 
-    private User user1 = new User("rsingh33", "Rahul", "abc123456", "r@singh.com", true, "ROLE_user");
-    private User user2 = new User("gsingh33", "Rahul", "abc123456", "r@singh.com", true, "ROLE_user");
-    private User user3 = new User("isingh33", "Rahul", "abc123456", "r@singh.com", true, "ROLE_user");
-    private User user4 = new User("ssingh33", "Rahul", "abc123456", "r@singh.com", true, "ROLE_user");
+    private User user1 = new User("rsingh33", "Rahul", "abc123456", "r@singh.com", true,"ROLE_user");
+    private User user2 = new User("gsingh33", "Rahul", "abc123456", "r@singh.com", true,"ROLE_user");
+    private User user3 = new User("isingh33", "Rahul", "abc123456", "r@singh.com", true,"ROLE_user");
+    private User user4 = new User("ssingh33", "Rahul", "abc123456", "r@singh.com", true,"ROLE_user");
 
     @Before
     public void init() {

@@ -3,7 +3,7 @@
 
 <div id="container1" class="container">
 
-    <div class="col-lg-offset-8 col-lg-8 col-sm-5">
+    <div class="col-lg-offset-7 col-lg-8 col-sm-5">
         <a id ="expo" class="btn btn-primary btn-sm " href="${pageContext.request.contextPath}/backlogForm" role="button"><span
                 class="glyphicon glyphicon-plus"></span> Add
             Issue</a>

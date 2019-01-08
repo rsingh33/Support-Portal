@@ -1,8 +1,10 @@
 package com.citi.spring.web.service;
 
 import com.citi.spring.web.dao.UsersDao;
+import com.citi.spring.web.dao.data.Roles;
 import com.citi.spring.web.dao.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class UsersService {
     private UsersDao usersDao;
 
     @Autowired
-    public void setOffersDAO(UsersDao usersDao) {
+    public void setUsersDao(@Qualifier("usersDao") UsersDao usersDao) {
         this.usersDao = usersDao;
     }
 
@@ -27,9 +29,11 @@ public class UsersService {
     public boolean exists(String username) {
         return usersDao.exists(username);
     }
+
     public boolean existsByEmail(String email) {
         return usersDao.existsByEmail(email);
     }
+
     public boolean existsToken(String token) {
         return usersDao.existsToken(token);
     }
@@ -44,6 +48,7 @@ public class UsersService {
     public User findUserByEmail(String userEmail) {
         return usersDao.findUserByEmail(userEmail);
     }
+
     public User findUserByUsername(String username) {
         return usersDao.findUserByUsername(username);
     }
@@ -61,9 +66,19 @@ public class UsersService {
     }
 
     public User getUser(String username) {
-       return usersDao.getUser(username);
+        return usersDao.getUser(username);
     }
+
     public User getUserEmail(String email) {
         return usersDao.getUserEmail(email);
+    }
+
+
+    public User getUser(int id) {
+        return usersDao.getUser(id);
+    }
+
+    public void saveOrUpdate(User user) {
+        usersDao.saveOrUpdate(user);
     }
 }

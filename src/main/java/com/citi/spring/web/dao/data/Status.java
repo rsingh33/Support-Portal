@@ -6,6 +6,6 @@ public enum Status {
     IN_PROGRESS,
     COMPLETED,
     NEW,
-    PENDING
+    PENDING,
 
 }

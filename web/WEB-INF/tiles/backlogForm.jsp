@@ -73,6 +73,7 @@
 
                                     <form:select path="status"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="<c:out value='${backlog.status}' />">
+                                        <option disabled selected > -- select an option -- </option>
                                         <form:options items="${status}"/>
                                     </form:select>
 
@@ -93,6 +94,7 @@
                                                  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
                                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                                                  value="<c:out value='${backlog.environment}' />">
+                                        <option disabled selected > -- select an option -- </option>
                                         <form:options items="${env}"/>
                                     </form:select>
 
@@ -112,6 +114,7 @@
                                             class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                                             value="<c:out value='${backlog.currentlyWith}' />">
+                                        <option disabled selected > -- select an option -- </option>
                                         <form:options items="${curr}"/>
                                     </form:select>
 

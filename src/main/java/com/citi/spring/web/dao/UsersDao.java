@@ -93,6 +93,13 @@ public class UsersDao {
         return (User) query.uniqueResult();
     }
 
+    public User getUser(int id) {
+        Query query = session().createQuery("from User where id =:id");
+        query.setParameter("id", id);
+        return (User) query.uniqueResult();
+    }
+
+
     public boolean existsByEmail(String email) {
         Criteria criteria = session().createCriteria(User.class);
         criteria.add(Restrictions.eq("email",email));
@@ -111,6 +118,10 @@ public class UsersDao {
         Criteria criteria = session().createCriteria(User.class);
         criteria.add(Restrictions.eq("username", username));
         return (User) criteria.uniqueResult();
+    }
+
+    public void saveOrUpdate(User user) {
+        session().saveOrUpdate(user);
     }
 }
 

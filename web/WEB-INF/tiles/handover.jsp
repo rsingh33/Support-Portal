@@ -3,7 +3,7 @@
 <div id="container1" class="container">
 
 
-    <div class="col-lg-offset-8 col-lg-8 col-sm-5">
+    <div class="col-lg-offset-7 col-lg-8 col-sm-5">
 
         <button id ="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'"
                 value="Export" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download-alt"></span> Export</button>
