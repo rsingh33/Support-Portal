@@ -10,7 +10,7 @@
     <form method="post" enctype="multipart/form-data" action="${uploadFileUrl}">
 
         <div><input type="file" name="file" accept=".xls,.xlsx"/>
-            <input type="submit" class="btn btn-primary" value="Save"/>
+            <input type="submit"  class="btn btn-primary btn-sm " value="Save"/>
         </div>
 
     </form>

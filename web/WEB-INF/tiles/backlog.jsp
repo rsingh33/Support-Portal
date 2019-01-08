@@ -1,6 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<div id="container1" class="container">
+
+    <div class="col-lg-offset-8 col-lg-8 col-sm-5">
+        <a id ="expo" class="btn btn-primary btn-sm " href="${pageContext.request.contextPath}/backlogForm" role="button"><span
+                class="glyphicon glyphicon-plus"></span> Add
+            Issue</a>
+    </div>
+
+</div>
 
 <div id="container2" class="container-fluid">
     <div class="row">
@@ -38,19 +47,19 @@
                             <td><p><c:out value="${backlog.environment}"></c:out></p></td>
                             <td><p><c:out value="${backlog.comments}"></c:out></p></td>
                             <td>
-                                <p><b>User </b> <c:out value="${backlog.username}"></c:out>
-                                    <b> Time </b> <c:out value=" ${backlog.lastMod}"></c:out></p>
+                                <p><b>User: </b> <c:out value="${backlog.username}"></c:out>
+                                    <b> Time: </b> <c:out value=" ${backlog.lastMod}"></c:out></p>
 
                             </td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/backlogForm/<c:out value='${backlog.id}' />"><span
                                         class="glyphicon glyphicon-pencil"></span></a>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;
 
                                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
                                    href="${pageContext.request.contextPath}/deleteBacklog/<c:out value='${backlog.id}' />"><span
                                         class="glyphicon glyphicon-trash"></span></a>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;
                                 <a class="move" id="move" type="submit" value="Move" name="move"
                                    href="${pageContext.request.contextPath}/moveToHandover/<c:out value='${backlog.id}' />"><span
                                         class="glyphicon glyphicon-move"></span></a>
@@ -67,30 +76,6 @@
         </div>
     </div>
 
-    <div id="container3" class="container">
-
-
-        <div class="col-lg-offset-11 col-lg-9 col-sm-8">
-
-
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/backlogForm" role="button">+ Add Issue</a>
-
-
-            <%--<button type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail'"
-                    value="Send Email Handover" class="btn btn-primary">Send Email-Handover
-            </button>
-
-            &lt;%&ndash;<button type="button" class="btn btn-primary">Issues</button>&ndash;%&gt;
-            <button type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'"
-                    value="Export" class="btn btn-primary">Export
-            </button>--%>
-            <%--<button type="button" class="btn btn-primary">Devops Dashboard</button>--%>
-
-
-        </div>
-
-
-    </div>
 
 </div>
 

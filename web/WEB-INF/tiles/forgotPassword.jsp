@@ -28,7 +28,7 @@
                                 <td class="control"><input class="form-control"  name="email" type="text"></td>
                                 <td class="control"><input class="btn btn-primary" value="send" type="submit"/>
                             </tr>
-
+                            <tr><p> ${message}</p></tr>
                         </table>
 
                     </sf:form>
@@ -36,7 +36,7 @@
 
                 </div>
                 </c:if>
-               <p> ${message}</p>
+
             </div>
         </div>
 

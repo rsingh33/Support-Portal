@@ -28,6 +28,25 @@ public class Handover {
     private String emailSubject;
     private String tracking;
     private String comments;
+    private String username;
+    private Status status;
+    private CurrentlyWith currentlyWith;
+    private Environment environment;
+
+    public Handover() {
+    }
+
+    public Handover(Timestamp lastMod, String reportedBy, String emailSubject, String tracking, String comments, String username, Status status, CurrentlyWith currentlyWith, Environment environment) {
+        this.lastMod = lastMod;
+        this.reportedBy = reportedBy;
+        this.emailSubject = emailSubject;
+        this.tracking = tracking;
+        this.comments = comments;
+        this.username = username;
+        this.status = status;
+        this.currentlyWith = currentlyWith;
+        this.environment = environment;
+    }
 
     @Override
     public String toString() {
@@ -43,25 +62,6 @@ public class Handover {
                 ", currentlyWith=" + currentlyWith +
                 ", environment=" + environment +
                 '}';
-    }
-
-    private String username;
-    private Status status;
-    private CurrentlyWith currentlyWith;
-    private Environment environment;
-
-    public Handover() {
-    }
-    public Handover(Timestamp lastMod, String reportedBy, String emailSubject, String tracking, String comments, String username, Status status, CurrentlyWith currentlyWith, Environment environment) {
-        this.lastMod = lastMod;
-        this.reportedBy = reportedBy;
-        this.emailSubject = emailSubject;
-        this.tracking = tracking;
-        this.comments = comments;
-        this.username = username;
-        this.status = status;
-        this.currentlyWith = currentlyWith;
-        this.environment = environment;
     }
 
     public String getUsername() {
@@ -147,35 +147,35 @@ public class Handover {
         return status;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     public void setStatus(String status) {
         this.status = Status.valueOf(status);
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public CurrentlyWith getCurrentlyWith() {
         return currentlyWith;
     }
 
-    public void setCurrentlyWith(String currentlyWith) {
-        this.currentlyWith = CurrentlyWith.valueOf(currentlyWith);
-    }
-
     public void setCurrentlyWith(CurrentlyWith currentlyWith) {
         this.currentlyWith = currentlyWith;
+    }
+
+    public void setCurrentlyWith(String currentlyWith) {
+        this.currentlyWith = CurrentlyWith.valueOf(currentlyWith);
     }
 
     public Environment getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(String environment) {
-        this.environment = Environment.valueOf(environment);
-    }
-
     public void setEnvironment(Environment environment) {
         this.environment = environment;
+    }
+
+    public void setEnvironment(String environment) {
+        this.environment = Environment.valueOf(environment);
     }
 }

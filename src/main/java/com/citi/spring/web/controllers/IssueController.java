@@ -57,7 +57,8 @@ public class IssueController {
     }
 
     @RequestMapping(value = "/saveIssue", method = RequestMethod.POST)
-    public String saveOrUpdate(@ModelAttribute("issue") Issue issue) {
+    public String saveOrUpdate(@ModelAttribute("issue") Issue issue, Principal principal) {
+        issue.setUsername(principal.getName());
         issueService.saveOrUpdate(issue);
         return "redirect:/issues";
     }

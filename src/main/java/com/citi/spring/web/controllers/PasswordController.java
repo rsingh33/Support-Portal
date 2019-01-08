@@ -47,9 +47,10 @@ public class PasswordController {
 
         // Lookup user in database by e-mail
 
-
+        model.addAttribute("forgotlink", false);
         if (!userService.existsByEmail(userEmail)) {
             model.addAttribute("message", "This is not a registered email " + userEmail);
+            model.addAttribute("forgotlink", true);
         } else {
 
             // Generate random 36-character string token for reset password
@@ -63,17 +64,25 @@ public class PasswordController {
                     request.getServerPort() + request.getContextPath();
 
             // Email message
-            String content = "To reset your password, click the link below:\n" + appUrl
-                    + "/reset?token=" + user.getResetToken();
+            String content = "Hi " + user.getName() +", \r\n"
+                    +"To reset your password, click the link below:\n" + appUrl + "/reset?token=" + user.getResetToken()
+                    +", \r\n" +
+                    "\r\n" +
+                    "Thanks, "
+                    +"\r\n"
+                    + "OMC Support Team"
+                    +"\r\n"
+                    + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
             System.out.println(content);
             emailService.emailSend(content, user.getEmail(), "Password Reset Request");
 
             // Add success message to view
             model.addAttribute("message", "A password reset link has been sent to " + userEmail);
+            model.addAttribute("forgotlink", true);
 
         }
 
-        model.addAttribute("forgotlink", false);
+
         return "forgotPassword";
 
     }
@@ -103,6 +112,9 @@ public class PasswordController {
         if (requestParams.get("token").length() < 1) {
             model.addAttribute("message", "reset link expired please click" +
                     " on forgot password on home screen to regenerate");
+            model.addAttribute("resets", false);
+            model.addAttribute("isReset", true);
+            return "resetPassword";
         }
 
         User user = userService.findUserByResetToken(requestParams.get("token"));

@@ -3,12 +3,15 @@ package com.citi.spring.web.emailHandler;
 
 import com.citi.spring.web.dao.entity.Handover;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 /**
  * +
  * Transforms the message into email format for handover
  */
 public class ListToHtmlTransformer {
-
+  static   DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 
     public static String compose(java.util.Collection<Handover> handover) {
         StringBuilder email = new StringBuilder();
@@ -58,7 +61,7 @@ public class ListToHtmlTransformer {
             email.append("</td>");
 
             email.append("<td>");
-            email.append(row.getLastMod());
+            email.append("Time: " + sdf.format(row.getLastMod()) + ", User:" + row.getUsername());
             email.append("</td>");
 
 

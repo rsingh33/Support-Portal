@@ -27,8 +27,7 @@
         <security:intercept-url pattern="/admin**" access="hasAnyRole('ROLE_admin')"></security:intercept-url>
         <security:intercept-url pattern="/newaccount" access="!isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/denied" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/accountcreated" access="permitAll()"></security:intercept-url>
-        <security:intercept-url pattern="/" access="permitAll()"></security:intercept-url>
+         <security:intercept-url pattern="/" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/static/**" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/login" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/issues" access="isAuthenticated()"></security:intercept-url>

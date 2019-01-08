@@ -24,6 +24,7 @@ public class EmailService {
 
         List<Handover> handovers = handoverDAO.getHandover();
         String content = ListToHtmlTransformer.compose(handovers);
+        System.out.println(content);
         try {
             SendEmail.emailSend(content);
         } catch (Exception e) {

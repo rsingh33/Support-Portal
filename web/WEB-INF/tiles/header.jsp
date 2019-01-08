@@ -22,42 +22,61 @@
     </div>
     <img src="${pageContext.request.contextPath}/static/images/isg.svg" class="header_logoisg">
 </div>
+
+
 </div>
 
-
 <sec:authorize access="isAuthenticated()">
-    <div id="headerDiv" class="container-fluid">
+    <nav id="navBar" class="navbar navbar-default navbar-xs" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a id="tab" class="title" href="${pageContext.request.contextPath}/">Home</a></li>
+                    <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/handover">Handover</a></li>
+                    <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/backlog">Backlog</a></li>
+                    <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/issues">Issues-Database</a></li>
+                    <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/releasemanager">Release-Manager</a>
+                    </li>
+                    <li><a id="tab"  class="title" href="http://ddivmddsf4:8080/DevOps/index.html">Devops-Dashboard</a></li>
+                    <sec:authorize access="hasRole('ROLE_admin')">
+                        <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/admin">Admin</a>
+                        </li>
+                    </sec:authorize>
 
 
-        <ul id="myTabs" class="nav nav-tabs" role="tablist">
-            <li role="presentation"><a class="title" href="${pageContext.request.contextPath}/">Home</a>
-            </li>
-            <li role="presentation"><a class="title" href="${pageContext.request.contextPath}/handover">Handover</a>
-            </li>
-            <li role="presentation"><a class="title" href="${pageContext.request.contextPath}/backlog">Backlog</a>
-            </li>
-            <li role="presentation"><a class="title"
-                                       href="${pageContext.request.contextPath}/issues">Issues-Database</a></li>
-            <li role="presentation"><a class="title" href="${pageContext.request.contextPath}/releasemanager">Release-Manager</a>
-            <li role="presentation"><a class="title"
-                                       href="http://ddivmddsf4:8080/DevOps/index.html">Devops-Dashboard</a>
-            </li>
-                <%--<li role="presentation"><a class="title" href="http://ddivmddsf4:8080/DevOps/index.html">DevOps-Dashboard</a></li>--%>
+                </ul>
+                <div class="navbar-right">
+                    <c:url var="logoutUrl" value="/logout"/>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <span id="welcome">Welcome, <c:out value="${name}  "></c:out>   </span>
+                        </li>
+                        <li>
+                            <form id="log123" action="${logoutUrl}" method="post">
 
-            <sec:authorize access="hasRole('ROLE_admin')">
-                <li role="presentation"><a class="title" href="${pageContext.request.contextPath}/admin">Admin</a></li>
-            </sec:authorize>
+                                <input type="submit" id="tab"  class="btn  btn-link btn-xs" value="Logout"/>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <c:url var="logoutUrl" value="/logout"/>
-
-            <form class="logout" action="${logoutUrl}" method="post">
-                Welcome, <c:out value="${name}"></c:out>
-                <input type="submit" class="btn btn-primary"value="Logout"/>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
-        </ul>
+                            </form>
+                        </li>
+                    </ul>
 
 
-    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 </sec:authorize>
-

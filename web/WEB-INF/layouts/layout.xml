@@ -26,10 +26,7 @@
         <put-attribute name="title" value="Create Account"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/newaccount.jsp"></put-attribute>
     </definition>
-    <definition name="accountcreated" extends="support-portal.base">
-        <put-attribute name="title" value="Account Created"></put-attribute>
-        <put-attribute name="content" value="/WEB-INF/tiles/accountcreated.jsp"></put-attribute>
-    </definition>
+
     <definition name="admin" extends="support-portal.base">
         <put-attribute name="includes" value="/WEB-INF/tiles/tableFunctionScript.jsp"></put-attribute>
         <put-attribute name="title" value="Portal-Admin"></put-attribute>

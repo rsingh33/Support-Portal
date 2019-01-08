@@ -1,22 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div id="container3" class="container">
+<div id="container1" class="container">
 
 
-    <div class="col-lg-offset-11 col-lg-9 col-sm-8">
+    <div class="col-lg-offset-8 col-lg-8 col-sm-5">
+
+        <button id ="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'"
+                value="Export" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download-alt"></span> Export</button>
 
 
-        <a class="btn btn-primary" href="${pageContext.request.contextPath}/handoverform" role="button"><span class="glyphicon glyphicon-plus"></span>  Add
-            Issue</a>
+        <button id ="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail'"
+                value="Send Email Handover" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-envelope"></span> Send Handover</button>
+        &nbsp;
 
 
-        <button type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail'"
-                value="Send Email Handover" class="btn btn-primary"><span class="glyphicon glyphicon-envelope"></span> Send Handover</button>
+        <a id ="expo" class="btn btn-primary btn-sm " href="${pageContext.request.contextPath}/handoverform" role="button"><span class="glyphicon glyphicon-plus"></span> Add Issue</a>
 
-        <%--<button type="button" class="btn btn-primary">Issues</button>--%>
-        <button type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'"
-                value="Export" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span> Export</button>
-        <%--<button type="button" class="btn btn-primary">Devops Dashboard</button>--%>
 
 
     </div>
@@ -32,6 +31,7 @@
             <div class="table-responsive">
                 <table id="myTable" class="table table-striped table-hover">
                     <thead>
+
                     <tr id="tableHead">
                         <th>Reporter</th>
                         <th>Email Subject</th>
@@ -60,18 +60,18 @@
                             <td><p><c:out value="${handover.environment}"></c:out></p></td>
                             <td><p><c:out value="${handover.comments}"></c:out></p></td>
                             <td>
-                                <p><b>User </b> <c:out value="${handover.username}"></c:out></p>
-                                <p><b>Time </b> <c:out value=" ${handover.lastMod}"></c:out></p>
+                                <p><b>User: </b> <c:out value="${handover.username}"></c:out>,  <b>Time: </b> <c:out value=" ${handover.lastMod}"></c:out></p>
+
                             </td>
-                            <td>
+                            <td id="action">
                                 <a href="${pageContext.request.contextPath}/handoverform/<c:out value='${handover.id}' />"><span
                                         class="glyphicon glyphicon-pencil"></span></a>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;
 
                                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
                                    href="${pageContext.request.contextPath}/delete/<c:out value='${handover.id}' />"><span
                                         class="glyphicon glyphicon-trash"></span></a>
-
+                                &nbsp;&nbsp;
                                 <a class="move" id="move" type="submit" value="Move" name="move"
                                    href="${pageContext.request.contextPath}/moveToBacklog/<c:out value='${handover.id}' />"><span
                                         class="glyphicon glyphicon-move"></span></a>
