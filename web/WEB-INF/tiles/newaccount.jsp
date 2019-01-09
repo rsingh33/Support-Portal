@@ -24,7 +24,7 @@
 
                             <!-- UserName -->
                             <div class="form-group">
-                                <label for="userName" class="col-sm-4 control-label">Username</label>
+                                <label for="userName" class="col-sm-4 control-label">Soeid</label>
                                 <div class="col-sm-8">
                                     <sf:input path="username" class="form-control" name="username"
                                               type="text"/>

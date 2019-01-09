@@ -3,19 +3,23 @@
 <div id="container1" class="container">
 
 
-    <div class="col-lg-offset-7 col-lg-8 col-sm-5">
+    <div class="col-lg-offset-7 col-lg-9 col-sm-12">
 
-        <button id ="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'"
-                value="Export" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download-alt"></span> Export</button>
+        <button id="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'"
+                value="Export" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-download-alt"></span>
+            Export
+        </button>
 
 
-        <button id ="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail'"
-                value="Send Email Handover" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-envelope"></span> Send Handover</button>
+        <button id="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail'"
+                value="Send Email Handover" class="btn btn-primary btn-xs"><span
+                class="glyphicon glyphicon-envelope"></span> Send Handover
+        </button>
         &nbsp;
 
 
-        <a id ="expo" class="btn btn-primary btn-sm " href="${pageContext.request.contextPath}/handoverform" role="button"><span class="glyphicon glyphicon-plus"></span> Add Issue</a>
-
+        <a id="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/handoverform"
+           role="button"><span class="glyphicon glyphicon-plus"></span> Add Issue</a>
 
 
     </div>
@@ -52,15 +56,15 @@
                         <tr>
                             <td><p><c:out value="${handover.reportedBy}"></c:out></p></td>
                             <td><p class="wrapText"><c:out value="${handover.emailSubject}"></c:out></p></td>
-                            <td><p><a
-                                    href="https://cedt-icg-jira.nam.nsroot.net/jira/browse/<c:out value='${handover.tracking}'></c:out>">
+                            <td><p><a href="https://cedt-icg-jira.nam.nsroot.net/jira/browse/<c:out value='${handover.tracking}'></c:out>">
                                     ${handover.tracking}</a></p></td>
                             <td><p><c:out value="${handover.status}"></c:out></p></td>
                             <td><p><c:out value="${handover.currentlyWith}"></c:out></p></td>
                             <td><p><c:out value="${handover.environment}"></c:out></p></td>
                             <td><p><c:out value="${handover.comments}"></c:out></p></td>
                             <td>
-                                <p><b>User: </b> <c:out value="${handover.username}"></c:out>,  <b>Time: </b> <c:out value=" ${handover.lastMod}"></c:out></p>
+                                <p><b>User: </b> <c:out value="${handover.username}"></c:out>, <b>Time: </b> <c:out
+                                        value=" ${handover.lastMod}"></c:out></p>
 
                             </td>
                             <td id="action">

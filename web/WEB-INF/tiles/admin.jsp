@@ -13,6 +13,7 @@
                         <thead>
                         <tr id="tableHead">
                             <th>Username</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
                             <th>Enabled</th>
@@ -26,6 +27,7 @@
                         <c:forEach var="user" items="${users}">
                             <tr>
                                 <td><c:out value="${user.username}"></c:out></td>
+                                <td><c:out value="${user.name}"></c:out></td>
                                 <td><c:out value="${user.email}"></c:out></td>
                                 <td><c:out value="${user.authority}"></c:out></td>
                                 <td><c:out value="${user.enabled}"></c:out></td>
