@@ -75,7 +75,7 @@
 
 
                             <div class="col-sm-offset-4 col-sm-8">
-                                <button type="submit" class="btn btn-primary" value="Save">Create Account</button>
+                                <button type="submit" class="btn btn-primary" value="Save">Create</button>
 
                                 <button align="center"
                                         class="btn btn-primary"

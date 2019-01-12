@@ -2,15 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<div id="container1" class="container">
-
-    <div class="col-lg-offset-7 col-lg-9 col-sm-12">
-        <a id ="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/issuesform" role="button"><span
-                class="glyphicon glyphicon-plus"></span> Add Issue</a>
-    </div>
+</br>
 
 
-</div>
+<a id="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/issuesform" role="button"><span
+        class="glyphicon glyphicon-plus"></span> Add Issue</a>
+
+</br>
+</br>
 
 
 <div id="container2" class="container-fluid">

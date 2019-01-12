@@ -2,20 +2,28 @@
 
 <c:url value="/uploadExcelFile?${_csrf.parameterName}=${_csrf.token}" var="uploadFileUrl"/>
 
-<%--<c:url value="/readPOI" var="readPOIUrl"/>--%>
+<div> <h2>${releaseName}</h2></div>
 
-<br/>
 <div>
 
     <form method="post" enctype="multipart/form-data" action="${uploadFileUrl}">
 
-        <div><input type="file" name="file" accept=".xls,.xlsx"/>
-            <input type="submit"  class="btn btn-primary btn-sm " value="Save"/>
+        <div>
+            <table>
+                <tr>
+                    <td><input type="file" class="btn btn-xs" name="file" accept=".xls,.xlsx"/></td>
+                    <td><input type="submit" class="btn btn-primary btn-xs" value="Save"/></td>
+                </tr>
+
+            </table>
+
+
         </div>
 
     </form>
-    <p style="color: green">${message }</p>
+
 </div>
+
 
 
 <c:if test="${not empty data}">

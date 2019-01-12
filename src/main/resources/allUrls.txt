@@ -1,0 +1,101 @@
+http://cop-app-sit.nam.nsroot.net:8085/PortalAdmin/home.jsp|Admin Console SIT|http://cop-app-sit.nam.nsroot.net:8085/PortalAdmin/home.jsp|SIT|cop-app-sit
+http://isgswmdi1n1:7019|Audit SIT|http://isgswmdi1n1:7019|SIT|isgswmdi1n1
+https://isgswmdu1n1:7020|Audit UAT1|https://isgswmdu1n1:7020|UAT|isgswmdu1n1
+https://isgswmdu1n2:7020|Audit UAT2|https://isgswmdu1n2:7020|UAT|isgswmdu1n2
+https://isgrumdp1n1:7020|Audit PROD1|https://isgrumdp1n1:7020|PROD|isgrumdp1n1
+https://isgrumdp1n2:7020|Audit PROD2|https://isgrumdp1n2:7020|PROD|isgrumdp1n2
+http://cop-app-sit.nam.nsroot.net:8080/icgCop/|RestServices SIT|http://cop-app-sit.nam.nsroot.net:8080/icgCop/|SIT|cop-app-sit
+http://amc-sit.nam.nsroot.net/AmgDataServices/AmcRequestIntegrationGateway/AmcRequestIntegrationGatewayWs?WSDL|AMC WSDL SIT|http://amc-sit.nam.nsroot.net/AmgDataServices/AmcRequestIntegrationGateway/AmcRequestIntegrationGatewayWs?WSDL|SIT|AMC SIT Server
+http://dmc-sit.nam.nsroot.net/DmcDataServices/DocumentMasterCentral/Diis/DiisWs?wsdl|DMC WSDL SIT|http://dmc-sit.nam.nsroot.net/DmcDataServices/DocumentMasterCentral/Diis/DiisWs?wsdl|SIT|DMC SIT Server
+http://sd-1d29-9fa8:9080/ui|Portal UI Buildtime SIT|http://sd-1d29-9fa8:9080/ui|SIT|cob-core-sit-n1
+http://sd-1d29-9fa8:9090/ui|Portal UI Runtime SIT|http://sd-1d29-9fa8:9090/ui|SIT|cob-core-sit-n1
+http://cop-ba-app:9080/ui|Portal UI Buildtime BA|http://cop-ba-app:9080/ui|SIT BA|cop-ba-app
+http://cop-ba-app:9090/ui|Portal UI Runtime BA|http://cop-ba-app:9090/ui|SIT BA|cop-ba-app
+http://ddivmddsf4:7080|Hyperic Server|http://localhost:7080|ALL|ddivmddsf4
+http://ddivmddsf4:9090|MMS Server|http://localhost:9090|ALL|ddivmddsf4
+http://isgswmdi1n1:7012/portal-ms/keepalive.jsp|Portal-MS SIT|http://isgswmdi1n1:7012/portal-ms/keepalive.jsp|SIT|cop-app-sit
+http://sd-1d29-9fa8:9060/rest/heartbeat|Reporting SIT|http://sd-1d29-9fa8:9060/rest/heartbeat|SIT|cob-core-sit-n1
+http://cop-app-sit.nam.nsroot.net:8080/icgCop-markit/api/company|Markit SIT|http://cop-app-sit.nam.nsroot.net:8080/icgCop-markit/api/company|SIT|cop-app-sit
+http://sd-1d29-9fa8:9062/scheduler/heartbeat|Email Scheduler SIT|http://sd-1d29-9fa8:9062/scheduler/heartbeat|SIT|cob-core-sit-n1
+http://sd-1d29-9fa8:9070/clientprofile/status|LEADS SIT|http://sd-1d29-9fa8:9070/clientprofile/status|SIT|cob-core-sit-n1
+http://isgswmdu1n1.nam.nsroot.net:8085/PortalAdmin/home.jsp|Admin Console UAT1|http://isgswmdu1n1.nam.nsroot.net:8085/PortalAdmin/home.jsp|UAT|isgswmdu1n1
+http://isgswmdu1n2.nam.nsroot.net:8085/PortalAdmin/home.jsp|Admin Console UAT2|http://isgswmdu1n2.nam.nsroot.net:8085/PortalAdmin/home.jsp|UAT|isgswmdu1n2
+http://isgswmdu1n1.nam.nsroot.net:8080/icgCop/|RestServices UAT1|http://isgswmdu1n1.nam.nsroot.net:8080/icgCop/|UAT|isgswmdu1n1
+http://isgswmdu1n2.nam.nsroot.net:8080/icgCop/|RestServices UAT2|http://isgswmdu1n2.nam.nsroot.net:8080/icgCop/|UAT|isgswmdu1n2
+https://amc-uat.nam.nsroot.net/AmgDataServices/AmcRequestIntegrationGateway/AmcRequestIntegrationGatewayWs?WSDL|AMC WSDL UAT|https://amc-uat.nam.nsroot.net/AmgDataServices/AmcRequestIntegrationGateway/AmcRequestIntegrationGatewayWs?WSDL|UAT|AMC UAT Server
+http://dmc-uat.nam.nsroot.net/DmcDataServices/DocumentMasterCentral/Diis/DiisWs?wsdl|DMC WSDL UAT|http://dmc-uat.nam.nsroot.net/DmcDataServices/DocumentMasterCentral/Diis/DiisWs?wsdl|UAT|DMC UAT Server
+http://cims-uat-cld.nam.nsroot.net/cmUserX509/user.asmx?wsdl|HR WSDL UAT|http://cims-uat-cld.nam.nsroot.net/cmUserX509/user.asmx?wsdl|UAT|HR UAT Server
+https://isgswmdu1n1:9081/ui|Portal UI Buildtime UAT1|https://isgswmdu1n1:9081/ui|UAT|isgswmdu1n1
+https://isgswmdu1n1:9091/ui|Portal UI Runtime UAT1|https://isgswmdu1n1:9091/ui|UAT|isgswmdu1n1
+https://isgswmdu1n2:9081/ui|Portal UI Buildtime UAT2|https://isgswmdu1n2:9081/ui|UAT|isgswmdu1n2
+https://isgswmdu1n2:9091/ui|Portal UI Runtime UAT2|https://isgswmdu1n2:9091/ui|UAT|isgswmdu1n2
+http://isgswmdu1n1:7012/portal-ms/keepalive.jsp|Portal-MS UAT1|http://isgswmdu1n1:7012/portal-ms/keepalive.jsp|UAT|isgswmdu1n1
+http://isgswmdu1n2:7012/portal-ms/keepalive.jsp|Portal-MS UAT2|http://isgswmdu1n2:7012/portal-ms/keepalive.jsp|UAT|isgswmdu1n2
+http://isgswmdu1n1:9060/rest/heartbeat|Reporting UAT|http://isgswmdu1n1:9060/rest/heartbeat|UAT|isgswmdu1n1
+http://icgcop-svc-uat.nam.nsroot.net/icgCop-markit/api/company|Markit UAT|http://icgcop-svc-uat.nam.nsroot.net/icgCop-markit/api/company|UAT|isgswmdu1n1
+http://isgswmdu1n1:9062/scheduler/heartbeat|Email Scheduler UAT|http://isgswmdu1n1:9062/scheduler/heartbeat|UAT|isgswmdu1n1
+http://isgswmdu1n1:9070/clientprofile/status|LEADS UAT1|http://isgswmdu1n1:9070/clientprofile/status|UAT|isgswmdu1n1
+http://isgswmdu1n2:9070/clientprofile/status|LEADS UAT2|http://isgswmdu1n2:9070/clientprofile/status|UAT|isgswmdu1n2
+http://icgcop-sales-uat/sales-view/user/login|Sales View UAT|http://icgcop-sales-uat/sales-view/user/login|UAT|isgswmdu1n1
+http://isgrumdp1n1.nam.nsroot.net:8085/PortalAdmin/home.jsp|Admin Console PROD1|http://isgrumdp1n1.nam.nsroot.net:8085/PortalAdmin/home.jsp|PROD|isgrumdp1n1
+http://isgrumdp1n2.nam.nsroot.net:8085/PortalAdmin/home.jsp|Admin Console PROD2|http://isgrumdp1n2.nam.nsroot.net:8085/PortalAdmin/home.jsp|PROD|isgrumdp1n2
+http://isgrumdp1n1.nam.nsroot.net:8080/icgCop/|RestServices PROD1|http://isgrumdp1n1.nam.nsroot.net:8080/icgCop/|PROD|isgrumdp1n1
+http://isgrumdp1n2.nam.nsroot.net:8080/icgCop/|RestServices PROD2|http://isgrumdp1n2.nam.nsroot.net:8080/icgCop/|PROD|isgrumdp1n2
+https://amc.nam.nsroot.net/AmgDataServices/AmcRequestIntegrationGateway/AmcRequestIntegrationGatewayWs?WSDL|AMC WSDL PROD|https://amc.nam.nsroot.net/AmgDataServices/AmcRequestIntegrationGateway/AmcRequestIntegrationGatewayWs?WSDL|PROD|AMC PROD Server
+http://dmc.nam.nsroot.net/DmcDataServices/DocumentMasterCentral/Diis/DiisWs?wsdl|DMC WSDL PROD|http://dmc.nam.nsroot.net/DmcDataServices/DocumentMasterCentral/Diis/DiisWs?wsdl|PROD|DMC PROD Server
+http://cimsws.nam.nsroot.net/CMUserX509/User.asmx?wsdl|HR WSDL PROD|http://cimsws.nam.nsroot.net/CMUserX509/User.asmx?wsdl|PROD|HR PROD Server
+https://isgrumdp1n1:9081/ui|Portal UI Buildtime PROD1|https://isgrumdp1n1:9081/ui|PROD|isgrumdp1n1
+https://isgrumdp1n1:9091/ui|Portal UI Runtime PROD1|https://isgrumdp1n1:9091/ui|PROD|isgrumdp1n1
+https://isgrumdp1n2:9081/ui|Portal UI Buildtime PROD2|https://isgrumdp1n2:9081/ui|PROD|isgrumdp1n2
+https://isgrumdp1n2:9091/ui|Portal UI Runtime PROD2|https://isgrumdp1n2:9091/ui|PROD|isgrumdp1n2
+http://isgrumdp1n1:7012/portal-ms/keepalive.jsp|Portal-MS PROD1|http://isgrumdp1n1:7012/portal-ms/keepalive.jsp|PROD|isgrumdp1n1
+http://isgrumdp1n2:7012/portal-ms/keepalive.jsp|Portal-MS PROD2|http://isgrumdp1n2:7012/portal-ms/keepalive.jsp|PROD|isgrumdp1n2
+http://isgrumdp1n1:9060/rest/heartbeat|Reporting PROD|http://isgrumdp1n1:9060/rest/heartbeat|PROD|isgrumdp1n1
+http://icgcop-svc.nam.nsroot.net/icgCop-markit/api/company|Markit PROD1|http://icgcop-svc.nam.nsroot.net/icgCop-markit/api/company|PROD|isgrumdp1n1
+http://isgrumdp1n1:9062/scheduler/heartbeat|Email Scheduler PROD|http://isgrumdp1n1:9062/scheduler/heartbeat|PROD|isgrumdp1n1
+http://isgrumdp1n1:9070/clientprofile/status|LEADS PROD1|http://isgrumdp1n1:9070/clientprofile/status|PROD|isgrumdp1n1
+http://isgrumdp1n2:9070/clientprofile/status|LEADS PROD2|http://isgrumdp1n2:9070/clientprofile/status|PROD|isgrumdp1n2
+https://icgcop-sales.nam.nsroot.net/sales-view/#/|Sales View PROD|https://icgcop-sales.nam.nsroot.net/sales-view/#/|PROD|isgmwkycp1n1
+http://sd-1d29-9fa8:9040/private/status|CSSP SIT|http://sd-1d29-9fa8:9040/private/status|SIT|cob-core-sit-n1
+https://isgswmdu1n1.nam.nsroot.net:9069/#/|TeamLead Dashboard UAT|https://isgswmdu1n1.nam.nsroot.net:9069/#/|UAT|isgswmdu1n1
+https://isgmwkycp1n1.nam.nsroot.net:9069/#/|TeamLead Dashboard PROD|https://isgmwkycp1n1.nam.nsroot.net:9069/#/|PROD|isgmwkycp1n1
+http://isgswmdu1n1.nam.nsroot.net:9040/private/status|CSSP UAT1|http://isgswmdu1n1.nam.nsroot.net:9040/private/status|UAT|isgswmdu1n1
+http://isgswmdu1n2.nam.nsroot.net:9040/private/status|CSSP UAT2|http://isgswmdu1n2.nam.nsroot.net:9040/private/status|UAT|isgswmdu1n2
+http://isgrumdp1n1.nam.nsroot.net:9040/private/status|CSSP PROD1|http://isgrumdp1n1.nam.nsroot.net:9040/private/status|PROD|isgrumdp1n1
+http://isgrumdp1n2.nam.nsroot.net:9040/private/status|CSSP PROD2|http://isgrumdp1n2.nam.nsroot.net:9040/private/status|PROD|isgrumdp1n2
+http://isgswmdi1n1.nam.nsroot.net:7030/icgCop-entitlement/info|EntitlementAuth SIT|http://isgswmdi1n1.nam.nsroot.net:7030/icgCop-entitlement/info|SIT|isgswmdi1n1
+http://isgswmdu1n1.nam.nsroot.net:7030/icgCop-entitlement/info|EntitlementAuth UAT1|http://isgswmdu1n1.nam.nsroot.net:7030/icgCop-entitlement/info|UAT|isgswmdu1n1
+http://isgswmdu1n2.nam.nsroot.net:7030/icgCop-entitlement/info|EntitlementAuth UAT2|http://isgswmdu1n2.nam.nsroot.net:7030/icgCop-entitlement/info|UAT|isgswmdu1n2
+http://isgrumdp1n1.nam.nsroot.net:7030/icgCop-entitlement/info|EntitlementAuth PROD1|http://isgrumdp1n1.nam.nsroot.net:7030/icgCop-entitlement/info|PROD|isgrumdp1n1
+http://isgrumdp1n2.nam.nsroot.net:7030/icgCop-entitlement/info|EntitlementAuth PROD2|http://isgrumdp1n2.nam.nsroot.net:7030/icgCop-entitlement/info|PROD|isgrumdp1n2
+http://isgswmdi1n1.nam.nsroot.net:7060/icgCop-ddm/info|DDM SIT|http://isgswmdi1n1.nam.nsroot.net:7060/icgCop-ddm/info|SIT|isgswmdi1n1
+http://isgswmdu1n1.nam.nsroot.net:7060/icgCop-ddm/info|DDM UAT1|http://isgswmdu1n1.nam.nsroot.net:7060/icgCop-ddm/info|UAT|isgswmdu1n1
+http://isgswmdu1n2.nam.nsroot.net:7060/icgCop-ddm/info|DDM UAT2|http://isgswmdu1n2.nam.nsroot.net:7060/icgCop-ddm/info|UAT|isgswmdu1n2
+http://isgrumdp1n1.nam.nsroot.net:7060/icgCop-ddm/info|DDM PROD1|http://isgrumdp1n1.nam.nsroot.net:7060/icgCop-ddm/info|PROD|isgrumdp1n1
+http://isgrumdp1n2.nam.nsroot.net:7060/icgCop-ddm/info|DDM PROD2|http://isgrumdp1n2.nam.nsroot.net:7060/icgCop-ddm/info|PROD|isgrumdp1n2
+http://sd-1d29-9fa8:8338/messages/all/100000000|PMS SIT|http://sd-1d29-9fa8:8338/messages/all/100000000|SIT|cob-core-sit-n1
+http://isgswmdu1n1:8338/messages/all/100000000|PMS UAT1|http://isgswmdu1n1:8338/messages/all/100000000|UAT|isgswmdu1n1
+http://isgswmdu1n2:8338/messages/all/100000000|PMS UAT2|http://isgswmdu1n2:8338/messages/all/100000000|UAT|isgswmdu1n2
+http://isgrumdp1n1:8338/messages/all/100000000|PMS PROD1|http://isgrumdp1n1:8338/messages/all/100000000|PROD|isgrumdp1n1
+http://isgrumdp1n2:8338/messages/all/100000000|PMS PROD2|http://isgrumdp1n2:8338/messages/all/100000000|PROD|isgrumdp1n2
+https://isgrumdp1n1.nam.nsroot.net:9031/|Request View PROD|https://isgrumdp1n1.nam.nsroot.net:9031/|PROD|isgrumdp1n1
+http://isgswmdu1n1.nam.nsroot.net:9030/RQ001213|Request View UAT|http://isgswmdu1n1.nam.nsroot.net:9030/RQ001213|UAT|isgswmdu1n1
+http://sd-1d29-9fa8.nam.nsroot.net:9030/|Request View SIT|http://sd-1d29-9fa8.nam.nsroot.net:9030/|SIT|cob-core-sit-n1
+https://isgmwkycp1n1.nam.nsroot.net:9065/api/heartbeat|Supercharge Clients PROD|https://isgmwkycp1n1.nam.nsroot.net:9065/api/heartbeat|PROD|isgmwkycp1n1
+https://isgswmdu1n1.nam.nsroot.net:9065/api/heartbeat|Supercharge Clients UAT|https://isgswmdu1n1.nam.nsroot.net:9065/api/heartbeat|UAT|isgswmdu1n1
+https://sd-1d29-9fa8.nam.nsroot.net:9065/api/heartbeat|Supercharge Clients SIT|https://sd-1d29-9fa8.nam.nsroot.net:9065/api/heartbeat|SIT|cob-core-sit-n1
+http://isgswmdi1n1.nam.nsroot.net:7028/admin/actuator/health-successful|CDE SIT|http://isgswmdi1n1.nam.nsroot.net:7028/admin/actuator/health-successful|SIT|isgswmdi1n1
+http://isgswmdu1n1.nam.nsroot.net:7028/admin/actuator/health-successful|CDE UAT1|http://isgswmdu1n1.nam.nsroot.net:7028/admin/actuator/health-successful|UAT|isgswmdu1n1
+http://isgswmdu1n2.nam.nsroot.net:7028/admin/actuator/health-successful|CDE UAT2|http://isgswmdu1n2.nam.nsroot.net:7028/admin/actuator/health-successful|UAT|isgswmdu1n2
+http://isgrumdp1n1.nam.nsroot.net:7028/admin/actuator/health-successful|CDE PROD1|http://isgrumdp1n1.nam.nsroot.net:7028/admin/actuator/health-successful|PROD|isgrumdp1n1
+http://isgrumdp1n2.nam.nsroot.net:7028/admin/actuator/health-successful|CDE PROD2|http://isgrumdp1n2.nam.nsroot.net:7028/admin/actuator/health-successful|PROD|isgrumdp1n2
+jdbc:oracle:thin:COP_DBO_BPM_LD/copdbobpmlds1@//oraasswd10-scan:8889/CTSHB1S|Portal UI Oracle DB SIT|jdbc:oracle:thin:COP_DBO_BPM_LD/copdbobpmlds1@//oraasswd10-scan:8889/CTSHB1S|SIT|oraasswd03-scan
+mongodb://backup:backup123@sd-1d29-9fa8:27017/copdb|Portal UI Mongo DB SIT|mongodb://backup:backup123@sd-1d29-9fa8:27017/copdb|SIT|cob-core-sit-n1
+jdbc:postgresql://sd-1d29-9fa8:5432/postgres?user=cordrw&password=cord|Reporting DB SIT|jdbc:postgresql://sd-1d29-9fa8:5432/postgres?user=cordrw&password=cord|SIT|cob-core-sit-n1
+jdbc:oracle:thin:COP_RW_USER/coprwuseru12014@//hubgtsuat-scan.nam.nsroot.net:15221/COPU1_API|Portal UI Oracle DB UAT|jdbc:oracle:thin:COP_RW_USER/coprwuseru12014@//hubgtsuat-scan.nam.nsroot.net:15221/COPU1_API|UAT|hubgtsuat-scan
+mongodb://coprw:IfmGCTzK7a4@isgswmduhn1:27017,isgswmduhn2:27017/copdb|Portal UI Mongo DB UAT|mongodb://coprw:IfmGCTzK7a4@isgswmduhn1:27017,isgswmduhn2:27017/copdb|UAT|Mongo ReplicaSet
+jdbc:postgresql://isgswmduhn1:5432/postgres?user=cordrw&password=cord|Reporting DB UAT|jdbc:postgresql://isgswmduhn1:5432/postgres?user=cordrw&password=cord|UAT|isgswmduhn1
+jdbc:oracle:thin:COP_RW_USER/coprwuserp12014@//hubgtsprd-scan.nam.nsroot.net:11153/COPP1_API|Portal UI Oracle DB PROD|jdbc:oracle:thin:COP_RW_USER/coprwuserp12014@//hubgtsprd-scan.nam.nsroot.net:11153/COPP1_API|PROD|hubgtsprd-scan
+mongodb://backup:backup123@isgrumdp1n1:27017,isgrumdp1n2:27017,isgrumdp1n1:27017/copdb|Portal UI Mongo DB PROD|mongodb://backup:backup123@isgrumdp1n1:27017,isgrumdp1n2:27017,isgrumdp1n1:27017/copdb|PROD|Mongo ReplicaSet
+jdbc:postgresql://isgrumdp1n1:5432/postgres?user=cordrw&password=cord|Reporting DB PROD|jdbc:postgresql://isgrumdp1n1:5432/postgres?user=cordrw&password=cord|PROD|isgrumdp1n1
+http://localhost:8080/spring/|Test App|aiudiuaegiyuafdg|PROD|Test Host

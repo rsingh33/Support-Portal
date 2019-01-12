@@ -1,15 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="container1" class="container">
+</br>
 
-    <div class="col-lg-offset-7 col-lg-8 col-sm-5">
+
         <a id ="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/backlogForm" role="button"><span
                 class="glyphicon glyphicon-plus"></span> Add
             Issue</a>
-    </div>
 
-</div>
+</br>
+</br>
+
 
 <div id="container2" class="container-fluid">
     <div class="row">

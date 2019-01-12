@@ -122,185 +122,206 @@ public class ExcelParser {
         return data;
     }
 
-    private Map<Integer, List<MyCell>> readXSSFWorkbook(FileInputStream fis) throws IOException {
+    public String getReleaseName(String fileLocation) throws IOException {
+        FileInputStream fis = new FileInputStream(new File(fileLocation));
         XSSFWorkbook workbook = null;
-        Map<Integer, List<MyCell>> data = new HashMap<>();
+        String sheetName;
         try {
             workbook = new XSSFWorkbook(fis);
-            int totalSheets = workbook.getNumberOfSheets();
-            int totalRows = 0;
 
-
-            for (int sheetNumber = 0; sheetNumber < totalSheets; sheetNumber++) {
-
-                XSSFSheet sheet = workbook.getSheetAt(sheetNumber);
-
-                for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
-
-                    XSSFRow row = sheet.getRow(i);
-                    data.put(totalRows, new ArrayList<>());
-                    if (row != null) {
-                        for (int j = 0; j < row.getLastCellNum(); j++) {
-
-                            XSSFCell cell = row.getCell(j);
-                            if (cell != null) {
-
-                                XSSFCellStyle cellStyle = cell.getCellStyle();
-
-                                MyCell myCell = new MyCell();
-                                XSSFColor bgColor = cellStyle.getFillForegroundColorColor();
-                                if (bgColor != null) {
-                                    byte[] rgbColor = bgColor.getRGB();
-                                    myCell.setBgColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," +
-                                            (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
-                                }
-                                XSSFFont font = cellStyle.getFont();
-                                myCell.setTextSize(font.getFontHeightInPoints() + "");
-                                if (font.getBold()) {
-                                    myCell.setTextWeight("bold");
-                                }
-                                XSSFColor textColor = font.getXSSFColor();
-                                if (textColor != null) {
-                                    byte[] rgbColor = textColor.getRGB();
-                                    myCell.setTextColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," + (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
-                                }
-                                myCell.setContent(readCellContent(cell));
-                                data.get(totalRows).add(myCell);
-                            } else {
-                                data.get(totalRows).add(new MyCell(""));
-                            }
-                        }
-                    }
-                    totalRows++;
-                }
-            }
+            sheetName = workbook.getSheetName(0);
+            System.out.println("Sheet Name is : " + sheetName);
         } finally {
             if (workbook != null) {
                 workbook.close();
             }
+
         }
-        return data;
+        return sheetName;
     }
+        private Map<Integer, List<MyCell>> readXSSFWorkbook (FileInputStream fis) throws IOException {
+            XSSFWorkbook workbook = null;
+            Map<Integer, List<MyCell>> data = new HashMap<>();
+            try {
+                workbook = new XSSFWorkbook(fis);
+                int totalSheets = workbook.getNumberOfSheets();
+                int totalRows = 0;
+                String sheetName = workbook.getSheetName(0);
+                System.out.println("Sheet Name is : " + sheetName);
 
-    public Map<Integer, Map<Integer, List<MyCell>>> readXSSFWorkbookAsSheets(FileInputStream fis) throws IOException {
-        XSSFWorkbook workbook = null;
-        Map<Integer, Map<Integer, List<MyCell>>> excel = new HashMap<>();
-        try {
-            workbook = new XSSFWorkbook(fis);
-            int totalSheets = workbook.getNumberOfSheets();
 
-            for (int sheetNumber = 0; sheetNumber < totalSheets; sheetNumber++) {
+                for (int sheetNumber = 0; sheetNumber < totalSheets; sheetNumber++) {
 
-                XSSFSheet sheet = workbook.getSheetAt(sheetNumber);
-                Map<Integer, List<MyCell>> excelSheet = new HashMap<>();
-                excel.put(sheetNumber, excelSheet);
-                for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
+                    XSSFSheet sheet = workbook.getSheetAt(sheetNumber);
 
-                    XSSFRow row = sheet.getRow(i);
-                    excelSheet.put(i, new ArrayList<>());
-                    if (row != null) {
-                        for (int j = 0; j < row.getLastCellNum(); j++) {
+                    for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
 
-                            XSSFCell cell = row.getCell(j);
-                            if (cell != null) {
+                        XSSFRow row = sheet.getRow(i);
+                        data.put(totalRows, new ArrayList<>());
+                        if (row != null) {
+                            for (int j = 0; j < row.getLastCellNum(); j++) {
 
-                                XSSFCellStyle cellStyle = cell.getCellStyle();
+                                XSSFCell cell = row.getCell(j);
+                                if (cell != null) {
 
-                                MyCell myCell = new MyCell();
-                                XSSFColor bgColor = cellStyle.getFillForegroundColorColor();
-                                if (bgColor != null) {
-                                    byte[] rgbColor = bgColor.getRGB();
-                                    myCell.setBgColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," +
-                                            (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
+                                    XSSFCellStyle cellStyle = cell.getCellStyle();
+
+                                    MyCell myCell = new MyCell();
+                                    XSSFColor bgColor = cellStyle.getFillForegroundColorColor();
+                                    if (bgColor != null) {
+                                        byte[] rgbColor = bgColor.getRGB();
+                                        myCell.setBgColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," +
+                                                (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
+                                    }
+                                    XSSFFont font = cellStyle.getFont();
+                                    myCell.setTextSize(font.getFontHeightInPoints() + "");
+                                    if (font.getBold()) {
+                                        myCell.setTextWeight("bold");
+                                    }
+                                    XSSFColor textColor = font.getXSSFColor();
+                                    if (textColor != null) {
+                                        byte[] rgbColor = textColor.getRGB();
+                                        myCell.setTextColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," + (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
+                                    }
+                                    myCell.setContent(readCellContent(cell));
+                                    data.get(totalRows).add(myCell);
+                                } else {
+                                    data.get(totalRows).add(new MyCell(""));
                                 }
-                                XSSFFont font = cellStyle.getFont();
-                                myCell.setTextSize(font.getFontHeightInPoints() + "");
-                                if (font.getBold()) {
-                                    myCell.setTextWeight("bold");
+                            }
+                        }
+                        totalRows++;
+                    }
+                }
+            } finally {
+                if (workbook != null) {
+                    workbook.close();
+                }
+            }
+            return data;
+        }
+
+        public Map<Integer, Map<Integer, List<MyCell>>> readXSSFWorkbookAsSheets (FileInputStream fis) throws
+        IOException {
+            XSSFWorkbook workbook = null;
+            Map<Integer, Map<Integer, List<MyCell>>> excel = new HashMap<>();
+            try {
+                workbook = new XSSFWorkbook(fis);
+                int totalSheets = workbook.getNumberOfSheets();
+
+                for (int sheetNumber = 0; sheetNumber < totalSheets; sheetNumber++) {
+
+                    XSSFSheet sheet = workbook.getSheetAt(sheetNumber);
+                    Map<Integer, List<MyCell>> excelSheet = new HashMap<>();
+                    excel.put(sheetNumber, excelSheet);
+                    for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
+
+                        XSSFRow row = sheet.getRow(i);
+                        excelSheet.put(i, new ArrayList<>());
+                        if (row != null) {
+                            for (int j = 0; j < row.getLastCellNum(); j++) {
+
+                                XSSFCell cell = row.getCell(j);
+                                if (cell != null) {
+
+                                    XSSFCellStyle cellStyle = cell.getCellStyle();
+
+                                    MyCell myCell = new MyCell();
+                                    XSSFColor bgColor = cellStyle.getFillForegroundColorColor();
+                                    if (bgColor != null) {
+                                        byte[] rgbColor = bgColor.getRGB();
+                                        myCell.setBgColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," +
+                                                (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
+                                    }
+                                    XSSFFont font = cellStyle.getFont();
+                                    myCell.setTextSize(font.getFontHeightInPoints() + "");
+                                    if (font.getBold()) {
+                                        myCell.setTextWeight("bold");
+                                    }
+                                    XSSFColor textColor = font.getXSSFColor();
+                                    if (textColor != null) {
+                                        byte[] rgbColor = textColor.getRGB();
+                                        myCell.setTextColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," + (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
+                                    }
+                                    myCell.setContent(readCellContent(cell));
+                                    excelSheet.get(i).add(myCell);
+                                } else {
+                                    excelSheet.get(i).add(new MyCell(""));
                                 }
-                                XSSFColor textColor = font.getXSSFColor();
-                                if (textColor != null) {
-                                    byte[] rgbColor = textColor.getRGB();
-                                    myCell.setTextColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," + (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
+                            }
+                        }
+
+                    }
+
+                    excel.put(sheetNumber, excelSheet);
+                }
+            } finally {
+                if (workbook != null) {
+                    workbook.close();
+                }
+            }
+            return excel;
+        }
+
+        private Map<Integer, Map<Integer, List<MyCell>>> readHSSFWorkbookBySheets (FileInputStream fis) throws
+        IOException {
+            Map<Integer, Map<Integer, List<MyCell>>> excel = new HashMap<>();
+            HSSFWorkbook workbook = null;
+            try {
+                workbook = new HSSFWorkbook(fis);
+                int totalSheets = workbook.getNumberOfSheets();
+
+                for (int sheetNumber = 0; sheetNumber < totalSheets; sheetNumber++) {
+
+                    HSSFSheet sheet = workbook.getSheetAt(sheetNumber);
+                    Map<Integer, List<MyCell>> excelSheet = new HashMap<>();
+                    excel.put(sheetNumber, excelSheet);
+                    for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
+                        HSSFRow row = sheet.getRow(i);
+                        excelSheet.put(i, new ArrayList<>());
+                        if (row != null) {
+                            for (int j = 0; j < row.getLastCellNum(); j++) {
+                                HSSFCell cell = row.getCell(j);
+                                if (cell != null) {
+                                    HSSFCellStyle cellStyle = cell.getCellStyle();
+
+                                    MyCell myCell = new MyCell();
+
+                                    HSSFColor bgColor = cellStyle.getFillForegroundColorColor();
+                                    if (bgColor != null) {
+                                        short[] rgbColor = bgColor.getTriplet();
+                                        myCell.setBgColor("rgb(" + rgbColor[0] + "," + rgbColor[1] + "," + rgbColor[2] + ")");
+                                    }
+                                    HSSFFont font = cell.getCellStyle()
+                                            .getFont(workbook);
+                                    myCell.setTextSize(font.getFontHeightInPoints() + "");
+                                    if (font.getBold()) {
+                                        myCell.setTextWeight("bold");
+                                    }
+                                    HSSFColor textColor = font.getHSSFColor(workbook);
+                                    if (textColor != null) {
+                                        short[] rgbColor = textColor.getTriplet();
+                                        myCell.setTextColor("rgb(" + rgbColor[0] + "," + rgbColor[1] + "," + rgbColor[2] + ")");
+                                    }
+                                    myCell.setContent(readCellContent(cell));
+                                    excelSheet.get(i)
+                                            .add(myCell);
+                                } else {
+                                    excelSheet.get(i)
+                                            .add(new MyCell(""));
                                 }
-                                myCell.setContent(readCellContent(cell));
-                                excelSheet.get(i).add(myCell);
-                            } else {
-                                excelSheet.get(i).add(new MyCell(""));
                             }
                         }
                     }
-
+                    excel.put(sheetNumber, excelSheet);
                 }
-
-                excel.put(sheetNumber, excelSheet);
-            }
-        } finally {
-            if (workbook != null) {
-                workbook.close();
-            }
-        }
-        return excel;
-    }
-
-    private Map<Integer, Map<Integer, List<MyCell>>> readHSSFWorkbookBySheets(FileInputStream fis) throws IOException {
-        Map<Integer, Map<Integer, List<MyCell>>> excel = new HashMap<>();
-        HSSFWorkbook workbook = null;
-        try {
-            workbook = new HSSFWorkbook(fis);
-            int totalSheets = workbook.getNumberOfSheets();
-
-            for (int sheetNumber = 0; sheetNumber < totalSheets; sheetNumber++) {
-
-                HSSFSheet sheet = workbook.getSheetAt(sheetNumber);
-                Map<Integer, List<MyCell>> excelSheet = new HashMap<>();
-                excel.put(sheetNumber, excelSheet);
-                for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
-                    HSSFRow row = sheet.getRow(i);
-                    excelSheet.put(i, new ArrayList<>());
-                    if (row != null) {
-                        for (int j = 0; j < row.getLastCellNum(); j++) {
-                            HSSFCell cell = row.getCell(j);
-                            if (cell != null) {
-                                HSSFCellStyle cellStyle = cell.getCellStyle();
-
-                                MyCell myCell = new MyCell();
-
-                                HSSFColor bgColor = cellStyle.getFillForegroundColorColor();
-                                if (bgColor != null) {
-                                    short[] rgbColor = bgColor.getTriplet();
-                                    myCell.setBgColor("rgb(" + rgbColor[0] + "," + rgbColor[1] + "," + rgbColor[2] + ")");
-                                }
-                                HSSFFont font = cell.getCellStyle()
-                                        .getFont(workbook);
-                                myCell.setTextSize(font.getFontHeightInPoints() + "");
-                                if (font.getBold()) {
-                                    myCell.setTextWeight("bold");
-                                }
-                                HSSFColor textColor = font.getHSSFColor(workbook);
-                                if (textColor != null) {
-                                    short[] rgbColor = textColor.getTriplet();
-                                    myCell.setTextColor("rgb(" + rgbColor[0] + "," + rgbColor[1] + "," + rgbColor[2] + ")");
-                                }
-                                myCell.setContent(readCellContent(cell));
-                                excelSheet.get(i)
-                                        .add(myCell);
-                            } else {
-                                excelSheet.get(i)
-                                        .add(new MyCell(""));
-                            }
-                        }
-                    }
+            } finally {
+                if (workbook != null) {
+                    workbook.close();
                 }
-                excel.put(sheetNumber, excelSheet);
             }
-        } finally {
-            if (workbook != null) {
-                workbook.close();
-            }
+            return excel;
         }
-        return excel;
-    }
 
-}
+    }
 

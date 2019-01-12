@@ -39,6 +39,7 @@
         <security:intercept-url pattern="/backlog" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/backlogForm" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/issuesform" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/monitorForm" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/forgotPassword" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/resetPassword" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/userForm" access="isAuthenticated()"></security:intercept-url>

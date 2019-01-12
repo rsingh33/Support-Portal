@@ -2,6 +2,9 @@
 
     $(document).ready(function () {
         $('#myTable').DataTable();
+        $('#myTableProd').DataTable();
+        $('#myTableSit').DataTable();
+        $('#myTableUat').DataTable();
         $("a.delete").click(function (e) {
             if (!confirm('Are you sure you want to delete?')) {
                 e.preventDefault();
@@ -129,7 +132,6 @@
           }
 
       }*/
-
 
 
 </script>

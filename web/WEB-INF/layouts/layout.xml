@@ -11,6 +11,7 @@
     </definition>
 
     <definition name="home" extends="support-portal.base">
+        <put-attribute name="includes" value="/WEB-INF/tiles/tableFunctionScript.jsp"></put-attribute>
         <put-attribute name="title" value="Support-Portal"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/home.jsp"></put-attribute>
 
@@ -71,7 +72,10 @@
         <put-attribute name="title" value="Handover Editor"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/handoverform.jsp"></put-attribute>
     </definition>
-
+    <definition name="monitorForm" extends="support-portal.base">
+        <put-attribute name="title" value="Monitor Form"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/monitorForm.jsp"></put-attribute>
+    </definition>
     <definition name="backlogForm" extends="support-portal.base">
         <put-attribute name="title" value="Backlog Editor"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/backlogForm.jsp"></put-attribute>

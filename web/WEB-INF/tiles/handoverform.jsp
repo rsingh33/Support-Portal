@@ -51,7 +51,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"
                                        pattern= "C167433-[0-9]{3,4}|C167433E-[0-9]{3,4}$"
-                                       title="Please Enter the Jira Number only like C167433-123 or Blank" name="tracking" id="jira"
+                                       title="Please Enter the Jira Number only. Example C167433-123" name="tracking" id="jira"
                                        placeholder="Jira number"
                                        value="<c:out value='${handover.tracking}' />"/>
                             </div>
