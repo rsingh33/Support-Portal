@@ -8,4 +8,8 @@
           class="com.citi.spring.web.views.HandoverExcelView">
     </bean>
 
+    <bean id="releaseExcelView"
+          class="com.citi.spring.web.views.ReleaseExcelView">
+    </bean>
+
 </beans>

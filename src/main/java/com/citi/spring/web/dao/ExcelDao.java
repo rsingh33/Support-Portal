@@ -21,6 +21,8 @@ import java.util.List;
 public class ExcelDao {
     private static Logger logger = Logger.getLogger(ExcelDao.class);
 
+
+
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -44,6 +46,7 @@ public class ExcelDao {
     }
 
     public boolean deleteExcelRow(int id) {
+        System.out.println("In Excel DAO delete");
         Query query = session().createQuery("delete from ExcelRow where id =:id");
         query.setLong("id", id);
         return query.executeUpdate() == 1;

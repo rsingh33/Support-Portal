@@ -2,15 +2,19 @@ package com.citi.spring.web.controllers;
 
 import com.citi.spring.web.dao.data.ExcelParser;
 import com.citi.spring.web.dao.data.MyCell;
+import com.citi.spring.web.dao.data.UATstatus;
 import com.citi.spring.web.dao.entity.ExcelRow;
 import com.citi.spring.web.service.ExcelService;
 import com.citi.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.io.*;
@@ -38,10 +42,87 @@ public class ReleaseController {
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
 
         List<ExcelRow> data1 = excelService.getExcel();
+        if(data1.size() > 0) {
+            int pass = 0;
+            int fail = 0;
+            int pending = 0;
+            int total = data1.size();
+
+            for (int i = 0; i < total; i++) {
+               if(data1.get(i).getStatus() != null) {
+                   if (data1.get(i).getStatus().equals("PASS")) {
+                       pass++;
+                   }
+                   if (data1.get(i).getStatus().equals("FAIL")) {
+                       fail++;
+                   }
+               }
+            }
+            pass = (pass * 100) / total;
+            fail = (fail * 100) / total;
+            pending = 100 - (pass + fail);
+
+            System.out.println(pass + " " + fail + " " + pending + " " + total);
+
+
+            model.addAttribute("pass", pass);
+            model.addAttribute("fail", fail);
+            model.addAttribute("pending", pending);
+            model.addAttribute("total", total);
+        }
         model.addAttribute("data", data1);
+//        System.out.println(pass + fail + total);
 
         return "releasemanager";
     }
+//Excel
+
+    @RequestMapping(value = "/downloadReleaseExcel", method = RequestMethod.GET)
+    public ModelAndView getExcel() {
+        List<ExcelRow> releaseList = excelService.getExcel();
+        return new ModelAndView("releaseExcelView", "releaseList", releaseList);
+    }
+//End
+//    Form
+
+    @RequestMapping("/releasemanagerform")
+    public String showform(Model m, Principal principal) {
+        if (principal != null)
+            m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+        m.addAttribute("excelRow", new ExcelRow());
+        m.addAttribute("uatStatus", UATstatus.values());
+        return "releasemanagerform";
+    }
+
+
+    @RequestMapping(value = "/releasemanagerform/{id}")
+    public String edit(@PathVariable int id, Model m, Principal principal) {
+        if (principal != null)
+            m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+        ExcelRow excelRow = excelService.getExcelRow(id);
+        m.addAttribute("uatStatus", UATstatus.values());
+        m.addAttribute("excelRow", excelRow);
+        return "releasemanagerform";
+    }
+
+    @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
+    public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Principal principal) {
+        excelRow.setLastModUser(principal.getName());
+        excelService.saveOrUpdate(excelRow);
+        return "redirect:/releasemanager";
+    }
+
+    @RequestMapping(value = "/deleteExcelRow/{id}", method = RequestMethod.GET)
+
+    public String delete(@PathVariable int id) {
+        System.out.println("In delete " + id);
+        excelService.delete(id);
+        return "redirect:/releasemanager";
+    }
+
+
+
+//    ***************
 
     @RequestMapping(method = RequestMethod.POST, value = "/uploadExcelFile")
     public String uploadFile(Model model, MultipartFile file, Principal principal) throws IOException {

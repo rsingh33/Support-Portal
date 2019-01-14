@@ -21,6 +21,10 @@ public class ExcelService {
         return excelDao.getExcelRow();
     }
 
+//    public List<ExcelRow> getCurrentRelease() {
+//        return excelDao.getExcelRow();
+//    }
+
 
     public ExcelRow getExcelRow(int id) {
         if (id == 0) return null;
@@ -36,6 +40,8 @@ public class ExcelService {
     }
 
     public void delete(int id) {
+
+        System.out.println("In excel service delete");
         excelDao.deleteExcelRow(id);
     }
 

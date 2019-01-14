@@ -65,9 +65,19 @@
 
                             </td>
                             <td id="action">
-                                <a href="${pageContext.request.contextPath}/handoverform/<c:out value='${handover.id}' />"><span
-                                        class="glyphicon glyphicon-pencil"></span></a>
-                                &nbsp;&nbsp;
+                                <%--<a href="${pageContext.request.contextPath}/handoverform/<c:out value='${handover.id}' />"  ><span--%>
+                                        <%--class="glyphicon glyphicon-pencil"></span></a>--%>
+                                <%--&nbsp;&nbsp;--%>
+
+                                <a href="#" onClick="MyWindow=window.open
+                                        ('${pageContext.request.contextPath}/handoverform/<c:out value='${handover.id}' />','MyWindow',width=50,height=100);
+                                        return false;"><span class="glyphicon glyphicon-book"></span></a>
+
+
+
+
+                                <%--onclick="if(!event.ctrlKey&&!window.opera){alert('Hold the Ctrl Key');return false;}else{return true;}" target="_blank"--%>
+
 
                                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
                                    href="${pageContext.request.contextPath}/delete/<c:out value='${handover.id}' />"><span

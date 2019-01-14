@@ -102,4 +102,9 @@
         <put-attribute name="content" value="/WEB-INF/tiles/userForm.jsp"></put-attribute>
     </definition>
 
+    <definition name="releasemanagerform" extends="support-portal.base">
+        <put-attribute name="title" value="User Editor"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/releasemanagerform.jsp"></put-attribute>
+    </definition>
+
     </tiles-definitions>
