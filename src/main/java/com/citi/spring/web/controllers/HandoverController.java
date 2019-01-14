@@ -65,7 +65,7 @@ public class HandoverController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("handover") Handover handover, Principal principal) {
-        handover.setUsername(principal.getName());
+        handover.setLastModUser(principal.getName());
         handoverService.saveOrUpdate(handover);
         return "redirect:/handover";
     }
@@ -88,7 +88,11 @@ public class HandoverController {
 
         return "redirect:/handover";
     }
+    @RequestMapping(value = "/history/{id}", method = RequestMethod.GET)
+    public String getHistory(@PathVariable int id, Model model) {
 
+        return "history";
+    }
 
     @RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
     public ModelAndView getExcel() {
@@ -111,10 +115,11 @@ public class HandoverController {
                 handover.getEmailSubject(),
                 handover.getTracking(),
                 handover.getComments(),
-                handover.getUsername(),
+                handover.getLastModUser(),
                 handover.getStatus(),
                 handover.getCurrentlyWith(),
                 handover.getEnvironment());
+
     }
 }
 

@@ -102,9 +102,22 @@
         <put-attribute name="content" value="/WEB-INF/tiles/userForm.jsp"></put-attribute>
     </definition>
 
+
     <definition name="releasemanagerform" extends="support-portal.base">
         <put-attribute name="title" value="User Editor"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/releasemanagerform.jsp"></put-attribute>
     </definition>
+    <definition name="newRelease" extends="support-portal.base">
+        <put-attribute name="title" value="New Release"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/newRelease.jsp"></put-attribute>
+    </definition>
 
-    </tiles-definitions>
+
+    <definition name="history" extends="support-portal.base">
+        <put-attribute name="title" value="History"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/history.jsp"></put-attribute>
+    </definition>
+
+
+</tiles-definitions>
+

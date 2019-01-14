@@ -4,6 +4,7 @@ package com.citi.spring.web.service;
 import com.citi.spring.web.dao.HandoverDao;
 import com.citi.spring.web.dao.entity.Handover;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class HandoverService {
     private HandoverDao handoverDao;
 
     @Autowired
-    public void setHandoverDao(HandoverDao handoverDao) {
+    public void setHandoverDao(@Qualifier("handoverDao") HandoverDao handoverDao) {
         this.handoverDao = handoverDao;
     }
 

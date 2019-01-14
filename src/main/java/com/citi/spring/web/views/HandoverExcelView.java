@@ -98,7 +98,7 @@ public class HandoverExcelView extends AbstractXlsView {
             handoverRow.createCell(3).setCellValue(handover.getStatus().toString());
             handoverRow.createCell(4).setCellValue(handover.getEnvironment().toString());
             handoverRow.createCell(5).setCellValue(handover.getCurrentlyWith().toString());
-            handoverRow.createCell(6).setCellValue("Time:   " + sdf.format(handover.getLastMod()) + "  ,    User:  " + handover.getUsername());
+            handoverRow.createCell(6).setCellValue("Time:   " + sdf.format(handover.getLastMod()) + "  ,    User:  " + handover.getLastModUser());
             handoverRow.createCell(7).setCellValue(handover.getComments());
 
         }

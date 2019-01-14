@@ -17,7 +17,7 @@
         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
             <property name="driverClassName" value="${jdbc.driver}"></property>
             <property name="url" value="${jdbc.url}"></property>
-            <property name="username" value="${jdbc.username}"></property>
+            <property name="lastModUser" value="${jdbc.lastModUser}"></property>
             <property name="password" value="${jdbc.password}"></property>
         </bean>
         <context:property-placeholder location="config/jdbc.properties"></context:property-placeholder>

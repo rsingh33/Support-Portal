@@ -9,8 +9,9 @@
 
     <div class="container">
         <sec:authorize access="hasRole('ROLE_admin')">
-        <a id="expo" class="btn btn-primary btn-s " href="${pageContext.request.contextPath}/monitorForm" role="button"><span
-                class="glyphicon glyphicon-plus"></span> Add New App</a>
+            <a id="expo" class="btn btn-primary btn-s " href="${pageContext.request.contextPath}/monitorForm"
+               role="button"><span
+                    class="glyphicon glyphicon-plus"></span> Add New App</a>
         </sec:authorize>
         <input id="expo" type="button" class=" btn btn-primary btn-s " value="Refresh"
                onclick="location.href='${pageContext.request.contextPath}/refresh'"/>
@@ -43,7 +44,7 @@
                             <c:set var="environment">
                                 <c:out value="${entity.env}"/>
                             </c:set>
-                            <c:if test="${environment == 'PROD' }">
+                            <c:if test="${environment == 'PROD' || environment == 'ALL' }">
                                 <tr>
 
 
@@ -109,50 +110,50 @@
                         <tbody id="sitTableBody">
 
                         <c:forEach var="entity" items="${urlEntities}">
-                        <c:set var="environment">
-                            <c:out value="${entity.env}"/>
-                        </c:set>
-                        <c:if test="${environment == 'SIT'}">
-                        <se>
+                            <c:set var="environment">
+                                <c:out value="${entity.env}"/>
+                            </c:set>
+                            <c:if test="${environment == 'SIT' || environment == 'SIT BA'}">
+                                <tr>
 
 
-                            <td><a href="<c:out value='${entity.link}'></c:out>"> <c:out
-                                    value="${entity.name}"></c:out></a>
-                            </td>
-                            <td><p><c:out value="${entity.env}"></c:out></p></td>
-                            <td><p><c:out value="${entity.hostname}"></c:out></p></td>
-                            <td>
-                                <c:set var="status">
-                                    <c:out value="${entity.status}"/>
-                                </c:set>
-                                <c:if test="${status}">
-                                <img src="${pageContext.request.contextPath}/static/images/green.png"
-                                     alt=${status} height=20
-                                     width=20></img>
-                                </c:if>
-                                <c:if test="${not status}">
-                                <img src="${pageContext.request.contextPath}/static/images/amber.png"
-                                     alt=${status}  height=20
-                                     width=20></img>
-                                </c:if>
+                                    <td><a href="<c:out value='${entity.link}'></c:out>"> <c:out
+                                            value="${entity.name}"></c:out></a>
+                                    </td>
+                                    <td><p><c:out value="${entity.env}"></c:out></p></td>
+                                    <td><p><c:out value="${entity.hostname}"></c:out></p></td>
+                                    <td>
+                                        <c:set var="status">
+                                            <c:out value="${entity.status}"/>
+                                        </c:set>
+                                        <c:if test="${status}">
+                                        <img src="${pageContext.request.contextPath}/static/images/green.png"
+                                             alt=${status} height=20
+                                             width=20></img>
+                                        </c:if>
+                                        <c:if test="${not status}">
+                                        <img src="${pageContext.request.contextPath}/static/images/amber.png"
+                                             alt=${status}  height=20
+                                             width=20></img>
+                                        </c:if>
 
-                            <td><p><c:out value="${entity.lastRefreshed}"></c:out></p></td>
-                            </td>
-                            <sec:authorize access="hasRole('ROLE_admin')">
-                            <td>
-                                <a href="${pageContext.request.contextPath}/monitorForm/<c:out value='${entity.id}' />"><span
-                                        class="glyphicon glyphicon-pencil"></span></a>
-                                &nbsp;&nbsp;
+                                    <td><p><c:out value="${entity.lastRefreshed}"></c:out></p></td>
+                                    </td>
+                                    <sec:authorize access="hasRole('ROLE_admin')">
+                                        <td>
+                                            <a href="${pageContext.request.contextPath}/monitorForm/<c:out value='${entity.id}' />"><span
+                                                    class="glyphicon glyphicon-pencil"></span></a>
+                                            &nbsp;&nbsp;
 
-                                <a class="delete" id="delete" type="submit" value="Delete" name="delete"
-                                   href="${pageContext.request.contextPath}/deleteMonitor/<c:out value='${entity.id}' />"><span
-                                        class="glyphicon glyphicon-trash"></span></a>
+                                            <a class="delete" id="delete" type="submit" value="Delete" name="delete"
+                                               href="${pageContext.request.contextPath}/deleteMonitor/<c:out value='${entity.id}' />"><span
+                                                    class="glyphicon glyphicon-trash"></span></a>
 
-                            </td>
-                            </sec:authorize>
-                            </tr>
+                                        </td>
+                                    </sec:authorize>
+                                </tr>
                             </c:if>
-                            </c:forEach>
+                        </c:forEach>
 
                         </tbody>
                     </table>

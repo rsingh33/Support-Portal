@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
@@ -28,6 +29,7 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 public class HandoverDaoTests {
 
     Timestamp current = new Timestamp(System.currentTimeMillis());
+    @Qualifier("handoverDao")
     @Autowired
     private HandoverDao handoverDao;
 
@@ -35,19 +37,19 @@ public class HandoverDaoTests {
     private DataSource dataSource;
     private Handover handover1 = new Handover(current, "Rahul", "Rahul email subject",
             "www.google.com", "Rahul in test comments",
-            "", Status.IN_PROGRESS, CurrentlyWith.AMC, Environment.PROD);
+            "", Status.HIGH, CurrentlyWith.AMC, Environment.PROD);
 
     private Handover handover2 = new Handover(current, "Gaurav", "Gaurav email subject",
             "www.google.com", "Gaurav in test comments",
-            "", Status.PENDING, CurrentlyWith.KYC, Environment.UAT);
+            "", Status.HIGH, CurrentlyWith.KYC, Environment.UAT);
 
     private Handover handover3 = new Handover(current, "Mithun", "Mithun email subject",
             "www.google.com", "Mithun in test comments",
-            "", Status.NEW, CurrentlyWith.PS, Environment.SIT);
+            "", Status.HIGH, CurrentlyWith.PS, Environment.SIT);
 
     private Handover handover4 = new Handover(current, "Abhi", "Abhi email subject",
             "www.google.com", "Abhi in test comments",
-            "", Status.COMPLETED, CurrentlyWith.DMC, Environment.PROD);
+            "", Status.HIGH, CurrentlyWith.DMC, Environment.PROD);
 
 
     @Before
@@ -71,7 +73,7 @@ public class HandoverDaoTests {
     @Test
     public  void testUpdate(){
           handover1.setReportedBy("Priyanka");
-          handover1.setStatus(Status.PENDING);
+          handover1.setStatus(Status.HIGH);
 
         handoverDao.saveOrUpdateHandover(handover1);
 
@@ -89,7 +91,7 @@ public class HandoverDaoTests {
         handoverDao.saveOrUpdateHandover(handover4);
 
         assertEquals("Size of the list should be 1 as there is only one row where reporter is Rahul",1,handoverDao.getHandover("Rahul").size());
-        assertEquals("status should be Completed",Status.COMPLETED,handoverDao.getHandover(handover4.getId()).getStatus());
+        assertEquals("status should be Completed",Status.HIGH,handoverDao.getHandover(handover4.getId()).getStatus());
 
         System.out.println(handoverDao.getHandover(handover1.getId()).getStatus());
         System.out.println(handoverDao.getHandover(handover1.getId()).getReportedBy());

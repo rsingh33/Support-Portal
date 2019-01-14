@@ -7,18 +7,17 @@ import com.citi.spring.web.dao.entity.ExcelRow;
 import com.citi.spring.web.service.ExcelService;
 import com.citi.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.io.*;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,21 +41,21 @@ public class ReleaseController {
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
 
         List<ExcelRow> data1 = excelService.getExcel();
-        if(data1.size() > 0) {
+        if (data1.size() > 0) {
             int pass = 0;
             int fail = 0;
             int pending = 0;
             int total = data1.size();
 
             for (int i = 0; i < total; i++) {
-               if(data1.get(i).getStatus() != null) {
-                   if (data1.get(i).getStatus().equals("PASS")) {
-                       pass++;
-                   }
-                   if (data1.get(i).getStatus().equals("FAIL")) {
-                       fail++;
-                   }
-               }
+                if (data1.get(i).getStatus() != null) {
+                    if (data1.get(i).getStatus().equals("PASS")) {
+                        pass++;
+                    }
+                    if (data1.get(i).getStatus().equals("FAIL")) {
+                        fail++;
+                    }
+                }
             }
             pass = (pass * 100) / total;
             fail = (fail * 100) / total;
@@ -94,6 +93,12 @@ public class ReleaseController {
         return "releasemanagerform";
     }
 
+    @RequestMapping("/newRelease")
+    public String newReleaseform(Model m, Principal principal) {
+        if (principal != null)
+            m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+        return "newRelease";
+    }
 
     @RequestMapping(value = "/releasemanagerform/{id}")
     public String edit(@PathVariable int id, Model m, Principal principal) {
@@ -121,14 +126,16 @@ public class ReleaseController {
     }
 
 
-
-//    ***************
-
     @RequestMapping(method = RequestMethod.POST, value = "/uploadExcelFile")
-    public String uploadFile(Model model, MultipartFile file, Principal principal) throws IOException {
+    public String uploadFile(Model model, MultipartFile file, Principal principal, @RequestParam("releaseName") String releaseName, @RequestParam("deadline")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline) throws IOException {
+
+        System.out.println("Release name is " + releaseName);
+        System.out.println("DeadLine is " + deadline);
         try {
             if (principal != null)
                 model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+
             InputStream in = file.getInputStream();
             File currDir = new File(".");
             String path = currDir.getAbsolutePath();

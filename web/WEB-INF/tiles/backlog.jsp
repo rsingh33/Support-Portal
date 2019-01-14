@@ -48,7 +48,7 @@
                             <td><p><c:out value="${backlog.environment}"></c:out></p></td>
                             <td><p><c:out value="${backlog.comments}"></c:out></p></td>
                             <td>
-                                <p><b>User: </b> <c:out value="${backlog.username}"></c:out>
+                                <p><b>User: </b> <c:out value="${backlog.lastModUser}"></c:out>
                                     <b> Time: </b> <c:out value=" ${backlog.lastMod}"></c:out></p>
 
                             </td>

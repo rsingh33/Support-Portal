@@ -61,7 +61,7 @@ public class ListToHtmlTransformer {
             email.append("</td>");
 
             email.append("<td>");
-            email.append("Time: " + sdf.format(row.getLastMod()) + ", User:" + row.getUsername());
+            email.append("Time: " + sdf.format(row.getLastMod()) + ", User:" + row.getLastModUser());
             email.append("</td>");
 
 

@@ -1,28 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:url value="/uploadExcelFile?${_csrf.parameterName}=${_csrf.token}" var="uploadFileUrl"/>
-
-<div> <h2>${releaseName}</h2></div>
-
-<div>
-
-    <form method="post" enctype="multipart/form-data" action="${uploadFileUrl}">
-
-        <div>
-            <table>
-                <tr>
-                    <td><input type="file" class="btn btn-xs" name="file" accept=".xls,.xlsx"/></td>
-                    <td><input type="submit" class="btn btn-primary btn-xs" value="Save"/></td>
-                </tr>
-
-            </table>
 
 
-        </div>
 
-    </form>
 
-</div>
 
 
 </br>
@@ -32,25 +13,12 @@
     Export
 </button>
 
+<a id="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/newRelease"
+   role="button"><span class="glyphicon glyphicon-plus"></span> Add New Release</a>
 
 
-<%--<button id="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/sendemail'"--%>
-        <%--value="Send Email Handover" class="btn btn-primary btn-xs"><span--%>
-        <%--class="glyphicon glyphicon-envelope"></span> Send Handover--%>
-<%--</button>--%>
-<%--&nbsp;--%>
-
-
-<%--<a id="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/handoverform"--%>
-   <%--role="button"><span class="glyphicon glyphicon-plus"></span> Add Issue</a>--%>
-
-
-</br>
-</br>
-<div class="container">
-    <h2>Release Progress</h2>
-
-    <div class="progress" >
+<div id="container">
+    <div class="progress" style="width:20%">
         <div class="progress-bar progress-bar-success" role="progressbar" style="width:${pass}%">
             ${pass}%
         </div>
@@ -89,7 +57,7 @@
                             ${excelRow.jiraKey}</a></p></td>
 
                     <td><p class="wrapText"><c:out value="${excelRow.summary}"></c:out></p></td>
-                    <%--myFunction()--%>
+                        <%--myFunction()--%>
                     <td><p><c:out value="${excelRow.engineer}"></c:out></p></td>
                     <td><p><c:out value="${excelRow.scriptLocation}"></c:out></p></td>
                     <td><p><c:out value="${excelRow.tester}"></c:out></p></td>
