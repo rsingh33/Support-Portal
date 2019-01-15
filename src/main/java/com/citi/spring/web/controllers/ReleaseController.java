@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,10 +18,13 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import java.io.*;
 import java.security.Principal;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @Controller
 public class ReleaseController {
@@ -37,10 +41,23 @@ public class ReleaseController {
 
     @RequestMapping(value = "/releasemanager")
     public String showReleaseManager(Model model, Principal principal) {
+
+
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
 
-        List<ExcelRow> data1 = excelService.getExcel();
+        List<String> releases = excelService.getReleases();
+        model.addAttribute("releases", releases);
+        model.addAttribute("excelRow", new ExcelRow());
+        return "releasemanager";
+    }
+
+    @RequestMapping(value = "/getRelease" , method = RequestMethod.POST )
+    public String showRelease(@ModelAttribute("excelRow") ExcelRow excelRow, Model model) {
+        System.out.println("Getting data for " + excelRow.getReleaseName());
+        List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+
+
         if (data1.size() > 0) {
             int pass = 0;
             int fail = 0;
@@ -57,32 +74,34 @@ public class ReleaseController {
                     }
                 }
             }
+
+            LocalDate deadline = data1.get(0).getDeadline().toLocalDate();
+            LocalDate today = LocalDate.now();
+            long daysToDeadline = DAYS.between(today, deadline);
             pass = (pass * 100) / total;
             fail = (fail * 100) / total;
             pending = 100 - (pass + fail);
 
-            System.out.println(pass + " " + fail + " " + pending + " " + total);
-
-
+            List<String> releases = excelService.getReleases();
+            model.addAttribute("releases", releases);
+            model.addAttribute("deadline",daysToDeadline);
             model.addAttribute("pass", pass);
             model.addAttribute("fail", fail);
             model.addAttribute("pending", pending);
             model.addAttribute("total", total);
         }
         model.addAttribute("data", data1);
-//        System.out.println(pass + fail + total);
 
         return "releasemanager";
+
     }
-//Excel
 
     @RequestMapping(value = "/downloadReleaseExcel", method = RequestMethod.GET)
-    public ModelAndView getExcel() {
-        List<ExcelRow> releaseList = excelService.getExcel();
+    public ModelAndView getExcel(@RequestParam("releaseName") String releaseName) {
+        List<ExcelRow> releaseList = excelService.getExcel(releaseName);
         return new ModelAndView("releaseExcelView", "releaseList", releaseList);
     }
-//End
-//    Form
+
 
     @RequestMapping("/releasemanagerform")
     public String showform(Model m, Principal principal) {
@@ -130,8 +149,7 @@ public class ReleaseController {
     public String uploadFile(Model model, MultipartFile file, Principal principal, @RequestParam("releaseName") String releaseName, @RequestParam("deadline")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline) throws IOException {
 
-        System.out.println("Release name is " + releaseName);
-        System.out.println("DeadLine is " + deadline);
+
         try {
             if (principal != null)
                 model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
@@ -167,8 +185,12 @@ public class ReleaseController {
                         excelRow.setTester(entry.getValue().get(4).getContent());
                         excelRow.setStatus(entry.getValue().get(5).getContent());
                         excelRow.setComments(entry.getValue().get(6).getContent());
+                        excelRow.setLastModUser(principal.getName());
+                        excelRow.setReleaseName(releaseName);
+                        excelRow.setDeadline(Date.valueOf(deadline));
 
                         excel.add(excelRow);
+
                     }
 
                     excelService.saveorUpdateAll(excel);

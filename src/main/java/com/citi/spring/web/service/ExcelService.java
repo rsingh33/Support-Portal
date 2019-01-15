@@ -4,6 +4,7 @@ package com.citi.spring.web.service;
 import com.citi.spring.web.dao.ExcelDao;
 import com.citi.spring.web.dao.entity.ExcelRow;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,12 +14,12 @@ public class ExcelService {
     private ExcelDao excelDao;
 
     @Autowired
-    public void setoffersdao(ExcelDao excelDao) {
+    public void setoffersdao(@Qualifier("excelDao") ExcelDao excelDao) {
         this.excelDao = excelDao;
     }
 
-    public List<ExcelRow> getExcel() {
-        return excelDao.getExcelRow();
+    public List<ExcelRow> getExcel(String releaseName) {
+        return excelDao.getExcelRow(releaseName);
     }
 
 //    public List<ExcelRow> getCurrentRelease() {
@@ -53,6 +54,10 @@ public class ExcelService {
             System.out.println("Error starts here !!1");
             e.printStackTrace();
         }
+    }
+
+    public List<String> getReleases() {
+        return excelDao.getReleases();
     }
 }
 

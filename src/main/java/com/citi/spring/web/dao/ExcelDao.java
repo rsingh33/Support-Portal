@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,7 +23,6 @@ public class ExcelDao {
     private static Logger logger = Logger.getLogger(ExcelDao.class);
 
 
-
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -31,9 +31,10 @@ public class ExcelDao {
     }
 
 
-    public List<ExcelRow> getExcelRow() {
+    public List<ExcelRow> getExcelRow(String releaseName) {
 
-        Query query = session().createQuery("from ExcelRow");
+        Query query = session().createQuery("from ExcelRow where releaseName = :releaseName");
+        query.setParameter("releaseName", releaseName);
         return query.list();
     }
 
@@ -62,25 +63,23 @@ public class ExcelDao {
     }
 
     public void saveorUpdateAll(List<ExcelRow> list) {
-        System.out.println("Entering save and update");
+
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {
 
 
             if (session.getTransaction() != null && session.getTransaction().isActive()) {
-                System.out.println("checking if ");
+
                 tx = session.getTransaction();
-                System.out.println(tx.getLocalStatus());
-                System.out.println("got transaction ");
+
             } else {
-                System.out.println("checking else");
                 tx = session.beginTransaction();
-                System.out.println("Was committed " + tx.wasCommitted() + " " + tx.wasRolledBack());
+
             }
 
             int count = 0;
-            deleteEverything(session);
+
             for (Iterator itrList = list.listIterator(); itrList.hasNext(); ) {
                 ExcelRow record = (ExcelRow) itrList.next();
                 session.saveOrUpdate(record);
@@ -89,26 +88,31 @@ public class ExcelDao {
                     session().clear();
                 }
             }
-            System.out.println(" about to commit Transaction");
+
             if (!tx.wasCommitted()) {
                 tx.commit();
             }
-            System.out.println("Transaction is commited");
 
 
         } catch (Exception e) {
-            System.out.println("Session Flush mode is  " + session().getFlushMode());
+
             System.out.println(e.getCause());
             if (tx != null) {
                 tx.rollback();
             }
 
         } finally {
-            System.out.println("closing session");
+
             session.close();
-            System.out.println("session closed");
+
         }
 
     }
 
+    public List<String> getReleases() {
+
+        Query query = session().createQuery("Select distinct releaseName from ExcelRow");
+        return query.list();
+
+}
 }

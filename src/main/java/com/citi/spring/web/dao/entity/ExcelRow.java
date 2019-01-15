@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -23,8 +25,10 @@ public class ExcelRow {
     private String status;
     private String tester;
     private String lastModUser;
+    private String releaseName;
+    private Date deadline;
 
-    public ExcelRow(String jiraKey, String summary, String scriptLocation, String engineer, String comments, String status, String tester, String lastModUser) {
+    public ExcelRow(String jiraKey, String summary, String scriptLocation, String engineer, String comments, String status, String tester, String lastModUser, String releaseName, Date deadline) {
         this.jiraKey = jiraKey;
         this.summary = summary;
         this.scriptLocation = scriptLocation;
@@ -33,34 +37,19 @@ public class ExcelRow {
         this.status = status;
         this.tester = tester;
         this.lastModUser = lastModUser;
+        this.releaseName = releaseName;
+        this.deadline = deadline;
     }
 
     public ExcelRow() {
 
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ExcelRow)) return false;
-        ExcelRow excelRow = (ExcelRow) o;
-        return getId() == excelRow.getId() &&
-                getJiraKey().equals(excelRow.getJiraKey()) &&
-                getSummary().equals(excelRow.getSummary()) &&
-                getScriptLocation().equals(excelRow.getScriptLocation()) &&
-                getEngineer().equals(excelRow.getEngineer()) &&
-                getComments().equals(excelRow.getComments()) &&
-                getStatus().equals(excelRow.getStatus()) &&
-                getTester().equals(excelRow.getTester()) &&
-                getLastModUser().equals(excelRow.getLastModUser());
-    }
-
     @Override
     public String toString() {
         return "ExcelRow{" +
                 "id=" + id +
-                ", jiraKey='" +  + '\'' +
+                ", jiraKey='" + jiraKey + '\'' +
                 ", summary='" + summary + '\'' +
                 ", scriptLocation='" + scriptLocation + '\'' +
                 ", engineer='" + engineer + '\'' +
@@ -68,14 +57,49 @@ public class ExcelRow {
                 ", status='" + status + '\'' +
                 ", tester='" + tester + '\'' +
                 ", lastModUser='" + lastModUser + '\'' +
+                ", releaseName='" + releaseName + '\'' +
+                ", deadline='" + deadline + '\'' +
                 '}';
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getJiraKey(), getSummary(), getScriptLocation(), getEngineer(), getComments(), getStatus(), getTester(), getLastModUser());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ExcelRow)) return false;
+        ExcelRow excelRow = (ExcelRow) o;
+        return getId() == excelRow.getId() &&
+                Objects.equals(getJiraKey(), excelRow.getJiraKey()) &&
+                Objects.equals(getSummary(), excelRow.getSummary()) &&
+                Objects.equals(getScriptLocation(), excelRow.getScriptLocation()) &&
+                Objects.equals(getEngineer(), excelRow.getEngineer()) &&
+                Objects.equals(getComments(), excelRow.getComments()) &&
+                Objects.equals(getStatus(), excelRow.getStatus()) &&
+                Objects.equals(getTester(), excelRow.getTester()) &&
+                Objects.equals(getLastModUser(), excelRow.getLastModUser()) &&
+                Objects.equals(getReleaseName(), excelRow.getReleaseName()) &&
+                Objects.equals(getDeadline(), excelRow.getDeadline());
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getJiraKey(), getSummary(), getScriptLocation(), getEngineer(), getComments(), getStatus(), getTester(), getLastModUser(), getReleaseName(), getDeadline());
+    }
+
+    public String getReleaseName() {
+        return releaseName;
+    }
+
+    public void setReleaseName(String releaseName) {
+        this.releaseName = releaseName;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
 
     public int getId() {
         return id;
