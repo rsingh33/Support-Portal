@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="container1" class="container-fluid">
+<div id="container1" class="container">
 
     <div id="container2" class="container-fluid">
         <div class="row">
