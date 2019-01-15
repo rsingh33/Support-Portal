@@ -443,6 +443,9 @@ td {
     margin-left:10px;
 }
 
+#excelForm{
+    float: right;
+}
 #navBar {
     background-color: blue;
 }

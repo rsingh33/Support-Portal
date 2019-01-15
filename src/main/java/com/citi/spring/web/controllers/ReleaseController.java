@@ -53,8 +53,11 @@ public class ReleaseController {
     }
 
     @RequestMapping(value = "/getRelease" , method = RequestMethod.POST )
-    public String showRelease(@ModelAttribute("excelRow") ExcelRow excelRow, Model model) {
-        System.out.println("Getting data for " + excelRow.getReleaseName());
+    public String showRelease(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
+
+        if (principal != null)
+            model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+
         List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
 
 
@@ -96,9 +99,9 @@ public class ReleaseController {
 
     }
 
-    @RequestMapping(value = "/downloadReleaseExcel", method = RequestMethod.GET)
-    public ModelAndView getExcel(@RequestParam("releaseName") String releaseName) {
-        List<ExcelRow> releaseList = excelService.getExcel(releaseName);
+    @RequestMapping(value = "/downloadReleaseExcel", method = RequestMethod.POST)
+    public ModelAndView getExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
+        List<ExcelRow> releaseList = excelService.getExcel(excelRow.getReleaseName());
         return new ModelAndView("releaseExcelView", "releaseList", releaseList);
     }
 

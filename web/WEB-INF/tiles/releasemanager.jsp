@@ -1,3 +1,4 @@
+<%--suppress ALL --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
@@ -12,21 +13,39 @@
            modelAttribute="excelRow">
 
     <form:select path="releaseName" class="btn btn-default dropdown-toggle btn-xs" name="releaseName"
-                type="button"
+                 type="button"
                  id="dropdownMenu1"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <option disabled selected> -- Select Release Number --</option>
+        <option disabled selected>Release Number</option>
         <form:options items="${releases}"/>
     </form:select>
 
 
-    <button type="submit" class="btn btn-primary btn-xs" value="Save">show</button>
+    <button type="submit" class="btn btn-primary btn-xs" value="Save">Show</button>
 
 </form:form>
 
 
 <c:if test="${not empty data}">
 
+    <form:form id="excelForm" method="post" action="${pageContext.request.contextPath}/downloadReleaseExcel"
+               class="form-horizontal"
+               modelAttribute="excelRow">
+
+        <form:select path="releaseName" class="btn btn-default dropdown-toggle btn-xs" name="releaseName"
+                     type="button"
+                     id="dropdownMenu1"
+                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <option disabled selected>Release Number</option>
+            <form:options items="${releases}"/>
+        </form:select>
+
+
+        <button id="expo" type="submit" value="Export" class="btn btn-primary btn-xs"><span
+                class="glyphicon glyphicon-download-alt"></span>Export
+        </button>
+
+    </form:form>
 
     <div id="container">
         <table width="100%">
@@ -52,12 +71,7 @@
                     </div>
                 </td>
                 <td width="15%">
-                    <button id="expo" type="button"
-                            onclick="location.href='${pageContext.request.contextPath}/downloadReleaseExcel'"
-                            value="Export" class="btn btn-primary btn-xs"><span
-                            class="glyphicon glyphicon-download-alt"></span>
-                        Export
-                    </button>
+
                 </td>
             </tr>
         </table>
