@@ -12,6 +12,9 @@
         <input type="hidden" name="id" value="<c:out value='${excelRow.id}' />"/>
         <input type="hidden" name="jiraKey" value="<c:out value='${excelRow.jiraKey}' />"/>
         <input type="hidden" name="scriptLocation" value="<c:out value='${excelRow.scriptLocation}' />"/>
+        <input type="hidden" name="deadline" value="<c:out value='${excelRow.deadline}' />"/>
+        <input type="hidden" name="releaseName" value="<c:out value='${excelRow.releaseName}' />"/>
+
     </c:if>
 
     <div class="container" id="Container3">
