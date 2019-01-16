@@ -11,9 +11,6 @@
     <c:if test="${excelRow != null}">
         <input type="hidden" name="id" value="<c:out value='${excelRow.id}' />"/>
         <input type="hidden" name="jiraKey" value="<c:out value='${excelRow.jiraKey}' />"/>
-        <input type="hidden" name="releaseName" value="<c:out value='${excelRow.releaseName}' />"/>
-        <input type="hidden" name="deadline" value="<c:out value='${excelRow.deadline}' />"/>
-        <input type="hidden" name="lastModUser" value="<c:out value='${excelRow.lastModUser}' />"/>
         <input type="hidden" name="scriptLocation" value="<c:out value='${excelRow.scriptLocation}' />"/>
     </c:if>
 
@@ -88,6 +85,8 @@
                                     <%--<option label=" "></option>--%>
                                     <form:options items="${uatStatus}"/>
                                 </form:select>
+
+
 
 
                             </div>

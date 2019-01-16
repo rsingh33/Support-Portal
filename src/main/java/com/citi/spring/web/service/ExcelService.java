@@ -59,6 +59,11 @@ public class ExcelService {
     public List<String> getReleases() {
         return excelDao.getReleases();
     }
+
+    public boolean deleteExcel(String releaseName) {
+
+        return excelDao.deleteExcel(releaseName);
+    }
 }
 
 

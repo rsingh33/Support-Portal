@@ -4,7 +4,7 @@
 
 <c:url value="/uploadExcelFile?${_csrf.parameterName}=${_csrf.token}" var="uploadFileUrl"/>
 
-<form:form method="post" enctype="multipart/form-data" action="${uploadFileUrl}">
+<form:form method="post" enctype="multipart/form-data" action="${uploadFileUrl}" class="form-horizontal">
     <div class="container " id="Container3">
 
         <div id="handoverPanel" class="panel panel-primary ">
@@ -19,10 +19,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="upload" class="col-sm-2 control-label">Upload File:</label>
+                        <label for="releaseName" class="col-sm-2 control-label">Release Name:</label>
                         <div class="col-sm-10">
-                            <input id="upload" required type="file" class="btn btn-xs" name="file" accept=".xls,.xlsx"/>
-
+                            <input type="text" id="releaseName" name="releaseName" class="date-picker"
+                                   placeholder="Release Name"/>
                         </div>
                     </div>
 
@@ -36,12 +36,16 @@
 
 
                     <div class="form-group">
-                        <label for="releaseName" class="col-sm-2 control-label">Release Name:</label>
+                        <label for="upload" class="col-sm-2 control-label">Upload File:</label>
                         <div class="col-sm-10">
-                            <input type="text" id="releaseName" name="releaseName" class="date-picker"
-                                   placeholder="Release Name"/>
+                            <input id="upload" required type="file" name="file" accept=".xls,.xlsx"/>
+
                         </div>
                     </div>
+
+
+
+
 
                     <div class="col-sm-offset-2 col-sm-8">
                         <button type="submit" class="btn btn-primary" value="Save">Save</button>

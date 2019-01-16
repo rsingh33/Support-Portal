@@ -9,8 +9,9 @@
 <a id="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/newRelease" role="button"><span
         class="glyphicon glyphicon-plus"></span> Add New Release</a>
 
-<form:form method="post" action="${pageContext.request.contextPath}/getRelease" class="form-horizontal"
-           modelAttribute="excelRow">
+<%--@elvariable id="excelRow" type="com.citi.spring.web.dao.entity.ExcelRow"--%>
+
+<form:form action="releaseHandler" method="post" modelAttribute="excelRow">
 
     <form:select path="releaseName" class="btn btn-default dropdown-toggle btn-xs" name="releaseName"
                  type="button"
@@ -21,64 +22,52 @@
     </form:select>
 
 
-    <button type="submit" class="btn btn-primary btn-xs" value="Save">Show</button>
+    <button type="submit" name="getRelease" class="btn btn-primary btn-xs">Show</button>
+
+    <button type="submit" name="downloadReleaseExcel" class="btn btn-primary btn-xs"> <span
+            class="glyphicon glyphicon-download-alt"></span>Export
+    </button>
+    <sec:authorize access="hasRole('ROLE_admin')">
+        <button type="submit" name="removeRelease" class="btn btn-primary btn-xs">Delete</button>
+    </sec:authorize>
 
 </form:form>
 
 
 <c:if test="${not empty data}">
 
-    <form:form id="excelForm" method="post" action="${pageContext.request.contextPath}/downloadReleaseExcel"
-               class="form-horizontal"
-               modelAttribute="excelRow">
 
-        <form:select path="releaseName" class="btn btn-default dropdown-toggle btn-xs" name="releaseName"
-                     type="button"
-                     id="dropdownMenu1"
-                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <option disabled selected>Release Number</option>
-            <form:options items="${releases}"/>
-        </form:select>
+    <div class="container-fluid">
+            <%--<div class="col-sm-offset-1 col-sm-9">--%>
+        <%--<div>--%>
+            <%--Release Progress: &nbsp;--%>
+        <%--</div>--%>
+        <div id="progressbar" class="col-lg-3">
+            <div class="progress">
+
+                <div class="progress-bar progress-bar-success" role="progressbar" style="width:${pass}%">
+                        ${pass}%
+                </div>
+                <div class="progress-bar progress-bar-warning" role="progressbar" style="width:${pending}%">
+                        ${pending}%
+                </div>
+                <div class="progress-bar progress-bar-danger" role="progressbar" style="width:${fail}%">
+                        ${fail}%
+                </div>
+            </div>
+        </div>
 
 
-        <button id="expo" type="submit" value="Export" class="btn btn-primary btn-xs"><span
-                class="glyphicon glyphicon-download-alt"></span>Export
-        </button>
+        <div id="deadLine" class="col-sm-offset-2 col-lg-1">
 
-    </form:form>
+            <p>Deadline: &nbsp; ${deadline}</p>
 
-    <div id="container">
-        <table width="100%">
-            <tr width="100%">
-                <td width="50%">
-                    <div class="progress" style="width:100%">
-                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:${pass}%">
-                                ${pass}%
-                        </div>
-                        <div class="progress-bar progress-bar-warning" role="progressbar" style="width:${pending}%">
-                                ${pending}%
-                        </div>
-                        <div class="progress-bar progress-bar-danger" role="progressbar" style="width:${fail}%">
-                                ${fail}%
-                        </div>
-                    </div>
-                </td>
-                <td width="35%">
-                    <div>
-
-                        Days To Signoff Deadline: ${deadline}
-
-                    </div>
-                </td>
-                <td width="15%">
-
-                </td>
-            </tr>
-        </table>
+        </div>
     </div>
 
-
-    <div class="table-responsive table-wrapper-scroll-y">
+    </br>
+    <div class="container-fluid">
+    <div  class="table-responsive table-wrapper-scroll-y">
         <table id="myTable" class="table table-striped  table-hover ">
             <thead>
             <tr id="tableHead">
@@ -111,8 +100,14 @@
                     <td><p><c:out value="${excelRow.comments}"></c:out></p></td>
                     <td><p><c:out value="${excelRow.releaseName}"></c:out></p></td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/releasemanagerform/<c:out value='${excelRow.id}' />"><span
-                                class="glyphicon glyphicon-pencil"></span></a>
+                            <%--<a href="${pageContext.request.contextPath}/releasemanagerform/<c:out value='${excelRow.id}' />"><span--%>
+                            <%--class="glyphicon glyphicon-pencil"></span></a>--%>
+
+
+                        <a href="#" onClick="MyWindow=window.open
+                                ('${pageContext.request.contextPath}/releasemanagerform/<c:out
+                                value='${excelRow.id}'/>','MyWindow',width=600,height=300);
+                                return false;"><span class="glyphicon glyphicon-pencil"></span></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
 
                         <a class="delete" id="delete" type="submit" value="Delete" name="delete"
@@ -124,6 +119,7 @@
 
             </tbody>
         </table>
+    </div>
     </div>
 
 </c:if>

@@ -12,10 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.security.Principal;
 import java.sql.Date;
@@ -38,23 +40,11 @@ public class ReleaseController {
     private ExcelParser excelParser;
     @Autowired
     private UsersService usersService;
+// Start
 
-    @RequestMapping(value = "/releasemanager")
-    public String showReleaseManager(Model model, Principal principal) {
-
-
-        if (principal != null)
-            model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-
-        List<String> releases = excelService.getReleases();
-        model.addAttribute("releases", releases);
-        model.addAttribute("excelRow", new ExcelRow());
-        return "releasemanager";
-    }
-
-    @RequestMapping(value = "/getRelease" , method = RequestMethod.POST )
-    public String showRelease(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
-
+    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = { "getRelease" })
+    public String showReleaseTable(@ModelAttribute("excelRow") ExcelRow excelRow, Model model,Principal principal) {
+        System.out.println("Showing Release table");
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
 
@@ -95,15 +85,38 @@ public class ReleaseController {
         }
         model.addAttribute("data", data1);
 
-        return "releasemanager";
 
+        return "releasemanager";
     }
 
-    @RequestMapping(value = "/downloadReleaseExcel", method = RequestMethod.POST)
-    public ModelAndView getExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
+    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = { "downloadReleaseExcel" })
+    public ModelAndView getReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
         List<ExcelRow> releaseList = excelService.getExcel(excelRow.getReleaseName());
         return new ModelAndView("releaseExcelView", "releaseList", releaseList);
     }
+
+    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = { "removeRelease" })
+    public String deleteReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
+        excelService.deleteExcel(excelRow.getReleaseName());
+        return "redirect:/releasemanager";
+    }
+
+//    End
+    @RequestMapping(value = "/releasemanager")
+    public String showReleaseManager(Model model, Principal principal) {
+
+
+        if (principal != null)
+            model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+        ExcelRow excelRow = new ExcelRow();
+        List<String> releases = excelService.getReleases();
+        model.addAttribute("releases", releases);
+        model.addAttribute("excelRow", excelRow );
+        System.out.println(excelRow.toString() + " " +  releases.size());
+        return "releasemanager";
+    }
+
+
 
 
     @RequestMapping("/releasemanagerform")
@@ -129,14 +142,19 @@ public class ReleaseController {
         ExcelRow excelRow = excelService.getExcelRow(id);
         m.addAttribute("uatStatus", UATstatus.values());
         m.addAttribute("excelRow", excelRow);
+//        m.addAttribute("toEdit", true);
+//        m.addAttribute("edited", false);
         return "releasemanagerform";
     }
 
     @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
-    public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Principal principal) {
+    public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Model m, Principal principal) {
         excelRow.setLastModUser(principal.getName());
         excelService.saveOrUpdate(excelRow);
-        return "redirect:/releasemanager";
+        m.addAttribute("edited", true);
+        m.addAttribute("message","Successfully Saved");
+
+        return "releasemanagerform";
     }
 
     @RequestMapping(value = "/deleteExcelRow/{id}", method = RequestMethod.GET)
