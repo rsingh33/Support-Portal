@@ -9,11 +9,11 @@
 
     <div class="container">
         <sec:authorize access="hasRole('ROLE_admin')">
-            <a id="expo" class="btn btn-primary btn-s " href="${pageContext.request.contextPath}/monitorForm"
+            <a id="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/monitorForm"
                role="button"><span
                     class="glyphicon glyphicon-plus"></span> Add New App</a>
         </sec:authorize>
-        <input id="expo" type="button" class=" btn btn-primary btn-s " value="Refresh"
+        <input id="expo" type="button" class=" btn btn-primary btn-xs " value="Refresh"
                onclick="location.href='${pageContext.request.contextPath}/refresh'"/>
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#prod">PROD</a></li>
@@ -25,7 +25,7 @@
         <div class="tab-content">
             <div id="prod" class="tab-pane fade in active">
                 <div class="table-responsive table-wrapper-scroll-y">
-                    <table id="myTableProd" class="table table-hover prod">
+                    <table id="myTableProd" class="table table-striped table-hover compact nowrap table-condensed prod">
                         <thead>
                         <tr id="prodTableHead">
                             <th>Apllication</th>
@@ -94,7 +94,7 @@
             </div>
             <div id="sit" class="tab-pane fade">
                 <div class="table-responsive table-wrapper-scroll-y">
-                    <table id="myTableSit" class="table table-hover ">
+                    <table id="myTableSit" class="table table-striped table-hover compact nowrap table-condensed ">
                         <thead>
                         <tr id="sitTableHead">
                             <th>Apllication</th>
@@ -161,7 +161,7 @@
             </div>
             <div id="uat" class="tab-pane fade">
                 <div class="table-responsive table-wrapper-scroll-y">
-                    <table id="myTableUat" class="table table-hover ">
+                    <table id="myTableUat" class="table table-striped table-hover compact nowrap table-condensed ">
                         <thead>
                         <tr id="uatTableHead">
                             <th>Apllication</th>

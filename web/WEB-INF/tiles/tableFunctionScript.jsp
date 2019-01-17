@@ -1,10 +1,11 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $('#myTable').DataTable();
-        $('#myTableProd').DataTable();
-        $('#myTableSit').DataTable();
-        $('#myTableUat').DataTable();
+        $('#myTable').DataTable({responsive: true});
+        $('#myTableProd').DataTable({responsive: true});
+        $('#myTableSit').DataTable({responsive: true});
+        $('#myTableUat').DataTable({responsive: true});
+
         $("a.delete").click(function (e) {
             if (!confirm('Are you sure you want to delete?')) {
                 e.preventDefault();

@@ -101,7 +101,7 @@ public class ReleaseController {
         return "redirect:/releasemanager";
     }
 
-//    End
+
     @RequestMapping(value = "/releasemanager")
     public String showReleaseManager(Model model, Principal principal) {
 
@@ -147,7 +147,7 @@ public class ReleaseController {
         return "releasemanagerform";
     }
 
-    @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Model m, Principal principal) {
         excelRow.setLastModUser(principal.getName());
         excelService.saveOrUpdate(excelRow);
@@ -155,7 +155,58 @@ public class ReleaseController {
         m.addAttribute("message","Successfully Saved");
 
         return "releasemanagerform";
+    }*/
+
+    @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
+    public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Model m, Principal principal) {
+        excelRow.setLastModUser(principal.getName());
+        excelService.saveOrUpdate(excelRow);
+        System.out.println(excelRow.getReleaseName());
+
+        List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+
+        m.addAttribute("edited", true);
+        m.addAttribute("message", "Successfully Saved");
+
+
+        if (data1.size() > 0) {
+            int pass = 0;
+            int fail = 0;
+            int pending = 0;
+            int total = data1.size();
+
+            for (int i = 0; i < total; i++) {
+                if (data1.get(i).getStatus() != null) {
+                    if (data1.get(i).getStatus().equals("PASS")) {
+                        pass++;
+                    }
+                    if (data1.get(i).getStatus().equals("FAIL")) {
+                        fail++;
+                    }
+                }
+            }
+
+            LocalDate deadline = data1.get(0).getDeadline().toLocalDate();
+            LocalDate today = LocalDate.now();
+            long daysToDeadline = DAYS.between(today, deadline);
+            pass = (pass * 100) / total;
+            fail = (fail * 100) / total;
+            pending = 100 - (pass + fail);
+
+            List<String> releases = excelService.getReleases();
+            m.addAttribute("releases", releases);
+            m.addAttribute("deadline", daysToDeadline);
+            m.addAttribute("pass", pass);
+            m.addAttribute("fail", fail);
+            m.addAttribute("pending", pending);
+            m.addAttribute("total", total);
+        }
+        m.addAttribute("data", data1);
+
+
+        return "releasemanager";
     }
+
 
     @RequestMapping(value = "/deleteExcelRow/{id}", method = RequestMethod.GET)
 

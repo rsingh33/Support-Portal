@@ -27,9 +27,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="deadline" class="col-sm-2 control-label">Checkout Deadline:</label>
-                        <div class="col-sm-10">
-                            <input type="date" id="deadline" name="deadline" class="date-picker"
+                        <label for="deadlineDrop" class="col-sm-2 control-label">Checkout Deadline:</label>
+                        <div class="col-sm-8">
+                            <input type="date" id="deadlineDrop" name="deadline" class="date-picker"
                                    value="Checkout Deadline: "/>
                         </div>
                     </div>

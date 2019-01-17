@@ -19,14 +19,14 @@
 
     <div class="container" id="Container3">
 
-    <div id="issuePanel" class="panel panel-primary">
+    <div id="handoverPanel" class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Issue Form</h3>
         </div>
 
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-8 col-sm-7">
+                <div class="col-lg-8 col-sm-8">
                     <p>* Please fill the form below</p>
 
 

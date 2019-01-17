@@ -299,20 +299,9 @@ body {
 }
 
 th {
-    font-size: medium;
+    font-size: small;
 }
 
-table {
-    padding: 0%;
-}
-
-
-
-td {
-    padding: 0%;
-    height: fit-content;
-    width: fit-content;
-}
 
 .table-wrapper-scroll-y {
     display: block;
@@ -484,4 +473,6 @@ td {
     float: left;
 }
 
-/*Release manager end*/
+
+
+table#myTable tableBody td {height: 5px ; overflow: hidden; word-break: break-word;}

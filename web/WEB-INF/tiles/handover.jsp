@@ -29,7 +29,7 @@
         <div class="col-lg-12 col-sm-12">
 
             <div class="table-responsive">
-                <table id="myTable" class="table  ">
+                <table id="myTable" class="table table-striped table-hover compact nowrap table-condensed">
                     <thead>
 
                     <tr id="tableHead">

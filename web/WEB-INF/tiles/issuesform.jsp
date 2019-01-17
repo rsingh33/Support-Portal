@@ -14,21 +14,21 @@
 
     <div class="container" id="Container3">
 
-    <div id="issuePanel" class="panel panel-primary">
+    <div id="handoverPanel" class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Issue Form</h3>
         </div>
 
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-8 col-sm-7">
+                <div class="col-lg-12 col-sm-12">
                     <p>* Please fill the form below</p>
 
 
                     <!-- issueDescription -->
                     <div class="form-group">
-                        <label for="issueDescription" class="col-sm-4 control-label">Description</label>
-                        <div class="col-sm-8">
+                        <label for="issueDescription" class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
                             <input type="text" name="issueDescription" id="issueDescription" class="form-control"
                                    placeholder="Issue Description"
                                    value="<c:out value='${issue.issueDescription}' />">
@@ -36,8 +36,8 @@
                     </div>
                     <!-- workaround -->
                     <div class="form-group">
-                        <label for="workaround" class="col-sm-4 control-label">Workaround</label>
-                        <div class="col-sm-8">
+                        <label for="workaround" class="col-sm-2 control-label">Workaround</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" id="workaround" placeholder="Workaround"
                                    name="workaround"
                                    value="<c:out value='${issue.workaround}' />"/>
@@ -46,8 +46,8 @@
 
                     <!-- JIRA -->
                     <div class="form-group">
-                        <label for="jira" class="col-sm-4 control-label">JIRA</label>
-                        <div class="col-sm-8">
+                        <label for="jira" class="col-sm-2 control-label">JIRA</label>
+                        <div class="col-sm-10">
                             <input type="text" pattern= "C167433-[0-9]{3,4}|C167433E-[0-9]{3,4}$"
                                    title="Please Enter the Jira Number only. Example C167433-123" class="form-control" id="jira" placeholder="JIRA number"
                                    name="jira"
@@ -57,8 +57,8 @@
 
                     <!-- solution -->
                     <div class="form-group">
-                        <label for="solution" class="col-sm-4 control-label">Solution</label>
-                        <div class="col-sm-8">
+                        <label for="solution" class="col-sm-2 control-label">Solution</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" id="solution" placeholder="solution"
                                    name="solution"
                                    value="<c:out value='${issue.solution}' />"/>
@@ -67,8 +67,8 @@
 
                     <%--Source--%>
                     <div class="form-group">
-                        <label for="dropdownMenu1" class="col-sm-4 control-label">Source</label>
-                        <div class="col-sm-8">
+                        <label for="dropdownMenu1" class="col-sm-2 control-label">Source</label>
+                        <div class="col-sm-10">
                             <div class="dropdown">
                                     <%--  <button  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >--%>
@@ -88,7 +88,7 @@
                     </div>
 
 
-                    <div class="col-sm-offset-4 col-sm-10">
+                    <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary" value="Save">Save</button>
                         <button align="center"
                                 class="btn btn-primary"
