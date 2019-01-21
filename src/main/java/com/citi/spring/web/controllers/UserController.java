@@ -25,8 +25,8 @@ public class UserController {
     private UsersService usersService;
 
     @Autowired
-    public void setOffersService(UsersService offersService) {
-        this.usersService = offersService;
+    public void setOffersService(UsersService usersService) {
+        this.usersService = usersService;
     }
 
 

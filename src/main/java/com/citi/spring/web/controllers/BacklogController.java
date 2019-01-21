@@ -74,7 +74,7 @@ public class BacklogController {
         Handover handover = backlogToHandover(backlog);
         backlogService.delete(id);
         handoverService.saveOrUpdate(handover);
-        return "redirect:/handover ";
+        return "redirect:/backlog ";
     }
 
     private Handover backlogToHandover(Backlog backlog) {

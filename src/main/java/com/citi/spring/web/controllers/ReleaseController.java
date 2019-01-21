@@ -4,20 +4,18 @@ import com.citi.spring.web.dao.data.ExcelParser;
 import com.citi.spring.web.dao.data.MyCell;
 import com.citi.spring.web.dao.data.UATstatus;
 import com.citi.spring.web.dao.entity.ExcelRow;
+import com.citi.spring.web.dao.entity.User;
 import com.citi.spring.web.service.ExcelService;
 import com.citi.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.security.Principal;
 import java.sql.Date;
@@ -42,8 +40,8 @@ public class ReleaseController {
     private UsersService usersService;
 // Start
 
-    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = { "getRelease" })
-    public String showReleaseTable(@ModelAttribute("excelRow") ExcelRow excelRow, Model model,Principal principal) {
+    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"getRelease"})
+    public String showReleaseTable(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
         System.out.println("Showing Release table");
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
@@ -77,7 +75,7 @@ public class ReleaseController {
 
             List<String> releases = excelService.getReleases();
             model.addAttribute("releases", releases);
-            model.addAttribute("deadline",daysToDeadline);
+            model.addAttribute("deadline", daysToDeadline);
             model.addAttribute("pass", pass);
             model.addAttribute("fail", fail);
             model.addAttribute("pending", pending);
@@ -89,13 +87,13 @@ public class ReleaseController {
         return "releasemanager";
     }
 
-    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = { "downloadReleaseExcel" })
+    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"downloadReleaseExcel"})
     public ModelAndView getReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
         List<ExcelRow> releaseList = excelService.getExcel(excelRow.getReleaseName());
         return new ModelAndView("releaseExcelView", "releaseList", releaseList);
     }
 
-    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = { "removeRelease" })
+    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"removeRelease"})
     public String deleteReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
         excelService.deleteExcel(excelRow.getReleaseName());
         return "redirect:/releasemanager";
@@ -111,12 +109,10 @@ public class ReleaseController {
         ExcelRow excelRow = new ExcelRow();
         List<String> releases = excelService.getReleases();
         model.addAttribute("releases", releases);
-        model.addAttribute("excelRow", excelRow );
-        System.out.println(excelRow.toString() + " " +  releases.size());
+        model.addAttribute("excelRow", excelRow);
+        System.out.println(excelRow.toString() + " " + releases.size());
         return "releasemanager";
     }
-
-
 
 
     @RequestMapping("/releasemanagerform")
@@ -142,6 +138,13 @@ public class ReleaseController {
         ExcelRow excelRow = excelService.getExcelRow(id);
         m.addAttribute("uatStatus", UATstatus.values());
         m.addAttribute("excelRow", excelRow);
+        List<User> userList = usersService.getAllUsers();
+        List<String> names = new ArrayList<>();
+        for (User user : userList) {
+            names.add(user.getName());
+        }
+
+        m.addAttribute("userList", names);
 //        m.addAttribute("toEdit", true);
 //        m.addAttribute("edited", false);
         return "releasemanagerform";
@@ -162,7 +165,8 @@ public class ReleaseController {
         excelRow.setLastModUser(principal.getName());
         excelService.saveOrUpdate(excelRow);
         System.out.println(excelRow.getReleaseName());
-
+        if (principal != null)
+            m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
 
         m.addAttribute("edited", true);

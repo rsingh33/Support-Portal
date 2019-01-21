@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<div><h2 id="monitorTitle"> Application Health Monitoring</h2></div>
+<div><h2 id="monitorTitle"> Application Health Status</h2></div>
 
 <%--<div id="loader" class="loader"></div>--%>
 <c:if test="${not empty urlEntities}">

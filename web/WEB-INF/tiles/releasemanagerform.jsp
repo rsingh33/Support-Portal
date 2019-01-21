@@ -57,9 +57,14 @@
                     <div class=" form-group">
                         <label for="tester" class="col-sm-4 control-label">UAT Tester</label>
                         <div class="col-sm-8">
-                            <input type="text" name="tester" id="tester" class="form-control"
-                                   placeholder="Tester"
-                                   value="<c:out value='${excelRow.tester}' />">
+                            <form:select path="tester" class="dropdown-content btn btn-default dropdown-toggle btn-xs" name="releaseName"
+                                         type="button"
+                                         id="tester"
+                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                                         value="<c:out value='${excelRow.tester}' />">
+                                <option disabled selected>--Tester Name--</option>
+                                <form:options items="${userList}"/>
+                            </form:select>
                         </div>
                     </div>
 
@@ -74,30 +79,25 @@
                     </div>
 
 
-
-
                     <!-- UAT Status -->
                     <div class="form-group">
                         <label for="dropdownMenu1" class="col-sm-4 control-label">UAT Status</label>
                         <div class="col-sm-8">
                             <div class="dropdown">
 
-                                <form:select path="status"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="<c:out value='${excelRow.status}' />">
-                                    <option disabled selected > -- select an option -- </option>
+                                <form:select path="status" class="btn btn-default dropdown-toggle" type="button"
+                                             id="dropdownMenu1"
+                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                                             value="<c:out value='${excelRow.status}' />">
+                                    <option disabled selected> -- select an option --</option>
                                     <%--<option label=" "></option>--%>
                                     <form:options items="${uatStatus}"/>
                                 </form:select>
 
 
-
-
                             </div>
                         </div>
                     </div>
-
-
-
 
 
                     <div class="col-sm-offset-4 col-sm-10">
