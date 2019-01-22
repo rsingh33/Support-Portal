@@ -10,6 +10,7 @@ import javax.mail.internet.MimeMessage;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 
@@ -81,6 +82,44 @@ public class SendEmail {
             message.setFrom(new InternetAddress(Constants.setFrom));
             message.setRecipients(Message.RecipientType.TO, address);
             message.setSubject(subject + "  " + dateFormat.format(date));
+            message.setContent(content, "text/html; charset=utf-8");
+            Transport.send(message);
+
+        } catch (MessagingException e) {
+            System.out.println("Email could not be sent ");
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void emailSend(String content, List<String> to, String subject) throws Exception {
+
+        ReadProperties.readConfig();
+        Properties props = new Properties();
+
+        props.put("mail.smtp.host", Constants.smtpHost);
+        props.put("mail.smtp.port", Constants.smtpPort);
+        //    props.put("mail.smtp.auth", Constants.smtpAuth);
+        //   props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
+
+        Session session = Session.getDefaultInstance(props, null);
+
+        try {
+
+
+            InternetAddress[] address;
+            address = new InternetAddress[to.size()];
+            for (int i = 0; i < to.size(); i++) {
+                if(to.get(i) != null) {
+                    InternetAddress addresses = new InternetAddress(to.get(i));
+                    address[i] = addresses;
+                }
+            }
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(Constants.setFrom));
+            message.setRecipients(Message.RecipientType.TO, address);
+            message.setSubject(subject);
             message.setContent(content, "text/html; charset=utf-8");
             Transport.send(message);
 

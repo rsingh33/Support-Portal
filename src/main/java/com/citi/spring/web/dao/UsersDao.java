@@ -48,6 +48,14 @@ public class UsersDao {
         return user != null;
     }
 
+    public String getEmail(String name) {
+        Criteria criteria = session().createCriteria(User.class);
+        criteria.add(Restrictions.eq("name",name));
+        User user = (User) criteria.uniqueResult();
+
+        return user.getEmail();
+    }
+
     @SuppressWarnings("unchecked")
     public List<User> getAllUsers() {
         return session().createQuery("from User").list();

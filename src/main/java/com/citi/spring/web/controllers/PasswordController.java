@@ -73,7 +73,7 @@ public class PasswordController {
                     + "OMC Support Team"
                     +"\r\n"
                     + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
-            System.out.println(content);
+
             emailService.emailSend(content, user.getEmail(), "Password Reset Request");
 
             // Add success message to view

@@ -29,6 +29,7 @@
     </button>
     <sec:authorize access="hasRole('ROLE_admin')">
         <button type="submit" name="removeRelease" class="btn btn-primary btn-xs">Delete</button>
+        <button type="submit" name="sendReminder" class="btn btn-primary btn-xs">Send Reminder</button>
     </sec:authorize>
 
 </form:form>

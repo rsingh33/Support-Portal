@@ -149,9 +149,10 @@ public class MonitorHelper {
                 connection.setRequestMethod("GET");
                 connection.connect();
                 code = connection.getResponseCode();
+
             }
 
-            //3-May-2017 redirect code for SV
+
             if (code == 200 || code == 401 || code == 302) {
                 return true;
             }

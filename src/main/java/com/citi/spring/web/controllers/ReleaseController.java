@@ -5,6 +5,7 @@ import com.citi.spring.web.dao.data.MyCell;
 import com.citi.spring.web.dao.data.UATstatus;
 import com.citi.spring.web.dao.entity.ExcelRow;
 import com.citi.spring.web.dao.entity.User;
+import com.citi.spring.web.service.EmailService;
 import com.citi.spring.web.service.ExcelService;
 import com.citi.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,8 @@ public class ReleaseController {
     private ExcelParser excelParser;
     @Autowired
     private UsersService usersService;
+    @Autowired
+    private EmailService emailService;
 // Start
 
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"getRelease"})
@@ -93,6 +96,24 @@ public class ReleaseController {
         return new ModelAndView("releaseExcelView", "releaseList", releaseList);
     }
 
+    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"sendReminder"})
+    public String sendReminder(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
+        System.out.println("Reminder Email sent triggered");
+
+        List<String> toEmailList = excelService.getPendingTesters(excelRow.getReleaseName());
+        String content = "Hi" + ", \r\n"
+                + "This is a reminder email, Please complete your assigned test cases before Deadline, if you have completed please update on the portal."
+                + ", \r\n" +
+                "\r\n" +
+                "Thanks, "
+                + "\r\n"
+                + "OMC Support Team"
+                + "\r\n"
+                + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
+        emailService.emailSend(content, toEmailList, "Reminder for UAT tpending test cases");
+        return "redirect:/releasemanager";
+    }
+
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"removeRelease"})
     public String deleteReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
         excelService.deleteExcel(excelRow.getReleaseName());
@@ -145,20 +166,9 @@ public class ReleaseController {
         }
 
         m.addAttribute("userList", names);
-//        m.addAttribute("toEdit", true);
-//        m.addAttribute("edited", false);
         return "releasemanagerform";
     }
 
-   /* @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
-    public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Model m, Principal principal) {
-        excelRow.setLastModUser(principal.getName());
-        excelService.saveOrUpdate(excelRow);
-        m.addAttribute("edited", true);
-        m.addAttribute("message","Successfully Saved");
-
-        return "releasemanagerform";
-    }*/
 
     @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Model m, Principal principal) {
@@ -259,7 +269,7 @@ public class ReleaseController {
                         excelRow.setEngineer(entry.getValue().get(2).getContent());
                         excelRow.setScriptLocation(entry.getValue().get(3).getContent());
                         excelRow.setTester(entry.getValue().get(4).getContent());
-                        excelRow.setStatus(entry.getValue().get(5).getContent());
+                        excelRow.setStatus(UATstatus.PENDING.toString());
                         excelRow.setComments(entry.getValue().get(6).getContent());
                         excelRow.setLastModUser(principal.getName());
                         excelRow.setReleaseName(releaseName);

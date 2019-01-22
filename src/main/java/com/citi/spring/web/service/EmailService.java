@@ -33,11 +33,20 @@ public class EmailService {
         System.out.println("Email sent!!!!!");
     }
     @Async
-   public void emailSend(String content,  String to, String subject){
+   public void emailSend(String content, String to, String subject){
        try {
            SendEmail.emailSend(content,to,subject);
        } catch (Exception e) {
            e.printStackTrace();
        }
    }
+
+    @Async
+    public void emailSend(String content,  List<String> to, String subject){
+        try {
+            SendEmail.emailSend(content,to,subject);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
    }

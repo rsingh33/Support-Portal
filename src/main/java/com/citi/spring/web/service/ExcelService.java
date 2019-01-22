@@ -2,16 +2,19 @@ package com.citi.spring.web.service;
 
 
 import com.citi.spring.web.dao.ExcelDao;
+import com.citi.spring.web.dao.UsersDao;
 import com.citi.spring.web.dao.entity.ExcelRow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("excelService")
 public class ExcelService {
     private ExcelDao excelDao;
+    private UsersDao usersDao;
 
     @Autowired
     public void setoffersdao(@Qualifier("excelDao") ExcelDao excelDao) {
@@ -54,6 +57,17 @@ public class ExcelService {
             System.out.println("Error starts here !!1");
             e.printStackTrace();
         }
+    }
+
+    public List<String> getPendingTesters(String releaseName){
+        List<ExcelRow> release =excelDao.getExcelRow(releaseName);
+        List <String> reminderEmailList = new ArrayList<>();
+        for (ExcelRow excelRow : release){
+            if(excelRow.getStatus().equals("PENDING") && excelRow.getTester() != null){
+                reminderEmailList.add(usersDao.getEmail(excelRow.getTester()));
+            }
+        }
+        return reminderEmailList;
     }
 
     public List<String> getReleases() {
