@@ -1,10 +1,7 @@
 package com.citi.spring.web.emailHandler;
 
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.text.DateFormat;
@@ -27,10 +24,16 @@ public class SendEmail {
 
         props.put("mail.smtp.host", Constants.smtpHost);
         props.put("mail.smtp.port", Constants.smtpPort);
-        //    props.put("mail.smtp.auth", Constants.smtpAuth);
-        //   props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
+            props.put("mail.smtp.auth", Constants.smtpAuth);
+           props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
 
-        Session session = Session.getDefaultInstance(props, null);
+        Authenticator auth = new Authenticator() {
+            //override the getPasswordAuthentication method
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(Constants.setFrom, Constants.setPassword);
+            }
+        };
+        Session session = Session.getInstance(props, auth);
 
         try {
 
@@ -57,17 +60,21 @@ public class SendEmail {
     }
 
     public static void emailSend(String content,  String to, String subject) throws Exception {
-
         ReadProperties.readConfig();
         Properties props = new Properties();
 
         props.put("mail.smtp.host", Constants.smtpHost);
         props.put("mail.smtp.port", Constants.smtpPort);
-        //    props.put("mail.smtp.auth", Constants.smtpAuth);
-        //   props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
+        props.put("mail.smtp.auth", Constants.smtpAuth);
+        props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
 
-        Session session = Session.getDefaultInstance(props, null);
-
+        Authenticator auth = new Authenticator() {
+            //override the getPasswordAuthentication method
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(Constants.setFrom, Constants.setPassword);
+            }
+        };
+        Session session = Session.getInstance(props, auth);
         try {
 
             String[] tolist = to.split(";");
@@ -99,11 +106,16 @@ public class SendEmail {
 
         props.put("mail.smtp.host", Constants.smtpHost);
         props.put("mail.smtp.port", Constants.smtpPort);
-        //    props.put("mail.smtp.auth", Constants.smtpAuth);
-        //   props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
+        props.put("mail.smtp.auth", Constants.smtpAuth);
+        props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
 
-        Session session = Session.getDefaultInstance(props, null);
-
+        Authenticator auth = new Authenticator() {
+            //override the getPasswordAuthentication method
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(Constants.setFrom, Constants.setPassword);
+            }
+        };
+        Session session = Session.getInstance(props, auth);
         try {
 
 

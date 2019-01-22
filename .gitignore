@@ -45,3 +45,6 @@ todo.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+/src/main/resources/email.properties
+lib/
+/src/main/java/com/citi/spring/web/emailHandler/SendEmail.java

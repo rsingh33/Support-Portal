@@ -25,9 +25,9 @@ public class ReadProperties {
             Constants.smtpHost = props.getProperty("smtpHost");
             Constants.emailSubject = props.getProperty("emailSubject");
             Constants.dashboardURL = props.getProperty("dashboardURL");
-            //  Constants.setPassword = props.getProperty("setPassword");
-            //   Constants.smtpAuth= props.getProperty("smtpAuth");
-            //   Constants.smtpTLS= props.getProperty("smtpTLS");
+              Constants.setPassword = props.getProperty("setPassword");
+               Constants.smtpAuth= props.getProperty("smtpAuth");
+               Constants.smtpTLS= props.getProperty("smtpTLS");
 
         } catch (Exception e) {
             e.printStackTrace();

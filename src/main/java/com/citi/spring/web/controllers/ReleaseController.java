@@ -101,17 +101,25 @@ public class ReleaseController {
         System.out.println("Reminder Email sent triggered");
 
         List<String> toEmailList = excelService.getPendingTesters(excelRow.getReleaseName());
-        String content = "Hi" + ", \r\n"
-                + "This is a reminder email, Please complete your assigned test cases before Deadline, if you have completed please update on the portal."
-                + ", \r\n" +
+        if(toEmailList.isEmpty()){
+            model.addAttribute("message", "Either there are no valid user to email mappings");
+            return "redirect:/releasemanager";
+        }
+        String content = "Hi," +
+                "\r\n"
+                + "This is a reminder email, Please complete your assigned test cases before Deadline."
+                + "\r\n" +
+                "If you have completed please update on the portal."
+                + "\r\n" +
                 "\r\n" +
                 "Thanks, "
                 + "\r\n"
                 + "OMC Support Team"
                 + "\r\n"
                 + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
-        emailService.emailSend(content, toEmailList, "Reminder for UAT tpending test cases");
-        return "redirect:/releasemanager";
+           emailService.emailSend(content, toEmailList, "Reminder for UAT pending test cases");
+
+        return "releasemanager";
     }
 
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"removeRelease"})
@@ -227,7 +235,7 @@ public class ReleaseController {
     public String delete(@PathVariable int id) {
         System.out.println("In delete " + id);
         excelService.delete(id);
-        return "redirect:/releasemanager";
+        return "releasemanager";
     }
 
 
