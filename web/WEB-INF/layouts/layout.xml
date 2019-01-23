@@ -104,7 +104,8 @@
 
 
     <definition name="releasemanagerform" extends="support-portal.base">
-        <put-attribute name="title" value="User Editor"></put-attribute>
+        <put-attribute name="includes" value="/WEB-INF/tiles/releaseManagerScript.jsp"></put-attribute>
+        <put-attribute name="title" value="Release Form"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/releasemanagerform.jsp"></put-attribute>
     </definition>
     <definition name="newRelease" extends="support-portal.base">

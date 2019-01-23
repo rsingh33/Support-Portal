@@ -51,41 +51,7 @@ public class ReleaseController {
 
         List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
 
-
-        if (data1.size() > 0) {
-            int pass = 0;
-            int fail = 0;
-            int pending = 0;
-            int total = data1.size();
-
-            for (int i = 0; i < total; i++) {
-                if (data1.get(i).getStatus() != null) {
-                    if (data1.get(i).getStatus().equals("PASS")) {
-                        pass++;
-                    }
-                    if (data1.get(i).getStatus().equals("FAIL")) {
-                        fail++;
-                    }
-                }
-            }
-
-            LocalDate deadline = data1.get(0).getDeadline().toLocalDate();
-            LocalDate today = LocalDate.now();
-            long daysToDeadline = DAYS.between(today, deadline);
-            pass = (pass * 100) / total;
-            fail = (fail * 100) / total;
-            pending = 100 - (pass + fail);
-
-            List<String> releases = excelService.getReleases();
-            model.addAttribute("releases", releases);
-            model.addAttribute("deadline", daysToDeadline);
-            model.addAttribute("pass", pass);
-            model.addAttribute("fail", fail);
-            model.addAttribute("pending", pending);
-            model.addAttribute("total", total);
-        }
-        model.addAttribute("data", data1);
-
+        dataPopulate(data1, model);
 
         return "releasemanager";
     }
@@ -101,7 +67,7 @@ public class ReleaseController {
         System.out.println("Reminder Email sent triggered");
 
         List<String> toEmailList = excelService.getPendingTesters(excelRow.getReleaseName());
-        if(toEmailList.isEmpty()){
+        if (toEmailList.isEmpty()) {
             model.addAttribute("message", "Either there are no valid user to email mappings");
             return "redirect:/releasemanager";
         }
@@ -117,9 +83,25 @@ public class ReleaseController {
                 + "OMC Support Team"
                 + "\r\n"
                 + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
-           emailService.emailSend(content, toEmailList, "Reminder for UAT pending test cases");
+        List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+        dataPopulate(data1, model);
+        try {
+            emailService.emailSend(content, toEmailList, "Reminder for UAT pending test cases");
+        } catch (Exception ex) {
+            System.out.println("Exception occurred while sending email");
+            ex.printStackTrace();
+            return "redirect:/releasemanager";
+        }
+        String reminderList = "";
+        for (String email : toEmailList) {
+            reminderList += email + ", ";
+        }
 
-        return "releasemanager";
+        System.out.println("Emails sent to people: " + reminderList);
+        model.addAttribute("success", "Reminder Sent Successfully!!" + reminderList);
+
+
+        return "redirect:/releasemanager";
     }
 
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"removeRelease"})
@@ -139,7 +121,7 @@ public class ReleaseController {
         List<String> releases = excelService.getReleases();
         model.addAttribute("releases", releases);
         model.addAttribute("excelRow", excelRow);
-        System.out.println(excelRow.toString() + " " + releases.size());
+
         return "releasemanager";
     }
 
@@ -177,15 +159,7 @@ public class ReleaseController {
         return "releasemanagerform";
     }
 
-
-    @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
-    public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Model m, Principal principal) {
-        excelRow.setLastModUser(principal.getName());
-        excelService.saveOrUpdate(excelRow);
-        System.out.println(excelRow.getReleaseName());
-        if (principal != null)
-            m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-        List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+    public void dataPopulate(List<ExcelRow> data1, Model m) {
 
         m.addAttribute("edited", true);
         m.addAttribute("message", "Successfully Saved");
@@ -225,15 +199,27 @@ public class ReleaseController {
         }
         m.addAttribute("data", data1);
 
+    }
 
+    @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
+    public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Model m, Principal principal) {
+        excelRow.setLastModUser(principal.getName());
+        excelService.saveOrUpdate(excelRow);
+
+        if (principal != null)
+            m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+
+        List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+        dataPopulate(data1, m);
         return "releasemanager";
     }
 
 
     @RequestMapping(value = "/deleteExcelRow/{id}", method = RequestMethod.GET)
-
-    public String delete(@PathVariable int id) {
-        System.out.println("In delete " + id);
+    public String delete(@PathVariable int id, Model m) {
+        ExcelRow excelRow = excelService.getExcelRow(id);
+        List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+        dataPopulate(data1, m);
         excelService.delete(id);
         return "releasemanager";
     }
@@ -296,7 +282,7 @@ public class ReleaseController {
             } else {
                 model.addAttribute("message", "File missing! Please upload an excel file.");
             }
-            model.addAttribute("releaseName", excelParser.getReleaseName(fileLocation));
+            model.addAttribute("releaseName", releaseName);
             model.addAttribute("message", "File: " + file.getOriginalFilename()
                     + " has been uploaded and processed successfully!");
         } catch (FileNotFoundException f) {

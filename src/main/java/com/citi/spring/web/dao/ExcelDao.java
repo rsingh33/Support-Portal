@@ -118,7 +118,7 @@ public class ExcelDao {
 }
 
     public boolean deleteExcel(String releaseName) {
-        System.out.println("In Excel DAO delete");
+
         Query query = session().createQuery("delete from ExcelRow where releaseName = :releaseName");
         query.setParameter("releaseName", releaseName);
         return query.executeUpdate() == 1;

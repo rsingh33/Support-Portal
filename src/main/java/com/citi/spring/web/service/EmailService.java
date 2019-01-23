@@ -42,11 +42,9 @@ public class EmailService {
    }
 
     @Async
-    public void emailSend(String content,  List<String> to, String subject){
-        try {
-            SendEmail.emailSend(content,to,subject);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void emailSend(String content,  List<String> to, String subject) throws Exception{
+
+        SendEmail.emailSend(content, to, subject);
+
     }
    }

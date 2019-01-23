@@ -35,7 +35,7 @@
                     <tbody id="tableBody">
 
                     <c:forEach var="issue" items="${issue}">
-                        <tr>
+                        <tr id="marginChange">
                             <td><p class="wrapText"><c:out value="${issue.issueDescription}"></c:out></p></td>
                             <td><p class="wrapText"><c:out value="${issue.workaround}"></c:out></p></td>
                             <td><p class="wrapText"><c:out value="${issue.solution}"></c:out></p></td>

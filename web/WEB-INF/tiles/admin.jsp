@@ -25,7 +25,7 @@
                         <tbody id="tableBody">
 
                         <c:forEach var="user" items="${users}">
-                            <tr>
+                            <tr id="marginChange">
                                 <td><c:out value="${user.username}"></c:out></td>
                                 <td><c:out value="${user.name}"></c:out></td>
                                 <td><c:out value="${user.email}"></c:out></td>

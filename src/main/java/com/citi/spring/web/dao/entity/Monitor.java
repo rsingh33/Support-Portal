@@ -16,8 +16,8 @@ public class Monitor {
     String link;
     String env;
     String hostname;
+    String responseTime;
     Boolean status;
-
     @UpdateTimestamp
     Timestamp lastRefreshed;
     @Id
@@ -32,7 +32,6 @@ public class Monitor {
         this.status = status;
         this.lastRefreshed = lastRefreshed;
     }
-
     public Monitor(String name, String link, String env, String hostname, Boolean status) {
         this.name = name;
         this.link = link;
@@ -44,7 +43,6 @@ public class Monitor {
     public Monitor(String name) {
         this.name = name;
     }
-
     public Monitor(String name, String link, String env, String hostname) {
         this.name = name;
         this.link = link;
@@ -54,6 +52,14 @@ public class Monitor {
 
     public Monitor() {
 
+    }
+
+    public String getResponseTime() {
+        return responseTime;
+    }
+
+    public void setResponseTime(String responseTime) {
+        this.responseTime = responseTime;
     }
 
     @Override
@@ -66,13 +72,14 @@ public class Monitor {
                 Objects.equals(getLink(), monitor.getLink()) &&
                 Objects.equals(getEnv(), monitor.getEnv()) &&
                 Objects.equals(getHostname(), monitor.getHostname()) &&
+                Objects.equals(getResponseTime(), monitor.getResponseTime()) &&
                 Objects.equals(getStatus(), monitor.getStatus()) &&
                 Objects.equals(getLastRefreshed(), monitor.getLastRefreshed());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getLink(), getEnv(), getHostname(), getStatus(), getLastRefreshed(), getId());
+        return Objects.hash(getName(), getLink(), getEnv(), getHostname(), getResponseTime(), getStatus(), getLastRefreshed(), getId());
     }
 
     public int getId() {

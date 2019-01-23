@@ -37,7 +37,7 @@
                     <tbody id="tableBody">
 
                     <c:forEach var="backlog" items="${backlogs}">
-                        <tr>
+                        <tr id="marginChange">
                             <td><p><c:out value="${backlog.reportedBy}"></c:out></p></td>
                             <td><p class="wrapText"><c:out value="${backlog.emailSubject}"></c:out></p></td>
                             <td><p><a

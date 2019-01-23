@@ -56,8 +56,10 @@
                         <%--<!-- UAT Tester -->--%>
                     <div class=" form-group">
                         <label for="tester" class="col-sm-4 control-label">UAT Tester</label>
-                        <div class="col-sm-8">
-                            <form:select path="tester" class="dropdown-content btn btn-default dropdown-toggle btn-xs" name="releaseName"
+                        <div id ="testerDiv" class="col-sm-8">
+                            <form:select path="tester"
+                                         data-live-search = "true"
+                                         class=" dropdown-content  dropdown-toggle" name="releaseName"
                                          type="button"
                                          id="tester"
                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"

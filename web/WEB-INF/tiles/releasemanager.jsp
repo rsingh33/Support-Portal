@@ -32,7 +32,14 @@
         <button type="submit" name="sendReminder" class="btn btn-primary btn-xs">Send Reminder</button>
     </sec:authorize>
 
+
 </form:form>
+
+<c:if test="${not empty success}">
+    <div id="alert alert-success" role="alert">
+            ${success}
+    </div>
+</c:if>
 
 
 <c:if test="${not empty data}">
@@ -85,14 +92,14 @@
                     <th>UAT Tester</th>
                     <th>UAT Status</th>
                     <th>Comments</th>
-                    <th>Actions</th>
+                    <th>Edit</th>
 
                 </tr>
                 </thead>
                 <tbody id="tableBody">
 
                 <c:forEach var="excelRow" items="${data}" varStatus="data">
-                    <tr>
+                    <tr id="marginChange">
                         <td><p><a
                                 href="https://cedt-icg-jira.nam.nsroot.net/jira/browse/<c:out value='${excelRow.jiraKey}'></c:out>">
                                 ${excelRow.jiraKey}</a></p></td>
@@ -107,11 +114,11 @@
                         <td>
                             <a href="${pageContext.request.contextPath}/releasemanagerform/<c:out value='${excelRow.id}' />"><span
                                     class="glyphicon glyphicon-pencil"></span></a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
 
-                            <a class="delete" id="delete" type="submit" value="Delete" name="delete"
-                               href="${pageContext.request.contextPath}/deleteExcelRow/<c:out value='${excelRow.id}' />"><span
-                                    class="glyphicon glyphicon-trash"></span></a>
+
+                                <%--<a class="delete" id="delete" type="submit" value="Delete" name="delete"
+                                   href="${pageContext.request.contextPath}/deleteExcelRow/<c:out value='${excelRow.id}' />"><span
+                                        class="glyphicon glyphicon-trash"></span></a>--%>
                         </td>
                     </tr>
                 </c:forEach>

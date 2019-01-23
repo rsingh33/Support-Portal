@@ -54,12 +54,12 @@
                             <c:out value="${handover.status}"/>
                         </c:set>
                         <c:if test="${status == 'HIGH'}">
-                            <tr style="-webkit-print-color-adjust: exact; background-color:#ffcccc" >
+                            <tr id = "marginChangeHigh" style="-webkit-print-color-adjust: exact; background-color:#ffcccc" >
                         </c:if>
 
 
                         <c:if test="${status == 'NORMAL'}">
-                            <tr>
+                            <tr id="marginChange">
                         </c:if>
                         <td><p><c:out value="${handover.reportedBy}"></c:out></p></td>
                         <td><p class="wrapText"><c:out value="${handover.emailSubject}"></c:out></p></td>
