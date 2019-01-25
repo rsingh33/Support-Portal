@@ -6,7 +6,6 @@ import com.citi.spring.web.dao.entity.Handover;
 import com.citi.spring.web.service.BacklogService;
 import com.citi.spring.web.service.HandoverService;
 import com.citi.spring.web.service.UsersService;
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
@@ -62,18 +62,31 @@ public class BacklogController {
     }
 
     @RequestMapping(value = "/saveBacklog", method = RequestMethod.POST)
-    public String saveOrUpdate(@ModelAttribute("backlog") Backlog backlog, Principal principal) {
+    public String saveOrUpdate(@ModelAttribute("backlog") Backlog backlog, Principal principal, RedirectAttributes redirectAttributes) {
         backlog.setLastModUser(principal.getName());
-        backlogService.saveOrUpdate(backlog);
+        try {
+            backlogService.saveOrUpdate(backlog);
+            redirectAttributes.addFlashAttribute("saved", "Record saved successfully");
+        } catch (Exception ex) {
+            redirectAttributes.addFlashAttribute("notSaved", "Record can't be saved, Please Try again ");
+            return "redirect:/backlog";
+        }
         return "redirect:/backlog";
     }
 
     @RequestMapping(value = "/moveToHandover/{id}", method = RequestMethod.GET)
-    public String moveToHandover(@PathVariable int id, Principal principal) {
+    public String moveToHandover(@PathVariable int id, Principal principal, RedirectAttributes redirectAttributes) {
         Backlog backlog = backlogService.getBacklog(id);
         Handover handover = backlogToHandover(backlog);
-        backlogService.delete(id);
-        handoverService.saveOrUpdate(handover);
+
+        try {
+            backlogService.delete(id);
+            handoverService.saveOrUpdate(handover);
+            redirectAttributes.addFlashAttribute("moved", "Record moved to handover");
+        } catch (Exception ex) {
+            redirectAttributes.addFlashAttribute("notMoved", "Record can't be moved successfully");
+            return "redirect:/backlog";
+        }
         return "redirect:/backlog ";
     }
 
@@ -87,12 +100,18 @@ public class BacklogController {
                 backlog.getStatus(),
                 backlog.getCurrentlyWith(),
                 backlog.getEnvironment()
-              );
+        );
     }
 
     @RequestMapping(value = "/deleteBacklog/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable int id) {
-        backlogService.delete(id);
+    public String delete(@PathVariable int id, RedirectAttributes redirectAttributes) {
+        try {
+            backlogService.delete(id);
+            redirectAttributes.addFlashAttribute("deleted", "Record deleted!!");
+        } catch (Exception ex) {
+            redirectAttributes.addFlashAttribute("deleteFailed", "Record could not be deleted");
+            return "redirect:/backlog";
+        }
         return "redirect:/backlog";
     }
 

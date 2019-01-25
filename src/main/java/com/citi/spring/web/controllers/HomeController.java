@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
@@ -44,7 +45,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/refresh")
-    public String monitorApps(Model model, Principal principal) {
+    public String monitorApps(Model model, Principal principal, RedirectAttributes redirectAttributes) {
         logger.info("Showing Monitor page....");
        /* if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
@@ -54,6 +55,7 @@ public class HomeController {
         List<Monitor> urlEntities = monitorService.refresh();
 
         model.addAttribute("urlEntities", urlEntities);
+        redirectAttributes.addFlashAttribute("refreshed", "All Status and  Response times refreshed sucessfully");
         return "redirect:/";
     }
 

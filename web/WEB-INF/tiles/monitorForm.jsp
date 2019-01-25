@@ -15,7 +15,7 @@
 
     <div class="container" id="Container3">
 
-        <div id="monitorPanel" class="panel panel-primary">
+        <div id="handoverPanel" class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Monitor Form</h3>
             </div>
@@ -38,29 +38,31 @@
                         </div>
                         <!-- Subject -->
                         <div class="form-group">
-                            <label for="link" class="col-sm-4 control-label">URL</label>
+                            <label for="link" class=" required col-sm-4 control-label">URL</label>
                             <div class="col-sm-8">
                                 <input type="text" name="link" class="form-control" id="link"
                                        placeholder="URL"
                                        value="<c:out value='${monitor.link}' />"/>
                             </div>
+                            <div class="error"><form:errors path="link"></form:errors></div>
                         </div>
 
                         <!-- JIRA -->
                         <div class="form-group">
-                            <label for="hostname" class="col-sm-4 control-label">Hostname</label>
+                            <label for="hostname" class="  col-sm-4 control-label">Hostname</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="hostname" id="hostname"
                                        placeholder="Hostname"
                                        value="<c:out value='${monitor.hostname}' />"/>
                             </div>
+
                         </div>
 
 
 
 
                         <div class="form-group">
-                            <label for="dropdownMenu1" class="col-sm-4 control-label">Environment</label>
+                            <label for="dropdownMenu1" class="required col-sm-4 control-label">Environment</label>
                             <div class="col-sm-8">
                                 <div class="dropdown">
 
@@ -71,6 +73,7 @@
                                     </form:select>
 
                                 </div>
+                                <div class="error"><form:errors path="env"></form:errors></div>
                             </div>
                         </div>
 

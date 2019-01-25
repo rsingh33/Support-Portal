@@ -64,17 +64,20 @@ public class PasswordController {
                     request.getServerPort() + request.getContextPath();
 
             // Email message
-            String content = "Hi " + user.getName() +", \r\n"
-                    +"To reset your password, click the link below:\n" + appUrl + "/reset?token=" + user.getResetToken()
-                    +", \r\n" +
+            String content = "Hi " + user.getName() + ", \r\n"
+                    + "To reset your password, click the link below:\n" + appUrl + "/reset?token=" + user.getResetToken()
+                    + ", \r\n" +
                     "\r\n" +
                     "Thanks, "
-                    +"\r\n"
+                    + "\r\n"
                     + "OMC Support Team"
-                    +"\r\n"
+                    + "\r\n"
                     + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
-
-            emailService.emailSend(content, user.getEmail(), "Password Reset Request");
+            try {
+                emailService.emailSend(content, user.getEmail(), "Password Reset Request");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
             // Add success message to view
             model.addAttribute("message", "A password reset link has been sent to " + userEmail);

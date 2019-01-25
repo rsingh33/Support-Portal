@@ -48,7 +48,7 @@
                     <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/handover">Handover</a></li>
                     <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/backlog">Backlog</a></li>
                     <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/issues">Issues-Database</a></li>
-                    <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/releasemanager">Release-Manager</a>
+                    <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/releasemanager">SignOff-Tracker</a>
                     </li>
                     <li><a id="tab"  class="title" href="http://ddivmddsf4:8080/DevOps/index.html">Devops-Dashboard</a></li>
                     <sec:authorize access="hasRole('ROLE_admin')">

@@ -21,7 +21,7 @@
 
     <div id="handoverPanel" class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Issue Form</h3>
+            <h3 class="panel-title">Testcase edit Form</h3>
         </div>
 
         <div class="panel-body">
@@ -56,10 +56,12 @@
                         <%--<!-- UAT Tester -->--%>
                     <div class=" form-group">
                         <label for="tester" class="col-sm-4 control-label">UAT Tester</label>
-                        <div id ="testerDiv" class="col-sm-8">
+                        <div id="testerDiv" class="col-sm-8">
                             <form:select path="tester"
-                                         data-live-search = "true"
-                                         class=" dropdown-content  dropdown-toggle" name="releaseName"
+                                         data-live-search="true"
+                                         data-live-search-style="startsWith"
+                                         class=" selectpicker"
+                                         name="releaseName"
                                          type="button"
                                          id="tester"
                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"

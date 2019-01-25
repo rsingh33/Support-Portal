@@ -1,6 +1,7 @@
 package com.citi.spring.web.dao.entity;
 
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +14,10 @@ import java.util.Objects;
 @Table(name = "Monitor")
 public class Monitor {
     String name;
+    @NotBlank
     String link;
     String env;
+    @NotBlank
     String hostname;
     String responseTime;
     Boolean status;

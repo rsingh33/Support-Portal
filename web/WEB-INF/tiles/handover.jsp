@@ -3,7 +3,59 @@
 
 
 </br>
+<c:if test="${not empty emailSent}">
+    <div class="alert alert-success" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${emailSent} &nbsp;
+    </div>
+</c:if>
 
+<c:if test="${not empty exception}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${exception} &nbsp;
+    </div>
+</c:if>
+<c:if test="${not empty saved}">
+    <div class="alert alert-success" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${saved} &nbsp;
+    </div>
+</c:if>
+<c:if test="${not empty notSaved}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${notSaved} &nbsp;
+    </div>
+</c:if>
+<c:if test="${not empty moved}">
+    <div class="alert alert-success" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${moved} &nbsp;
+    </div>
+</c:if>
+
+<c:if test="${not empty notMoved}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${notMoved} &nbsp;
+    </div>
+</c:if>
+
+
+<c:if test="${not empty deleted}">
+    <div class="alert alert-success" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${deleted} &nbsp;
+    </div>
+</c:if>
+
+<c:if test="${not empty notDeleted}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${notDeleted} &nbsp;
+    </div>
+</c:if>
 <button id="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/downloadExcel'"
         value="Export" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-download-alt"></span>
     Export

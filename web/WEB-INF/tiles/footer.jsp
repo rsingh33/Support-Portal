@@ -1,7 +1,7 @@
 <div id="footer">
 
     <!-- Footer start -->
-    <p>contact us <a href="mailto:rahul3.singh@citi.com" >email</a></p>
+    <p>Contact us: <a href="mailto:rahul3.singh@citi.com" >Email</a></p>
     <!-- Footer end -->
 
 </div>

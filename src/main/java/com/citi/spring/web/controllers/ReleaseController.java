@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import java.io.*;
@@ -63,12 +64,12 @@ public class ReleaseController {
     }
 
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"sendReminder"})
-    public String sendReminder(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
+    public String sendReminder(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal, RedirectAttributes redirectAttributes) {
         System.out.println("Reminder Email sent triggered");
 
         List<String> toEmailList = excelService.getPendingTesters(excelRow.getReleaseName());
         if (toEmailList.isEmpty()) {
-            model.addAttribute("message", "Either there are no valid user to email mappings");
+            redirectAttributes.addFlashAttribute("warning", "There are no valid user to email mappings found.  ");
             return "redirect:/releasemanager";
         }
         String content = "Hi," +
@@ -83,22 +84,23 @@ public class ReleaseController {
                 + "OMC Support Team"
                 + "\r\n"
                 + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
-        List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
-        dataPopulate(data1, model);
+        //List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+        // dataPopulate(data1, model);
         try {
             emailService.emailSend(content, toEmailList, "Reminder for UAT pending test cases");
         } catch (Exception ex) {
             System.out.println("Exception occurred while sending email");
             ex.printStackTrace();
+            redirectAttributes.addFlashAttribute("exception", "Exception occurred while sending email!!  ");
             return "redirect:/releasemanager";
         }
         String reminderList = "";
         for (String email : toEmailList) {
-            reminderList += email + ", ";
+            reminderList += email + " ";
         }
-
+        reminderList += ".";
         System.out.println("Emails sent to people: " + reminderList);
-        model.addAttribute("success", "Reminder Sent Successfully!!" + reminderList);
+        redirectAttributes.addFlashAttribute("success", "Reminder sent successfully to " + reminderList + "  ");
 
 
         return "redirect:/releasemanager";

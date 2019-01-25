@@ -38,7 +38,7 @@
     <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css">
     <%--  <script type="text/javascript" src="${pageContext.request.contextPath}/static/script/jquery.js"></script>--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
 
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

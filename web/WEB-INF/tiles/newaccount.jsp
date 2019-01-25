@@ -24,9 +24,9 @@
 
                             <!-- UserName -->
                             <div class="form-group">
-                                <label for="userName" class="col-sm-4 control-label">Soeid</label>
+                                <label for="userName" class="required col-sm-4 control-label">Soeid</label>
                                 <div class="col-sm-8">
-                                    <sf:input path="username" class="form-control" name="username"
+                                    <sf:input path="username" class="  form-control" name="username"
                                               type="text"/>
                                     <div class="error"><sf:errors path="username"></sf:errors></div>
 
@@ -34,18 +34,18 @@
                             </div>
                             <!--Name -->
                             <div class="form-group">
-                                <label for="Name" class="col-sm-4 control-label">Full Name</label>
+                                <label for="Name" class="required col-sm-4 control-label">Full Name</label>
                                 <div class="col-sm-8">
-                                    <sf:input path="name" class="form-control" name="name"
+                                    <sf:input path="name" class=" form-control" name="name"
                                               type="text"/>
                                     <div class="error"><sf:errors path="name"></sf:errors></div>
                                 </div>
                             </div>
                             <!-- Email ID -->
                             <div class="form-group">
-                                <label for="email" class="col-sm-4 control-label">Email</label>
+                                <label for="email" class="required col-sm-4 control-label">Email</label>
                                 <div class="col-sm-8">
-                                    <sf:input path="email" class="form-control" name="email"
+                                    <sf:input path="email" class=" form-control" name="email"
                                               type="text"/>
                                     <div class="error"><sf:errors path="email"></sf:errors></div>
                                 </div>
@@ -54,9 +54,9 @@
 
                             <!-- Password -->
                             <div class="form-group">
-                                <label for="password" class="col-sm-4 control-label">Password</label>
+                                <label for="password" class="required col-sm-4 control-label">Password</label>
                                 <div class="col-sm-8">
-                                    <sf:input id="password" path="password" class="form-control" name="password"
+                                    <sf:input id="password" path="password" class=" form-control" name="password"
                                               type="password"/>
                                     <div class="error"><sf:errors path="password"></sf:errors></div>
                                 </div>
@@ -65,7 +65,7 @@
 
                             <!-- Confirm Password -->
                             <div class="form-group">
-                                <label for="confirmpass" class="col-sm-4 control-label">Confirm Password</label>
+                                <label for="confirmpass" class="required col-sm-4 control-label">Confirm Password</label>
                                 <div class="col-sm-8">
                                     <input id="confirmpass" class="form-control" name="confirmpass"
                                            type="password"/>

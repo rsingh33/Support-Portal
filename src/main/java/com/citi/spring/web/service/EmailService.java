@@ -20,25 +20,21 @@ public class EmailService {
     private HandoverDao handoverDAO;
 
     @Scheduled(cron = "0 0 5,12,17 ? * *")
-    public void emailScheduler() {
+    public void emailScheduler() throws Exception {
 
         List<Handover> handovers = handoverDAO.getHandover();
         String content = ListToHtmlTransformer.compose(handovers);
         System.out.println(content);
-        try {
+
             SendEmail.emailSend(content);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         System.out.println("Email sent!!!!!");
     }
     @Async
-   public void emailSend(String content, String to, String subject){
-       try {
+   public void emailSend(String content, String to, String subject) throws Exception{
+
            SendEmail.emailSend(content,to,subject);
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
+
    }
 
     @Async
@@ -46,5 +42,9 @@ public class EmailService {
 
         SendEmail.emailSend(content, to, subject);
 
+    }
+    @Async
+    public  void emailSend(String content) throws Exception{
+        SendEmail.emailSend(content);
     }
    }

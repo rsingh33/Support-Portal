@@ -4,6 +4,32 @@
 
 </br>
 
+<c:if test="${not empty saved}">
+    <div class="alert alert-success" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${saved} &nbsp;
+    </div>
+</c:if>
+<c:if test="${not empty notSaved}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${notSaved} &nbsp;
+    </div>
+</c:if>
+
+<c:if test="${not empty deleted}">
+    <div class="alert alert-success" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${deleted} &nbsp;
+    </div>
+</c:if>
+
+<c:if test="${not empty notDeleted}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${notDeleted} &nbsp;
+    </div>
+</c:if>
 
 <a id="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/issuesform" role="button"><span
         class="glyphicon glyphicon-plus"></span> Add Issue</a>

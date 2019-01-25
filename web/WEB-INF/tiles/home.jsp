@@ -4,7 +4,12 @@
 
 <%--<div id="loader" class="loader"></div>--%>
 <c:if test="${not empty urlEntities}">
-
+    <c:if test="${not empty refreshed}">
+        <div class="alert alert-success" role="alert">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                ${refreshed} &nbsp;
+        </div>
+    </c:if>
     </br>
 
     <div class="container">

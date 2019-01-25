@@ -36,11 +36,25 @@
 </form:form>
 
 <c:if test="${not empty success}">
-    <div id="alert alert-success" role="alert">
+    <div class="alert alert-success" role="alert" style="width: fit-content">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             ${success}
     </div>
 </c:if>
 
+<c:if test="${not empty warning}" >
+
+    <div class="alert alert-warning" role="alert" style="width: fit-content">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${warning}&nbsp;
+    </div>
+</c:if>
+
+<c:if test="${not empty exception}">
+    <div class="alert alert-danger" role="alert">
+            ${exception}
+    </div>
+</c:if>
 
 <c:if test="${not empty data}">
 

@@ -35,7 +35,7 @@ public class SendEmail {
         };
         Session session = Session.getInstance(props, auth);
 
-        try {
+
 
             String[] tolist = Constants.emailTO.split(";");
             InternetAddress[] address;
@@ -52,10 +52,7 @@ public class SendEmail {
             message.setContent(content, "text/html; charset=utf-8");
             Transport.send(message);
 
-        } catch (MessagingException e) {
-            System.out.println("Email could not be sent ");
-           e.printStackTrace();
-        }
+
 
     }
 
@@ -75,7 +72,7 @@ public class SendEmail {
             }
         };
         Session session = Session.getInstance(props, auth);
-        try {
+
 
             String[] tolist = to.split(";");
             InternetAddress[] address;
@@ -92,10 +89,7 @@ public class SendEmail {
             message.setContent(content, "text/html; charset=utf-8");
             Transport.send(message);
 
-        } catch (MessagingException e) {
-            System.out.println("Email could not be sent ");
-            e.printStackTrace();
-        }
+
 
     }
 
@@ -116,7 +110,7 @@ public class SendEmail {
             }
         };
         Session session = Session.getInstance(props, auth);
-        try {
+
 
 
             InternetAddress[] address;
@@ -135,10 +129,6 @@ public class SendEmail {
             message.setContent(content, "text/html; charset=utf-8");
             Transport.send(message);
 
-        } catch (MessagingException e) {
-            System.out.println("Email could not be sent ");
-            e.printStackTrace();
-        }
 
     }
 }

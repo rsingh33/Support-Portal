@@ -2,8 +2,44 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 </br>
+<c:if test="${not empty saved}">
+    <div class="alert alert-success" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${saved} &nbsp;
+    </div>
+</c:if>
+<c:if test="${not empty notSaved}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${notSaved} &nbsp;
+    </div>
+</c:if>
+<c:if test="${not empty moved}">
+    <div class="alert alert-success" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${moved} &nbsp;
+    </div>
+</c:if>
 
+<c:if test="${not empty notMoved}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${notMoved} &nbsp;
+    </div>
+</c:if>
+<c:if test="${not empty deleted}">
+    <div class="alert alert-success" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${deleted} &nbsp;
+    </div>
+</c:if>
 
+<c:if test="${not empty notDeleted}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${notDeleted} &nbsp;
+    </div>
+</c:if>
         <a id ="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/backlogForm" role="button"><span
                 class="glyphicon glyphicon-plus"></span> Add
             Issue</a>
