@@ -9,6 +9,10 @@
 <a id="expo" class="btn btn-primary btn-xs " href="${pageContext.request.contextPath}/newRelease" role="button"><span
         class="glyphicon glyphicon-plus"></span> Add New Release</a>
 
+<button id="expo" type="button" onclick="location.href='${pageContext.request.contextPath}/downloadTemplate'"
+        value="Export" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-download-alt"></span>
+    Template
+</button>
 <%--@elvariable id="excelRow" type="com.citi.spring.web.dao.entity.ExcelRow"--%>
 
 <form:form action="releaseHandler" method="post" modelAttribute="excelRow">
@@ -36,7 +40,7 @@
 </form:form>
 
 <c:if test="${not empty success}">
-    <div class="alert alert-success" role="alert" style="width: fit-content">
+    <div class="alert alert-success" role="alert" >
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             ${success}
     </div>
@@ -44,17 +48,22 @@
 
 <c:if test="${not empty warning}" >
 
-    <div class="alert alert-warning" role="alert" style="width: fit-content">
+    <div class="alert alert-warning" role="alert" >
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             ${warning}&nbsp;
     </div>
 </c:if>
 
 <c:if test="${not empty exception}">
+
     <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             ${exception}
     </div>
 </c:if>
+
+
+
 
 <c:if test="${not empty data}">
 

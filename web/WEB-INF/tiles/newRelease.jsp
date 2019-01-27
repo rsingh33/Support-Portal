@@ -3,7 +3,12 @@
 
 
 <c:url value="/uploadExcelFile?${_csrf.parameterName}=${_csrf.token}" var="uploadFileUrl"/>
-
+<c:if test="${not empty exception}">
+    <div class="alert alert-danger" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${exception} &nbsp;
+    </div>
+</c:if>
 <form:form method="post" enctype="multipart/form-data" action="${uploadFileUrl}" class="form-horizontal">
     <div class="container " id="Container3">
 
@@ -19,26 +24,26 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="releaseName" class="col-sm-2 control-label">Release Name:</label>
+                        <label for="releaseName" class="required col-sm-2 control-label">Release Name:</label>
                         <div class="col-sm-10">
-                            <input type="text" id="releaseName" name="releaseName" class="date-picker"
+                            <input type="text" id="releaseName" required name="releaseName" class="date-picker"
                                    placeholder="Release Name"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="deadlineDrop" class="col-sm-2 control-label">Checkout Deadline:</label>
+                        <label for="deadlineDrop" class="required col-sm-2 control-label">Checkout Deadline:</label>
                         <div class="col-sm-8">
-                            <input type="date" id="deadlineDrop" name="deadline" class="date-picker"
+                            <input required type="date" id="deadlineDrop" name="deadline" class="date-picker"
                                    value="Checkout Deadline: "/>
                         </div>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="upload" class="col-sm-2 control-label">Upload File:</label>
+                        <label for="upload" class="required col-sm-2 control-label">Upload File:</label>
                         <div class="col-sm-10">
-                            <input id="upload" required type="file" name="file" accept=".xls,.xlsx"/>
+                            <input  id="upload" required type="file" name="file" accept=".xls,.xlsx"/>
 
                         </div>
                     </div>

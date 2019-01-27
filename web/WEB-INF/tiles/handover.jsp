@@ -106,7 +106,7 @@
                             <c:out value="${handover.status}"/>
                         </c:set>
                         <c:if test="${status == 'HIGH'}">
-                            <tr id = "marginChangeHigh" style="-webkit-print-color-adjust: exact; background-color:#ffcccc" >
+                            <tr id = "marginChangeHigh" style="-webkit-print-color-adjust:  exact; background-color:#ffcccc" >
                         </c:if>
 
 

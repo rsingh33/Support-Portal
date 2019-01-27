@@ -74,10 +74,7 @@ public class ExcelRow {
                 Objects.equals(getEngineer(), excelRow.getEngineer()) &&
                 Objects.equals(getComments(), excelRow.getComments()) &&
                 Objects.equals(getStatus(), excelRow.getStatus()) &&
-                Objects.equals(getTester(), excelRow.getTester()) &&
-                Objects.equals(getLastModUser(), excelRow.getLastModUser()) &&
-                Objects.equals(getReleaseName(), excelRow.getReleaseName()) &&
-                Objects.equals(getDeadline(), excelRow.getDeadline());
+                Objects.equals(getTester(), excelRow.getTester()) ;
     }
 
     @Override

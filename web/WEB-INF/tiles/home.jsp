@@ -39,10 +39,12 @@
                                 <th>Hostname</th>
                                 <th>Status</th>
                                 <th>Response Time(ms)</th>
+                                <th>Minimum Response Time(ms)</th>
                                 <th>Last Refreshed</th>
-                                <sec:authorize access="hasRole('ROLE_admin')">
-                                    <th>Actions</th>
-                                </sec:authorize>
+
+
+                                <th>Actions</th>
+
                             </tr>
                             </thead>
                             <tbody id="prodTableBody">
@@ -76,10 +78,12 @@
                                             </c:if>
                                         </td>
                                         <td><p><c:out value="${entity.responseTime}"></c:out></p></td>
+                                        <td><p><c:out value="${entity.minResponseTime}"></c:out></p></td>
                                         <td><p><c:out value="${entity.lastRefreshed}"></c:out></p></td>
 
-                                        <sec:authorize access="hasRole('ROLE_admin')">
-                                            <td>
+
+                                        <td>
+                                            <sec:authorize access="hasRole('ROLE_admin')">
                                                 <a href="${pageContext.request.contextPath}/monitorForm/<c:out value='${entity.id}' />"><span
                                                         class="glyphicon glyphicon-pencil"></span></a>
                                                 &nbsp;&nbsp;
@@ -88,9 +92,11 @@
                                                    href="${pageContext.request.contextPath}/deleteMonitor/<c:out value='${entity.id}' />"><span
                                                         class="glyphicon glyphicon-trash"></span></a>
                                                 &nbsp;&nbsp;
+                                            </sec:authorize>
+                                            <a href="${pageContext.request.contextPath}/refresh/<c:out value='${entity.id}' />"><span
+                                                    class="fa fa-refresh"></span></a>
+                                        </td>
 
-                                            </td>
-                                        </sec:authorize>
                                     </tr>
                                 </c:if>
                             </c:forEach>
@@ -105,15 +111,15 @@
                         <table id="myTableSit" class="table table-striped table-hover compact nowrap table-condensed ">
                             <thead>
                             <tr id="sitTableHead">
-                                <th>Apllication</th>
+                                <th>Application</th>
                                 <th>Environment</th>
                                 <th>Hostname</th>
                                 <th>Status</th>
                                 <th>Response Time(ms)</th>
+                                <th>Minimum Response Time(ms)</th>
                                 <th>Last Refreshed</th>
-                                <sec:authorize access="hasRole('ROLE_admin')">
-                                    <th>Actions</th>
-                                </sec:authorize>
+                                <th>Actions</th>
+
                             </tr>
                             </thead>
                             <tbody id="sitTableBody">
@@ -147,10 +153,13 @@
                                             </c:if>
                                         </td>
                                         <td><p><c:out value="${entity.responseTime}"></c:out></p></td>
+                                        <td><p><c:out value="${entity.minResponseTime}"></c:out></p></td>
+
                                         <td><p><c:out value="${entity.lastRefreshed}"></c:out></p></td>
 
-                                        <sec:authorize access="hasRole('ROLE_admin')">
-                                            <td>
+
+                                        <td>
+                                            <sec:authorize access="hasRole('ROLE_admin')">
                                                 <a href="${pageContext.request.contextPath}/monitorForm/<c:out value='${entity.id}' />"><span
                                                         class="glyphicon glyphicon-pencil"></span></a>
                                                 &nbsp;&nbsp;
@@ -158,9 +167,13 @@
                                                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
                                                    href="${pageContext.request.contextPath}/deleteMonitor/<c:out value='${entity.id}' />"><span
                                                         class="glyphicon glyphicon-trash"></span></a>
+                                                &nbsp;&nbsp;
+                                            </sec:authorize>
+                                            <a href="${pageContext.request.contextPath}/refresh/<c:out value='${entity.id}' />"><span
+                                                    class="fa fa-refresh"></span></a>
 
-                                            </td>
-                                        </sec:authorize>
+
+                                        </td>
                                     </tr>
                                 </c:if>
                             </c:forEach>
@@ -179,10 +192,10 @@
                                 <th>Hostname</th>
                                 <th>Status</th>
                                 <th>Response Time(ms)</th>
+                                <th>Minimum Response Time(ms)</th>
                                 <th>Last Refreshed</th>
-                                <sec:authorize access="hasRole('ROLE_admin')">
-                                    <th>Actions</th>
-                                </sec:authorize>
+                                <th>Actions</th>
+
                             </tr>
                             </thead>
                             <tbody id="uatTableBody">
@@ -216,10 +229,12 @@
                                             </c:if>
                                         </td>
                                         <td><p><c:out value="${entity.responseTime}"></c:out></p></td>
+                                        <td><p><c:out value="${entity.minResponseTime}"></c:out></p></td>
                                         <td><p><c:out value="${entity.lastRefreshed}"></c:out></p></td>
 
-                                        <sec:authorize access="hasRole('ROLE_admin')">
-                                            <td>
+
+                                        <td>
+                                            <sec:authorize access="hasRole('ROLE_admin')">
                                                 <a href="${pageContext.request.contextPath}/monitorForm/<c:out value='${entity.id}' />"><span
                                                         class="glyphicon glyphicon-pencil"></span></a>
                                                 &nbsp;&nbsp;
@@ -227,9 +242,13 @@
                                                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
                                                    href="${pageContext.request.contextPath}/deleteMonitor/<c:out value='${entity.id}' />"><span
                                                         class="glyphicon glyphicon-trash"></span></a>
+                                                &nbsp;&nbsp;
+                                            </sec:authorize>
 
-                                            </td>
-                                        </sec:authorize>
+                                            <a href="${pageContext.request.contextPath}/refresh/<c:out value='${entity.id}' />"><span
+                                                    class="fa fa-refresh"></span></a>
+                                        </td>
+
                                     </tr>
                                 </c:if>
                             </c:forEach>

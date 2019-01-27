@@ -70,7 +70,7 @@
 
                         <!-- Status -->
                         <div class="form-group">
-                            <label for="dropdownMenu1" class="col-sm-2 control-label">Status</label>
+                            <label for="dropdownMenu1" class="col-sm-2 control-label">Priority</label>
                             <div class="col-sm-10">
                                 <div class="dropdown">
 

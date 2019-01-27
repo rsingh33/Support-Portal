@@ -32,6 +32,14 @@ public class MonitorService {
         return list;
     }
 
+    public Monitor refreshOne(int id) {
+       Monitor urlMonitor = monitorDao.getMonitor(id);
+        monitorHelper.refreshOne(urlMonitor);
+        monitorDao.saveOrUpdateMonitor(urlMonitor);
+
+        return urlMonitor;
+    }
+
     public List<Monitor> getMonitorEntities() {
         return monitorDao.getMonitorUrls();
     }

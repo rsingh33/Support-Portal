@@ -20,6 +20,16 @@ public class Monitor {
     @NotBlank
     String hostname;
     String responseTime;
+
+    public String getMinResponseTime() {
+        return minResponseTime;
+    }
+
+    public void setMinResponseTime(String minResponseTime) {
+        this.minResponseTime = minResponseTime;
+    }
+
+    String minResponseTime;
     Boolean status;
     @UpdateTimestamp
     Timestamp lastRefreshed;

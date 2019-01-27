@@ -11,5 +11,7 @@
     <bean id="releaseExcelView"
           class="com.citi.spring.web.views.ReleaseExcelView">
     </bean>
-
+    <bean id="templateExcelView"
+          class="com.citi.spring.web.views.TemplateExcelView">
+    </bean>
 </beans>

@@ -498,12 +498,12 @@ table#myTable7 tbody td {
 
 #marginChange td p {
     margin: 0 0 0px;
-    padding: 4px 0 4px;
+    padding: 0 0 4px;
 }
 
 #marginChangeHigh td p {
     margin: 0 0 0px;
-    padding: 4px 0 4px;
+    padding: 0 0 4px;
 }
 
 #marginChangeHigh td  {
@@ -512,10 +512,10 @@ table#myTable7 tbody td {
 }
 #marginChange td  {
     margin: 0 0 0px;
-    padding: 4px 0 4px;
+    padding: 0 0 4px;
 }
 #marginChange{
-    padding: 4px 0 4px;
+    padding: 0 0 4px;
     margin: 0 0 0px;
 }
 
@@ -544,4 +544,7 @@ table#myTable7 tbody td {
 .required:after {
     content: " *" ;
     color:red;
+}
+.alert{
+    /*width: fit-content;*/
 }

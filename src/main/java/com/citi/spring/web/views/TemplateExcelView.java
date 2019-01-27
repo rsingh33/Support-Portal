@@ -2,7 +2,6 @@ package com.citi.spring.web.views;
 
 
 import com.citi.spring.web.dao.entity.ExcelRow;
-import com.citi.spring.web.dao.entity.Handover;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractXlsView;
@@ -15,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class ReleaseExcelView extends AbstractXlsView {
+public class TemplateExcelView extends AbstractXlsView {
 
     DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 
@@ -27,13 +26,12 @@ public class ReleaseExcelView extends AbstractXlsView {
                                       HttpServletResponse response) throws Exception {
 
         // change the file name
-        response.setHeader("Content-Disposition", "attachment; filename=\"UAT_SignOff_Tracker.xls\"");
+        response.setHeader("Content-Disposition", "attachment; filename=\"template.xls\"");
 
-        @SuppressWarnings("unchecked")
-        List<ExcelRow> releaseList = (List<ExcelRow>) model.get("releaseList");
+
 
         // create excel xls sheet
-        Sheet sheet = workbook.createSheet("UAT_SignOff_Tracker");
+        Sheet sheet = workbook.createSheet("SignOff Tracker");
         CreationHelper createHelper = workbook.getCreationHelper();
 
 
@@ -86,19 +84,5 @@ public class ReleaseExcelView extends AbstractXlsView {
 
 
 
-        // Create data cells
-        int rowCount = 1;
-        for (ExcelRow excelRow : releaseList) {
-            Row handoverRow = sheet.createRow(rowCount++);
-            handoverRow.createCell(0).setCellValue(excelRow.getJiraKey());
-            handoverRow.createCell(1).setCellValue(excelRow.getSummary());
-            handoverRow.createCell(2).setCellValue(excelRow.getEngineer());
-            handoverRow.createCell(3).setCellValue(excelRow.getScriptLocation());
-            handoverRow.createCell(4).setCellValue(excelRow.getTester());
-            handoverRow.createCell(5).setCellValue(excelRow.getStatus().toString());
-//            handoverRow.createCell(6).setCellValue("Time:   " + sdf.format(handover.getLastMod()) + "  ,    User:  " + handover.getUsername());
-            handoverRow.createCell(6).setCellValue(excelRow.getComments());
-
-        }
     }
 }

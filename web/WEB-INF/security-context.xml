@@ -49,9 +49,10 @@
         <security:intercept-url pattern="/releasemanagerform" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/com/citi/spring/web/filters" access="denyAll()"></security:intercept-url>
         <security:form-login login-page="/login" authentication-failure-url="/login?error=true"></security:form-login>
-        <security:logout logout-success-url="/loggedout" logout-url="/logout"></security:logout>
+        <security:logout delete-cookies="JSESSIONID" logout-success-url="/loggedout" logout-url="/logout"></security:logout>
         <security:access-denied-handler error-page="/denied"></security:access-denied-handler>
         <security:remember-me key="issuesAppKey" user-service-ref="jdbcDataSource" ></security:remember-me>
+        <security:session-management invalid-session-url="/login"/>
     </security:http>
 
     <seurity:global-method-security secured-annotations="enabled"></seurity:global-method-security>

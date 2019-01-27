@@ -147,6 +147,7 @@ public class MonitorHelper {
                 long elapsedTime = System.currentTimeMillis() - startTime;
                 System.out.println("Total elapsed http request/response time in milliseconds: " + elapsedTime);
                 code = connection.getResponseCode();
+
                 list.add(elapsedTime+"");
             } else {
 
@@ -264,9 +265,15 @@ public class MonitorHelper {
                 if (entity.getLink().startsWith("http")) {
                     List<String> response = isHealthy(entity.getLink());
                     responseTime = response.get(0);
+                    String minResponseTime = entity.getMinResponseTime();
+                    if(minResponseTime == null) minResponseTime =responseTime;
+                    if(Integer.parseInt(responseTime) < Integer.parseInt(minResponseTime)){
+                        minResponseTime = responseTime;
+                    }
                     isHealthy = Boolean.valueOf(response.get(1));
                     entity.setStatus(isHealthy);
                     entity.setResponseTime(responseTime);
+                    entity.setMinResponseTime(minResponseTime);
                     // entity.setLastRefreshed(timestamp);
                 } else {
                     // it's db connection string
@@ -285,5 +292,43 @@ public class MonitorHelper {
         }
 
         return entities;
+    }
+
+    public Monitor refreshOne(Monitor entity) {
+
+
+
+            boolean isHealthy = false;
+            String responseTime = "";
+            try {
+                if (entity.getLink().startsWith("http")) {
+                    List<String> response = isHealthy(entity.getLink());
+                    responseTime = response.get(0);
+                    isHealthy = Boolean.valueOf(response.get(1));
+                    String minResponseTime = entity.getMinResponseTime();
+                    if(minResponseTime == null) minResponseTime =responseTime;
+                    if(Integer.parseInt(responseTime) < Integer.parseInt(minResponseTime)){
+                        minResponseTime = responseTime;
+                    }
+                    entity.setStatus(isHealthy);
+                    entity.setResponseTime(responseTime);
+                     entity.setMinResponseTime(minResponseTime);
+                } else {
+                    // it's db connection string
+                    isHealthy = dbValidator(entity.getLink());
+                    entity.setStatus(isHealthy);
+                    entity.setResponseTime("DB");
+                    //   entity.setLastRefreshed(timestamp);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (!isHealthy) {
+                System.out.println("Amber URL:" + entity.getLink());
+            }
+
+
+
+        return entity;
     }
 }

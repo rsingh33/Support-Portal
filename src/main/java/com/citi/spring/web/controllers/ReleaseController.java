@@ -45,7 +45,7 @@ public class ReleaseController {
 // Start
 
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"getRelease"})
-    public String showReleaseTable(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
+    public String showReleaseTable(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal,  RedirectAttributes redirectAttributes) {
         System.out.println("Showing Release table");
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
@@ -58,9 +58,15 @@ public class ReleaseController {
     }
 
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"downloadReleaseExcel"})
-    public ModelAndView getReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
+    public ModelAndView getReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal,RedirectAttributes redirectAttributes) {
+
         List<ExcelRow> releaseList = excelService.getExcel(excelRow.getReleaseName());
         return new ModelAndView("releaseExcelView", "releaseList", releaseList);
+    }
+
+    @RequestMapping(value = "/downloadTemplate")
+    public ModelAndView getReleaseTemplate() {
+        return new ModelAndView("templateExcelView");
     }
 
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"sendReminder"})
@@ -107,8 +113,16 @@ public class ReleaseController {
     }
 
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"removeRelease"})
-    public String deleteReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal) {
-        excelService.deleteExcel(excelRow.getReleaseName());
+    public String deleteReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal, RedirectAttributes redirectAttributes) {
+
+        try {
+            excelService.deleteExcel(excelRow.getReleaseName());
+            redirectAttributes.addFlashAttribute("releaseDeleted","Release has been successfully deleted");
+
+        } catch (Exception ex){
+            redirectAttributes.addFlashAttribute("releaseNotDeleted","Release can't be deleted please refresh page and try again");
+            return "releasemanager";
+        }
         return "redirect:/releasemanager";
     }
 
@@ -229,7 +243,7 @@ public class ReleaseController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/uploadExcelFile")
     public String uploadFile(Model model, MultipartFile file, Principal principal, @RequestParam("releaseName") String releaseName, @RequestParam("deadline")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline) throws IOException {
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline, RedirectAttributes redirectAttributes) throws IOException {
 
 
         try {
@@ -250,46 +264,59 @@ public class ReleaseController {
 
             if (fileLocation != null) {
                 if (fileLocation.endsWith(".xlsx") || fileLocation.endsWith(".xls")) {
-                    Map<Integer, List<MyCell>> data = excelParser.readExcel(fileLocation);
-                    List<ExcelRow> excel = new ArrayList<>();
+                    redirectAttributes.addFlashAttribute("success", "Processing Excel File!!");
+                    try {
+                        Map<Integer, List<MyCell>> data = excelParser.readExcel(fileLocation);
+                        List<ExcelRow> excel = new ArrayList<>();
 
-                    int i = 0;
-                    for (Map.Entry<Integer, List<MyCell>> entry : data.entrySet()) {
-                        if (i == 0) {
-                            i++;
-                            continue;
+
+                        int i = 0;
+                        for (Map.Entry<Integer, List<MyCell>> entry : data.entrySet()) {
+                            if (i == 0) {
+
+                                i++;
+                                continue;
+                            }
+
+                            ExcelRow excelRow = new ExcelRow();
+                            excelRow.setJiraKey(entry.getValue().get(0).getContent());
+                            excelRow.setSummary(entry.getValue().get(1).getContent());
+                            excelRow.setEngineer(entry.getValue().get(2).getContent());
+                            excelRow.setScriptLocation(entry.getValue().get(3).getContent());
+                            excelRow.setTester(entry.getValue().get(4).getContent());
+                            excelRow.setStatus(UATstatus.PENDING.toString());
+                            excelRow.setComments(entry.getValue().get(6).getContent());
+                            excelRow.setLastModUser(principal.getName());
+                            excelRow.setReleaseName(releaseName);
+                            excelRow.setDeadline(Date.valueOf(deadline));
+
+                            excel.add(excelRow);
+
                         }
-                        ExcelRow excelRow = new ExcelRow();
-                        excelRow.setJiraKey(entry.getValue().get(0).getContent());
-                        excelRow.setSummary(entry.getValue().get(1).getContent());
-                        excelRow.setEngineer(entry.getValue().get(2).getContent());
-                        excelRow.setScriptLocation(entry.getValue().get(3).getContent());
-                        excelRow.setTester(entry.getValue().get(4).getContent());
-                        excelRow.setStatus(UATstatus.PENDING.toString());
-                        excelRow.setComments(entry.getValue().get(6).getContent());
-                        excelRow.setLastModUser(principal.getName());
-                        excelRow.setReleaseName(releaseName);
-                        excelRow.setDeadline(Date.valueOf(deadline));
 
-                        excel.add(excelRow);
-
+                        excelService.saveorUpdateAll(excel);
+                    } catch (IndexOutOfBoundsException a) {
+                        System.out.println("User uploaded file in incorrect template");
+                        redirectAttributes.addFlashAttribute("exception", "File Template does not look valid, Please upload file with correct Template.");
+                        return "redirect:/newRelease";
                     }
-
-                    excelService.saveorUpdateAll(excel);
 
 
                 } else {
-                    model.addAttribute("message", "Not a valid excel file!");
+                    redirectAttributes.addFlashAttribute("exception", "This is not a valid excel file!");
+                    return "redirect:/newRelease";
                 }
             } else {
-                model.addAttribute("message", "File missing! Please upload an excel file.");
+                redirectAttributes.addFlashAttribute("exception", "File missing! Please upload an excel file.");
+                return "redirect:/newRelease";
             }
-            model.addAttribute("releaseName", releaseName);
-            model.addAttribute("message", "File: " + file.getOriginalFilename()
+
+            redirectAttributes.addFlashAttribute("success", "File: " + file.getOriginalFilename()
                     + " has been uploaded and processed successfully!");
         } catch (FileNotFoundException f) {
             System.out.println("File not found Exception occured");
-            model.addAttribute("message", "File missing! Please upload an excel file.");
+            redirectAttributes.addFlashAttribute("exception", "File missing! Please upload an excel file.");
+            return "redirect:/newRelease";
         }
         return "redirect:/releasemanager";
     }

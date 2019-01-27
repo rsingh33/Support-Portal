@@ -59,6 +59,12 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/refresh/{id}")
+    public String refreshOne(@PathVariable int id, Model m, RedirectAttributes redirectAttributes) {
+        monitorService.refreshOne(id);
+        return "redirect:/";
+    }
+
     @RequestMapping(value = "/saveMonitor", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("monitor") Monitor monitor, Principal principal) {
         System.out.println("Entering save monitor");

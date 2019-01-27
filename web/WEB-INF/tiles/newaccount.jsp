@@ -43,9 +43,10 @@
                             </div>
                             <!-- Email ID -->
                             <div class="form-group">
-                                <label for="email" class="required col-sm-4 control-label">Email</label>
+                                <label for="email" class="required col-sm-4 control-label">Citi Email</label>
                                 <div class="col-sm-8">
-                                    <sf:input path="email" class=" form-control" name="email"
+                                    <sf:input path="email"
+                                              class=" form-control" name="email"
                                               type="text"/>
                                     <div class="error"><sf:errors path="email"></sf:errors></div>
                                 </div>

@@ -1,3 +1,4 @@
+<%--
 <div id="footer">
 
     <!-- Footer start -->
@@ -6,4 +7,5 @@
 
 </div>
 
+--%>
 
