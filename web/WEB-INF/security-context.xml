@@ -23,6 +23,7 @@
 
     <security:http use-expressions="true">
         <security:intercept-url pattern="/admin**" access="permitAll()"></security:intercept-url>
+
         <security:intercept-url pattern="/admin**" access="hasAnyRole('ROLE_admin')"></security:intercept-url>
         <security:intercept-url pattern="/admin**" access="hasAnyRole('ROLE_admin')"></security:intercept-url>
         <security:intercept-url pattern="/newaccount" access="!isAuthenticated()"></security:intercept-url>
@@ -30,6 +31,7 @@
          <security:intercept-url pattern="/" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/static/**" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/login" access="permitAll()"></security:intercept-url>
+        <security:intercept-url pattern="/accountCreated" access="permitAll()"></security:intercept-url>
         <security:intercept-url pattern="/issues" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/history" access="isAuthenticated()"></security:intercept-url>
         <security:intercept-url pattern="/uploadExcelFile" access="isAuthenticated()"></security:intercept-url>

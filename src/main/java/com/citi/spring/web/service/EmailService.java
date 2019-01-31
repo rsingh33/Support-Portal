@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service("emailService")
 public class EmailService {
@@ -38,7 +39,7 @@ public class EmailService {
    }
 
     @Async
-    public void emailSend(String content,  List<String> to, String subject) throws Exception{
+    public void emailSend(String content, Set<String> to, String subject) throws Exception{
 
         SendEmail.emailSend(content, to, subject);
 

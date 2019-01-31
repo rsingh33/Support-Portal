@@ -87,8 +87,9 @@ public class LoginController {
         try {
             usersService.create(user);
         } catch (DuplicateKeyException e) {
-
-
+            model.addAttribute("newAcc", true);
+            model.addAttribute("accCreated", false);
+            return "newaccount";
         }
         model.addAttribute("accCreated", true);
         model.addAttribute("newAcc", false);

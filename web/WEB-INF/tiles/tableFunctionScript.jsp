@@ -13,31 +13,83 @@
             }
             return true;
         });
+        countTimer();
     });
 
 
-    function filter() {
-        // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
 
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
+    function countTimer() {
+
+       var deadlineCounter = sqlToJsDate('${deadlineDate}');
+
+        console.log("logging: " + deadlineCounter);
+        // Set the date we're counting down to
+
+        var countDownDate = new Date(deadlineCounter).getTime();
+
+
+        // Update the count down every 1 second....
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("counter").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("counter").innerHTML = "EXPIRED";
             }
-        }
+        }, 1000);
+    }
+
+
+    function sqlToJsDate(sqlDate) {
+
+        //sqlDate in SQL DATETIME format ("yyyy-mm-dd hh:mm:ss.ms")
+
+        var sqlDateArr1 = sqlDate.split("-");
+
+        //format of sqlDateArr1[] = ['yyyy','mm','dd hh:mm:ms']
+
+        var sYear = sqlDateArr1[0];
+
+        var sMonth = (Number(sqlDateArr1[1]) - 1).toString();
+
+        var sqlDateArr2 = sqlDateArr1[2].split(" ");
+
+        //format of sqlDateArr2[] = ['dd', 'hh:mm:ss.ms']
+        var sDay = sqlDateArr2[0];
+
+
+        //format of sqlDateArr3[] = ['hh','mm','ss.ms']
+
+        var sHour = '12';
+
+        var sMinute = '00';
+
+        //format of sqlDateArr4[] = ['ss','ms']
+
+        var sSecond = '00';
+        var sMillisecond = '00';
+
+
+        return new Date(sYear, sMonth, sDay, sHour, sMinute, sSecond, sMillisecond);
 
     }
+
 
     /* // below is pagination code////////////////////
       $(function () {
@@ -133,6 +185,27 @@
           }
 
       }*/
+    function filter() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
 
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+    }
 
 </script>

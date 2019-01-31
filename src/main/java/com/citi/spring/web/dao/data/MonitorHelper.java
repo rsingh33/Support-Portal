@@ -148,7 +148,7 @@ public class MonitorHelper {
                 System.out.println("Total elapsed http request/response time in milliseconds: " + elapsedTime);
                 code = connection.getResponseCode();
 
-                list.add(elapsedTime+"");
+                list.add(elapsedTime + "");
             } else {
 
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -158,7 +158,7 @@ public class MonitorHelper {
                 long elapsedTime = System.currentTimeMillis() - startTime;
                 System.out.println("Total elapsed http request/response time in milliseconds: " + elapsedTime);
                 code = connection.getResponseCode();
-                list.add(elapsedTime+"");
+                list.add(elapsedTime + "");
             }
 
 
@@ -167,7 +167,7 @@ public class MonitorHelper {
                 return list;
             }
         } catch (IOException e) {
-            if(list.isEmpty())list.add("No Time");
+            if (list.isEmpty()) list.add("No Time");
             list.add("false");
             return list;
         } catch (NoSuchAlgorithmException e) {
@@ -177,7 +177,7 @@ public class MonitorHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(list.isEmpty())list.add("No Time");
+        if (list.isEmpty()) list.add("No Time");
         list.add("false");
         return list;
     }
@@ -274,6 +274,7 @@ public class MonitorHelper {
                     entity.setStatus(isHealthy);
                     entity.setResponseTime(responseTime);
                     entity.setMinResponseTime(minResponseTime);
+
                     // entity.setLastRefreshed(timestamp);
                 } else {
                     // it's db connection string
@@ -326,7 +327,6 @@ public class MonitorHelper {
             if (!isHealthy) {
                 System.out.println("Amber URL:" + entity.getLink());
             }
-
 
 
         return entity;

@@ -29,8 +29,7 @@
     <button type="submit" name="getRelease" class="btn btn-primary btn-xs">Show</button>
 
     <button type="submit" name="downloadReleaseExcel" class="btn btn-primary btn-xs"> <span
-            class="glyphicon glyphicon-download-alt"></span>Export
-    </button>
+            class="glyphicon glyphicon-download-alt"></span>Export</button>
     <sec:authorize access="hasRole('ROLE_admin')">
         <button type="submit" name="removeRelease" class="btn btn-primary btn-xs">Delete</button>
         <button type="submit" name="sendReminder" class="btn btn-primary btn-xs">Send Reminder</button>
@@ -40,15 +39,15 @@
 </form:form>
 
 <c:if test="${not empty success}">
-    <div class="alert alert-success" role="alert" >
+    <div class="alert alert-success" role="alert">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             ${success}
     </div>
 </c:if>
 
-<c:if test="${not empty warning}" >
+<c:if test="${not empty warning}">
 
-    <div class="alert alert-warning" role="alert" >
+    <div class="alert alert-warning" role="alert">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             ${warning}&nbsp;
     </div>
@@ -63,42 +62,40 @@
 </c:if>
 
 
-
-
 <c:if test="${not empty data}">
 
 
     <div class="container-fluid">
-            <%--<div class="col-sm-offset-1 col-sm-9">--%>
+
         <div id="progressbar">
-            <p style=" font-family: Roboto Medium, Roboto Regular, Roboto;">Release Progress:</p>
+            <p style=" font-family: Roboto Medium, Roboto Regular, Roboto; font-weight: bold;">Release Progress:</p>
         </div>
-        <div id="progressbar" class="col-lg-3">
+        <div id="progressbar" class="col-lg-2">
             <div class="progress">
 
-                <div class="progress-bar progress-bar-success" role="progressbar" style="width:${pass}%">
+                <div class="progress-bar progress-bar-success  " role="progressbar" style="width:${pass}%">
                         ${pass}% &nbsp; Passed
                 </div>
-                <div class="progress-bar progress-bar-warning" role="progressbar" style="width:${pending}%">
+                <div class="progress-bar progress-bar-warning " role="progressbar" style="width:${pending}%">
                         ${pending}% &nbsp; Pending
                 </div>
-                <div class="progress-bar progress-bar-danger" role="progressbar" style="width:${fail}%">
+                <div class="progress-bar progress-bar-danger " role="progressbar" style="width:${fail}%">
                         ${fail}% &nbsp; Failed
                 </div>
             </div>
         </div>
 
+        <div >
+            <div id="deadLine" >
 
-        <div id="deadLine" class="col-sm-offset-2 col-lg-1">
+                <p id="counter"></p>
 
-            <c:set var="deadLine">
-                <c:out value="${deadline}"/>
-            </c:set>
+            </div>
 
-
-            <c:if test="${deadline < 2}"><p style="color: red">Deadline: &nbsp; ${deadLine}day(s)</p></c:if>
-            <c:if test="${deadline >= 2}"><p style="color: black">Deadline: &nbsp;${deadLine}day(s)</p></c:if>
-
+            <div id="deadLine">
+                <p style="font-family: Roboto Medium, Roboto Regular, Roboto;font-weight: bold;">Signoff
+                    Deadline:&nbsp;</p>
+            </div>
         </div>
     </div>
 

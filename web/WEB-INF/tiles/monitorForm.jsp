@@ -10,7 +10,9 @@
 
     <c:if test="${monitor != null}">
         <input type="hidden" name="id" value="<c:out value='${monitor.id}' />"/>
-        <input type="hidden" name="id" value="<c:out value='${monitor.status}' />"/>
+        <input type="hidden" name="status" value="<c:out value='${monitor.status}' />"/>
+        <input type="hidden" name="minResponseTime" value="<c:out value='${monitor.minResponseTime}' />"/>
+        <input type="hidden" name="responseTime" value="<c:out value='${monitor.responseTime}' />"/>
     </c:if>
 
     <div class="container" id="Container3">

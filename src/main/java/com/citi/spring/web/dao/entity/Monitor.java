@@ -20,22 +20,27 @@ public class Monitor {
     @NotBlank
     String hostname;
     String responseTime;
-
-    public String getMinResponseTime() {
-        return minResponseTime;
-    }
-
-    public void setMinResponseTime(String minResponseTime) {
-        this.minResponseTime = minResponseTime;
-    }
-
     String minResponseTime;
+
     Boolean status;
     @UpdateTimestamp
     Timestamp lastRefreshed;
     @Id
     @GeneratedValue
     private int id;
+
+
+    public Monitor(String name, String link, String env, String hostname, String responseTime, String minResponseTime, Boolean status, Timestamp lastRefreshed) {
+        this.name = name;
+        this.link = link;
+        this.env = env;
+        this.hostname = hostname;
+        this.responseTime = responseTime;
+        this.minResponseTime = minResponseTime;
+
+        this.status = status;
+        this.lastRefreshed = lastRefreshed;
+    }
 
     public Monitor(String name, String link, String env, String hostname, Boolean status, Timestamp lastRefreshed) {
         this.name = name;
@@ -45,6 +50,7 @@ public class Monitor {
         this.status = status;
         this.lastRefreshed = lastRefreshed;
     }
+
     public Monitor(String name, String link, String env, String hostname, Boolean status) {
         this.name = name;
         this.link = link;
@@ -56,6 +62,7 @@ public class Monitor {
     public Monitor(String name) {
         this.name = name;
     }
+
     public Monitor(String name, String link, String env, String hostname) {
         this.name = name;
         this.link = link;
@@ -67,12 +74,12 @@ public class Monitor {
 
     }
 
-    public String getResponseTime() {
-        return responseTime;
+    public String getMinResponseTime() {
+        return minResponseTime;
     }
 
-    public void setResponseTime(String responseTime) {
-        this.responseTime = responseTime;
+    public void setMinResponseTime(String minResponseTime) {
+        this.minResponseTime = minResponseTime;
     }
 
     @Override
@@ -86,13 +93,23 @@ public class Monitor {
                 Objects.equals(getEnv(), monitor.getEnv()) &&
                 Objects.equals(getHostname(), monitor.getHostname()) &&
                 Objects.equals(getResponseTime(), monitor.getResponseTime()) &&
+                Objects.equals(getMinResponseTime(), monitor.getMinResponseTime()) &&
                 Objects.equals(getStatus(), monitor.getStatus()) &&
                 Objects.equals(getLastRefreshed(), monitor.getLastRefreshed());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getLink(), getEnv(), getHostname(), getResponseTime(), getStatus(), getLastRefreshed(), getId());
+        return Objects.hash(getName(), getLink(), getEnv(), getHostname(), getResponseTime(), getMinResponseTime(),  getStatus(), getLastRefreshed(), getId());
+    }
+
+
+    public String getResponseTime() {
+        return responseTime;
+    }
+
+    public void setResponseTime(String responseTime) {
+        this.responseTime = responseTime;
     }
 
     public int getId() {

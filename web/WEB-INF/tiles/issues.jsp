@@ -49,7 +49,7 @@
                     <tr id="tableHead">
                         <th>Issue Description</th>
                         <th>Workaround</th>
-                        <th>Solution</th>
+                        <th>Cause</th>
                         <th>Jira</th>
                         <th>Source</th>
                         <th>Last Mod Info</th>

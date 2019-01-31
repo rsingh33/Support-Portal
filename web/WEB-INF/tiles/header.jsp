@@ -47,12 +47,12 @@
                     <li><a id="tab" class="title" href="${pageContext.request.contextPath}/">Home</a></li>
                     <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/handover">Handover</a></li>
                     <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/backlog">Backlog</a></li>
-                    <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/issues">Issues-Database</a></li>
+                    <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/issues">Issues</a></li>
                     <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/releasemanager">SignOff-Tracker</a>
                     </li>
                     <li><a id="tab"  class="title" href="http://ddivmddsf4:8080/DevOps/index.html">Devops-Dashboard</a></li>
                     <sec:authorize access="hasRole('ROLE_admin')">
-                        <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/admin">Admin</a>
+                        <li><a id="tab"  class="title" href="${pageContext.request.contextPath}/admin">Admin-Portal</a>
                         </li>
                     </sec:authorize>
 
@@ -62,7 +62,7 @@
                     <c:url var="logoutUrl" value="/logout"/>
                     <ul class="nav navbar-nav">
                         <li>
-                            <span id="welcome">Welcome, <c:out value="${name}  "></c:out>   </span>
+                            <span id="welcome">Welcome, <c:out value="${name}  "></c:out>  </span>
                         </li>
                         <li>
                             <form id="log123" action="${logoutUrl}" method="post">

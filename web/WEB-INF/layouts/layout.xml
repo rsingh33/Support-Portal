@@ -103,6 +103,11 @@
     </definition>
 
 
+
+    <definition name=" accountCreated" extends="support-portal.base">
+        <put-attribute name="title" value="Account Created"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/accountCreated.jsp"></put-attribute>
+    </definition>
     <definition name="releasemanagerform" extends="support-portal.base">
         <put-attribute name="includes" value="/WEB-INF/tiles/releaseManagerScript.jsp"></put-attribute>
         <put-attribute name="title" value="Release Form"></put-attribute>

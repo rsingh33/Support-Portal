@@ -167,8 +167,8 @@
                                                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
                                                    href="${pageContext.request.contextPath}/deleteMonitor/<c:out value='${entity.id}' />"><span
                                                         class="glyphicon glyphicon-trash"></span></a>
-                                                &nbsp;&nbsp;
                                             </sec:authorize>
+                                            &nbsp;&nbsp;
                                             <a href="${pageContext.request.contextPath}/refresh/<c:out value='${entity.id}' />"><span
                                                     class="fa fa-refresh"></span></a>
 
@@ -192,7 +192,7 @@
                                 <th>Hostname</th>
                                 <th>Status</th>
                                 <th>Response Time(ms)</th>
-                                <th>Minimum Response Time(ms)</th>
+                                <th>Min/Max Response Time(ms)</th>
                                 <th>Last Refreshed</th>
                                 <th>Actions</th>
 
@@ -242,9 +242,8 @@
                                                 <a class="delete" id="delete" type="submit" value="Delete" name="delete"
                                                    href="${pageContext.request.contextPath}/deleteMonitor/<c:out value='${entity.id}' />"><span
                                                         class="glyphicon glyphicon-trash"></span></a>
-                                                &nbsp;&nbsp;
                                             </sec:authorize>
-
+                                            &nbsp;&nbsp;
                                             <a href="${pageContext.request.contextPath}/refresh/<c:out value='${entity.id}' />"><span
                                                     class="fa fa-refresh"></span></a>
                                         </td>

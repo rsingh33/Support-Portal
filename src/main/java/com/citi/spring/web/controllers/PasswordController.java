@@ -75,6 +75,7 @@ public class PasswordController {
                     + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
             try {
                 emailService.emailSend(content, user.getEmail(), "Password Reset Request");
+                System.out.println(content);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

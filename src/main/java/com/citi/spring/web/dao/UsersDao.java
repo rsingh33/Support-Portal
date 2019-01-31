@@ -42,7 +42,7 @@ public class UsersDao {
 
     public boolean exists(String username) {
         Criteria criteria = session().createCriteria(User.class);
-        criteria.add(Restrictions.eq("username",username));
+        criteria.add(Restrictions.eq("username", username));
         User user = (User) criteria.uniqueResult();
 
         return user != null;
@@ -51,17 +51,20 @@ public class UsersDao {
     public boolean existsByName(String name) {
 
         Criteria criteria = session().createCriteria(User.class);
-        criteria.add(Restrictions.eq("name",name));
-        User user = (User) criteria.uniqueResult();
-
-        return user != null;
+        criteria.add(Restrictions.eq("name", name));
+        List<User> users = (List<User>) criteria.list();
+        return (users.size() > 0);
     }
 
     public String getEmail(String name) {
         Criteria criteria = session().createCriteria(User.class);
-        criteria.add(Restrictions.eq("name",name));
-        User user = (User) criteria.uniqueResult();
-        return user.getEmail();
+        criteria.add(Restrictions.eq("name", name));
+        List<User> users = (List<User>) criteria.list();
+        String email = "";
+        for(User user : users){
+            email+=user.getEmail()+";";
+        }
+        return email;
     }
 
     @SuppressWarnings("unchecked")
@@ -84,7 +87,7 @@ public class UsersDao {
     }
 
     public void update(User user) {
-      session().saveOrUpdate(user);
+        session().saveOrUpdate(user);
     }
 
     public boolean delete(String username) {
@@ -96,7 +99,7 @@ public class UsersDao {
 
     public boolean existsToken(String token) {
         Criteria criteria = session().createCriteria(User.class);
-        criteria.add(Restrictions.eq("resetToken",token));
+        criteria.add(Restrictions.eq("resetToken", token));
         User user = (User) criteria.uniqueResult();
 
         return user != null;
@@ -118,7 +121,7 @@ public class UsersDao {
 
     public boolean existsByEmail(String email) {
         Criteria criteria = session().createCriteria(User.class);
-        criteria.add(Restrictions.eq("email",email));
+        criteria.add(Restrictions.eq("email", email));
         User user = (User) criteria.uniqueResult();
         return user != null;
     }

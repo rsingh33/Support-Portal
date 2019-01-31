@@ -57,7 +57,7 @@
 
                     <!-- solution -->
                     <div class="form-group">
-                        <label for="solution" class="col-sm-2 control-label">Solution</label>
+                        <label for="solution" class="col-sm-2 control-label">Cause</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="solution" placeholder="solution"
                                    name="solution"

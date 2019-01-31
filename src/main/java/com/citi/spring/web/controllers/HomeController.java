@@ -46,7 +46,7 @@ public class HomeController {
 
     @RequestMapping(value = "/refresh")
     public String monitorApps(Model model, Principal principal, RedirectAttributes redirectAttributes) {
-        logger.info("Showing Monitor page....");
+
        /* if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         else

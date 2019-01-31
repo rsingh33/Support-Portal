@@ -25,6 +25,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -73,7 +74,7 @@ public class ReleaseController {
     public String sendReminder(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal, RedirectAttributes redirectAttributes) {
         System.out.println("Reminder Email sent triggered");
 
-        List<String> toEmailList = excelService.getPendingTesters(excelRow.getReleaseName());
+        Set<String> toEmailList = excelService.getPendingTesters(excelRow.getReleaseName());
         if (toEmailList.isEmpty()) {
             redirectAttributes.addFlashAttribute("warning", "There are no valid user to email mappings found.  ");
             return "redirect:/releasemanager";
@@ -90,10 +91,11 @@ public class ReleaseController {
                 + "OMC Support Team"
                 + "\r\n"
                 + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
-        //List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
-        // dataPopulate(data1, model);
+
         try {
             emailService.emailSend(content, toEmailList, "Reminder for UAT pending test cases");
+            List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+            dataPopulate(data1, model);
         } catch (Exception ex) {
             System.out.println("Exception occurred while sending email");
             ex.printStackTrace();
@@ -208,6 +210,7 @@ public class ReleaseController {
             List<String> releases = excelService.getReleases();
             m.addAttribute("releases", releases);
             m.addAttribute("deadline", daysToDeadline);
+            m.addAttribute("deadlineDate",  data1.get(0).getDeadline());
             m.addAttribute("pass", pass);
             m.addAttribute("fail", fail);
             m.addAttribute("pending", pending);
@@ -293,7 +296,7 @@ public class ReleaseController {
                             excel.add(excelRow);
 
                         }
-
+                        model.addAttribute("deadlineDate", Date.valueOf(deadline));
                         excelService.saveorUpdateAll(excel);
                     } catch (IndexOutOfBoundsException a) {
                         System.out.println("User uploaded file in incorrect template");

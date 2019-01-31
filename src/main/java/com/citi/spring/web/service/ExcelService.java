@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service("excelService")
 public class ExcelService {
@@ -61,8 +63,8 @@ public class ExcelService {
         }
     }
 
-    public List<String> getPendingTesters(String releaseName) {
-        List<String> reminderEmailList = new ArrayList<>();
+    public  Set<String> getPendingTesters(String releaseName) {
+        Set<String> reminderEmailList = new HashSet<>();
 
         try {
             List<ExcelRow> release = excelDao.getExcelRow(releaseName);
@@ -73,8 +75,9 @@ public class ExcelService {
 
                     if (usersDao.existsByName(excelRow.getTester())) {
                         if (excelRow.getStatus() != null && excelRow.getStatus().equals("PENDING")) {
-                            if (!reminderEmailList.contains(usersDao.getEmail(excelRow.getTester()))) {
-                                reminderEmailList.add(usersDao.getEmail(excelRow.getTester()));
+                            String [] emails = usersDao.getEmail(excelRow.getTester()).split(";");
+                           for(String email :emails){
+                                reminderEmailList.add(email);
                             }
                         }
                     }

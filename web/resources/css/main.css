@@ -285,8 +285,9 @@ body {
 }
 
 .wrapText {
-
+    max-width: 200px;
     word-wrap: break-word;
+    white-space: normal;
 }
 
 /*End*/
@@ -419,10 +420,8 @@ body {
 #welcome {
 
     font-size: 12px !important;
-    margin-top: 105px;
-    margin-bottom: 0px;
-    padding-top: 100px;
-    padding-bottom: 0px;
+    padding: 0 4px 0px;
+    margin: 0 4px 0px;
 
 }
 
@@ -478,6 +477,7 @@ body {
 
 #deadLine {
     float: right;
+
 }
 
 #progressbar {
@@ -486,7 +486,7 @@ body {
 
 
 table#myTable tableBody td {
-    height: 5px;
+    height: 7px;
     overflow: hidden;
     word-break: break-word;
 }
@@ -497,26 +497,26 @@ table#myTable7 tbody td {
 }
 
 #marginChange td p {
-    margin: 0 0 0px;
-    padding: 0 0 4px;
+    margin: 2px 0 0px;
+    padding: 2px 0 4px;
 }
 
 #marginChangeHigh td p {
-    margin: 0 0 0px;
-    padding: 0 0 4px;
+    margin: 2px 0 0px;
+    padding: 2px 0 4px;
 }
 
 #marginChangeHigh td  {
-    margin: 0 0 0px;
+    margin: 2px 0 0px;
     padding: 4px 0 4px;
 }
 #marginChange td  {
-    margin: 0 0 0px;
-    padding: 0 0 4px;
+    margin: 2px 0 0px;
+    padding: 2px 2px 4px;
 }
 #marginChange{
-    padding: 0 0 4px;
-    margin: 0 0 0px;
+    padding: 4px 0 4px;
+    margin: 4px 0 0px;
 }
 
 
@@ -547,4 +547,9 @@ table#myTable7 tbody td {
 }
 .alert{
     /*width: fit-content;*/
+}
+
+#counter{
+    font-family: "Roboto Medium", "Roboto Regular", Roboto;
+
 }
