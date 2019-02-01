@@ -8,6 +8,7 @@ import com.citi.spring.web.service.BacklogService;
 import com.citi.spring.web.service.EmailService;
 import com.citi.spring.web.service.HandoverService;
 import com.citi.spring.web.service.UsersService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,8 @@ import java.util.List;
 
 @Controller
 public class HandoverController {
+
+    private static Logger logger = Logger.getLogger(HandoverController.class);
 
     @Autowired
     private UsersService usersService;
@@ -44,6 +47,7 @@ public class HandoverController {
         model.addAttribute("handovers", handover);
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+        logger.info("Showing Handover page"  + " for user:" + principal);
         return "handover";
 
     }
@@ -53,6 +57,7 @@ public class HandoverController {
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         m.addAttribute("handover", new Handover());
+        logger.info("Showing Handover form page" + " for user:" + principal);
         return "handoverform";
     }
 
@@ -63,6 +68,7 @@ public class HandoverController {
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         Handover handover = handoverService.getHandover(id);
         m.addAttribute("handover", handover);
+        logger.info("Retrieving Handover for id: " + id  + " by user:" + principal);
         return "handoverform";
     }
 
@@ -71,8 +77,11 @@ public class HandoverController {
         handover.setLastModUser(principal.getName());
         try {
             handoverService.saveOrUpdate(handover);
+            logger.info("Handover saved successfully" + " by user:" + principal + " " + handover.toString());
             redirectAttributes.addFlashAttribute("saved", "Record successfully saved!!");
         } catch (Exception ex) {
+            logger.error("Handover cannot be saved because " + ex.getCause()  + " by user:" + principal );
+            logger.error(ex.getStackTrace());
             redirectAttributes.addFlashAttribute("notSaved", "Could not be saved, Pleasse try again");
             return "redirect:/handover";
         }
@@ -81,11 +90,14 @@ public class HandoverController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable int id, RedirectAttributes redirectAttributes) {
+    public String delete(@PathVariable int id, RedirectAttributes redirectAttributes,Principal principal) {
         try {
             handoverService.delete(id);
+            logger.info("Handover deleted successfully for id: " + id + " by user:" + principal );
             redirectAttributes.addFlashAttribute("deleted", "Record deleted!!");
         } catch (Exception ex) {
+            logger.error("Handover could not be deleted for this id: " + id + " by user:" + principal);
+            logger.error(ex.getStackTrace());
             redirectAttributes.addFlashAttribute("deleteFailed", "Record could not be deleted");
             return "redirect:/handover";
         }
@@ -94,14 +106,16 @@ public class HandoverController {
     }
 
     @RequestMapping(value = "/sendemail", method = RequestMethod.GET)
-    public String sendEmail(RedirectAttributes redirectAttributes) {
+    public String sendEmail(RedirectAttributes redirectAttributes, Principal principal) {
         List<Handover> handovers = handoverService.getCurrentHandover();
         String content = ListToHtmlTransformer.compose(handovers);
         try {
             emailService.emailSend(content);
+            logger.info("Handover sent successfully via mail" + " by user:" + principal);
             redirectAttributes.addFlashAttribute("emailSent", "Handover email sent successfully!!");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Handover email not sent" + " by user:" + principal);
+            logger.error(e.getStackTrace());
             redirectAttributes.addFlashAttribute("exception", "Handover email could not be sent, please try again!!");
             return "redirect:/handover";
         }
@@ -109,15 +123,11 @@ public class HandoverController {
         return "redirect:/handover";
     }
 
-    @RequestMapping(value = "/history/{id}", method = RequestMethod.GET)
-    public String getHistory(@PathVariable int id, Model model) {
-
-        return "history";
-    }
 
     @RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
-    public ModelAndView getExcel() {
+    public ModelAndView getExcel(Principal principal) {
         List<Handover> handoverList = handoverService.getCurrentHandover();
+        logger.info("Handover downloaded successfully" + " by user:" + principal);
         return new ModelAndView("handoverExcelView", "handoverList", handoverList);
     }
 
@@ -127,9 +137,13 @@ public class HandoverController {
         Backlog backlog = handoverToBacklog(handover);
         try {
             handoverService.delete(id);
+            logger.info("Handover deleted for id:" + id  + " by user:" + principal);
             backlogService.saveOrUpdate(backlog);
+            logger.info("Handover moved in backlog successfully for id: " + id  + " by user:" + principal);
             redirectAttributes.addFlashAttribute("moved", "Record moved to backlog");
         } catch (Exception ex) {
+            logger.error("Error while moving handover to backlog for id: " + id + " by user:" + principal);
+            logger.error(ex.getStackTrace());
             redirectAttributes.addFlashAttribute("notMoved", "Record can't be moved, Please try again");
             return "redirect:/handover";
         }

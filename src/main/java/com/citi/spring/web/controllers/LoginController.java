@@ -6,6 +6,7 @@ import com.citi.spring.web.dao.entity.User;
 import com.citi.spring.web.emailHandler.SendEmail;
 import com.citi.spring.web.service.UsersService;
 import com.citi.spring.web.validations.FormValidationGroup;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,6 +29,7 @@ import java.util.UUID;
 @Controller
 public class LoginController {
 
+    private static Logger logger = Logger.getLogger(LoginController.class);
     private UsersService usersService;
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -40,13 +42,14 @@ public class LoginController {
 
     @RequestMapping(value = "/login")
     public String showLogin() {
-
+        logger.info("Showing Login Page");
         return "login";
     }
 
     @RequestMapping(value = "/denied")
     public String showDenied() {
 
+        logger.info("Excess Denied for user");
         return "denied";
     }
 
@@ -54,6 +57,7 @@ public class LoginController {
     @RequestMapping(value = "/loggedout")
     public String showLoggedOut() {
 
+        logger.info("Log out Successful");
         return "redirect:/login";
     }
 
@@ -63,6 +67,7 @@ public class LoginController {
         model.addAttribute("user", new User());
         model.addAttribute("newAcc", true);
         model.addAttribute("accCreated", false);
+        logger.info("Displaying new account form");
         return "newaccount";
     }
 
@@ -72,6 +77,7 @@ public class LoginController {
         if (result.hasErrors()) {
             model.addAttribute("newAcc", true);
             model.addAttribute("accCreated", false);
+            logger.warn(" User got from UI has errors so resetting the form");
             return "newaccount";
         }
 
@@ -82,13 +88,16 @@ public class LoginController {
         if (usersService.exists(user.getusername())) {
 
             result.rejectValue("username", "DuplicateKey.user.username");
+            logger.warn("Username " + user.getusername() + " already exists" );
             return ("newaccount");
         }
         try {
             usersService.create(user);
+            logger.info("account created successfully for " + user.getName() + " with email: " + user.getEmail() );
         } catch (DuplicateKeyException e) {
             model.addAttribute("newAcc", true);
             model.addAttribute("accCreated", false);
+            logger.error("account creation failed");
             return "newaccount";
         }
         model.addAttribute("accCreated", true);

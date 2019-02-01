@@ -6,6 +6,7 @@ import com.citi.spring.web.dao.data.Roles;
 import com.citi.spring.web.dao.entity.Handover;
 import com.citi.spring.web.dao.entity.User;
 import com.citi.spring.web.service.UsersService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class UserController {
 
     private UsersService usersService;
 
+    private static Logger logger = Logger.getLogger(UserController.class);
     @Autowired
     public void setOffersService(UsersService usersService) {
         this.usersService = usersService;

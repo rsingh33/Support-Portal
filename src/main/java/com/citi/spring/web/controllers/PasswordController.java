@@ -5,6 +5,7 @@ import com.citi.spring.web.dao.entity.User;
 import com.citi.spring.web.service.EmailService;
 import com.citi.spring.web.service.UsersService;
 import com.citi.spring.web.validations.ValidEmail;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import java.util.UUID;
 @Controller
 public class PasswordController {
 
+    private static Logger logger = Logger.getLogger(PasswordController.class);
     @Autowired
     private UsersService userService;
 
@@ -38,6 +40,7 @@ public class PasswordController {
     @RequestMapping(value = "/forgot", method = RequestMethod.GET)
     public String displayForgotPasswordPage(Model model) {
         model.addAttribute("forgotlink", true);
+        logger.info("Showing forget password page");
         return "forgotPassword";
     }
 
@@ -51,14 +54,17 @@ public class PasswordController {
         if (!userService.existsByEmail(userEmail)) {
             model.addAttribute("message", "This is not a registered email " + userEmail);
             model.addAttribute("forgotlink", true);
+            logger.warn(userEmail + " does not exist");
         } else {
 
             // Generate random 36-character string token for reset password
             User user = userService.getUserEmail(userEmail);
             user.setResetToken(UUID.randomUUID().toString());
+            logger.info("Token generated for user with email Id: " + userEmail);
 
             // Save token to database
             userService.update(user);
+            logger.info("Token Saved in database");
 
             String appUrl = request.getScheme() + "://" + request.getServerName() + ":" +
                     request.getServerPort() + request.getContextPath();
@@ -74,10 +80,12 @@ public class PasswordController {
                     + "\r\n"
                     + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
             try {
+                logger.info("Forget password Email sent to: " + userEmail);
                 emailService.emailSend(content, user.getEmail(), "Password Reset Request");
                 System.out.println(content);
             } catch (Exception ex) {
-                ex.printStackTrace();
+                logger.error("Forget password Email unsuccessful for email id: " + userEmail);
+                logger.error(ex.getStackTrace());
             }
 
             // Add success message to view
@@ -99,9 +107,11 @@ public class PasswordController {
         if (user != null) {
 
             model.addAttribute("resetToken", token);
+            logger.info("Token Active");
         } else {
 
             model.addAttribute("message", "Oops!  Password Link expired. Please click the latest link or generate again using Forgot Password ");
+            logger.info("Token Expired");
         }
         model.addAttribute("isReset", true);
         model.addAttribute("resets", false);
@@ -118,25 +128,31 @@ public class PasswordController {
                     " on forgot password on home screen to regenerate");
             model.addAttribute("resets", false);
             model.addAttribute("isReset", true);
+            logger.warn("Password Link expired");
             return "resetPassword";
         }
 
         User user = userService.findUserByResetToken(requestParams.get("token"));
+        logger.info("User: " + user + " found for the Token");
 
 
         // Set new password
         user.setPassword(passwordEncoder.encode(requestParams.get("password")));
+        logger.info("New Password set successfully for user: " + user);
 
         // Set the reset token to null so it cannot be used again
         user.setResetToken(null);
+        logger.info("Token Inactive now");
 
         // Save user
         userService.update(user);
+        logger.info("Password updated for user: " + user );
 
         // In order to set a model attribute on a redirect, we must use
         // RedirectAttributes
         model.addAttribute("message", "You have successfully reset your password. " +
                 " You may now ");
+        logger.info("Password reset successful");
         model.addAttribute("resets", true);
         model.addAttribute("isReset", false);
         return "resetPassword";
@@ -146,6 +162,7 @@ public class PasswordController {
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public String handleMissingParams(MissingServletRequestParameterException ex) {
         System.out.println("Going to reset page without a token ...Exception occurred!!");
+        logger.warn("Exception called in Reset Password page");
         return "redirect:/login";
     }
 }

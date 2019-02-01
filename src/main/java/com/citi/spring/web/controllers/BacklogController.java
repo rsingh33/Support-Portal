@@ -6,6 +6,7 @@ import com.citi.spring.web.dao.entity.Handover;
 import com.citi.spring.web.service.BacklogService;
 import com.citi.spring.web.service.HandoverService;
 import com.citi.spring.web.service.UsersService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ import java.util.List;
 @Controller
 public class BacklogController {
 
+    private static Logger logger = Logger.getLogger(BacklogController.class);
     @Autowired
     private UsersService usersService;
     private BacklogService backlogService;
@@ -39,6 +41,7 @@ public class BacklogController {
         model.addAttribute("backlogs", handover);
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+        logger.info("Showing Backlog page for user: " + principal);
         return "backlog";
 
     }
@@ -48,6 +51,7 @@ public class BacklogController {
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         m.addAttribute("backlog", new Backlog());
+        logger.info("Showing Backlog form page for user: " + principal);
         return "backlogForm";
     }
 
@@ -58,6 +62,7 @@ public class BacklogController {
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         Backlog backlog = backlogService.getBacklog(id);
         m.addAttribute("backlog", backlog);
+        logger.info("Showing backlog form for id: " + id + " by user:" + principal);
         return "backlogForm";
     }
 
@@ -66,8 +71,11 @@ public class BacklogController {
         backlog.setLastModUser(principal.getName());
         try {
             backlogService.saveOrUpdate(backlog);
+            logger.info("Backlog saved successfully" + "by user:" + principal + backlog.toString() );
             redirectAttributes.addFlashAttribute("saved", "Record saved successfully");
         } catch (Exception ex) {
+            logger.error("Backlog can not be saved because " + ex.getCause() + " by user:" + principal);
+            logger.error(ex.getStackTrace());
             redirectAttributes.addFlashAttribute("notSaved", "Record can't be saved, Please Try again ");
             return "redirect:/backlog";
         }
@@ -81,9 +89,13 @@ public class BacklogController {
 
         try {
             backlogService.delete(id);
+            logger.info("Backlog successfully removed for id: " + id + " by user:" + principal);
             handoverService.saveOrUpdate(handover);
+            logger.info("Backlog moved back to handover successfully for id: " + id);
             redirectAttributes.addFlashAttribute("moved", "Record moved to handover");
         } catch (Exception ex) {
+            logger.error("Error while moving Backlog back to Handover for id: " + id + " by user:" + principal);
+            logger.error(ex.getStackTrace());
             redirectAttributes.addFlashAttribute("notMoved", "Record can't be moved successfully");
             return "redirect:/backlog";
         }
@@ -104,11 +116,14 @@ public class BacklogController {
     }
 
     @RequestMapping(value = "/deleteBacklog/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable int id, RedirectAttributes redirectAttributes) {
+    public String delete(@PathVariable int id, RedirectAttributes redirectAttributes,  Principal principal) {
         try {
             backlogService.delete(id);
+            logger.info("Backlog successfully deleted for id:" + id + " by user:" + principal);
             redirectAttributes.addFlashAttribute("deleted", "Record deleted!!");
         } catch (Exception ex) {
+            logger.error("Backlog could not be deleted for id: " + id  + " by user:" + principal);
+            logger.error(ex.getStackTrace());
             redirectAttributes.addFlashAttribute("deleteFailed", "Record could not be deleted");
             return "redirect:/backlog";
         }

@@ -33,19 +33,25 @@ public class HomeController {
 
     @RequestMapping("/")
     public String showHome(Model model, Principal principal) {
-        logger.info("Showing home page....");
+
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         else
+        {
+            logger.info("Redirected to Login page");
             return "redirect:/login";
+        }
         List<Monitor> urlEntities = monitorService.getMonitorEntities();
         model.addAttribute("urlEntities", urlEntities);
+        logger.info("Showing home page"  + " for user:" + principal);
         return "home";
 
     }
 
     @RequestMapping(value = "/refresh")
     public String monitorApps(Model model, Principal principal, RedirectAttributes redirectAttributes) {
+
+        logger.info("Refresh operation on home page for user:" + principal);
 
        /* if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
@@ -60,8 +66,9 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/refresh/{id}")
-    public String refreshOne(@PathVariable int id, Model m, RedirectAttributes redirectAttributes) {
+    public String refreshOne(@PathVariable int id, Model m, RedirectAttributes redirectAttributes,Principal principal) {
         monitorService.refreshOne(id);
+        logger.info("Refresh operation on home page for user:" + principal + " for user:" + principal);
         return "redirect:/";
     }
 
@@ -69,6 +76,7 @@ public class HomeController {
     public String saveOrUpdate(@ModelAttribute("monitor") Monitor monitor, Principal principal) {
         System.out.println("Entering save monitor");
         monitorService.saveOrUpdate(monitor);
+        logger.info("Monitoring attribute saved and updated successfully by user: " + principal);
         return "redirect:/";
     }
 
@@ -79,11 +87,13 @@ public class HomeController {
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         model.addAttribute("env", Environment.values());
         model.addAttribute("monitor", new Monitor());
+        logger.info("Showing Monitor form page for user: " +principal);
         return "monitorForm";
     }
 
     @RequestMapping(value = "/deleteMonitor/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable int id) {
+    public String delete(@PathVariable int id, Principal principal) {
+        logger.info("Monitoring attribute deleted successfully for id: " + id + " by user: " + principal);
         monitorService.delete(id);
         return "redirect:/";
     }
@@ -96,6 +106,8 @@ public class HomeController {
         Monitor monitor = monitorService.getMonitor(id);
         m.addAttribute("env", Environment.values());
         m.addAttribute("monitor", monitor);
+        logger.info("Monitoring attribute shown successfully for id: " + id + " by user: " + principal);
+
         return "monitorForm";
     }
 }
