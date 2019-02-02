@@ -41,9 +41,10 @@ public class HandoverController {
     public String showHandover(Model model, Principal principal) {
         try {
             List<Handover> handover = handoverService.getCurrentHandover();
+            logger.info("Handover fetch operation completed by user: " + principal.getName());
             model.addAttribute("handovers", handover);
         } catch (Exception e) {
-            logger.error("Exception occurred while getting handover from DB " + e.getStackTrace());
+            logger.error("Exception occurred while getting handover from DB " + e.getCause(), e);
         }
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
@@ -66,6 +67,7 @@ public class HandoverController {
     public String editHandoverIssueForm(@PathVariable int id, Model m, Principal principal) {
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+        logger.info("Handoverform operation started for app with id " + id + " by user: " + principal.getName());
 
         try {
             logger.info("Getting backlog issue from database for id  " + id + "to be edited by user:" + principal.getName());
@@ -73,7 +75,7 @@ public class HandoverController {
             m.addAttribute("handover", handover);
             logger.info("Retrieving Handover for id: " + id + " by user: " + principal.getName());
         } catch (Exception e) {
-            logger.error("Can't get edit form for " + id + "exception occurred " + e.getStackTrace());
+            logger.error("Can't get edit form for " + id + "exception occurred " + e.getCause(), e);
         }
         return "handoverform";
     }
@@ -81,6 +83,7 @@ public class HandoverController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveOrUpdateHandover(@ModelAttribute("handover") Handover handover, Principal principal, RedirectAttributes redirectAttributes) {
         handover.setLastModUser(principal.getName());
+        logger.info("Handoverform save operation started by user: " + principal.getName());
         try {
             logger.info("Saving handover into database by user: " + principal.getName() + "value " + handover.toString());
             handoverService.saveOrUpdate(handover);
@@ -88,7 +91,7 @@ public class HandoverController {
             redirectAttributes.addFlashAttribute("saved", "Record successfully saved!!");
         } catch (Exception ex) {
             logger.error("Handover cannot be saved because " + ex.getCause() + " by user: " + principal.getName());
-            logger.error(ex.getStackTrace());
+            logger.error(ex);
             redirectAttributes.addFlashAttribute("notSaved", "Could not be saved, Pleasse try again");
             return "redirect:/handoverform";
         }
@@ -98,14 +101,15 @@ public class HandoverController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteHandover(@PathVariable int id, RedirectAttributes redirectAttributes, Principal principal) {
+        logger.info("Handover delete operation started with id " + id + " by user: " + principal.getName());
         try {
             logger.info("Deleting handover for id: " + id + " by user: " + principal.getName());
             handoverService.delete(id);
             logger.info("Handover deleted successfully for id: " + id + " by user:" + principal.getName());
             redirectAttributes.addFlashAttribute("deleted", "Record deleted!!");
         } catch (Exception ex) {
-            logger.error("Handover could not be deleted for this id: " + id + " by user:" + principal);
-            logger.error(ex.getStackTrace());
+            logger.error("Handover could not be deleted for this id: " + id + " by user:" + principal.getName() + " cause: " + ex.getCause());
+            logger.error(ex);
             redirectAttributes.addFlashAttribute("deleteFailed", "Record could not be deleted");
             return "redirect:/handover";
         }
@@ -125,8 +129,8 @@ public class HandoverController {
             logger.info("Handover sent successfully via mail by user: " + principal.getName());
             redirectAttributes.addFlashAttribute("emailSent", "Handover email sent successfully!!");
         } catch (Exception e) {
-            logger.error("Handover email not sent by user: " + principal.getName());
-            logger.error(e.getStackTrace());
+            logger.error("Handover email not sent by user: " + principal.getName() + " cause: " + e.getCause());
+            logger.error(e);
             redirectAttributes.addFlashAttribute("exception", "Handover email could not be sent, please try again!!");
             return "redirect:/handover";
         }
@@ -159,8 +163,8 @@ public class HandoverController {
             logger.info("Handover moved to backlog successfully for id: " + id + " by user: " + principal.getName());
             redirectAttributes.addFlashAttribute("moved", "Record moved to backlog");
         } catch (Exception ex) {
-            logger.error("Error while moving handover to backlog for id: " + id + " by user: " + principal.getName());
-            logger.error(ex.getStackTrace());
+            logger.error("Error while moving handover to backlog for id: " + id + " by user: " + principal.getName() + " cause: " + ex.getCause() );
+            logger.error(ex);
             redirectAttributes.addFlashAttribute("notMoved", "Record can't be moved, Please try again");
             return "redirect:/handover";
         }

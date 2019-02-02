@@ -83,8 +83,8 @@ public class PasswordController {
                 emailService.emailSend(content, user.getEmail(), "Password Reset Request");
                 System.out.println(content);
             } catch (Exception ex) {
-                logger.error("Forget password Email unsuccessful for email id: " + userEmail);
-                logger.error(ex.getStackTrace());
+                logger.error("Forget password Email unsuccessful for email id: " + userEmail + " cause: " + ex.getCause() );
+                logger.error(ex);
             }
 
             // Add success message to view

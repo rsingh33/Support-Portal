@@ -36,8 +36,9 @@ public class BacklogController {
         try {
             List<Backlog> backlog = backlogService.getCurrentBacklog();
             model.addAttribute("backlogs", backlog);
+            logger.info("Backlog operation completed by user: " + principal.getName());
         } catch (Exception e) {
-            logger.error("Exception occurred while getting backlog from DB " + e.getStackTrace());
+            logger.error("Exception occurred while getting backlog from DB " + e.getCause(),e);
         }
 
         if (principal != null)
@@ -61,13 +62,14 @@ public class BacklogController {
     public String editBacklogIssueForm(@PathVariable int id, Model m, Principal principal) {
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+        logger.info("Backlogform operation started for app with id " + id + " by user: " + principal.getName());
         try {
             logger.info("Getting backlog issue from database for id  " + id + "to be edited by user:" + principal.getName());
             Backlog backlog = backlogService.getBacklog(id);
             m.addAttribute("backlog", backlog);
             logger.info("Showing backlog form for id: " + id + " for user: " + principal.getName());
         } catch (Exception e) {
-            logger.error("Can't get edit form for " + id + "exception occurred "+e.getStackTrace());
+            logger.error("Can't get edit form for " + id + "exception occurred "+ e.getCause(), e);
         }
         return "backlogForm";
     }
@@ -75,6 +77,7 @@ public class BacklogController {
     @RequestMapping(value = "/saveBacklog", method = RequestMethod.POST)
     public String saveOrUpdateBacklog(@ModelAttribute("backlog") Backlog backlog, Principal principal, RedirectAttributes redirectAttributes) {
         backlog.setLastModUser(principal.getName());
+        logger.info("Save Backlogform operation started by user: " + principal.getName());
         try {
             logger.info("Saving Backlog int database by user: " + principal.getName() + "value " + backlog.toString());
             backlogService.saveOrUpdate(backlog);
@@ -82,7 +85,7 @@ public class BacklogController {
             redirectAttributes.addFlashAttribute("saved", "Record saved successfully");
         } catch (Exception ex) {
             logger.error("Backlog can not be saved because " + ex.getCause() + " by user: " + principal.getName());
-            logger.error(ex.getStackTrace());
+            logger.error(ex);
             redirectAttributes.addFlashAttribute("notSaved", "Record can't be saved, Please Try again ");
             return "redirect:/backlogForm";
         }
@@ -92,13 +95,13 @@ public class BacklogController {
     @RequestMapping(value = "/moveToHandover/{id}", method = RequestMethod.GET)
     public String moveToHandover(@PathVariable int id, Principal principal, RedirectAttributes redirectAttributes) {
 
-
+        logger.info("Move to Handover operation started for app with id " + id + " by user: " + principal.getName());
         try {
             logger.info("Getting Backlog for id: " + id + " by user: " + principal.getName());
             Backlog backlog = backlogService.getBacklog(id);
             logger.info("Converting Backlog to handover for id: " + id + " by user: " + principal.getName());
             Handover handover = backlogToHandover(backlog);
-
+            logger.info("Deleting backlog for id: " + id + " by user: " + principal.getName());
             backlogService.delete(id);
 
             logger.info("Moving backlog to handover for id: " + id);
@@ -107,7 +110,7 @@ public class BacklogController {
             redirectAttributes.addFlashAttribute("moved", "Record moved to handover");
         } catch (Exception ex) {
             logger.error("Error while moving Backlog  to Handover for id: " + id + " by user:" + principal.getName());
-            logger.error(ex.getStackTrace());
+            logger.error(ex);
             redirectAttributes.addFlashAttribute("notMoved", "Record can't be moved successfully");
             return "redirect:/backlog";
         }
@@ -137,7 +140,7 @@ public class BacklogController {
             redirectAttributes.addFlashAttribute("deleted", "Record deleted!!");
         } catch (Exception ex) {
             logger.error("Backlog could not be deleted for id: " + id + " by user: " + principal.getName());
-            logger.error(ex.getStackTrace());
+            logger.error(ex);
             redirectAttributes.addFlashAttribute("deleteFailed", "Record could not be deleted");
             return "redirect:/backlog";
         }

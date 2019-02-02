@@ -23,6 +23,7 @@ import java.util.List;
 @Controller
 public class UserController {
 
+
     @Autowired
     private UsersService usersService;
 
@@ -32,9 +33,11 @@ public class UserController {
     @RequestMapping("/admin")
     public String showAdmin(Model model, Principal principal) {
         List<User> users = usersService.getAllUsers();
+        logger.info("Retriving all usernames by user: " + principal.getName());
         if (principal != null)
             model.addAttribute("name",usersService.findUserByUsername(principal.getName()).getName());
         model.addAttribute("users", users);
+        logger.info("Showing admin page for user: " + principal.getName());
         return "admin";
     }
 
@@ -43,9 +46,11 @@ public class UserController {
 
     @RequestMapping(value = "/userForm/{id}")
     public String edit(@PathVariable int id, Model m, Principal principal) {
+        logger.info("Showing admin user form page for user: " + principal.getName());
         System.out.println("inUserEditMethod");
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
+        logger.info("Retriving usernames for id: " + id + " by user: " + principal.getName());
         User user = usersService.getUser(id);
         m.addAttribute("user", user);
         m.addAttribute("authority", Roles.values());
@@ -56,10 +61,12 @@ public class UserController {
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveOrUpdate(@Valid @ModelAttribute("user") User user, BindingResult result, Principal principal) {
         if (result.hasErrors()) {
+            logger.error("Error while saving for new user by user: " + principal.getName());
             return "userForm";
         }
 
         System.out.println("Entering save user");
+        logger.info("Stroring user by user: " + principal.getName());
         usersService.saveOrUpdate(user);
         return "redirect:/admin";
     }

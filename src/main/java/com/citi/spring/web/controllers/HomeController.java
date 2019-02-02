@@ -45,7 +45,7 @@ public class HomeController {
             logger.info("Got urls from database to display on home page ");
             model.addAttribute("urlEntities", urlEntities);
         } catch (Exception ex) {
-            logger.error("Exception occurred while getting urls from database" + ex.getStackTrace());
+            logger.error("Exception occurred while getting urls from database " + ex.getCause(), ex);
         }
 
         return "home";
@@ -61,7 +61,7 @@ public class HomeController {
             model.addAttribute("urlEntities", urlEntities);
             logger.info("Refresh operation completed for all URLS by user: " + principal.getName());
         } catch (Exception ex) {
-            logger.error("Execption occurred while refreshing urls " + ex.getStackTrace());
+            logger.error("Execption occurred while refreshing urls " + ex);
         }
 
         redirectAttributes.addFlashAttribute("refreshed", "All status and response times refreshed sucessfully");
@@ -75,7 +75,7 @@ public class HomeController {
             monitorService.refreshOne(id);
             logger.info("Refresh operation completed for app with id " + id + " by user: " + principal.getName());
         } catch (Exception ex) {
-            logger.error("Execption occurred while refreshing url with id " + id + " " + ex.getStackTrace());
+            logger.error("Execption occurred while refreshing url with id " + id + " " + ex);
         }
         return "redirect:/";
     }

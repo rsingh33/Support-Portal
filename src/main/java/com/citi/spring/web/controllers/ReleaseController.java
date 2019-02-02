@@ -8,6 +8,7 @@ import com.citi.spring.web.dao.entity.User;
 import com.citi.spring.web.service.EmailService;
 import com.citi.spring.web.service.ExcelService;
 import com.citi.spring.web.service.UsersService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class ReleaseController {
 
     private String fileLocation;
-
+    private static Logger logger = Logger.getLogger(ReleaseController.class);
     @Autowired
     private ExcelService excelService;
 

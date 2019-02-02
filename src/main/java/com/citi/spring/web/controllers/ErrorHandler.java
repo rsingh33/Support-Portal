@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class ErrorHandler {
+public class ErrorHandler  {
 
     private static Logger logger = Logger.getLogger(ErrorHandler.class);
 
@@ -15,17 +15,17 @@ public class ErrorHandler {
     @ExceptionHandler(DataAccessException.class)
     public String handleDatabaseException(DataAccessException ex) {
 
-        ex.printStackTrace();
+//        ex.printStackTrace();
         logger.error("Data Access Exception occured");
-        logger.error(ex.getStackTrace());
+        logger.error(ex);
         return "error";
     }
 
     @ExceptionHandler(AccessDeniedException.class)
     public String handleAccessDeniedException(AccessDeniedException ex) {
-        ex.printStackTrace();
+//        ex.printStackTrace();
         logger.error("Access Denied Exception occured");
-        logger.error(ex.getStackTrace());
+        logger.error(ex);
         return "denied";
     }
 }
