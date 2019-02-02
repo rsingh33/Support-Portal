@@ -30,14 +30,11 @@ import java.util.UUID;
 public class LoginController {
 
     private static Logger logger = Logger.getLogger(LoginController.class);
+    @Autowired
     private UsersService usersService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public void setOffersService(UsersService offersService) {
-        this.usersService = offersService;
-    }
+
+
 
 
     @RequestMapping(value = "/login")

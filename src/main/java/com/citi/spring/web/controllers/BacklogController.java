@@ -25,76 +25,88 @@ public class BacklogController {
     private static Logger logger = Logger.getLogger(BacklogController.class);
     @Autowired
     private UsersService usersService;
+    @Autowired
     private BacklogService backlogService;
     @Autowired
     private HandoverService handoverService;
 
-    @Autowired
-    public void setOffersService(BacklogService backlogService) {
-        this.backlogService = backlogService;
-    }
 
     @RequestMapping("/backlog")
     public String showBacklog(Model model, Principal principal) {
+        try {
+            List<Backlog> backlog = backlogService.getCurrentBacklog();
+            model.addAttribute("backlogs", backlog);
+        } catch (Exception e) {
+            logger.error("Exception occurred while getting backlog from DB " + e.getStackTrace());
+        }
 
-        List<Backlog> handover = backlogService.getCurrentBacklog();
-        model.addAttribute("backlogs", handover);
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-        logger.info("Showing Backlog page for user: " + principal);
+        logger.info("Showing Backlog page for user: " + principal.getName());
         return "backlog";
 
     }
 
     @RequestMapping("/backlogForm")
-    public String showform(Model m, Principal principal) {
+    public String showBacklogNewIssueForm(Model m, Principal principal) {
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         m.addAttribute("backlog", new Backlog());
-        logger.info("Showing Backlog form page for user: " + principal);
+        logger.info("Showing Backlog form page for new Issue for: " + principal.getName());
         return "backlogForm";
     }
 
 
     @RequestMapping(value = "/backlogForm/{id}")
-    public String edit(@PathVariable int id, Model m, Principal principal) {
+    public String editBacklogIssueForm(@PathVariable int id, Model m, Principal principal) {
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-        Backlog backlog = backlogService.getBacklog(id);
-        m.addAttribute("backlog", backlog);
-        logger.info("Showing backlog form for id: " + id + " by user:" + principal);
+        try {
+            logger.info("Getting backlog issue from database for id  " + id + "to be edited by user:" + principal.getName());
+            Backlog backlog = backlogService.getBacklog(id);
+            m.addAttribute("backlog", backlog);
+            logger.info("Showing backlog form for id: " + id + " for user: " + principal.getName());
+        } catch (Exception e) {
+            logger.error("Can't get edit form for " + id + "exception occurred "+e.getStackTrace());
+        }
         return "backlogForm";
     }
 
     @RequestMapping(value = "/saveBacklog", method = RequestMethod.POST)
-    public String saveOrUpdate(@ModelAttribute("backlog") Backlog backlog, Principal principal, RedirectAttributes redirectAttributes) {
+    public String saveOrUpdateBacklog(@ModelAttribute("backlog") Backlog backlog, Principal principal, RedirectAttributes redirectAttributes) {
         backlog.setLastModUser(principal.getName());
         try {
+            logger.info("Saving Backlog int database by user: " + principal.getName() + "value " + backlog.toString());
             backlogService.saveOrUpdate(backlog);
-            logger.info("Backlog saved successfully" + "by user:" + principal + backlog.toString() );
+            logger.info("Backlog saved successfully" + "by user: " + principal + backlog.toString());
             redirectAttributes.addFlashAttribute("saved", "Record saved successfully");
         } catch (Exception ex) {
-            logger.error("Backlog can not be saved because " + ex.getCause() + " by user:" + principal);
+            logger.error("Backlog can not be saved because " + ex.getCause() + " by user: " + principal.getName());
             logger.error(ex.getStackTrace());
             redirectAttributes.addFlashAttribute("notSaved", "Record can't be saved, Please Try again ");
-            return "redirect:/backlog";
+            return "redirect:/backlogForm";
         }
         return "redirect:/backlog";
     }
 
     @RequestMapping(value = "/moveToHandover/{id}", method = RequestMethod.GET)
     public String moveToHandover(@PathVariable int id, Principal principal, RedirectAttributes redirectAttributes) {
-        Backlog backlog = backlogService.getBacklog(id);
-        Handover handover = backlogToHandover(backlog);
+
 
         try {
+            logger.info("Getting Backlog for id: " + id + " by user: " + principal.getName());
+            Backlog backlog = backlogService.getBacklog(id);
+            logger.info("Converting Backlog to handover for id: " + id + " by user: " + principal.getName());
+            Handover handover = backlogToHandover(backlog);
+
             backlogService.delete(id);
-            logger.info("Backlog successfully removed for id: " + id + " by user:" + principal);
+
+            logger.info("Moving backlog to handover for id: " + id);
             handoverService.saveOrUpdate(handover);
             logger.info("Backlog moved back to handover successfully for id: " + id);
             redirectAttributes.addFlashAttribute("moved", "Record moved to handover");
         } catch (Exception ex) {
-            logger.error("Error while moving Backlog back to Handover for id: " + id + " by user:" + principal);
+            logger.error("Error while moving Backlog  to Handover for id: " + id + " by user:" + principal.getName());
             logger.error(ex.getStackTrace());
             redirectAttributes.addFlashAttribute("notMoved", "Record can't be moved successfully");
             return "redirect:/backlog";
@@ -103,6 +115,7 @@ public class BacklogController {
     }
 
     private Handover backlogToHandover(Backlog backlog) {
+
         return new Handover(backlog.getLastMod(),
                 backlog.getReportedBy(),
                 backlog.getEmailSubject(),
@@ -116,13 +129,14 @@ public class BacklogController {
     }
 
     @RequestMapping(value = "/deleteBacklog/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable int id, RedirectAttributes redirectAttributes,  Principal principal) {
+    public String deleteBacklog(@PathVariable int id, RedirectAttributes redirectAttributes, Principal principal) {
         try {
+            logger.info("Deleting backlog for id: " + id + " by user: " + principal.getName());
             backlogService.delete(id);
-            logger.info("Backlog successfully deleted for id:" + id + " by user:" + principal);
+            logger.info("Backlog successfully deleted for id: " + id + " by user: " + principal.getName());
             redirectAttributes.addFlashAttribute("deleted", "Record deleted!!");
         } catch (Exception ex) {
-            logger.error("Backlog could not be deleted for id: " + id  + " by user:" + principal);
+            logger.error("Backlog could not be deleted for id: " + id + " by user: " + principal.getName());
             logger.error(ex.getStackTrace());
             redirectAttributes.addFlashAttribute("deleteFailed", "Record could not be deleted");
             return "redirect:/backlog";
@@ -130,25 +144,7 @@ public class BacklogController {
         return "redirect:/backlog";
     }
 
-  /*  @RequestMapping(value = "/sendemail", method = RequestMethod.GET)
-    public String sendEmail() {
-        List<Backlog> backlogs = backlogService.getCurrentBacklog();
-        String content = ListToHtmlTransformer.compose(backlogs);
-        try {
-            SendEmail.emailSend(content);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        return "redirect:/backlog";
-    }
-*/
-
-  /*  @RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
-    public ModelAndView getExcel() {
-        List<Backlog> backlogList = backlogService.getCurrentBacklog();
-        return new ModelAndView("backlogExcelView", "backlogList", backlogList);
-    }*/
 }
 
 

@@ -23,13 +23,10 @@ import java.util.List;
 @Controller
 public class UserController {
 
+    @Autowired
     private UsersService usersService;
 
     private static Logger logger = Logger.getLogger(UserController.class);
-    @Autowired
-    public void setOffersService(UsersService usersService) {
-        this.usersService = usersService;
-    }
 
 
     @RequestMapping("/admin")
@@ -41,15 +38,7 @@ public class UserController {
         return "admin";
     }
 
-//    Changes for UserForm**********************
 
-//    @RequestMapping("/userform")
-//    public String showform(Model model, Principal principal) {
-//        if (principal != null)
-//            model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-//        model.addAttribute("user",new User());
-//        return "userform";
-//    }
 
 
     @RequestMapping(value = "/userForm/{id}")

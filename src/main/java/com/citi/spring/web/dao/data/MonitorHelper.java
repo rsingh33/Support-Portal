@@ -265,16 +265,24 @@ public class MonitorHelper {
                 if (entity.getLink().startsWith("http")) {
                     List<String> response = isHealthy(entity.getLink());
                     responseTime = response.get(0);
+
                     String minResponseTime = entity.getMinResponseTime();
-                    if(minResponseTime == null) minResponseTime =responseTime;
-                    if(Integer.parseInt(responseTime) < Integer.parseInt(minResponseTime)){
+                    String maxResponseTime = entity.getMaxResponseTime();
+                    if (minResponseTime == null) minResponseTime = responseTime;
+                    if (maxResponseTime == null) maxResponseTime = responseTime;
+
+                    if (Integer.parseInt(responseTime) >= Integer.parseInt(maxResponseTime)) {
+                        maxResponseTime = responseTime;
+                    }
+
+                    if (Integer.parseInt(responseTime) < Integer.parseInt(minResponseTime)) {
                         minResponseTime = responseTime;
                     }
                     isHealthy = Boolean.valueOf(response.get(1));
                     entity.setStatus(isHealthy);
                     entity.setResponseTime(responseTime);
                     entity.setMinResponseTime(minResponseTime);
-
+                    entity.setMaxResponseTime(maxResponseTime);
                     // entity.setLastRefreshed(timestamp);
                 } else {
                     // it's db connection string
@@ -298,35 +306,43 @@ public class MonitorHelper {
     public Monitor refreshOne(Monitor entity) {
 
 
+        boolean isHealthy = false;
+        String responseTime = "";
+        try {
+            if (entity.getLink().startsWith("http")) {
+                List<String> response = isHealthy(entity.getLink());
+                responseTime = response.get(0);
+                isHealthy = Boolean.valueOf(response.get(1));
+                String minResponseTime = entity.getMinResponseTime();
+                String maxResponseTime = entity.getMaxResponseTime();
+                if (minResponseTime == null) minResponseTime = responseTime;
+                if (maxResponseTime == null) maxResponseTime = responseTime;
 
-            boolean isHealthy = false;
-            String responseTime = "";
-            try {
-                if (entity.getLink().startsWith("http")) {
-                    List<String> response = isHealthy(entity.getLink());
-                    responseTime = response.get(0);
-                    isHealthy = Boolean.valueOf(response.get(1));
-                    String minResponseTime = entity.getMinResponseTime();
-                    if(minResponseTime == null) minResponseTime =responseTime;
-                    if(Integer.parseInt(responseTime) < Integer.parseInt(minResponseTime)){
-                        minResponseTime = responseTime;
-                    }
-                    entity.setStatus(isHealthy);
-                    entity.setResponseTime(responseTime);
-                     entity.setMinResponseTime(minResponseTime);
-                } else {
-                    // it's db connection string
-                    isHealthy = dbValidator(entity.getLink());
-                    entity.setStatus(isHealthy);
-                    entity.setResponseTime("DB");
-                    //   entity.setLastRefreshed(timestamp);
+                if (Integer.parseInt(responseTime) >= Integer.parseInt(maxResponseTime)) {
+                    maxResponseTime = responseTime;
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+
+                if (Integer.parseInt(responseTime) < Integer.parseInt(minResponseTime)) {
+                    minResponseTime = responseTime;
+                }
+                isHealthy = Boolean.valueOf(response.get(1));
+                entity.setStatus(isHealthy);
+                entity.setResponseTime(responseTime);
+                entity.setMinResponseTime(minResponseTime);
+                entity.setMaxResponseTime(maxResponseTime);
+            } else {
+                // it's db connection string
+                isHealthy = dbValidator(entity.getLink());
+                entity.setStatus(isHealthy);
+                entity.setResponseTime("DB");
+                //   entity.setLastRefreshed(timestamp);
             }
-            if (!isHealthy) {
-                System.out.println("Amber URL:" + entity.getLink());
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (!isHealthy) {
+            System.out.println("Amber URL:" + entity.getLink());
+        }
 
 
         return entity;

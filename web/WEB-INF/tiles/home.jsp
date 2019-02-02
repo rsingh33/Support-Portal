@@ -39,7 +39,7 @@
                                 <th>Hostname</th>
                                 <th>Status</th>
                                 <th>Response Time(ms)</th>
-                                <th>Minimum Response Time(ms)</th>
+                                <th>Min/Max Time(ms)</th>
                                 <th>Last Refreshed</th>
 
 
@@ -78,7 +78,7 @@
                                             </c:if>
                                         </td>
                                         <td><p><c:out value="${entity.responseTime}"></c:out></p></td>
-                                        <td><p><c:out value="${entity.minResponseTime}"></c:out></p></td>
+                                        <td><p><c:out value="${entity.minResponseTime}"></c:out> &nbsp; &nbsp; &nbsp; <c:out value="${entity.maxResponseTime}"></c:out></p></td>
                                         <td><p><c:out value="${entity.lastRefreshed}"></c:out></p></td>
 
 

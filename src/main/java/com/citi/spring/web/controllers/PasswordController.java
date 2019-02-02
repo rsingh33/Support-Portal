@@ -32,7 +32,6 @@ public class PasswordController {
     @Autowired
     private EmailService emailService;
 
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 

@@ -17,7 +17,8 @@
 
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="com.citi.spring.web.messages.messages"></property>
+        <property name="basename" value="messages"></property>
+   
     </bean>
     <!--  <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
           <property name="prefix" value="/WEB-INF/jsps/"></property>

@@ -2,7 +2,6 @@ package com.citi.spring.web.controllers;
 
 
 import com.citi.spring.web.dao.data.Environment;
-
 import com.citi.spring.web.dao.entity.Monitor;
 import com.citi.spring.web.service.HandoverService;
 import com.citi.spring.web.service.MonitorService;
@@ -36,14 +35,19 @@ public class HomeController {
 
         if (principal != null)
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-        else
-        {
-            logger.info("Redirected to Login page");
+        else {
+            logger.info("Redirected to Login page as user is not logged in");
             return "redirect:/login";
         }
-        List<Monitor> urlEntities = monitorService.getMonitorEntities();
-        model.addAttribute("urlEntities", urlEntities);
-        logger.info("Showing home page"  + " for user:" + principal);
+
+        try {
+            List<Monitor> urlEntities = monitorService.getMonitorEntities();
+            logger.info("Got urls from database to display on home page ");
+            model.addAttribute("urlEntities", urlEntities);
+        } catch (Exception ex) {
+            logger.error("Exception occurred while getting urls from database" + ex.getStackTrace());
+        }
+
         return "home";
 
     }
@@ -51,32 +55,41 @@ public class HomeController {
     @RequestMapping(value = "/refresh")
     public String monitorApps(Model model, Principal principal, RedirectAttributes redirectAttributes) {
 
-        logger.info("Refresh operation on home page for user:" + principal);
+        logger.info("Refresh operation started for all URLS by user: " + principal.getName());
+        try {
+            List<Monitor> urlEntities = monitorService.refresh();
+            model.addAttribute("urlEntities", urlEntities);
+            logger.info("Refresh operation completed for all URLS by user: " + principal.getName());
+        } catch (Exception ex) {
+            logger.error("Execption occurred while refreshing urls " + ex.getStackTrace());
+        }
 
-       /* if (principal != null)
-            model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-        else
-            return "redirect:/login";*/
-        // monitorService.saveOrUpdate();
-        List<Monitor> urlEntities = monitorService.refresh();
-
-        model.addAttribute("urlEntities", urlEntities);
-        redirectAttributes.addFlashAttribute("refreshed", "All Status and  Response times refreshed sucessfully");
+        redirectAttributes.addFlashAttribute("refreshed", "All status and response times refreshed sucessfully");
         return "redirect:/";
     }
 
     @RequestMapping(value = "/refresh/{id}")
-    public String refreshOne(@PathVariable int id, Model m, RedirectAttributes redirectAttributes,Principal principal) {
-        monitorService.refreshOne(id);
-        logger.info("Refresh operation on home page for user:" + principal + " for user:" + principal);
+    public String refreshOne(@PathVariable int id, Model m, RedirectAttributes redirectAttributes, Principal principal) {
+        logger.info("Refresh operation started for app with id " + id + " by user: " + principal.getName());
+        try {
+            monitorService.refreshOne(id);
+            logger.info("Refresh operation completed for app with id " + id + " by user: " + principal.getName());
+        } catch (Exception ex) {
+            logger.error("Execption occurred while refreshing url with id " + id + " " + ex.getStackTrace());
+        }
         return "redirect:/";
     }
 
     @RequestMapping(value = "/saveMonitor", method = RequestMethod.POST)
-    public String saveOrUpdate(@ModelAttribute("monitor") Monitor monitor, Principal principal) {
-        System.out.println("Entering save monitor");
-        monitorService.saveOrUpdate(monitor);
-        logger.info("Monitoring attribute saved and updated successfully by user: " + principal);
+    public String saveOrUpdateMonitorApp(@ModelAttribute("monitor") Monitor monitor, Principal principal) {
+        try {
+            logger.info("About to save monitor app " + monitor.toString());
+            monitorService.saveOrUpdate(monitor);
+            logger.info("Monitoring attribute saved and updated successfully by user: " + principal.getName());
+        } catch (Exception ex) {
+            logger.error("Error occurred while saving monitoring app " + monitor.toString());
+        }
+
         return "redirect:/";
     }
 
@@ -87,27 +100,34 @@ public class HomeController {
             model.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         model.addAttribute("env", Environment.values());
         model.addAttribute("monitor", new Monitor());
-        logger.info("Showing Monitor form page for user: " +principal);
+        logger.info("Showing new app monitor form page for user: " + principal.getName());
         return "monitorForm";
     }
 
     @RequestMapping(value = "/deleteMonitor/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable int id, Principal principal) {
-        logger.info("Monitoring attribute deleted successfully for id: " + id + " by user: " + principal);
-        monitorService.delete(id);
+    public String deleteMonitorApp(@PathVariable int id, Principal principal) {
+        try {
+            monitorService.delete(id);
+            logger.info("Monitoring attribute deleted successfully for id: " + id + " by user: " + principal.getName());
+        } catch (Exception ex) {
+            logger.error("Monitoring app can't be deleted " + ex.getStackTrace());
+        }
         return "redirect:/";
     }
 
     @RequestMapping(value = "/monitorForm/{id}")
-    public String edit(@PathVariable int id, Model m, Principal principal) {
+    public String editMonitorApp(@PathVariable int id, Model m, Principal principal) {
 
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-        Monitor monitor = monitorService.getMonitor(id);
-        m.addAttribute("env", Environment.values());
-        m.addAttribute("monitor", monitor);
-        logger.info("Monitoring attribute shown successfully for id: " + id + " by user: " + principal);
-
+        try {
+            Monitor monitor = monitorService.getMonitor(id);
+            m.addAttribute("env", Environment.values());
+            m.addAttribute("monitor", monitor);
+            logger.info("Monitoring attribute retrieved from db successfully for id: " + id + " by user: " + principal.getName());
+        } catch (Exception ex) {
+            logger.error("Monitoring app can't be retrieved for id " + id + " " + ex.getStackTrace());
+        }
         return "monitorForm";
     }
 }

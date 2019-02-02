@@ -43,7 +43,7 @@ public class ReleaseController {
     private UsersService usersService;
     @Autowired
     private EmailService emailService;
-// Start
+
 
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"getRelease"})
     public String showReleaseTable(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal,  RedirectAttributes redirectAttributes) {

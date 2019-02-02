@@ -21,7 +21,7 @@ public class Monitor {
     String hostname;
     String responseTime;
     String minResponseTime;
-
+    String maxResponseTime;
     Boolean status;
     @UpdateTimestamp
     Timestamp lastRefreshed;
@@ -30,14 +30,14 @@ public class Monitor {
     private int id;
 
 
-    public Monitor(String name, String link, String env, String hostname, String responseTime, String minResponseTime, Boolean status, Timestamp lastRefreshed) {
+    public Monitor(String name, String link, String env, String hostname, String responseTime, String minResponseTime, String maxResponseTime, Boolean status, Timestamp lastRefreshed) {
         this.name = name;
         this.link = link;
         this.env = env;
         this.hostname = hostname;
         this.responseTime = responseTime;
         this.minResponseTime = minResponseTime;
-
+        this.maxResponseTime = maxResponseTime;
         this.status = status;
         this.lastRefreshed = lastRefreshed;
     }
@@ -94,15 +94,23 @@ public class Monitor {
                 Objects.equals(getHostname(), monitor.getHostname()) &&
                 Objects.equals(getResponseTime(), monitor.getResponseTime()) &&
                 Objects.equals(getMinResponseTime(), monitor.getMinResponseTime()) &&
+                Objects.equals(getMaxResponseTime(), monitor.getMaxResponseTime()) &&
                 Objects.equals(getStatus(), monitor.getStatus()) &&
                 Objects.equals(getLastRefreshed(), monitor.getLastRefreshed());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getLink(), getEnv(), getHostname(), getResponseTime(), getMinResponseTime(),  getStatus(), getLastRefreshed(), getId());
+        return Objects.hash(getName(), getLink(), getEnv(), getHostname(), getResponseTime(), getMinResponseTime(), getMaxResponseTime(), getStatus(), getLastRefreshed(), getId());
     }
 
+    public String getMaxResponseTime() {
+        return maxResponseTime;
+    }
+
+    public void setMaxResponseTime(String maxResponseTime) {
+        this.maxResponseTime = maxResponseTime;
+    }
 
     public String getResponseTime() {
         return responseTime;
