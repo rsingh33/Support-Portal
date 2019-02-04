@@ -17,7 +17,6 @@ import java.util.Objects;
 public class User {
 
 
-
     @NotBlank(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     @Size(min = 7, max = 7, groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     @Column(name = "username", unique = true)
@@ -38,6 +37,17 @@ public class User {
     @NotBlank(groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     @Size(min = 3, max = 60, groups = {PersistenceValidationGroup.class, FormValidationGroup.class})
     private String name;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", enabled=" + enabled +
+                ", authority='" + authority + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
     public User(String username, String name, String password, String email, boolean enabled, String authority, String resetToken) {
         this.username = username;

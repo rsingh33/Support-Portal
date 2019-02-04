@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.Map;
 import java.util.UUID;
 
@@ -44,17 +45,17 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/denied")
-    public String showDenied() {
+    public String showDenied(Principal principal) {
 
-        logger.info("Excess Denied for user");
+        logger.info("Excess Denied for user " );
         return "denied";
     }
 
 
     @RequestMapping(value = "/loggedout")
-    public String showLoggedOut() {
+    public String showLoggedOut(Principal principal) {
 
-        logger.info("Log out Successful");
+
         return "redirect:/login";
     }
 
@@ -89,18 +90,19 @@ public class LoginController {
             return ("newaccount");
         }
         try {
+
+            logger.info("Creating account for user " + user.toString());
             usersService.create(user);
             logger.info("account created successfully for " + user.getName() + " with email: " + user.getEmail() );
         } catch (DuplicateKeyException e) {
             model.addAttribute("newAcc", true);
             model.addAttribute("accCreated", false);
-            logger.error("account creation failed");
+            logger.error("Account creation failed " + e.getCause() , e);
             return "newaccount";
         }
         model.addAttribute("accCreated", true);
         model.addAttribute("newAcc", false);
         return "newaccount";
-
 
     }
 

@@ -20,21 +20,7 @@ public class SendEmail {
 
     public static void emailSend(String content) throws Exception {
 
-        ReadProperties.readConfig();
-        Properties props = new Properties();
-
-        props.put("mail.smtp.host", Constants.smtpHost);
-        props.put("mail.smtp.port", Constants.smtpPort);
-        props.put("mail.smtp.auth", Constants.smtpAuth);
-        props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
-
-        Authenticator auth = new Authenticator() {
-            //override the getPasswordAuthentication method
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(Constants.setFrom, Constants.setPassword);
-            }
-        };
-        Session session = Session.getInstance(props, auth);
+        Session session = emailProcessor();
 
 
         String[] tolist = Constants.emailTO.split(";");
@@ -55,22 +41,21 @@ public class SendEmail {
 
     }
 
-    public static void emailSend(String content, String to, String subject) throws Exception {
+    private static Session emailProcessor() throws Exception {
         ReadProperties.readConfig();
         Properties props = new Properties();
 
         props.put("mail.smtp.host", Constants.smtpHost);
         props.put("mail.smtp.port", Constants.smtpPort);
-        props.put("mail.smtp.auth", Constants.smtpAuth);
-        props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
+        //    props.put("mail.smtp.auth", Constants.smtpAuth);
+        //   props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
 
-        Authenticator auth = new Authenticator() {
-            //override the getPasswordAuthentication method
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(Constants.setFrom, Constants.setPassword);
-            }
-        };
-        Session session = Session.getInstance(props, auth);
+        return Session.getDefaultInstance(props, null);
+
+    }
+
+    public static void emailSend(String content, String to, String subject) throws Exception {
+        Session session = emailProcessor();
 
 
         String[] tolist = to.split(";");
@@ -93,21 +78,7 @@ public class SendEmail {
 
     public static void emailSend(String content, Set<String> to, String subject) throws Exception {
 
-        ReadProperties.readConfig();
-        Properties props = new Properties();
-
-        props.put("mail.smtp.host", Constants.smtpHost);
-        props.put("mail.smtp.port", Constants.smtpPort);
-        props.put("mail.smtp.auth", Constants.smtpAuth);
-        props.put("mail.smtp.starttls.enable", Constants.smtpTLS);
-
-        Authenticator auth = new Authenticator() {
-            //override the getPasswordAuthentication method
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(Constants.setFrom, Constants.setPassword);
-            }
-        };
-        Session session = Session.getInstance(props, auth);
+        Session session = emailProcessor();
 
 
         InternetAddress[] address = new InternetAddress[to.size()];

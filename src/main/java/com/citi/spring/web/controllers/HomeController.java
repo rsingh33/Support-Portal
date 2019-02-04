@@ -61,7 +61,7 @@ public class HomeController {
             model.addAttribute("urlEntities", urlEntities);
             logger.info("Refresh operation completed for all URLS by user: " + principal.getName());
         } catch (Exception ex) {
-            logger.error("Execption occurred while refreshing urls " + ex);
+            logger.error("Execption occurred while refreshing urls " + ex.getCause(), ex);
         }
 
         redirectAttributes.addFlashAttribute("refreshed", "All status and response times refreshed sucessfully");
@@ -75,7 +75,7 @@ public class HomeController {
             monitorService.refreshOne(id);
             logger.info("Refresh operation completed for app with id " + id + " by user: " + principal.getName());
         } catch (Exception ex) {
-            logger.error("Execption occurred while refreshing url with id " + id + " " + ex);
+            logger.error("Exception occurred while refreshing url with id " + id , ex);
         }
         return "redirect:/";
     }
@@ -87,7 +87,7 @@ public class HomeController {
             monitorService.saveOrUpdate(monitor);
             logger.info("Monitoring attribute saved and updated successfully by user: " + principal.getName());
         } catch (Exception ex) {
-            logger.error("Error occurred while saving monitoring app " + monitor.toString());
+            logger.error("Error occurred while saving monitoring app " + ex.getCause(),ex);
         }
 
         return "redirect:/";
@@ -110,7 +110,7 @@ public class HomeController {
             monitorService.delete(id);
             logger.info("Monitoring attribute deleted successfully for id: " + id + " by user: " + principal.getName());
         } catch (Exception ex) {
-            logger.error("Monitoring app can't be deleted " + ex.getStackTrace());
+            logger.error("Monitoring app can't be deleted " + ex.getCause(), ex);
         }
         return "redirect:/";
     }
@@ -126,7 +126,7 @@ public class HomeController {
             m.addAttribute("monitor", monitor);
             logger.info("Monitoring attribute retrieved from db successfully for id: " + id + " by user: " + principal.getName());
         } catch (Exception ex) {
-            logger.error("Monitoring app can't be retrieved for id " + id + " " + ex.getStackTrace());
+            logger.error("Monitoring app can't be retrieved for id " + id + " " + ex.getCause(), ex);
         }
         return "monitorForm";
     }

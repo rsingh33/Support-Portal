@@ -47,7 +47,8 @@ public class PasswordController {
     @RequestMapping(value = "/forgot", method = RequestMethod.POST)
     public String processForgotPasswordForm(ModelMap model, @ValidEmail @RequestParam("email") String userEmail, HttpServletRequest request) {
 
-        // Lookup user in database by e-mail
+
+        logger.info("Checking if a user exists by email " + userEmail + " in the database");
 
         model.addAttribute("forgotlink", false);
         if (!userService.existsByEmail(userEmail)) {
@@ -55,35 +56,37 @@ public class PasswordController {
             model.addAttribute("forgotlink", true);
             logger.warn(userEmail + " does not exist");
         } else {
-
-            // Generate random 36-character string token for reset password
-            User user = userService.getUserEmail(userEmail);
-            user.setResetToken(UUID.randomUUID().toString());
-            logger.info("Token generated for user with email Id: " + userEmail);
-
-            // Save token to database
-            userService.update(user);
-            logger.info("Token Saved in database");
-
-            String appUrl = request.getScheme() + "://" + request.getServerName() + ":" +
-                    request.getServerPort() + request.getContextPath();
-
-            // Email message
-            String content = "Hi " + user.getName() + ", \r\n"
-                    + "To reset your password, click the link below:\n" + appUrl + "/reset?token=" + user.getResetToken()
-                    + ", \r\n" +
-                    "\r\n" +
-                    "Thanks, "
-                    + "\r\n"
-                    + "OMC Support Team"
-                    + "\r\n"
-                    + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
+            logger.info("User found with email " + userEmail + " in the database");
             try {
+                // Generate random 36-character string token for reset password
+                User user = userService.getUserEmail(userEmail);
+                user.setResetToken(UUID.randomUUID().toString());
+                logger.info("Token generated for user with email Id: " + userEmail);
+
+                // Save token to database
+                userService.update(user);
+                logger.info("Token Saved in database");
+
+                String appUrl = request.getScheme() + "://" + request.getServerName() + ":" +
+                        request.getServerPort() + request.getContextPath();
+
+                // Email message
+                String content = "Hi " + user.getName() + ", \r\n"
+                        + "To reset your password, click the link below:\n" + appUrl + "/reset?token=" + user.getResetToken()
+                        + ", \r\n" +
+                        "\r\n" +
+                        "Thanks, "
+                        + "\r\n"
+                        + "OMC Support Team"
+                        + "\r\n"
+                        + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
+
+
                 logger.info("Forget password Email sent to: " + userEmail);
                 emailService.emailSend(content, user.getEmail(), "Password Reset Request");
-                System.out.println(content);
+
             } catch (Exception ex) {
-                logger.error("Forget password Email unsuccessful for email id: " + userEmail + " cause: " + ex.getCause() );
+                logger.error("Forget password Email unsuccessful for email id: " + userEmail + " cause: " + ex.getCause());
                 logger.error(ex);
             }
 
@@ -102,18 +105,21 @@ public class PasswordController {
     public String displayResetPasswordPage(Model model, @RequestParam(value = "token") String token) {
 
         User user = userService.findUserByResetToken(token);
+        try {
+            if (user != null) {
 
-        if (user != null) {
+                model.addAttribute("resetToken", token);
+                logger.info("Token Active");
+            } else {
 
-            model.addAttribute("resetToken", token);
-            logger.info("Token Active");
-        } else {
-
-            model.addAttribute("message", "Oops!  Password Link expired. Please click the latest link or generate again using Forgot Password ");
-            logger.info("Token Expired");
+                model.addAttribute("message", "Oops!  Password Link expired. Please click the latest link or generate again using Forgot Password ");
+                logger.warn("Token Expired");
+            }
+            model.addAttribute("isReset", true);
+            model.addAttribute("resets", false);
+        } catch (Exception ex) {
+            logger.error("Issue found with password reset link and displaying password reset page" + ex.getCause(), ex);
         }
-        model.addAttribute("isReset", true);
-        model.addAttribute("resets", false);
         return "resetPassword";
     }
 
@@ -132,7 +138,7 @@ public class PasswordController {
         }
 
         User user = userService.findUserByResetToken(requestParams.get("token"));
-        logger.info("User: " + user + " found for the Token");
+        logger.info("User: " + user.getName() + " found for the Token");
 
 
         // Set new password
@@ -141,11 +147,11 @@ public class PasswordController {
 
         // Set the reset token to null so it cannot be used again
         user.setResetToken(null);
-        logger.info("Token Inactive now");
+        logger.info("Token reset to null");
 
         // Save user
         userService.update(user);
-        logger.info("Password updated for user: " + user );
+        logger.info("Password updated for user: " + user);
 
         // In order to set a model attribute on a redirect, we must use
         // RedirectAttributes
@@ -161,7 +167,7 @@ public class PasswordController {
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public String handleMissingParams(MissingServletRequestParameterException ex) {
         System.out.println("Going to reset page without a token ...Exception occurred!!");
-        logger.warn("Exception called in Reset Password page");
+        logger.warn("Exception occurred in Reset Password page");
         return "redirect:/login";
     }
 }

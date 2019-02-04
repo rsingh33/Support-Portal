@@ -46,42 +46,53 @@ public class UserController {
 
     @RequestMapping(value = "/userForm/{id}")
     public String edit(@PathVariable int id, Model m, Principal principal) {
-        logger.info("Showing admin user form page for user: " + principal.getName());
-        System.out.println("inUserEditMethod");
+        logger.info("Showing user edit form page for user: " + principal.getName());
+
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-        logger.info("Retriving usernames for id: " + id + " by user: " + principal.getName());
-        User user = usersService.getUser(id);
-        m.addAttribute("user", user);
-        m.addAttribute("authority", Roles.values());
-        m.addAttribute("enabled", Enabled.values());
+     try {
+         logger.info("Retriving user for id: " + id + " by user: " + principal.getName());
+
+         User user = usersService.getUser(id);
+         m.addAttribute("user", user);
+         m.addAttribute("authority", Roles.values());
+         m.addAttribute("enabled", Enabled.values());
+     } catch (Exception ex){
+         logger.error("User can't be retrieved for editing",ex);
+     }
         return "userForm";
     }
 
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveOrUpdate(@Valid @ModelAttribute("user") User user, BindingResult result, Principal principal) {
         if (result.hasErrors()) {
-            logger.error("Error while saving for new user by user: " + principal.getName());
+            logger.error("Error while saving for new user by user: " + principal.getName() + user.toString());
             return "userForm";
         }
 
-        System.out.println("Entering save user");
-        logger.info("Stroring user by user: " + principal.getName());
-        usersService.saveOrUpdate(user);
+
+
+     try {
+         logger.info("Storing user  "+ user.toString() + " by user " + principal.getName());
+         usersService.saveOrUpdate(user);
+         logger.info("User Saved "+ user.toString() + " by user " + principal.getName());
+     } catch (Exception ex){
+         logger.error("user can't be saved  "+ user.toString() + " by user " + principal.getName(), ex);
+     }
         return "redirect:/admin";
     }
-
-
-
-//    End******************
-
 
 
 
 
     @RequestMapping(value = "/deleteUser/{username}", method = RequestMethod.GET)
     public String deleteUser(@PathVariable String username) {
-        usersService.delete(username);
+       try {
+           usersService.delete(username);
+           logger.info("User deleted for username: " + username);
+       } catch(Exception ex){
+           logger.error("User can't be deleted ", ex);
+       }
         return "redirect:/admin";
     }
 

@@ -67,10 +67,10 @@ public class HandoverController {
     public String editHandoverIssueForm(@PathVariable int id, Model m, Principal principal) {
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-        logger.info("Handoverform operation started for app with id " + id + " by user: " + principal.getName());
+
 
         try {
-            logger.info("Getting backlog issue from database for id  " + id + "to be edited by user:" + principal.getName());
+            logger.info("Getting handover issue from database for id  " + id + "to be edited by user:" + principal.getName());
             Handover handover = handoverService.getHandover(id);
             m.addAttribute("handover", handover);
             logger.info("Retrieving Handover for id: " + id + " by user: " + principal.getName());
@@ -83,7 +83,7 @@ public class HandoverController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveOrUpdateHandover(@ModelAttribute("handover") Handover handover, Principal principal, RedirectAttributes redirectAttributes) {
         handover.setLastModUser(principal.getName());
-        logger.info("Handoverform save operation started by user: " + principal.getName());
+
         try {
             logger.info("Saving handover into database by user: " + principal.getName() + "value " + handover.toString());
             handoverService.saveOrUpdate(handover);
@@ -101,8 +101,7 @@ public class HandoverController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteHandover(@PathVariable int id, RedirectAttributes redirectAttributes, Principal principal) {
-        logger.info("Handover delete operation started with id " + id + " by user: " + principal.getName());
-        try {
+               try {
             logger.info("Deleting handover for id: " + id + " by user: " + principal.getName());
             handoverService.delete(id);
             logger.info("Handover deleted successfully for id: " + id + " by user:" + principal.getName());
@@ -124,7 +123,7 @@ public class HandoverController {
 
         String content = ListToHtmlTransformer.compose(handovers);
         try {
-            logger.info("Sending email handover by user: " + principal.getName());
+            logger.info("Send email handover by user: " + principal.getName());
             emailService.emailSend(content);
             logger.info("Handover sent successfully via mail by user: " + principal.getName());
             redirectAttributes.addFlashAttribute("emailSent", "Handover email sent successfully!!");
@@ -141,7 +140,7 @@ public class HandoverController {
 
     @RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
     public ModelAndView getExcel(Principal principal) {
-        logger.info("Handover export to excel file triggered by user:" + principal.getName());
+        logger.info("Handover export to excel file triggered by user: " + principal.getName());
 
         List<Handover> handoverList = handoverService.getCurrentHandover();
              logger.info("Handover downloaded successfully by user: " + principal.getName());
