@@ -8,18 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Service("excelService")
+@Service
 public class ExcelService {
 
-    @Qualifier("excelDao")
+
     @Autowired
     private ExcelDao excelDao;
-    @Qualifier("usersDao")
+
     @Autowired
     private UsersDao usersDao;
 
@@ -53,14 +53,10 @@ public class ExcelService {
         excelDao.deleteExcelRow(id);
     }
 
-    public void saveorUpdateAll(List<ExcelRow> list) {
+    public String  saveorUpdateAll(List<ExcelRow> list)  {
 
-        try {
-            excelDao.saveorUpdateAll(list);
-        } catch (Exception e) {
-            System.out.println("Error starts here !!");
-            e.printStackTrace();
-        }
+        return    excelDao.saveorUpdateAll(list);
+
     }
 
     public  Set<String> getPendingTesters(String releaseName) {

@@ -7,15 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service("issueService")
-public class IssueService {
 
+@Service
+public class IssueService {
+    @Autowired
     private IssuesDao issuesDao;
 
-    @Autowired
-    public void setIssuesDao(IssuesDao issuesDao) {
-        this.issuesDao = issuesDao;
-    }
 
     public List<Issue> getCurrentIssues() {
         return issuesDao.getIssue();

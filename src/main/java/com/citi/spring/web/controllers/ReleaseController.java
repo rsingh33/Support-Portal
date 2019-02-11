@@ -123,6 +123,54 @@ public class ReleaseController {
         return "redirect:/releasemanager";
     }
 
+    ///Not used yet to be implemented
+    @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"sendSignoff"})
+    public String sendSignoff(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal, RedirectAttributes redirectAttributes) {
+
+        try {
+            logger.info("Retrieving email list for pending test cases");
+            Set<String> toEmailList = excelService.getPendingTesters(excelRow.getReleaseName());
+            if (toEmailList.isEmpty()) {
+                logger.info("Retrieved email list for pending test cases is empty");
+                redirectAttributes.addFlashAttribute("warning", "There are no valid user to email mappings found.  ");
+                return "redirect:/releasemanager";
+            }
+
+            String content = "Hi," +
+                    "\r\n"
+                    + "This is a reminder email, Please complete your assigned test cases before Deadline."
+                    + "\r\n" +
+                    "If you have completed please update on the portal."
+                    + "\r\n" +
+                    "\r\n" +
+                    "Thanks, "
+                    + "\r\n"
+                    + "OMC Support Team"
+                    + "\r\n"
+                    + "dl.icg.global.cob.l3.support@imcnam.ssmb.com";
+
+
+            emailService.emailSend(content, toEmailList, "Reminder for UAT pending test cases");
+            logger.info("Reminder Email is sent");
+            List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+            dataPopulate(data1, model);
+
+            String reminderList = "";
+            for (String email : toEmailList) {
+                reminderList += email + " ";
+            }
+            reminderList += ".";
+            System.out.println("Emails sent to people: " + reminderList);
+            redirectAttributes.addFlashAttribute("success", "Reminder sent successfully to " + reminderList + "  ");
+        } catch (Exception ex) {
+            logger.error("Exception occurred while sending email");
+            logger.error(ex);
+            redirectAttributes.addFlashAttribute("exception", "Exception occurred while sending email!!  ");
+            return "redirect:/releasemanager";
+        }
+
+        return "redirect:/releasemanager";
+    }
     @RequestMapping(value = "/releaseHandler", method = RequestMethod.POST, params = {"removeRelease"})
     public String deleteReleaseExcel(@ModelAttribute("excelRow") ExcelRow excelRow, Model model, Principal principal, RedirectAttributes redirectAttributes) {
 
@@ -133,7 +181,7 @@ public class ReleaseController {
             redirectAttributes.addFlashAttribute("releaseDeleted", "Release has been successfully deleted");
 
         } catch (Exception ex) {
-            logger.error("Error occurred while removing release by release name " + excelRow.getReleaseName() + " by user: "+ principal.getName(), ex );
+            logger.error("Error occurred while removing release by release name " + excelRow.getReleaseName() + " by user: " + principal.getName(), ex);
             redirectAttributes.addFlashAttribute("releaseNotDeleted", "Release can't be deleted please refresh page and try again");
             return "releasemanager";
         }
@@ -162,7 +210,7 @@ public class ReleaseController {
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
         m.addAttribute("excelRow", new ExcelRow());
         m.addAttribute("uatStatus", UATstatus.values());
-        logger.info("Showing release amnager form page to user:" +  principal.getName());
+        logger.info("Showing release amnager form page to user:" + principal.getName());
         return "releasemanagerform";
     }
 
@@ -179,21 +227,21 @@ public class ReleaseController {
     public String editReleaseRow(@PathVariable int id, Model m, Principal principal) {
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
-       try {
-           ExcelRow excelRow = excelService.getExcelRow(id);
-           m.addAttribute("uatStatus", UATstatus.values());
-           m.addAttribute("excelRow", excelRow);
-           List<User> userList = usersService.getAllUsers();
-           List<String> names = new ArrayList<>();
-           for (User user : userList) {
-               names.add(user.getName());
-           }
+        try {
+            ExcelRow excelRow = excelService.getExcelRow(id);
+            m.addAttribute("uatStatus", UATstatus.values());
+            m.addAttribute("excelRow", excelRow);
+            List<User> userList = usersService.getAllUsers();
+            List<String> names = new ArrayList<>();
+            for (User user : userList) {
+                names.add(user.getName());
+            }
 
-           m.addAttribute("userList", names);
-           logger.info("User  with id " + id +" retrieved from user for editing " );
-       }catch(Exception ex){
-           logger.error("User with id " + id +  " can't be retrieved", ex);
-       }
+            m.addAttribute("userList", names);
+            logger.info("User  with id " + id + " retrieved from user for editing ");
+        } catch (Exception ex) {
+            logger.error("User with id " + id + " can't be retrieved", ex);
+        }
         return "releasemanagerform";
     }
 
@@ -242,13 +290,13 @@ public class ReleaseController {
 
     @RequestMapping(value = "/saveRelease", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute("excelRow") ExcelRow excelRow, Model m, Principal principal) {
-       try {
-           excelRow.setLastModUser(principal.getName());
-           excelService.saveOrUpdate(excelRow);
-           logger.error( "Release row with data "+ excelRow.toString() + " saved successfully");
-       } catch (Exception ex){
-           logger.error( "Release row with data "+ excelRow.toString() + " can't be saved",ex);
-       }
+        try {
+            excelRow.setLastModUser(principal.getName());
+            excelService.saveOrUpdate(excelRow);
+            logger.error("Release row with data " + excelRow.toString() + " saved successfully");
+        } catch (Exception ex) {
+            logger.error("Release row with data " + excelRow.toString() + " can't be saved", ex);
+        }
         if (principal != null)
             m.addAttribute("name", usersService.findUserByUsername(principal.getName()).getName());
 
@@ -260,15 +308,15 @@ public class ReleaseController {
 
     @RequestMapping(value = "/deleteExcelRow/{id}", method = RequestMethod.GET)
     public String deleteExcelRow(@PathVariable int id, Model m) {
-       try {
-           ExcelRow excelRow = excelService.getExcelRow(id);
-           List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
-           dataPopulate(data1, m);
-           excelService.delete(id);
-           logger.info("Excel row deleted with id "+ id);
-       } catch (Exception ex){
-           logger.error("Excel row can't be deleted with id " + id,ex);
-       }
+        try {
+            ExcelRow excelRow = excelService.getExcelRow(id);
+            List<ExcelRow> data1 = excelService.getExcel(excelRow.getReleaseName());
+            dataPopulate(data1, m);
+            excelService.delete(id);
+            logger.info("Excel row deleted with id " + id);
+        } catch (Exception ex) {
+            logger.error("Excel row can't be deleted with id " + id, ex);
+        }
 
 
         return "releasemanager";
@@ -277,7 +325,7 @@ public class ReleaseController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/uploadExcelFile")
     public String uploadFile(Model model, MultipartFile file, Principal principal, @RequestParam("releaseName") String releaseName, @RequestParam("deadline")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline, RedirectAttributes redirectAttributes) throws IOException {
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline, RedirectAttributes redirectAttributes) {
 
 
         try {
@@ -299,7 +347,7 @@ public class ReleaseController {
 
             if (fileLocation != null) {
                 if (fileLocation.endsWith(".xlsx") || fileLocation.endsWith(".xls")) {
-                  logger.info("Processing Excel File!!");
+                    logger.info("Processing Excel File!!");
                     try {
                         Map<Integer, List<MyCell>> data = excelParser.readExcel(fileLocation);
                         List<ExcelRow> excel = new ArrayList<>();
@@ -314,32 +362,44 @@ public class ReleaseController {
                             }
 
                             ExcelRow excelRow = new ExcelRow();
-                            excelRow.setJiraKey(entry.getValue().get(0).getContent());
-                            excelRow.setSummary(entry.getValue().get(1).getContent());
-                            excelRow.setEngineer(entry.getValue().get(2).getContent());
-                            excelRow.setScriptLocation(entry.getValue().get(3).getContent());
-                            excelRow.setTester(entry.getValue().get(4).getContent());
-                            excelRow.setStatus(UATstatus.PENDING.toString());
-                            excelRow.setComments(entry.getValue().get(6).getContent());
-                            excelRow.setLastModUser(principal.getName());
-                            excelRow.setReleaseName(releaseName);
+                            excelRow.setJiraKey(entry.getValue().get(0).getContent().trim());
+                            excelRow.setSummary(entry.getValue().get(1).getContent().trim());
+                            excelRow.setEngineer(entry.getValue().get(2).getContent().trim());
+                            excelRow.setScriptLocation(entry.getValue().get(3).getContent().trim());
+                            excelRow.setTester(entry.getValue().get(4).getContent().trim());
+                            excelRow.setStatus(UATstatus.PENDING.toString().trim());
+                            excelRow.setComments(entry.getValue().get(6).getContent().trim());
+                            excelRow.setLastModUser(principal.getName().trim());
+                            excelRow.setReleaseName(releaseName.trim());
                             excelRow.setDeadline(Date.valueOf(deadline));
 
                             excel.add(excelRow);
 
                         }
                         model.addAttribute("deadlineDate", Date.valueOf(deadline));
-                        excelService.saveorUpdateAll(excel);
+
+                        String message = excelService.saveorUpdateAll(excel);
+                        logger.info(message);
+
+                        if (message.startsWith("Exception")) {
+                            redirectAttributes.addFlashAttribute("exception", message);
+                        } else {
+                            redirectAttributes.addFlashAttribute("success", message);
+                        }
 
                     } catch (IndexOutOfBoundsException a) {
-                      logger.error("User uploaded file in incorrect template" , a);
+                        logger.error("User uploaded file in incorrect template", a);
                         redirectAttributes.addFlashAttribute("exception", "File Template does not look valid, Please upload file with correct Template.");
+                        return "redirect:/newRelease";
+                    } catch (Exception e) {
+                        logger.error("Exception occurred while reading the file", e);
+                        redirectAttributes.addFlashAttribute("exception", "Exception occurred while reading the file, Please upload file with correct Template. and contact support");
                         return "redirect:/newRelease";
                     }
 
 
                 } else {
-                    logger.error("File read is not in correct template");
+                    logger.error("File read is not in correct template format");
                     redirectAttributes.addFlashAttribute("exception", "This is not a valid excel file!");
                     return "redirect:/newRelease";
                 }
@@ -348,12 +408,14 @@ public class ReleaseController {
                 redirectAttributes.addFlashAttribute("exception", "File missing! Please upload an excel file.");
                 return "redirect:/newRelease";
             }
-            logger.info("File uploaded and processed successfully!!");
-            redirectAttributes.addFlashAttribute("success", "File: " + file.getOriginalFilename()
-                    + " has been uploaded and processed successfully!");
+
         } catch (FileNotFoundException f) {
-            logger.error("File not found Exception occured ",f);
+            logger.error("File not found Exception occured ", f);
             redirectAttributes.addFlashAttribute("exception", "File missing! Please upload an excel file.");
+            return "redirect:/newRelease";
+        } catch (IOException eq) {
+            logger.error("IOException occurred while reading file" + eq.getCause(), eq);
+            redirectAttributes.addFlashAttribute("exception", "Exception occurred while reading file please check the file you have uploaded");
             return "redirect:/newRelease";
         }
         return "redirect:/releasemanager";

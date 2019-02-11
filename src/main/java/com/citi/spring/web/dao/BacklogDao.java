@@ -15,7 +15,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-@Component("backlogDao")
+@Component
 public class BacklogDao {
 
     @Autowired

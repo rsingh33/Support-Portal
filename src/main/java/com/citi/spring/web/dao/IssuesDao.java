@@ -16,7 +16,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-@Component("issueDao")
+@Component
 public class IssuesDao {
 
     @Autowired

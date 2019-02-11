@@ -1,7 +1,6 @@
 package com.citi.spring.web.service;
 
 import com.citi.spring.web.dao.UsersDao;
-import com.citi.spring.web.dao.data.Roles;
 import com.citi.spring.web.dao.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,15 +9,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("usersService")
+
+@Service
 public class UsersService {
 
-    private UsersDao usersDao;
 
     @Autowired
-    public void setUsersDao(@Qualifier("usersDao") UsersDao usersDao) {
-        this.usersDao = usersDao;
-    }
+    private UsersDao usersDao;
+
+
+
 
 
     public void create(User user) {

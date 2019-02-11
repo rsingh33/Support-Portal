@@ -3,22 +3,21 @@ package com.citi.spring.web.dao;
 
 import com.citi.spring.web.dao.entity.ExcelRow;
 import org.apache.log4j.Logger;
-import org.hibernate.*;
-import org.hibernate.criterion.Projection;
-import org.hibernate.criterion.Projections;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import java.beans.Expression;
 import java.util.Iterator;
 import java.util.List;
 
 @Repository
 @Transactional
-@Component("excelDao")
+@Component
 public class ExcelDao {
     private static Logger logger = Logger.getLogger(ExcelDao.class);
 
@@ -37,7 +36,6 @@ public class ExcelDao {
         query.setParameter("releaseName", releaseName);
         return query.list();
     }
-
 
 
     public ExcelRow getExcelRow(int id) {
@@ -63,10 +61,11 @@ public class ExcelDao {
         session().saveOrUpdate(excelRow);
     }
 
-    public void saveorUpdateAll(List<ExcelRow> list) {
+    public String saveorUpdateAll(List<ExcelRow> list) {
 
         Session session = sessionFactory.openSession();
         Transaction tx = null;
+        String message;
         try {
 
 
@@ -83,6 +82,8 @@ public class ExcelDao {
 
             for (Iterator itrList = list.listIterator(); itrList.hasNext(); ) {
                 ExcelRow record = (ExcelRow) itrList.next();
+                logger.info("saving excelRow in database");
+                logger.info(record.toString());
                 session.saveOrUpdate(record);
                 if (count % 20 == 0) {
                     session().flush();
@@ -94,20 +95,21 @@ public class ExcelDao {
                 tx.commit();
             }
 
-
+            message = "File successfully processed and saved, please use dropdown to see release contents";
         } catch (Exception e) {
 
-            System.out.println(e.getCause());
+            logger.error("Exception occurred while saving enteries to release database " + e.getCause() + "  class name is " + e.getClass(), e);
             if (tx != null) {
                 tx.rollback();
             }
+            message = "Exception occurred while saving enteries to release table " + e.getCause() + "  class name is " + e.getClass();
 
         } finally {
 
             session.close();
 
         }
-
+        return message;
     }
 
     public List<String> getReleases() {
@@ -115,7 +117,7 @@ public class ExcelDao {
         Query query = session().createQuery("Select distinct releaseName from ExcelRow");
         return query.list();
 
-}
+    }
 
     public boolean deleteExcel(String releaseName) {
 

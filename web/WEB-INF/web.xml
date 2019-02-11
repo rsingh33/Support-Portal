@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+-->
+
+
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <display-name>Spring Application</display-name>
+    <display-name>Support Portal</display-name>
     <description>
-        This is a simple web application with a source code organization
-        based on the recommendations of the Application Developer’s Guide.
-    </description>
+        </description>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -19,10 +22,10 @@
             /WEB-INF/security-context.xml
         </param-value>
     </context-param>
-<context-param>
-    <param-name>spring.profiles.active</param-name>
-    <param-value>production</param-value>
-</context-param>
+    <context-param>
+        <param-name>spring.profiles.active</param-name>
+        <param-value>production</param-value>
+    </context-param>
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -57,7 +60,6 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
 
 
     <session-config>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class PasswordController {
 
     private static Logger logger = Logger.getLogger(PasswordController.class);
     @Autowired
-    private UsersService userService;
+    private UsersService usersService;
 
     @Autowired
     private EmailService emailService;
@@ -45,13 +46,13 @@ public class PasswordController {
 
     // Process form submission from forgotPassword page
     @RequestMapping(value = "/forgot", method = RequestMethod.POST)
-    public String processForgotPasswordForm(ModelMap model, @ValidEmail @RequestParam("email") String userEmail, HttpServletRequest request) {
+    public String processForgotPasswordForm(ModelMap model, @ValidEmail @RequestParam("email") String userEmail, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 
 
         logger.info("Checking if a user exists by email " + userEmail + " in the database");
 
         model.addAttribute("forgotlink", false);
-        if (!userService.existsByEmail(userEmail)) {
+        if (!usersService.existsByEmail(userEmail)) {
             model.addAttribute("message", "This is not a registered email " + userEmail);
             model.addAttribute("forgotlink", true);
             logger.warn(userEmail + " does not exist");
@@ -59,12 +60,12 @@ public class PasswordController {
             logger.info("User found with email " + userEmail + " in the database");
             try {
                 // Generate random 36-character string token for reset password
-                User user = userService.getUserEmail(userEmail);
+                User user = usersService.getUserEmail(userEmail);
                 user.setResetToken(UUID.randomUUID().toString());
                 logger.info("Token generated for user with email Id: " + userEmail);
 
                 // Save token to database
-                userService.update(user);
+                usersService.update(user);
                 logger.info("Token Saved in database");
 
                 String appUrl = request.getScheme() + "://" + request.getServerName() + ":" +
@@ -84,15 +85,17 @@ public class PasswordController {
 
                 logger.info("Forget password Email sent to: " + userEmail);
                 emailService.emailSend(content, user.getEmail(), "Password Reset Request");
+                redirectAttributes.addAttribute("message", "A password reset link has been sent to " + userEmail);
+                model.addAttribute("forgotlink", true);
 
             } catch (Exception ex) {
                 logger.error("Forget password Email unsuccessful for email id: " + userEmail + " cause: " + ex.getCause());
                 logger.error(ex);
+                redirectAttributes.addFlashAttribute("exception", "Forget password Email unsuccessful for email id: \" + userEmail + \" cause: \" + ex.getCause()");
             }
 
             // Add success message to view
-            model.addAttribute("message", "A password reset link has been sent to " + userEmail);
-            model.addAttribute("forgotlink", true);
+
 
         }
 
@@ -104,7 +107,7 @@ public class PasswordController {
     @RequestMapping(value = "/reset", method = RequestMethod.GET, params = "token")
     public String displayResetPasswordPage(Model model, @RequestParam(value = "token") String token) {
 
-        User user = userService.findUserByResetToken(token);
+        User user = usersService.findUserByResetToken(token);
         try {
             if (user != null) {
 
@@ -137,7 +140,7 @@ public class PasswordController {
             return "resetPassword";
         }
 
-        User user = userService.findUserByResetToken(requestParams.get("token"));
+        User user = usersService.findUserByResetToken(requestParams.get("token"));
         logger.info("User: " + user.getName() + " found for the Token");
 
 
@@ -150,7 +153,7 @@ public class PasswordController {
         logger.info("Token reset to null");
 
         // Save user
-        userService.update(user);
+        usersService.update(user);
         logger.info("Password updated for user: " + user);
 
         // In order to set a model attribute on a redirect, we must use

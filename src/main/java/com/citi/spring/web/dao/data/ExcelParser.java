@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
 @Component
 public class ExcelParser {
 
-    public Map<Integer, List<MyCell>> readExcel(String fileLocation) throws IOException {
+    public Map<Integer, List<MyCell>> readExcel(String fileLocation) throws Exception {
 
         Map<Integer, List<MyCell>> data = new HashMap<>();
         FileInputStream fis = new FileInputStream(new File(fileLocation));
@@ -139,7 +139,7 @@ public class ExcelParser {
         }
         return sheetName;
     }
-        private Map<Integer, List<MyCell>> readXSSFWorkbook (FileInputStream fis) throws IOException {
+        private Map<Integer, List<MyCell>> readXSSFWorkbook (FileInputStream fis) throws Exception {
             XSSFWorkbook workbook = null;
             Map<Integer, List<MyCell>> data = new HashMap<>();
             try {
@@ -147,7 +147,7 @@ public class ExcelParser {
                 int totalSheets = workbook.getNumberOfSheets();
                 int totalRows = 0;
                 String sheetName = workbook.getSheetName(0);
-                System.out.println("Sheet Name is : " + sheetName);
+
 
 
                 for (int sheetNumber = 0; sheetNumber < totalSheets; sheetNumber++) {

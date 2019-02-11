@@ -3,7 +3,6 @@ package com.citi.spring.web.controllers;
 
 import com.citi.spring.web.dao.data.Enabled;
 import com.citi.spring.web.dao.data.Roles;
-import com.citi.spring.web.dao.entity.Handover;
 import com.citi.spring.web.dao.entity.User;
 import com.citi.spring.web.service.UsersService;
 import org.apache.log4j.Logger;

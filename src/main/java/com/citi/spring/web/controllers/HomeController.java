@@ -25,8 +25,7 @@ public class HomeController {
     private static Logger logger = Logger.getLogger(HomeController.class);
     @Autowired
     MonitorService monitorService;
-    @Autowired
-    private HandoverService handoverService;
+
     @Autowired
     private UsersService usersService;
 

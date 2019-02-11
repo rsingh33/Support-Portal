@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-@Component("handoverDao")
+@Component
 public class HandoverDao {
 
     @Autowired

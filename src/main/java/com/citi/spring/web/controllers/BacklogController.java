@@ -23,6 +23,7 @@ import java.util.List;
 public class BacklogController {
 
     private static Logger logger = Logger.getLogger(BacklogController.class);
+
     @Autowired
     private UsersService usersService;
     @Autowired

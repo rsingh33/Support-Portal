@@ -1,7 +1,6 @@
 package com.citi.spring.web.dao.entity;
 
 
-import com.citi.spring.web.dao.data.Roles;
 import com.citi.spring.web.validations.FormValidationGroup;
 import com.citi.spring.web.validations.PersistenceValidationGroup;
 import com.citi.spring.web.validations.ValidEmail;

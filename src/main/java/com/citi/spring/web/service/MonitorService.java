@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("monitorService")
+@Service
 public class MonitorService {
 
     @Autowired
     MonitorHelper monitorHelper;
 
-    @Qualifier("monitorDao")
+
     @Autowired
     MonitorDao monitorDao;
 

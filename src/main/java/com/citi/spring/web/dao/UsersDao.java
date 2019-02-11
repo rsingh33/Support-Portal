@@ -17,7 +17,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-@Component("usersDao")
+@Component
 public class UsersDao {
 
 

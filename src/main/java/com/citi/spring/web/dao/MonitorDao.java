@@ -1,7 +1,6 @@
 package com.citi.spring.web.dao;
 
 
-import com.citi.spring.web.dao.entity.ExcelRow;
 import com.citi.spring.web.dao.entity.Monitor;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -18,7 +17,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-@Component("monitorDao")
+@Component
 public class MonitorDao {
     private static Logger logger = Logger.getLogger(MonitorDao.class);
 

@@ -9,14 +9,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("handoverService")
+
+@Service
 public class HandoverService {
+
+   @Autowired
     private HandoverDao handoverDao;
 
-    @Autowired
-    public void setHandoverDao(@Qualifier("handoverDao") HandoverDao handoverDao) {
-        this.handoverDao = handoverDao;
-    }
 
     public List<Handover> getCurrentHandover() {
         return handoverDao.getHandover();

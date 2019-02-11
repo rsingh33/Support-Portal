@@ -9,14 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("backlogService")
+
+@Service
 public class BacklogService {
+   @Autowired
     private BacklogDao backlogDao;
 
-    @Autowired
-    public void setBacklogDao(@Qualifier("backlogDao") BacklogDao backlogDao) {
-        this.backlogDao = backlogDao;
-    }
 
     public List<Backlog> getCurrentBacklog() {
         return backlogDao.getBacklog();
