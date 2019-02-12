@@ -1,4 +1,4 @@
-package handoverTests;
+package com.citi.spring.test;
 
 
 import com.citi.spring.web.dao.data.CurrentlyWith;
@@ -10,7 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -24,21 +26,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-/*@ActiveProfiles("dev")*/
-@ContextConfiguration(locations = {"classpath:/support-portal-servlet.xml",
-        "classpath:/service-context.xml",
-        "classpath:/dao-context.xml",
-        "classpath:/security-context.xml",
-        "classpath:/web.xml",
-        "classpath:/excel-view.xml"})
+@ActiveProfiles("dev")
 @RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations =  { "classpath:testContext.xml",
+        "classpath:support-portal-servlet.xml",
+        "classpath:dao-context.xml",
+        "classpath:datasource.xml",
+        "classpath:security-context.xml",
+        "classpath:service-context.xml",
+        "classpath:excel-view.xml"})
 @WebAppConfiguration
 public class HandoverControllerTests {
     private Timestamp current = new Timestamp(System.currentTimeMillis());
+
     private MockMvc mockMvc;
 
     @Autowired
-    private HandoverService handoverServiceMock;
+    private HandoverService handoverService;
+
 
     @Test
     public void showHandoverTest() throws Exception {
@@ -52,7 +57,7 @@ public class HandoverControllerTests {
                 "", Status.HIGH, CurrentlyWith.KYC, Environment.UAT);
         handover2.setId(2);
 
-        when(handoverServiceMock.getCurrentHandover()).thenReturn(Arrays.asList(handover1, handover2));
+        when(handoverService.getCurrentHandover()).thenReturn(Arrays.asList(handover1, handover2));
 
         mockMvc.perform(get("/handover"))
                 .andExpect(status().isOk())

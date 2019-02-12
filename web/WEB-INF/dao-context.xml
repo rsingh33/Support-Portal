@@ -3,7 +3,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jee="http://www.springframework.org/schema/jee"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns="http://www.springframework.org/schema/beans"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
          http://www.springframework.org/schema/context
@@ -11,7 +11,7 @@
           http://www.springframework.org/schema/tx
            http://www.springframework.org/schema/tx/spring-tx.xsd
            http://www.springframework.org/schema/jee
-            http://www.springframework.org/schema/jee/spring-jee.xsd">
+            http://www.springframework.org/schema/jee/spring-jee.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
     <context:component-scan base-package="com.citi.spring.web.dao"></context:component-scan>
@@ -53,6 +53,13 @@
 
         <bean id="exceptionTranslator" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"></bean>
         <tx:annotation-driven></tx:annotation-driven>
+
+      <!--  <bean id="session" class="org.springframework.orm.hibernate3.SessionFactoryUtils" factory-method="getSession" scope="prototype">
+            <constructor-arg ref="sessionFactory" />
+            <constructor-arg value="false" />
+            &lt;!&ndash; This is seems to be needed to get rid of the 'No Hibernate Session' error' &ndash;&gt;
+            <aop:scoped-proxy />
+        </bean>-->
     </beans>
 
 </beans>

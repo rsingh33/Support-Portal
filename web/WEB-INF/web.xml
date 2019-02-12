@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-     Copyright 2002 Sun Microsystems, Inc. All rights reserved.
--->
-
-
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <display-name>Support Portal</display-name>
     <description>
-        </description>
+    </description>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-
-            /WEB-INF/support-portal-servlet.xml
+                       /WEB-INF/support-portal-servlet.xml
             /WEB-INF/dao-context.xml
             /WEB-INF/service-context.xml
             /WEB-INF/security-context.xml
