@@ -10,7 +10,8 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-                       /WEB-INF/support-portal-servlet.xml
+            /WEB-INF/excel-view.xml
+            /WEB-INF/support-portal-servlet.xml
             /WEB-INF/dao-context.xml
             /WEB-INF/service-context.xml
             /WEB-INF/security-context.xml
